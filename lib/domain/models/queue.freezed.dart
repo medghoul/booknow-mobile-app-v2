@@ -1251,7 +1251,9 @@ $WaitRangeCopyWith<$Res> get estimate {
 mixin _$OwnerQueueEntry {
 
  String get id; QueueEntryStatus get status; QueueEntryKind get kind;/// Null for a walk-in who gave no name: the screen says "Walk-in".
- String? get customerName; String get serviceId; String get serviceName; int get durationMinutes; DateTime? get joinedAt; DateTime? get calledAt; DateTime? get startedAt; DateTime? get noShowFrom;
+ String? get customerName; String get serviceId; String get serviceName; int get durationMinutes; DateTime? get joinedAt; DateTime? get calledAt; DateTime? get startedAt; DateTime? get noShowFrom;/// Who they asked for; null is whoever is free first (providers §7.4).
+ String? get requestedProviderId;/// Who serves them: set at join when asked for, otherwise when called.
+ String? get providerId; String? get providerName;
 /// Create a copy of OwnerQueueEntry
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1262,16 +1264,16 @@ $OwnerQueueEntryCopyWith<OwnerQueueEntry> get copyWith => _$OwnerQueueEntryCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueEntry&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.joinedAt, joinedAt) || other.joinedAt == joinedAt)&&(identical(other.calledAt, calledAt) || other.calledAt == calledAt)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.noShowFrom, noShowFrom) || other.noShowFrom == noShowFrom));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueEntry&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.joinedAt, joinedAt) || other.joinedAt == joinedAt)&&(identical(other.calledAt, calledAt) || other.calledAt == calledAt)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.noShowFrom, noShowFrom) || other.noShowFrom == noShowFrom)&&(identical(other.requestedProviderId, requestedProviderId) || other.requestedProviderId == requestedProviderId)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.providerName, providerName) || other.providerName == providerName));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,kind,customerName,serviceId,serviceName,durationMinutes,joinedAt,calledAt,startedAt,noShowFrom);
+int get hashCode => Object.hash(runtimeType,id,status,kind,customerName,serviceId,serviceName,durationMinutes,joinedAt,calledAt,startedAt,noShowFrom,requestedProviderId,providerId,providerName);
 
 @override
 String toString() {
-  return 'OwnerQueueEntry(id: $id, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMinutes: $durationMinutes, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom)';
+  return 'OwnerQueueEntry(id: $id, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMinutes: $durationMinutes, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom, requestedProviderId: $requestedProviderId, providerId: $providerId, providerName: $providerName)';
 }
 
 
@@ -1282,7 +1284,7 @@ abstract mixin class $OwnerQueueEntryCopyWith<$Res>  {
   factory $OwnerQueueEntryCopyWith(OwnerQueueEntry value, $Res Function(OwnerQueueEntry) _then) = _$OwnerQueueEntryCopyWithImpl;
 @useResult
 $Res call({
- String id, QueueEntryStatus status, QueueEntryKind kind, String? customerName, String serviceId, String serviceName, int durationMinutes, DateTime? joinedAt, DateTime? calledAt, DateTime? startedAt, DateTime? noShowFrom
+ String id, QueueEntryStatus status, QueueEntryKind kind, String? customerName, String serviceId, String serviceName, int durationMinutes, DateTime? joinedAt, DateTime? calledAt, DateTime? startedAt, DateTime? noShowFrom, String? requestedProviderId, String? providerId, String? providerName
 });
 
 
@@ -1299,7 +1301,7 @@ class _$OwnerQueueEntryCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueEntry
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? kind = null,Object? customerName = freezed,Object? serviceId = null,Object? serviceName = null,Object? durationMinutes = null,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? kind = null,Object? customerName = freezed,Object? serviceId = null,Object? serviceName = null,Object? durationMinutes = null,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,Object? requestedProviderId = freezed,Object? providerId = freezed,Object? providerName = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
@@ -1312,7 +1314,10 @@ as int,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt // ignore: cast
 as DateTime?,calledAt: freezed == calledAt ? _self.calledAt : calledAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,startedAt: freezed == startedAt ? _self.startedAt : startedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as DateTime?,requestedProviderId: freezed == requestedProviderId ? _self.requestedProviderId : requestedProviderId // ignore: cast_nullable_to_non_nullable
+as String?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,providerName: freezed == providerName ? _self.providerName : providerName // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -1397,10 +1402,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom,  String? requestedProviderId,  String? providerId,  String? providerName)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntry() when $default != null:
-return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   return orElse();
 
 }
@@ -1418,10 +1423,10 @@ return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.servic
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom,  String? requestedProviderId,  String? providerId,  String? providerName)  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntry():
-return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1438,10 +1443,10 @@ return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.servic
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  QueueEntryStatus status,  QueueEntryKind kind,  String? customerName,  String serviceId,  String serviceName,  int durationMinutes,  DateTime? joinedAt,  DateTime? calledAt,  DateTime? startedAt,  DateTime? noShowFrom,  String? requestedProviderId,  String? providerId,  String? providerName)?  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntry() when $default != null:
-return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMinutes,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   return null;
 
 }
@@ -1453,7 +1458,7 @@ return $default(_that.id,_that.status,_that.kind,_that.customerName,_that.servic
 
 
 class _OwnerQueueEntry implements OwnerQueueEntry {
-  const _OwnerQueueEntry({required this.id, required this.status, required this.kind, required this.customerName, required this.serviceId, required this.serviceName, required this.durationMinutes, required this.joinedAt, required this.calledAt, required this.startedAt, required this.noShowFrom});
+  const _OwnerQueueEntry({required this.id, required this.status, required this.kind, required this.customerName, required this.serviceId, required this.serviceName, required this.durationMinutes, required this.joinedAt, required this.calledAt, required this.startedAt, required this.noShowFrom, this.requestedProviderId, this.providerId, this.providerName});
   
 
 @override final  String id;
@@ -1468,6 +1473,11 @@ class _OwnerQueueEntry implements OwnerQueueEntry {
 @override final  DateTime? calledAt;
 @override final  DateTime? startedAt;
 @override final  DateTime? noShowFrom;
+/// Who they asked for; null is whoever is free first (providers §7.4).
+@override final  String? requestedProviderId;
+/// Who serves them: set at join when asked for, otherwise when called.
+@override final  String? providerId;
+@override final  String? providerName;
 
 /// Create a copy of OwnerQueueEntry
 /// with the given fields replaced by the non-null parameter values.
@@ -1479,16 +1489,16 @@ _$OwnerQueueEntryCopyWith<_OwnerQueueEntry> get copyWith => __$OwnerQueueEntryCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueEntry&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.joinedAt, joinedAt) || other.joinedAt == joinedAt)&&(identical(other.calledAt, calledAt) || other.calledAt == calledAt)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.noShowFrom, noShowFrom) || other.noShowFrom == noShowFrom));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueEntry&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.joinedAt, joinedAt) || other.joinedAt == joinedAt)&&(identical(other.calledAt, calledAt) || other.calledAt == calledAt)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.noShowFrom, noShowFrom) || other.noShowFrom == noShowFrom)&&(identical(other.requestedProviderId, requestedProviderId) || other.requestedProviderId == requestedProviderId)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.providerName, providerName) || other.providerName == providerName));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,kind,customerName,serviceId,serviceName,durationMinutes,joinedAt,calledAt,startedAt,noShowFrom);
+int get hashCode => Object.hash(runtimeType,id,status,kind,customerName,serviceId,serviceName,durationMinutes,joinedAt,calledAt,startedAt,noShowFrom,requestedProviderId,providerId,providerName);
 
 @override
 String toString() {
-  return 'OwnerQueueEntry(id: $id, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMinutes: $durationMinutes, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom)';
+  return 'OwnerQueueEntry(id: $id, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMinutes: $durationMinutes, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom, requestedProviderId: $requestedProviderId, providerId: $providerId, providerName: $providerName)';
 }
 
 
@@ -1499,7 +1509,7 @@ abstract mixin class _$OwnerQueueEntryCopyWith<$Res> implements $OwnerQueueEntry
   factory _$OwnerQueueEntryCopyWith(_OwnerQueueEntry value, $Res Function(_OwnerQueueEntry) _then) = __$OwnerQueueEntryCopyWithImpl;
 @override @useResult
 $Res call({
- String id, QueueEntryStatus status, QueueEntryKind kind, String? customerName, String serviceId, String serviceName, int durationMinutes, DateTime? joinedAt, DateTime? calledAt, DateTime? startedAt, DateTime? noShowFrom
+ String id, QueueEntryStatus status, QueueEntryKind kind, String? customerName, String serviceId, String serviceName, int durationMinutes, DateTime? joinedAt, DateTime? calledAt, DateTime? startedAt, DateTime? noShowFrom, String? requestedProviderId, String? providerId, String? providerName
 });
 
 
@@ -1516,7 +1526,7 @@ class __$OwnerQueueEntryCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueEntry
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? kind = null,Object? customerName = freezed,Object? serviceId = null,Object? serviceName = null,Object? durationMinutes = null,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? kind = null,Object? customerName = freezed,Object? serviceId = null,Object? serviceName = null,Object? durationMinutes = null,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,Object? requestedProviderId = freezed,Object? providerId = freezed,Object? providerName = freezed,}) {
   return _then(_OwnerQueueEntry(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
@@ -1529,7 +1539,283 @@ as int,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt // ignore: cast
 as DateTime?,calledAt: freezed == calledAt ? _self.calledAt : calledAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,startedAt: freezed == startedAt ? _self.startedAt : startedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as DateTime?,requestedProviderId: freezed == requestedProviderId ? _self.requestedProviderId : requestedProviderId // ignore: cast_nullable_to_non_nullable
+as String?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,providerName: freezed == providerName ? _self.providerName : providerName // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$OwnerQueueProvider {
+
+ String get id;/// The owner's own provider shows the shop's name until given one.
+ String? get name; String? get servingEntryId; String? get calledEntryId;/// Who "call next" would call for them.
+ String? get nextEntryId;
+/// Create a copy of OwnerQueueProvider
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OwnerQueueProviderCopyWith<OwnerQueueProvider> get copyWith => _$OwnerQueueProviderCopyWithImpl<OwnerQueueProvider>(this as OwnerQueueProvider, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueProvider&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.servingEntryId, servingEntryId) || other.servingEntryId == servingEntryId)&&(identical(other.calledEntryId, calledEntryId) || other.calledEntryId == calledEntryId)&&(identical(other.nextEntryId, nextEntryId) || other.nextEntryId == nextEntryId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,name,servingEntryId,calledEntryId,nextEntryId);
+
+@override
+String toString() {
+  return 'OwnerQueueProvider(id: $id, name: $name, servingEntryId: $servingEntryId, calledEntryId: $calledEntryId, nextEntryId: $nextEntryId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $OwnerQueueProviderCopyWith<$Res>  {
+  factory $OwnerQueueProviderCopyWith(OwnerQueueProvider value, $Res Function(OwnerQueueProvider) _then) = _$OwnerQueueProviderCopyWithImpl;
+@useResult
+$Res call({
+ String id, String? name, String? servingEntryId, String? calledEntryId, String? nextEntryId
+});
+
+
+
+
+}
+/// @nodoc
+class _$OwnerQueueProviderCopyWithImpl<$Res>
+    implements $OwnerQueueProviderCopyWith<$Res> {
+  _$OwnerQueueProviderCopyWithImpl(this._self, this._then);
+
+  final OwnerQueueProvider _self;
+  final $Res Function(OwnerQueueProvider) _then;
+
+/// Create a copy of OwnerQueueProvider
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,Object? servingEntryId = freezed,Object? calledEntryId = freezed,Object? nextEntryId = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,servingEntryId: freezed == servingEntryId ? _self.servingEntryId : servingEntryId // ignore: cast_nullable_to_non_nullable
+as String?,calledEntryId: freezed == calledEntryId ? _self.calledEntryId : calledEntryId // ignore: cast_nullable_to_non_nullable
+as String?,nextEntryId: freezed == nextEntryId ? _self.nextEntryId : nextEntryId // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [OwnerQueueProvider].
+extension OwnerQueueProviderPatterns on OwnerQueueProvider {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OwnerQueueProvider value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OwnerQueueProvider() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OwnerQueueProvider value)  $default,){
+final _that = this;
+switch (_that) {
+case _OwnerQueueProvider():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OwnerQueueProvider value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OwnerQueueProvider() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? name,  String? servingEntryId,  String? calledEntryId,  String? nextEntryId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OwnerQueueProvider() when $default != null:
+return $default(_that.id,_that.name,_that.servingEntryId,_that.calledEntryId,_that.nextEntryId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? name,  String? servingEntryId,  String? calledEntryId,  String? nextEntryId)  $default,) {final _that = this;
+switch (_that) {
+case _OwnerQueueProvider():
+return $default(_that.id,_that.name,_that.servingEntryId,_that.calledEntryId,_that.nextEntryId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? name,  String? servingEntryId,  String? calledEntryId,  String? nextEntryId)?  $default,) {final _that = this;
+switch (_that) {
+case _OwnerQueueProvider() when $default != null:
+return $default(_that.id,_that.name,_that.servingEntryId,_that.calledEntryId,_that.nextEntryId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _OwnerQueueProvider implements OwnerQueueProvider {
+  const _OwnerQueueProvider({required this.id, this.name, this.servingEntryId, this.calledEntryId, this.nextEntryId});
+  
+
+@override final  String id;
+/// The owner's own provider shows the shop's name until given one.
+@override final  String? name;
+@override final  String? servingEntryId;
+@override final  String? calledEntryId;
+/// Who "call next" would call for them.
+@override final  String? nextEntryId;
+
+/// Create a copy of OwnerQueueProvider
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OwnerQueueProviderCopyWith<_OwnerQueueProvider> get copyWith => __$OwnerQueueProviderCopyWithImpl<_OwnerQueueProvider>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueProvider&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.servingEntryId, servingEntryId) || other.servingEntryId == servingEntryId)&&(identical(other.calledEntryId, calledEntryId) || other.calledEntryId == calledEntryId)&&(identical(other.nextEntryId, nextEntryId) || other.nextEntryId == nextEntryId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,name,servingEntryId,calledEntryId,nextEntryId);
+
+@override
+String toString() {
+  return 'OwnerQueueProvider(id: $id, name: $name, servingEntryId: $servingEntryId, calledEntryId: $calledEntryId, nextEntryId: $nextEntryId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$OwnerQueueProviderCopyWith<$Res> implements $OwnerQueueProviderCopyWith<$Res> {
+  factory _$OwnerQueueProviderCopyWith(_OwnerQueueProvider value, $Res Function(_OwnerQueueProvider) _then) = __$OwnerQueueProviderCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String? name, String? servingEntryId, String? calledEntryId, String? nextEntryId
+});
+
+
+
+
+}
+/// @nodoc
+class __$OwnerQueueProviderCopyWithImpl<$Res>
+    implements _$OwnerQueueProviderCopyWith<$Res> {
+  __$OwnerQueueProviderCopyWithImpl(this._self, this._then);
+
+  final _OwnerQueueProvider _self;
+  final $Res Function(_OwnerQueueProvider) _then;
+
+/// Create a copy of OwnerQueueProvider
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,Object? servingEntryId = freezed,Object? calledEntryId = freezed,Object? nextEntryId = freezed,}) {
+  return _then(_OwnerQueueProvider(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,servingEntryId: freezed == servingEntryId ? _self.servingEntryId : servingEntryId // ignore: cast_nullable_to_non_nullable
+as String?,calledEntryId: freezed == calledEntryId ? _self.calledEntryId : calledEntryId // ignore: cast_nullable_to_non_nullable
+as String?,nextEntryId: freezed == nextEntryId ? _self.nextEntryId : nextEntryId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -1542,7 +1828,9 @@ mixin _$OwnerQueue {
 /// `yyyy-MM-dd` in the shop's own calendar.
  String get localDate; QueueState get state; int get waitingCount;/// When the line is estimated to be empty; null when it already is.
  DateTime? get emptiesAt;/// In serving order: in the chair, called, then waiting.
- List<OwnerQueueEntry> get entries;
+ List<OwnerQueueEntry> get entries;/// Everyone working today, by order. Empty from an API older than
+/// providers.
+ List<OwnerQueueProvider> get providers;
 /// Create a copy of OwnerQueue
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1553,16 +1841,16 @@ $OwnerQueueCopyWith<OwnerQueue> get copyWith => _$OwnerQueueCopyWithImpl<OwnerQu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueue&&(identical(other.localDate, localDate) || other.localDate == localDate)&&(identical(other.state, state) || other.state == state)&&(identical(other.waitingCount, waitingCount) || other.waitingCount == waitingCount)&&(identical(other.emptiesAt, emptiesAt) || other.emptiesAt == emptiesAt)&&const DeepCollectionEquality().equals(other.entries, entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueue&&(identical(other.localDate, localDate) || other.localDate == localDate)&&(identical(other.state, state) || other.state == state)&&(identical(other.waitingCount, waitingCount) || other.waitingCount == waitingCount)&&(identical(other.emptiesAt, emptiesAt) || other.emptiesAt == emptiesAt)&&const DeepCollectionEquality().equals(other.entries, entries)&&const DeepCollectionEquality().equals(other.providers, providers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,localDate,state,waitingCount,emptiesAt,const DeepCollectionEquality().hash(entries));
+int get hashCode => Object.hash(runtimeType,localDate,state,waitingCount,emptiesAt,const DeepCollectionEquality().hash(entries),const DeepCollectionEquality().hash(providers));
 
 @override
 String toString() {
-  return 'OwnerQueue(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries)';
+  return 'OwnerQueue(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries, providers: $providers)';
 }
 
 
@@ -1573,7 +1861,7 @@ abstract mixin class $OwnerQueueCopyWith<$Res>  {
   factory $OwnerQueueCopyWith(OwnerQueue value, $Res Function(OwnerQueue) _then) = _$OwnerQueueCopyWithImpl;
 @useResult
 $Res call({
- String localDate, QueueState state, int waitingCount, DateTime? emptiesAt, List<OwnerQueueEntry> entries
+ String localDate, QueueState state, int waitingCount, DateTime? emptiesAt, List<OwnerQueueEntry> entries, List<OwnerQueueProvider> providers
 });
 
 
@@ -1590,14 +1878,15 @@ class _$OwnerQueueCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueue
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? localDate = null,Object? state = null,Object? waitingCount = null,Object? emptiesAt = freezed,Object? entries = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? localDate = null,Object? state = null,Object? waitingCount = null,Object? emptiesAt = freezed,Object? entries = null,Object? providers = null,}) {
   return _then(_self.copyWith(
 localDate: null == localDate ? _self.localDate : localDate // ignore: cast_nullable_to_non_nullable
 as String,state: null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
 as QueueState,waitingCount: null == waitingCount ? _self.waitingCount : waitingCount // ignore: cast_nullable_to_non_nullable
 as int,emptiesAt: freezed == emptiesAt ? _self.emptiesAt : emptiesAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,entries: null == entries ? _self.entries : entries // ignore: cast_nullable_to_non_nullable
-as List<OwnerQueueEntry>,
+as List<OwnerQueueEntry>,providers: null == providers ? _self.providers : providers // ignore: cast_nullable_to_non_nullable
+as List<OwnerQueueProvider>,
   ));
 }
 
@@ -1682,10 +1971,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries,  List<OwnerQueueProvider> providers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OwnerQueue() when $default != null:
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   return orElse();
 
 }
@@ -1703,10 +1992,10 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries,  List<OwnerQueueProvider> providers)  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueue():
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1723,10 +2012,10 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String localDate,  QueueState state,  int waitingCount,  DateTime? emptiesAt,  List<OwnerQueueEntry> entries,  List<OwnerQueueProvider> providers)?  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueue() when $default != null:
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   return null;
 
 }
@@ -1738,7 +2027,7 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 
 
 class _OwnerQueue extends OwnerQueue {
-  const _OwnerQueue({required this.localDate, required this.state, required this.waitingCount, required this.emptiesAt, required final  List<OwnerQueueEntry> entries}): _entries = entries,super._();
+  const _OwnerQueue({required this.localDate, required this.state, required this.waitingCount, required this.emptiesAt, required final  List<OwnerQueueEntry> entries, final  List<OwnerQueueProvider> providers = const <OwnerQueueProvider>[]}): _entries = entries,_providers = providers,super._();
   
 
 /// `yyyy-MM-dd` in the shop's own calendar.
@@ -1756,6 +2045,17 @@ class _OwnerQueue extends OwnerQueue {
   return EqualUnmodifiableListView(_entries);
 }
 
+/// Everyone working today, by order. Empty from an API older than
+/// providers.
+ final  List<OwnerQueueProvider> _providers;
+/// Everyone working today, by order. Empty from an API older than
+/// providers.
+@override@JsonKey() List<OwnerQueueProvider> get providers {
+  if (_providers is EqualUnmodifiableListView) return _providers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_providers);
+}
+
 
 /// Create a copy of OwnerQueue
 /// with the given fields replaced by the non-null parameter values.
@@ -1767,16 +2067,16 @@ _$OwnerQueueCopyWith<_OwnerQueue> get copyWith => __$OwnerQueueCopyWithImpl<_Own
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueue&&(identical(other.localDate, localDate) || other.localDate == localDate)&&(identical(other.state, state) || other.state == state)&&(identical(other.waitingCount, waitingCount) || other.waitingCount == waitingCount)&&(identical(other.emptiesAt, emptiesAt) || other.emptiesAt == emptiesAt)&&const DeepCollectionEquality().equals(other._entries, _entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueue&&(identical(other.localDate, localDate) || other.localDate == localDate)&&(identical(other.state, state) || other.state == state)&&(identical(other.waitingCount, waitingCount) || other.waitingCount == waitingCount)&&(identical(other.emptiesAt, emptiesAt) || other.emptiesAt == emptiesAt)&&const DeepCollectionEquality().equals(other._entries, _entries)&&const DeepCollectionEquality().equals(other._providers, _providers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,localDate,state,waitingCount,emptiesAt,const DeepCollectionEquality().hash(_entries));
+int get hashCode => Object.hash(runtimeType,localDate,state,waitingCount,emptiesAt,const DeepCollectionEquality().hash(_entries),const DeepCollectionEquality().hash(_providers));
 
 @override
 String toString() {
-  return 'OwnerQueue(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries)';
+  return 'OwnerQueue(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries, providers: $providers)';
 }
 
 
@@ -1787,7 +2087,7 @@ abstract mixin class _$OwnerQueueCopyWith<$Res> implements $OwnerQueueCopyWith<$
   factory _$OwnerQueueCopyWith(_OwnerQueue value, $Res Function(_OwnerQueue) _then) = __$OwnerQueueCopyWithImpl;
 @override @useResult
 $Res call({
- String localDate, QueueState state, int waitingCount, DateTime? emptiesAt, List<OwnerQueueEntry> entries
+ String localDate, QueueState state, int waitingCount, DateTime? emptiesAt, List<OwnerQueueEntry> entries, List<OwnerQueueProvider> providers
 });
 
 
@@ -1804,14 +2104,15 @@ class __$OwnerQueueCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueue
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? localDate = null,Object? state = null,Object? waitingCount = null,Object? emptiesAt = freezed,Object? entries = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? localDate = null,Object? state = null,Object? waitingCount = null,Object? emptiesAt = freezed,Object? entries = null,Object? providers = null,}) {
   return _then(_OwnerQueue(
 localDate: null == localDate ? _self.localDate : localDate // ignore: cast_nullable_to_non_nullable
 as String,state: null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
 as QueueState,waitingCount: null == waitingCount ? _self.waitingCount : waitingCount // ignore: cast_nullable_to_non_nullable
 as int,emptiesAt: freezed == emptiesAt ? _self.emptiesAt : emptiesAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,entries: null == entries ? _self._entries : entries // ignore: cast_nullable_to_non_nullable
-as List<OwnerQueueEntry>,
+as List<OwnerQueueEntry>,providers: null == providers ? _self._providers : providers // ignore: cast_nullable_to_non_nullable
+as List<OwnerQueueProvider>,
   ));
 }
 

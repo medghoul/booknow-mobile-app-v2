@@ -103,6 +103,9 @@ _OwnerQueueEntryDto _$OwnerQueueEntryDtoFromJson(Map<String, dynamic> json) =>
       calledAt: json['calledAt'],
       startedAt: json['startedAt'],
       noShowFrom: json['noShowFrom'],
+      requestedProviderId: json['requestedProviderId'],
+      providerId: json['providerId'],
+      providerName: json['providerName'],
     );
 
 Map<String, dynamic> _$OwnerQueueEntryDtoToJson(_OwnerQueueEntryDto instance) =>
@@ -118,6 +121,9 @@ Map<String, dynamic> _$OwnerQueueEntryDtoToJson(_OwnerQueueEntryDto instance) =>
       'calledAt': ?instance.calledAt,
       'startedAt': ?instance.startedAt,
       'noShowFrom': ?instance.noShowFrom,
+      'requestedProviderId': ?instance.requestedProviderId,
+      'providerId': ?instance.providerId,
+      'providerName': ?instance.providerName,
     };
 
 _OwnerQueueDto _$OwnerQueueDtoFromJson(Map<String, dynamic> json) =>
@@ -127,6 +133,7 @@ _OwnerQueueDto _$OwnerQueueDtoFromJson(Map<String, dynamic> json) =>
       waitingCount: json['waitingCount'],
       emptiesAt: json['emptiesAt'],
       entries: json['entries'] as List<dynamic>?,
+      providers: json['providers'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$OwnerQueueDtoToJson(_OwnerQueueDto instance) =>
@@ -136,4 +143,5 @@ Map<String, dynamic> _$OwnerQueueDtoToJson(_OwnerQueueDto instance) =>
       'waitingCount': ?instance.waitingCount,
       'emptiesAt': ?instance.emptiesAt,
       'entries': ?instance.entries,
+      'providers': ?instance.providers,
     };

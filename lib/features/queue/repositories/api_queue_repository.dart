@@ -106,8 +106,10 @@ class ApiQueueRepository implements QueueRepository {
   }
 
   @override
-  Future<ApiResult<OwnerQueue>> callNext() =>
-      _ownerAction(ApiEndpoints.myShopQueueCallNext);
+  Future<ApiResult<OwnerQueue>> callNext({String? providerId}) => _ownerAction(
+    ApiEndpoints.myShopQueueCallNext,
+    data: providerId == null ? null : {'providerId': providerId},
+  );
 
   @override
   Future<ApiResult<OwnerQueue>> setState(QueueState state) =>
@@ -143,8 +145,13 @@ class ApiQueueRepository implements QueueRepository {
   }
 
   /// Every owner button answers with the line as it now stands.
-  Future<ApiResult<OwnerQueue>> _ownerAction(String path) async =>
-      (await _client.post<Map<String, dynamic>>(path))._ownerQueue();
+  Future<ApiResult<OwnerQueue>> _ownerAction(
+    String path, {
+    Map<String, dynamic>? data,
+  }) async => (await _client.post<Map<String, dynamic>>(
+    path,
+    data: data,
+  ))._ownerQueue();
 }
 
 extension on ApiResult<Map<String, dynamic>> {

@@ -108,7 +108,30 @@ abstract class OwnerQueueEntry with _$OwnerQueueEntry {
     required DateTime? calledAt,
     required DateTime? startedAt,
     required DateTime? noShowFrom,
+
+    /// Who they asked for; null is whoever is free first (providers §7.4).
+    String? requestedProviderId,
+
+    /// Who serves them: set at join when asked for, otherwise when called.
+    String? providerId,
+    String? providerName,
   }) = _OwnerQueueEntry;
+}
+
+/// One person working the line, and where they are with it (providers §7.4).
+@freezed
+abstract class OwnerQueueProvider with _$OwnerQueueProvider {
+  const factory OwnerQueueProvider({
+    required String id,
+
+    /// The owner's own provider shows the shop's name until given one.
+    String? name,
+    String? servingEntryId,
+    String? calledEntryId,
+
+    /// Who "call next" would call for them.
+    String? nextEntryId,
+  }) = _OwnerQueueProvider;
 }
 
 /// Today's queue as the owner runs it (queue spec §5).
@@ -125,9 +148,21 @@ abstract class OwnerQueue with _$OwnerQueue {
 
     /// In serving order: in the chair, called, then waiting.
     required List<OwnerQueueEntry> entries,
+
+    /// Everyone working today, by order. Empty from an API older than
+    /// providers.
+    @Default(<OwnerQueueProvider>[]) List<OwnerQueueProvider> providers,
   }) = _OwnerQueue;
 
   const OwnerQueue._();
+
+  /// More than one chair to run. Below that the screen is the one-chair
+  /// screen it always was, and "call next" names nobody (providers §0).
+  bool get hasTeam => providers.length > 1;
+
+  OwnerQueueEntry? entry(String? entryId) => entryId == null
+      ? null
+      : entries.where((e) => e.id == entryId).firstOrNull;
 
   OwnerQueueEntry? get inChair =>
       entries.where((e) => e.status == QueueEntryStatus.serving).firstOrNull;

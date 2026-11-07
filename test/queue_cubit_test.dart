@@ -111,7 +111,7 @@ class _Queue implements QueueRepository {
   }
 
   @override
-  Future<ApiResult<OwnerQueue>> callNext() async {
+  Future<ApiResult<OwnerQueue>> callNext({String? providerId}) async {
     calls.add('callNext');
     return ownerResult;
   }

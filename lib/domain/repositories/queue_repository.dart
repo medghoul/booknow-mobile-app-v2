@@ -40,7 +40,11 @@ abstract interface class QueueRepository {
   Future<ApiResult<OwnerQueue>> addWalkIn({String? serviceId, String? name});
 
   /// `POST /v1/shops/me/queue/call-next`.
-  Future<ApiResult<OwnerQueue>> callNext();
+  ///
+  /// [providerId] is who is calling. The server needs it once more than one
+  /// person works, and picks the first in line who asked for them or for
+  /// anyone (providers §7.3).
+  Future<ApiResult<OwnerQueue>> callNext({String? providerId});
 
   /// Pause, resume or close for today.
   Future<ApiResult<OwnerQueue>> setState(QueueState state);

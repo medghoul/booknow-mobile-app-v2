@@ -159,6 +159,9 @@ abstract class OwnerQueueEntryDto with _$OwnerQueueEntryDto {
     @JsonKey(name: 'calledAt') Object? calledAt,
     @JsonKey(name: 'startedAt') Object? startedAt,
     @JsonKey(name: 'noShowFrom') Object? noShowFrom,
+    @JsonKey(name: 'requestedProviderId') Object? requestedProviderId,
+    @JsonKey(name: 'providerId') Object? providerId,
+    @JsonKey(name: 'providerName') Object? providerName,
   }) = _OwnerQueueEntryDto;
 
   const OwnerQueueEntryDto._();
@@ -182,6 +185,9 @@ abstract class OwnerQueueEntryDto with _$OwnerQueueEntryDto {
       calledAt: asInstantOrNull(calledAt),
       startedAt: asInstantOrNull(startedAt),
       noShowFrom: asInstantOrNull(noShowFrom),
+      requestedProviderId: asTextOrNull(requestedProviderId),
+      providerId: asTextOrNull(providerId),
+      providerName: asTextOrNull(providerName),
     );
   }
 }
@@ -195,6 +201,7 @@ abstract class OwnerQueueDto with _$OwnerQueueDto {
     @JsonKey(name: 'waitingCount') Object? waitingCount,
     @JsonKey(name: 'emptiesAt') Object? emptiesAt,
     @JsonKey(name: 'entries') List<dynamic>? entries,
+    @JsonKey(name: 'providers') List<dynamic>? providers,
   }) = _OwnerQueueDto;
 
   const OwnerQueueDto._();
@@ -212,6 +219,17 @@ abstract class OwnerQueueDto with _$OwnerQueueDto {
     entries: [
       for (final row in entries?.whereType<Map>() ?? const <Map>[])
         ?OwnerQueueEntryDto.fromJson(asMap(row)).toDomain(),
+    ],
+    providers: [
+      for (final row in providers?.whereType<Map>() ?? const <Map>[])
+        if (asTextOrNull(row['providerId']) case final id?)
+          OwnerQueueProvider(
+            id: id,
+            name: asTextOrNull(row['name']),
+            servingEntryId: asTextOrNull(row['servingEntryId']),
+            calledEntryId: asTextOrNull(row['calledEntryId']),
+            nextEntryId: asTextOrNull(row['nextEntryId']),
+          ),
     ],
   );
 }

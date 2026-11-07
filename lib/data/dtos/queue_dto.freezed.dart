@@ -825,7 +825,7 @@ entry: freezed == entry ? _self.entry : entry ,clientSecret: freezed == clientSe
 /// @nodoc
 mixin _$OwnerQueueEntryDto {
 
-@JsonKey(name: 'entryId') Object? get entryId;@JsonKey(name: 'status') Object? get status;@JsonKey(name: 'kind') Object? get kind;@JsonKey(name: 'customerName') Object? get customerName;@JsonKey(name: 'serviceId') Object? get serviceId;@JsonKey(name: 'serviceName') Object? get serviceName;@JsonKey(name: 'durationMin') Object? get durationMin;@JsonKey(name: 'joinedAt') Object? get joinedAt;@JsonKey(name: 'calledAt') Object? get calledAt;@JsonKey(name: 'startedAt') Object? get startedAt;@JsonKey(name: 'noShowFrom') Object? get noShowFrom;
+@JsonKey(name: 'entryId') Object? get entryId;@JsonKey(name: 'status') Object? get status;@JsonKey(name: 'kind') Object? get kind;@JsonKey(name: 'customerName') Object? get customerName;@JsonKey(name: 'serviceId') Object? get serviceId;@JsonKey(name: 'serviceName') Object? get serviceName;@JsonKey(name: 'durationMin') Object? get durationMin;@JsonKey(name: 'joinedAt') Object? get joinedAt;@JsonKey(name: 'calledAt') Object? get calledAt;@JsonKey(name: 'startedAt') Object? get startedAt;@JsonKey(name: 'noShowFrom') Object? get noShowFrom;@JsonKey(name: 'requestedProviderId') Object? get requestedProviderId;@JsonKey(name: 'providerId') Object? get providerId;@JsonKey(name: 'providerName') Object? get providerName;
 /// Create a copy of OwnerQueueEntryDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -838,16 +838,16 @@ $OwnerQueueEntryDtoCopyWith<OwnerQueueEntryDto> get copyWith => _$OwnerQueueEntr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueEntryDto&&const DeepCollectionEquality().equals(other.entryId, entryId)&&const DeepCollectionEquality().equals(other.status, status)&&const DeepCollectionEquality().equals(other.kind, kind)&&const DeepCollectionEquality().equals(other.customerName, customerName)&&const DeepCollectionEquality().equals(other.serviceId, serviceId)&&const DeepCollectionEquality().equals(other.serviceName, serviceName)&&const DeepCollectionEquality().equals(other.durationMin, durationMin)&&const DeepCollectionEquality().equals(other.joinedAt, joinedAt)&&const DeepCollectionEquality().equals(other.calledAt, calledAt)&&const DeepCollectionEquality().equals(other.startedAt, startedAt)&&const DeepCollectionEquality().equals(other.noShowFrom, noShowFrom));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueEntryDto&&const DeepCollectionEquality().equals(other.entryId, entryId)&&const DeepCollectionEquality().equals(other.status, status)&&const DeepCollectionEquality().equals(other.kind, kind)&&const DeepCollectionEquality().equals(other.customerName, customerName)&&const DeepCollectionEquality().equals(other.serviceId, serviceId)&&const DeepCollectionEquality().equals(other.serviceName, serviceName)&&const DeepCollectionEquality().equals(other.durationMin, durationMin)&&const DeepCollectionEquality().equals(other.joinedAt, joinedAt)&&const DeepCollectionEquality().equals(other.calledAt, calledAt)&&const DeepCollectionEquality().equals(other.startedAt, startedAt)&&const DeepCollectionEquality().equals(other.noShowFrom, noShowFrom)&&const DeepCollectionEquality().equals(other.requestedProviderId, requestedProviderId)&&const DeepCollectionEquality().equals(other.providerId, providerId)&&const DeepCollectionEquality().equals(other.providerName, providerName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(entryId),const DeepCollectionEquality().hash(status),const DeepCollectionEquality().hash(kind),const DeepCollectionEquality().hash(customerName),const DeepCollectionEquality().hash(serviceId),const DeepCollectionEquality().hash(serviceName),const DeepCollectionEquality().hash(durationMin),const DeepCollectionEquality().hash(joinedAt),const DeepCollectionEquality().hash(calledAt),const DeepCollectionEquality().hash(startedAt),const DeepCollectionEquality().hash(noShowFrom));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(entryId),const DeepCollectionEquality().hash(status),const DeepCollectionEquality().hash(kind),const DeepCollectionEquality().hash(customerName),const DeepCollectionEquality().hash(serviceId),const DeepCollectionEquality().hash(serviceName),const DeepCollectionEquality().hash(durationMin),const DeepCollectionEquality().hash(joinedAt),const DeepCollectionEquality().hash(calledAt),const DeepCollectionEquality().hash(startedAt),const DeepCollectionEquality().hash(noShowFrom),const DeepCollectionEquality().hash(requestedProviderId),const DeepCollectionEquality().hash(providerId),const DeepCollectionEquality().hash(providerName));
 
 @override
 String toString() {
-  return 'OwnerQueueEntryDto(entryId: $entryId, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMin: $durationMin, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom)';
+  return 'OwnerQueueEntryDto(entryId: $entryId, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMin: $durationMin, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom, requestedProviderId: $requestedProviderId, providerId: $providerId, providerName: $providerName)';
 }
 
 
@@ -858,7 +858,7 @@ abstract mixin class $OwnerQueueEntryDtoCopyWith<$Res>  {
   factory $OwnerQueueEntryDtoCopyWith(OwnerQueueEntryDto value, $Res Function(OwnerQueueEntryDto) _then) = _$OwnerQueueEntryDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'entryId') Object? entryId,@JsonKey(name: 'status') Object? status,@JsonKey(name: 'kind') Object? kind,@JsonKey(name: 'customerName') Object? customerName,@JsonKey(name: 'serviceId') Object? serviceId,@JsonKey(name: 'serviceName') Object? serviceName,@JsonKey(name: 'durationMin') Object? durationMin,@JsonKey(name: 'joinedAt') Object? joinedAt,@JsonKey(name: 'calledAt') Object? calledAt,@JsonKey(name: 'startedAt') Object? startedAt,@JsonKey(name: 'noShowFrom') Object? noShowFrom
+@JsonKey(name: 'entryId') Object? entryId,@JsonKey(name: 'status') Object? status,@JsonKey(name: 'kind') Object? kind,@JsonKey(name: 'customerName') Object? customerName,@JsonKey(name: 'serviceId') Object? serviceId,@JsonKey(name: 'serviceName') Object? serviceName,@JsonKey(name: 'durationMin') Object? durationMin,@JsonKey(name: 'joinedAt') Object? joinedAt,@JsonKey(name: 'calledAt') Object? calledAt,@JsonKey(name: 'startedAt') Object? startedAt,@JsonKey(name: 'noShowFrom') Object? noShowFrom,@JsonKey(name: 'requestedProviderId') Object? requestedProviderId,@JsonKey(name: 'providerId') Object? providerId,@JsonKey(name: 'providerName') Object? providerName
 });
 
 
@@ -875,9 +875,9 @@ class _$OwnerQueueEntryDtoCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueEntryDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? entryId = freezed,Object? status = freezed,Object? kind = freezed,Object? customerName = freezed,Object? serviceId = freezed,Object? serviceName = freezed,Object? durationMin = freezed,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? entryId = freezed,Object? status = freezed,Object? kind = freezed,Object? customerName = freezed,Object? serviceId = freezed,Object? serviceName = freezed,Object? durationMin = freezed,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,Object? requestedProviderId = freezed,Object? providerId = freezed,Object? providerName = freezed,}) {
   return _then(_self.copyWith(
-entryId: freezed == entryId ? _self.entryId : entryId ,status: freezed == status ? _self.status : status ,kind: freezed == kind ? _self.kind : kind ,customerName: freezed == customerName ? _self.customerName : customerName ,serviceId: freezed == serviceId ? _self.serviceId : serviceId ,serviceName: freezed == serviceName ? _self.serviceName : serviceName ,durationMin: freezed == durationMin ? _self.durationMin : durationMin ,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt ,calledAt: freezed == calledAt ? _self.calledAt : calledAt ,startedAt: freezed == startedAt ? _self.startedAt : startedAt ,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom ,
+entryId: freezed == entryId ? _self.entryId : entryId ,status: freezed == status ? _self.status : status ,kind: freezed == kind ? _self.kind : kind ,customerName: freezed == customerName ? _self.customerName : customerName ,serviceId: freezed == serviceId ? _self.serviceId : serviceId ,serviceName: freezed == serviceName ? _self.serviceName : serviceName ,durationMin: freezed == durationMin ? _self.durationMin : durationMin ,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt ,calledAt: freezed == calledAt ? _self.calledAt : calledAt ,startedAt: freezed == startedAt ? _self.startedAt : startedAt ,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom ,requestedProviderId: freezed == requestedProviderId ? _self.requestedProviderId : requestedProviderId ,providerId: freezed == providerId ? _self.providerId : providerId ,providerName: freezed == providerName ? _self.providerName : providerName ,
   ));
 }
 
@@ -962,10 +962,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom, @JsonKey(name: 'requestedProviderId')  Object? requestedProviderId, @JsonKey(name: 'providerId')  Object? providerId, @JsonKey(name: 'providerName')  Object? providerName)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntryDto() when $default != null:
-return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   return orElse();
 
 }
@@ -983,10 +983,10 @@ return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.s
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom, @JsonKey(name: 'requestedProviderId')  Object? requestedProviderId, @JsonKey(name: 'providerId')  Object? providerId, @JsonKey(name: 'providerName')  Object? providerName)  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntryDto():
-return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1003,10 +1003,10 @@ return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.s
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'entryId')  Object? entryId, @JsonKey(name: 'status')  Object? status, @JsonKey(name: 'kind')  Object? kind, @JsonKey(name: 'customerName')  Object? customerName, @JsonKey(name: 'serviceId')  Object? serviceId, @JsonKey(name: 'serviceName')  Object? serviceName, @JsonKey(name: 'durationMin')  Object? durationMin, @JsonKey(name: 'joinedAt')  Object? joinedAt, @JsonKey(name: 'calledAt')  Object? calledAt, @JsonKey(name: 'startedAt')  Object? startedAt, @JsonKey(name: 'noShowFrom')  Object? noShowFrom, @JsonKey(name: 'requestedProviderId')  Object? requestedProviderId, @JsonKey(name: 'providerId')  Object? providerId, @JsonKey(name: 'providerName')  Object? providerName)?  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueEntryDto() when $default != null:
-return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom);case _:
+return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.serviceId,_that.serviceName,_that.durationMin,_that.joinedAt,_that.calledAt,_that.startedAt,_that.noShowFrom,_that.requestedProviderId,_that.providerId,_that.providerName);case _:
   return null;
 
 }
@@ -1018,7 +1018,7 @@ return $default(_that.entryId,_that.status,_that.kind,_that.customerName,_that.s
 @JsonSerializable()
 
 class _OwnerQueueEntryDto extends OwnerQueueEntryDto {
-  const _OwnerQueueEntryDto({@JsonKey(name: 'entryId') this.entryId, @JsonKey(name: 'status') this.status, @JsonKey(name: 'kind') this.kind, @JsonKey(name: 'customerName') this.customerName, @JsonKey(name: 'serviceId') this.serviceId, @JsonKey(name: 'serviceName') this.serviceName, @JsonKey(name: 'durationMin') this.durationMin, @JsonKey(name: 'joinedAt') this.joinedAt, @JsonKey(name: 'calledAt') this.calledAt, @JsonKey(name: 'startedAt') this.startedAt, @JsonKey(name: 'noShowFrom') this.noShowFrom}): super._();
+  const _OwnerQueueEntryDto({@JsonKey(name: 'entryId') this.entryId, @JsonKey(name: 'status') this.status, @JsonKey(name: 'kind') this.kind, @JsonKey(name: 'customerName') this.customerName, @JsonKey(name: 'serviceId') this.serviceId, @JsonKey(name: 'serviceName') this.serviceName, @JsonKey(name: 'durationMin') this.durationMin, @JsonKey(name: 'joinedAt') this.joinedAt, @JsonKey(name: 'calledAt') this.calledAt, @JsonKey(name: 'startedAt') this.startedAt, @JsonKey(name: 'noShowFrom') this.noShowFrom, @JsonKey(name: 'requestedProviderId') this.requestedProviderId, @JsonKey(name: 'providerId') this.providerId, @JsonKey(name: 'providerName') this.providerName}): super._();
   factory _OwnerQueueEntryDto.fromJson(Map<String, dynamic> json) => _$OwnerQueueEntryDtoFromJson(json);
 
 @override@JsonKey(name: 'entryId') final  Object? entryId;
@@ -1032,6 +1032,9 @@ class _OwnerQueueEntryDto extends OwnerQueueEntryDto {
 @override@JsonKey(name: 'calledAt') final  Object? calledAt;
 @override@JsonKey(name: 'startedAt') final  Object? startedAt;
 @override@JsonKey(name: 'noShowFrom') final  Object? noShowFrom;
+@override@JsonKey(name: 'requestedProviderId') final  Object? requestedProviderId;
+@override@JsonKey(name: 'providerId') final  Object? providerId;
+@override@JsonKey(name: 'providerName') final  Object? providerName;
 
 /// Create a copy of OwnerQueueEntryDto
 /// with the given fields replaced by the non-null parameter values.
@@ -1046,16 +1049,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueEntryDto&&const DeepCollectionEquality().equals(other.entryId, entryId)&&const DeepCollectionEquality().equals(other.status, status)&&const DeepCollectionEquality().equals(other.kind, kind)&&const DeepCollectionEquality().equals(other.customerName, customerName)&&const DeepCollectionEquality().equals(other.serviceId, serviceId)&&const DeepCollectionEquality().equals(other.serviceName, serviceName)&&const DeepCollectionEquality().equals(other.durationMin, durationMin)&&const DeepCollectionEquality().equals(other.joinedAt, joinedAt)&&const DeepCollectionEquality().equals(other.calledAt, calledAt)&&const DeepCollectionEquality().equals(other.startedAt, startedAt)&&const DeepCollectionEquality().equals(other.noShowFrom, noShowFrom));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueEntryDto&&const DeepCollectionEquality().equals(other.entryId, entryId)&&const DeepCollectionEquality().equals(other.status, status)&&const DeepCollectionEquality().equals(other.kind, kind)&&const DeepCollectionEquality().equals(other.customerName, customerName)&&const DeepCollectionEquality().equals(other.serviceId, serviceId)&&const DeepCollectionEquality().equals(other.serviceName, serviceName)&&const DeepCollectionEquality().equals(other.durationMin, durationMin)&&const DeepCollectionEquality().equals(other.joinedAt, joinedAt)&&const DeepCollectionEquality().equals(other.calledAt, calledAt)&&const DeepCollectionEquality().equals(other.startedAt, startedAt)&&const DeepCollectionEquality().equals(other.noShowFrom, noShowFrom)&&const DeepCollectionEquality().equals(other.requestedProviderId, requestedProviderId)&&const DeepCollectionEquality().equals(other.providerId, providerId)&&const DeepCollectionEquality().equals(other.providerName, providerName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(entryId),const DeepCollectionEquality().hash(status),const DeepCollectionEquality().hash(kind),const DeepCollectionEquality().hash(customerName),const DeepCollectionEquality().hash(serviceId),const DeepCollectionEquality().hash(serviceName),const DeepCollectionEquality().hash(durationMin),const DeepCollectionEquality().hash(joinedAt),const DeepCollectionEquality().hash(calledAt),const DeepCollectionEquality().hash(startedAt),const DeepCollectionEquality().hash(noShowFrom));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(entryId),const DeepCollectionEquality().hash(status),const DeepCollectionEquality().hash(kind),const DeepCollectionEquality().hash(customerName),const DeepCollectionEquality().hash(serviceId),const DeepCollectionEquality().hash(serviceName),const DeepCollectionEquality().hash(durationMin),const DeepCollectionEquality().hash(joinedAt),const DeepCollectionEquality().hash(calledAt),const DeepCollectionEquality().hash(startedAt),const DeepCollectionEquality().hash(noShowFrom),const DeepCollectionEquality().hash(requestedProviderId),const DeepCollectionEquality().hash(providerId),const DeepCollectionEquality().hash(providerName));
 
 @override
 String toString() {
-  return 'OwnerQueueEntryDto(entryId: $entryId, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMin: $durationMin, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom)';
+  return 'OwnerQueueEntryDto(entryId: $entryId, status: $status, kind: $kind, customerName: $customerName, serviceId: $serviceId, serviceName: $serviceName, durationMin: $durationMin, joinedAt: $joinedAt, calledAt: $calledAt, startedAt: $startedAt, noShowFrom: $noShowFrom, requestedProviderId: $requestedProviderId, providerId: $providerId, providerName: $providerName)';
 }
 
 
@@ -1066,7 +1069,7 @@ abstract mixin class _$OwnerQueueEntryDtoCopyWith<$Res> implements $OwnerQueueEn
   factory _$OwnerQueueEntryDtoCopyWith(_OwnerQueueEntryDto value, $Res Function(_OwnerQueueEntryDto) _then) = __$OwnerQueueEntryDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'entryId') Object? entryId,@JsonKey(name: 'status') Object? status,@JsonKey(name: 'kind') Object? kind,@JsonKey(name: 'customerName') Object? customerName,@JsonKey(name: 'serviceId') Object? serviceId,@JsonKey(name: 'serviceName') Object? serviceName,@JsonKey(name: 'durationMin') Object? durationMin,@JsonKey(name: 'joinedAt') Object? joinedAt,@JsonKey(name: 'calledAt') Object? calledAt,@JsonKey(name: 'startedAt') Object? startedAt,@JsonKey(name: 'noShowFrom') Object? noShowFrom
+@JsonKey(name: 'entryId') Object? entryId,@JsonKey(name: 'status') Object? status,@JsonKey(name: 'kind') Object? kind,@JsonKey(name: 'customerName') Object? customerName,@JsonKey(name: 'serviceId') Object? serviceId,@JsonKey(name: 'serviceName') Object? serviceName,@JsonKey(name: 'durationMin') Object? durationMin,@JsonKey(name: 'joinedAt') Object? joinedAt,@JsonKey(name: 'calledAt') Object? calledAt,@JsonKey(name: 'startedAt') Object? startedAt,@JsonKey(name: 'noShowFrom') Object? noShowFrom,@JsonKey(name: 'requestedProviderId') Object? requestedProviderId,@JsonKey(name: 'providerId') Object? providerId,@JsonKey(name: 'providerName') Object? providerName
 });
 
 
@@ -1083,9 +1086,9 @@ class __$OwnerQueueEntryDtoCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueEntryDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? entryId = freezed,Object? status = freezed,Object? kind = freezed,Object? customerName = freezed,Object? serviceId = freezed,Object? serviceName = freezed,Object? durationMin = freezed,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? entryId = freezed,Object? status = freezed,Object? kind = freezed,Object? customerName = freezed,Object? serviceId = freezed,Object? serviceName = freezed,Object? durationMin = freezed,Object? joinedAt = freezed,Object? calledAt = freezed,Object? startedAt = freezed,Object? noShowFrom = freezed,Object? requestedProviderId = freezed,Object? providerId = freezed,Object? providerName = freezed,}) {
   return _then(_OwnerQueueEntryDto(
-entryId: freezed == entryId ? _self.entryId : entryId ,status: freezed == status ? _self.status : status ,kind: freezed == kind ? _self.kind : kind ,customerName: freezed == customerName ? _self.customerName : customerName ,serviceId: freezed == serviceId ? _self.serviceId : serviceId ,serviceName: freezed == serviceName ? _self.serviceName : serviceName ,durationMin: freezed == durationMin ? _self.durationMin : durationMin ,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt ,calledAt: freezed == calledAt ? _self.calledAt : calledAt ,startedAt: freezed == startedAt ? _self.startedAt : startedAt ,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom ,
+entryId: freezed == entryId ? _self.entryId : entryId ,status: freezed == status ? _self.status : status ,kind: freezed == kind ? _self.kind : kind ,customerName: freezed == customerName ? _self.customerName : customerName ,serviceId: freezed == serviceId ? _self.serviceId : serviceId ,serviceName: freezed == serviceName ? _self.serviceName : serviceName ,durationMin: freezed == durationMin ? _self.durationMin : durationMin ,joinedAt: freezed == joinedAt ? _self.joinedAt : joinedAt ,calledAt: freezed == calledAt ? _self.calledAt : calledAt ,startedAt: freezed == startedAt ? _self.startedAt : startedAt ,noShowFrom: freezed == noShowFrom ? _self.noShowFrom : noShowFrom ,requestedProviderId: freezed == requestedProviderId ? _self.requestedProviderId : requestedProviderId ,providerId: freezed == providerId ? _self.providerId : providerId ,providerName: freezed == providerName ? _self.providerName : providerName ,
   ));
 }
 
@@ -1096,7 +1099,7 @@ entryId: freezed == entryId ? _self.entryId : entryId ,status: freezed == status
 /// @nodoc
 mixin _$OwnerQueueDto {
 
-@JsonKey(name: 'localDate') Object? get localDate;@JsonKey(name: 'state') Object? get state;@JsonKey(name: 'waitingCount') Object? get waitingCount;@JsonKey(name: 'emptiesAt') Object? get emptiesAt;@JsonKey(name: 'entries') List<dynamic>? get entries;
+@JsonKey(name: 'localDate') Object? get localDate;@JsonKey(name: 'state') Object? get state;@JsonKey(name: 'waitingCount') Object? get waitingCount;@JsonKey(name: 'emptiesAt') Object? get emptiesAt;@JsonKey(name: 'entries') List<dynamic>? get entries;@JsonKey(name: 'providers') List<dynamic>? get providers;
 /// Create a copy of OwnerQueueDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1109,16 +1112,16 @@ $OwnerQueueDtoCopyWith<OwnerQueueDto> get copyWith => _$OwnerQueueDtoCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueDto&&const DeepCollectionEquality().equals(other.localDate, localDate)&&const DeepCollectionEquality().equals(other.state, state)&&const DeepCollectionEquality().equals(other.waitingCount, waitingCount)&&const DeepCollectionEquality().equals(other.emptiesAt, emptiesAt)&&const DeepCollectionEquality().equals(other.entries, entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerQueueDto&&const DeepCollectionEquality().equals(other.localDate, localDate)&&const DeepCollectionEquality().equals(other.state, state)&&const DeepCollectionEquality().equals(other.waitingCount, waitingCount)&&const DeepCollectionEquality().equals(other.emptiesAt, emptiesAt)&&const DeepCollectionEquality().equals(other.entries, entries)&&const DeepCollectionEquality().equals(other.providers, providers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(localDate),const DeepCollectionEquality().hash(state),const DeepCollectionEquality().hash(waitingCount),const DeepCollectionEquality().hash(emptiesAt),const DeepCollectionEquality().hash(entries));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(localDate),const DeepCollectionEquality().hash(state),const DeepCollectionEquality().hash(waitingCount),const DeepCollectionEquality().hash(emptiesAt),const DeepCollectionEquality().hash(entries),const DeepCollectionEquality().hash(providers));
 
 @override
 String toString() {
-  return 'OwnerQueueDto(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries)';
+  return 'OwnerQueueDto(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries, providers: $providers)';
 }
 
 
@@ -1129,7 +1132,7 @@ abstract mixin class $OwnerQueueDtoCopyWith<$Res>  {
   factory $OwnerQueueDtoCopyWith(OwnerQueueDto value, $Res Function(OwnerQueueDto) _then) = _$OwnerQueueDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'localDate') Object? localDate,@JsonKey(name: 'state') Object? state,@JsonKey(name: 'waitingCount') Object? waitingCount,@JsonKey(name: 'emptiesAt') Object? emptiesAt,@JsonKey(name: 'entries') List<dynamic>? entries
+@JsonKey(name: 'localDate') Object? localDate,@JsonKey(name: 'state') Object? state,@JsonKey(name: 'waitingCount') Object? waitingCount,@JsonKey(name: 'emptiesAt') Object? emptiesAt,@JsonKey(name: 'entries') List<dynamic>? entries,@JsonKey(name: 'providers') List<dynamic>? providers
 });
 
 
@@ -1146,9 +1149,10 @@ class _$OwnerQueueDtoCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? localDate = freezed,Object? state = freezed,Object? waitingCount = freezed,Object? emptiesAt = freezed,Object? entries = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? localDate = freezed,Object? state = freezed,Object? waitingCount = freezed,Object? emptiesAt = freezed,Object? entries = freezed,Object? providers = freezed,}) {
   return _then(_self.copyWith(
 localDate: freezed == localDate ? _self.localDate : localDate ,state: freezed == state ? _self.state : state ,waitingCount: freezed == waitingCount ? _self.waitingCount : waitingCount ,emptiesAt: freezed == emptiesAt ? _self.emptiesAt : emptiesAt ,entries: freezed == entries ? _self.entries : entries // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,providers: freezed == providers ? _self.providers : providers // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,
   ));
 }
@@ -1234,10 +1238,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries, @JsonKey(name: 'providers')  List<dynamic>? providers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OwnerQueueDto() when $default != null:
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   return orElse();
 
 }
@@ -1255,10 +1259,10 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries, @JsonKey(name: 'providers')  List<dynamic>? providers)  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueDto():
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1275,10 +1279,10 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'localDate')  Object? localDate, @JsonKey(name: 'state')  Object? state, @JsonKey(name: 'waitingCount')  Object? waitingCount, @JsonKey(name: 'emptiesAt')  Object? emptiesAt, @JsonKey(name: 'entries')  List<dynamic>? entries, @JsonKey(name: 'providers')  List<dynamic>? providers)?  $default,) {final _that = this;
 switch (_that) {
 case _OwnerQueueDto() when $default != null:
-return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries);case _:
+return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_that.entries,_that.providers);case _:
   return null;
 
 }
@@ -1290,7 +1294,7 @@ return $default(_that.localDate,_that.state,_that.waitingCount,_that.emptiesAt,_
 @JsonSerializable()
 
 class _OwnerQueueDto extends OwnerQueueDto {
-  const _OwnerQueueDto({@JsonKey(name: 'localDate') this.localDate, @JsonKey(name: 'state') this.state, @JsonKey(name: 'waitingCount') this.waitingCount, @JsonKey(name: 'emptiesAt') this.emptiesAt, @JsonKey(name: 'entries') final  List<dynamic>? entries}): _entries = entries,super._();
+  const _OwnerQueueDto({@JsonKey(name: 'localDate') this.localDate, @JsonKey(name: 'state') this.state, @JsonKey(name: 'waitingCount') this.waitingCount, @JsonKey(name: 'emptiesAt') this.emptiesAt, @JsonKey(name: 'entries') final  List<dynamic>? entries, @JsonKey(name: 'providers') final  List<dynamic>? providers}): _entries = entries,_providers = providers,super._();
   factory _OwnerQueueDto.fromJson(Map<String, dynamic> json) => _$OwnerQueueDtoFromJson(json);
 
 @override@JsonKey(name: 'localDate') final  Object? localDate;
@@ -1302,6 +1306,15 @@ class _OwnerQueueDto extends OwnerQueueDto {
   final value = _entries;
   if (value == null) return null;
   if (_entries is EqualUnmodifiableListView) return _entries;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+ final  List<dynamic>? _providers;
+@override@JsonKey(name: 'providers') List<dynamic>? get providers {
+  final value = _providers;
+  if (value == null) return null;
+  if (_providers is EqualUnmodifiableListView) return _providers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(value);
 }
@@ -1320,16 +1333,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueDto&&const DeepCollectionEquality().equals(other.localDate, localDate)&&const DeepCollectionEquality().equals(other.state, state)&&const DeepCollectionEquality().equals(other.waitingCount, waitingCount)&&const DeepCollectionEquality().equals(other.emptiesAt, emptiesAt)&&const DeepCollectionEquality().equals(other._entries, _entries));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerQueueDto&&const DeepCollectionEquality().equals(other.localDate, localDate)&&const DeepCollectionEquality().equals(other.state, state)&&const DeepCollectionEquality().equals(other.waitingCount, waitingCount)&&const DeepCollectionEquality().equals(other.emptiesAt, emptiesAt)&&const DeepCollectionEquality().equals(other._entries, _entries)&&const DeepCollectionEquality().equals(other._providers, _providers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(localDate),const DeepCollectionEquality().hash(state),const DeepCollectionEquality().hash(waitingCount),const DeepCollectionEquality().hash(emptiesAt),const DeepCollectionEquality().hash(_entries));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(localDate),const DeepCollectionEquality().hash(state),const DeepCollectionEquality().hash(waitingCount),const DeepCollectionEquality().hash(emptiesAt),const DeepCollectionEquality().hash(_entries),const DeepCollectionEquality().hash(_providers));
 
 @override
 String toString() {
-  return 'OwnerQueueDto(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries)';
+  return 'OwnerQueueDto(localDate: $localDate, state: $state, waitingCount: $waitingCount, emptiesAt: $emptiesAt, entries: $entries, providers: $providers)';
 }
 
 
@@ -1340,7 +1353,7 @@ abstract mixin class _$OwnerQueueDtoCopyWith<$Res> implements $OwnerQueueDtoCopy
   factory _$OwnerQueueDtoCopyWith(_OwnerQueueDto value, $Res Function(_OwnerQueueDto) _then) = __$OwnerQueueDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'localDate') Object? localDate,@JsonKey(name: 'state') Object? state,@JsonKey(name: 'waitingCount') Object? waitingCount,@JsonKey(name: 'emptiesAt') Object? emptiesAt,@JsonKey(name: 'entries') List<dynamic>? entries
+@JsonKey(name: 'localDate') Object? localDate,@JsonKey(name: 'state') Object? state,@JsonKey(name: 'waitingCount') Object? waitingCount,@JsonKey(name: 'emptiesAt') Object? emptiesAt,@JsonKey(name: 'entries') List<dynamic>? entries,@JsonKey(name: 'providers') List<dynamic>? providers
 });
 
 
@@ -1357,9 +1370,10 @@ class __$OwnerQueueDtoCopyWithImpl<$Res>
 
 /// Create a copy of OwnerQueueDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? localDate = freezed,Object? state = freezed,Object? waitingCount = freezed,Object? emptiesAt = freezed,Object? entries = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? localDate = freezed,Object? state = freezed,Object? waitingCount = freezed,Object? emptiesAt = freezed,Object? entries = freezed,Object? providers = freezed,}) {
   return _then(_OwnerQueueDto(
 localDate: freezed == localDate ? _self.localDate : localDate ,state: freezed == state ? _self.state : state ,waitingCount: freezed == waitingCount ? _self.waitingCount : waitingCount ,emptiesAt: freezed == emptiesAt ? _self.emptiesAt : emptiesAt ,entries: freezed == entries ? _self._entries : entries // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,providers: freezed == providers ? _self._providers : providers // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,
   ));
 }

@@ -122,14 +122,27 @@ class _Body extends StatelessWidget {
                         _NotOpenBanner(queue: queue, busy: state.busy),
                         SizedBox(height: 20.h),
                       ],
-                      if (inChair != null) ...[
-                        _InChairCard(entry: inChair, state: state),
-                        SizedBox(height: 10.h),
+                      if (queue.hasTeam)
+                        // One chair per person, each with its own "call
+                        // next": who they call is the server's choice.
+                        for (final chair in queue.providers) ...[
+                          _ChairSection(
+                            chair: chair,
+                            queue: queue,
+                            state: state,
+                          ),
+                          SizedBox(height: 14.h),
+                        ]
+                      else ...[
+                        if (inChair != null) ...[
+                          _InChairCard(entry: inChair, state: state),
+                          SizedBox(height: 10.h),
+                        ],
+                        if (called != null)
+                          _CalledCard(entry: called, state: state)
+                        else
+                          _FreeCard(next: next, state: state),
                       ],
-                      if (called != null)
-                        _CalledCard(entry: called, state: state)
-                      else
-                        _FreeCard(next: next, state: state),
                       SizedBox(height: 20.h),
                       Text(
                         t.today.comingUp,
@@ -142,6 +155,8 @@ class _Body extends StatelessWidget {
                           entry: entry,
                           busy: state.busy,
                           name: entry.customerName ?? owner.walkInName,
+                          // Only someone who asked for a person has one yet.
+                          askedFor: queue.hasTeam ? entry.providerName : null,
                         ),
                         const SizedBox(height: 8),
                       ],
@@ -457,10 +472,13 @@ String _initial(String? name) => name == null || name.trim().isEmpty
 String _first(String name) => name.trim().split(RegExp(r'\s+')).first;
 
 class _InChairCard extends StatelessWidget {
-  const _InChairCard({required this.entry, required this.state});
+  const _InChairCard({required this.entry, required this.state, this.who});
 
   final OwnerQueueEntry entry;
   final OwnerQueueState state;
+
+  /// Whose chair, with a team.
+  final String? who;
 
   @override
   Widget build(BuildContext context) {
@@ -475,7 +493,7 @@ class _InChairCard extends StatelessWidget {
 
     return TodayChairCard(
       initial: _initial(name),
-      overline: t.inChair,
+      overline: [t.inChair, ?who].join(' · '),
       title: '$name · ${entry.serviceName}',
       meta: t.minutesLeft(minutes: left),
       progress: total == 0 ? 0 : gone / total,
@@ -493,10 +511,13 @@ class _InChairCard extends StatelessWidget {
 }
 
 class _CalledCard extends StatelessWidget {
-  const _CalledCard({required this.entry, required this.state});
+  const _CalledCard({required this.entry, required this.state, this.who});
 
   final OwnerQueueEntry entry;
   final OwnerQueueState state;
+
+  /// Who called them, with a team.
+  final String? who;
 
   @override
   Widget build(BuildContext context) {
@@ -516,7 +537,7 @@ class _CalledCard extends StatelessWidget {
 
     return TodayChairCard(
       initial: _initial(name),
-      overline: t.called,
+      overline: [t.called, ?who].join(' · '),
       title: t.calledName(name: name),
       meta: waited == null ? null : t.waitingFor(minutes: waited),
       metaAmber: true,
@@ -565,21 +586,26 @@ class _CalledCard extends StatelessWidget {
 
 /// Nobody in the chair's next step yet: who to call, or that there is no one.
 class _FreeCard extends StatelessWidget {
-  const _FreeCard({required this.next, required this.state});
+  const _FreeCard({required this.next, required this.state, this.chair});
 
   final OwnerQueueEntry? next;
   final OwnerQueueState state;
+
+  /// The person this card calls for, with a team; null for the shop's one
+  /// chair, which the owner works themselves.
+  final OwnerQueueProvider? chair;
 
   @override
   Widget build(BuildContext context) {
     final t = context.t;
     final owner = t.queue.owner;
     final next = this.next;
-    final me = di<AuthCubit>().state.profile?.name;
+    final chair = this.chair;
+    final me = chair == null ? di<AuthCubit>().state.profile?.name : chair.name;
 
     return TodayChairCard(
       initial: _initial(me),
-      overline: me == null ? owner.chair : _first(me),
+      overline: me == null ? owner.chair : (chair == null ? _first(me) : me),
       title: owner.freeNow,
       actions: TodayActionButton(
         label: next == null
@@ -590,9 +616,47 @@ class _FreeCard extends StatelessWidget {
             ? null
             : () {
                 HapticFeedback.mediumImpact();
-                context.read<OwnerQueueCubit>().callNext();
+                context.read<OwnerQueueCubit>().callNext(providerId: chair?.id);
               },
       ),
+    );
+  }
+}
+
+/// One person's chair, with a team: who is in it, who they called, or who
+/// they would call next.
+class _ChairSection extends StatelessWidget {
+  const _ChairSection({
+    required this.chair,
+    required this.queue,
+    required this.state,
+  });
+
+  final OwnerQueueProvider chair;
+  final OwnerQueue queue;
+  final OwnerQueueState state;
+
+  @override
+  Widget build(BuildContext context) {
+    final serving = queue.entry(chair.servingEntryId);
+    final called = queue.entry(chair.calledEntryId);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (serving != null) ...[
+          _InChairCard(entry: serving, state: state, who: chair.name),
+          SizedBox(height: 10.h),
+        ],
+        if (called != null)
+          _CalledCard(entry: called, state: state, who: chair.name)
+        else
+          _FreeCard(
+            next: queue.entry(chair.nextEntryId),
+            state: state,
+            chair: chair,
+          ),
+      ],
     );
   }
 }
@@ -603,12 +667,16 @@ class _WaitingRow extends StatelessWidget {
     required this.entry,
     required this.busy,
     required this.name,
+    this.askedFor,
   });
 
   final int number;
   final OwnerQueueEntry entry;
   final bool busy;
   final String name;
+
+  /// The person they are waiting for, when they asked for one.
+  final String? askedFor;
 
   bool get _isWalkIn => entry.kind == QueueEntryKind.walkIn;
 
@@ -620,7 +688,7 @@ class _WaitingRow extends StatelessWidget {
       lead: '#$number',
       leadAmber: true,
       name: name,
-      line: entry.serviceName,
+      line: [entry.serviceName, ?askedFor].join(' · '),
       tag: _isWalkIn ? t.kindWalkIn : t.kindApp,
       tagTint: context.status.pending,
       onTap: busy ? null : () => _openRow(context),

@@ -98,7 +98,9 @@ class OwnerQueueCubit extends Cubit<OwnerQueueState> {
     }
   }
 
-  Future<void> callNext() => _act(_queue.callNext);
+  /// Calls the next person for [providerId], or for the shop's one chair.
+  Future<void> callNext({String? providerId}) =>
+      _act(() => _queue.callNext(providerId: providerId));
 
   Future<void> pause() => _act(() => _queue.setState(QueueState.paused));
 
