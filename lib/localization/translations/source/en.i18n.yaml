@@ -1,0 +1,1011 @@
+common:
+  appName: BookNow
+  continue_: Continue
+  cancel: Cancel
+  close: Close
+  confirm: Confirm
+  save: Save
+  edit: Edit
+  delete: Delete
+  retry: Try again
+  skip: Skip
+  notNow: Not now
+  back: Back
+  clear: Clear
+  search: Search
+  loading: Loading…
+  offline: No connection
+  serviceLine(name, price, minutes): '${name} ${price} · ${minutes} min'
+
+nav:
+  today: Today
+  calendar: Calendar
+  shop: Shop
+  discover: Discover
+  activity: Activity
+  home: Home
+  bookings: Bookings
+  agenda: Agenda
+  profile: Profile
+
+errors:
+  generic: Something went wrong. Please try again.
+  noConnection: You appear to be offline.
+  timeout: The request took too long.
+  server: Our service is having trouble. Please try again shortly.
+  unauthorized: Your session has expired. Please sign in again.
+  forbidden: You don't have access to this.
+  notFound: We couldn't find that.
+  tooManyRequests: Too many attempts. Please wait a moment.
+  slotTaken: That slot was just taken. Please pick another one.
+  holdExpired: Your slot was released because payment took too long.
+  leadTimeTooShort: That slot is too soon to book.
+  outsideBookingHorizon: That date isn't open for booking yet.
+  shopClosed: The shop is closed on that day.
+  cancellationWindowPassed: It's too late to cancel and be refunded.
+  slotNotBookable: That time can't be booked.
+  serviceNotAvailable: That service is no longer available.
+  invalidBlock: That range can't be blocked.
+  shopIncomplete: Some details are still missing before you can publish.
+
+bookingStatus:
+  pendingPayment: Awaiting payment
+  confirmed: Confirmed
+  arrived: Arrived
+  noShow: No-show
+  cancelled: Cancelled
+  completed: Completed
+  expired: Expired
+
+onboarding:
+  skip: Skip
+  next: Next
+  start: Get started
+  haveAccount: I already have an account
+  slideOne:
+    title: Book your cut in 30 seconds
+    body: Pick a free day and time at your barber. No phone calls, no waiting in the shop.
+  slideTwo:
+    title: You pay for the cut in the shop
+    body: In the app you pay only €1.49 to hold the slot. The cut you pay at the barber, cash included.
+    serviceLabel: Haircut
+    serviceNote: in the shop, to the barber
+    feeLabel: BookNow service
+    feeNote: now, in the app
+    plus: plus
+    serviceAmount: €18.00
+    feeAmount: €1.49
+  slideThree:
+    title: Do you run a barber shop?
+    body: Manage your agenda from your phone, free. Every booking arrives as a notification.
+    agendaToday: Today · agenda
+    agendaFree: free
+    agendaPush: 'New booking: Marco, Sat 3 Oct at 10:30'
+    agendaBookedTime: '10:30'
+    agendaBookedName: Marco R.
+    agendaFreeTime: '11:00'
+
+auth:
+  continueWithApple: Continue with Apple
+  continueWithGoogle: Continue with Google
+  signUpWithApple: Sign up with Apple
+  signUpWithGoogle: Sign up with Google
+  signIn:
+    title: Welcome back
+    body: Sign in with one tap. We use your account only for your name and email.
+    firstTime: first time?
+    createAccount: Create an account
+    terms: By continuing you accept the Terms and the Privacy policy.
+    termsLink: Terms
+    privacyLink: Privacy
+  signUp:
+    title: Create your account
+    body: 'No password to remember: use Apple or Google and you are in.'
+    noCardTitle: No card saved
+    noCardBody: You pay €1.49 only when you book.
+    dataTitle: Name and email only
+    dataBody: Your phone is optional, and only the barber sees it.
+    roleTitle: Barber or customer
+    roleBody: You choose next. For shops it is free.
+    alreadyHaveAccount: Already have an account?
+    signInLink: Sign in
+  role:
+    greeting(name): Hi ${name}
+    title: How do you use BookNow?
+    body: You choose once. You can change it later from your profile.
+    customerTitle: I want to book
+    customerBody: Pick a slot, hold it for €1.49 and pay for the cut in the shop.
+    ownerTitle: I run a barber shop
+    ownerBody: Manage your agenda, price and hours. For shops BookNow is free.
+    pilotNote(shop, address): 'The pilot has a single shop: ${shop}, ${address}.'
+    selected: Selected
+  profile:
+    title: Almost there
+    body(provider): These details come from your ${provider} account. Change them if you like.
+    nameLabel: Full name
+    nameRequired: Please enter your name.
+    phoneLabel: Phone
+    phoneOptional: optional
+    phoneHelper: The barber only needs it if they have to reach you. We don't use it for anything else.
+    save: Save and continue
+
+profile:
+  signedOut: Signed out
+  remindersOff: Reminders off
+  notificationsOnBefore(when): On, ${when} before
+  ownerHelp: Help
+  helpLine: Questions, write to us
+  modeRow: Customers
+  shopTitle: Your shop
+  shopLive: Live on BookNow
+  shopHidden: Not visible to customers yet
+  seeAsCustomer: See as customer
+  howYouWork: How you work
+  yourAccount: Your account
+  title: Profile
+  roleOwner: owner
+  roleCustomer: customer
+  shopSection: What customers see
+  shopPhotoPlaceholder: photo
+  shopNameMissing: Your shop
+  shopDetailsMissing: Finish setting up your shop
+  services: Services
+  servicesCount(plural):
+    one: ${n} service
+    other: ${n} services
+  hours: Hours
+  hoursNone: Not set
+  bookingRules: Booking rules
+  appearanceSection: Appearance
+  themeSystem: System
+  themeLight: Light
+  themeDark: Dark
+  accountSection: Account
+  notifications: Notifications
+  notificationsOn: On
+  notificationsOff: Off
+  help: Help and contact
+  signOut: Sign out
+  deleteAccount: Delete account
+  signOutDialog:
+    title: Sign out?
+    bodyOwner: Your shop and your agenda stay where they are.
+    bodyCustomer: Your bookings stay saved.
+    returnWith(provider): One tap on ${provider} brings you back.
+  deleteSheet:
+    title: Delete your account?
+    body: This can't be undone.
+    keep: Keep my account
+    confirm: Yes, delete
+    shopLost(name): ${name} and every booking it holds will be deleted.
+    shopLostUnnamed: Your shop and every booking it holds will be deleted.
+    historyLost: You lose your history and your payment receipts.
+  personalData: Personal details
+  editProfile: Edit profile
+  signedInWith(provider): Signed in with ${provider}
+  personal:
+    initialsNote: Shops you visit see your name.
+    ownerOf(shop): Owner of ${shop}
+    nameLabel: Full name
+    nameRequired: Please enter your name.
+    phoneLabelCustomer: Phone (optional)
+    phoneLabelOwner: Phone (personal)
+    phoneOptional: optional
+    phonePersonal: personal
+    phoneHelperCustomer: Only for the shops you book with, if they need to reach you.
+    phoneHelperOwner: "Not the shop's number: we only use this one to reach you."
+    emailLabel: Email
+    emailLockedHint: Not editable here
+    emailApple: Managed by Apple. Change it from your Apple ID.
+    emailGoogle: Managed by Google. Change it from your Google account.
+    emailProvider: Managed by the service you signed in with.
+    saved: Details updated
+
+help:
+  screenTitle: Help and contacts
+  faqSection: Frequent questions
+  needMore: Need anything else?
+  faq:
+    feeQuestion: Why do I pay €1,49?
+    feeAnswer: "It is the booking fee: it holds your place. You pay for the service itself at the shop, as always."
+    cancelQuestion: How do I cancel a booking?
+    cancelAnswer: "Open the booking and tap Cancel. Up to 2 hours before the start the fee is refunded; later the booking is still cancelled, but the fee is kept. After the start time it can no longer be cancelled."
+    refundQuestion: When does the refund arrive?
+    refundAnswer: It leaves as soon as you cancel and returns to the same card, usually within a few working days depending on your bank. If the shop cancels, the fee is always refunded.
+    lateQuestion: What if I am running late?
+    lateAnswer: "Let the shop know. The slot stays yours until the owner marks you as a no-show, which they can do from 15 minutes after the start time: the fee is not refunded in that case."
+  callShop: Call the shop
+  callShopSubtitle: For hours, services and appointments
+  writeUs: Write to BookNow
+  writeUsSubtitle: Payments, refunds and the app · within 24 hours
+  terms: Terms
+  privacy: Privacy
+  version(version): Version ${version}
+  callFailed: Cannot open the phone app.
+  linkFailed: Cannot open the link.
+  topics:
+    payment: Payment
+    booking: Booking
+    account: Account
+    other: Other
+  write:
+    title: Write to BookNow
+    replyTo(email): We reply within 24 hours to ${email}.
+    replyGeneric: We reply within 24 hours.
+    handoff: We will open your email app with the message ready.
+    topicLabel: What is it about?
+    messageLabel: Message
+    messageHint: Tell us what happened
+    attach: We attach your account and the app version
+    send: Send
+    opened: Message ready in your email app.
+    noMailApp(email): No email app on this phone. Write to ${email}.
+  mail:
+    subject(topic): BookNow — ${topic}
+    account: Account
+    role: Role
+    appVersion: App version
+    roleOwner: owner
+    roleCustomer: customer
+
+validation:
+  required: This field is required.
+  requiredNamed(field): ${field} is required.
+  email: Enter a valid email address.
+  phone: Enter a valid phone number.
+  tooShort(min): At least ${min} characters.
+  tooLong(max): At most ${max} characters.
+
+
+
+shopSetup:
+  checklist:
+    done: Done
+    typicalTitle: Start from a typical week?
+    typicalBody(hours): Tuesday to Saturday, ${hours}. You can change any day after.
+    typicalCta: Use this week
+    title: Let's get your shop live
+    left(plural):
+      one: ${n} step left. Customers can't see your shop yet.
+      other: ${n} steps left. Customers can't see your shop yet.
+    allDone: All done. One tap and customers can find you.
+    continueWith(step): 'Next: ${step}'
+    optional: Optional
+    shop: Shop details
+    shopHint: Name and phone
+    address: Address
+    addressHint: Where customers find you
+    services: Services and prices
+    servicesHint: At least one, with its price
+    hours: Opening hours
+    hoursHint: When you take customers
+    liveTitle: You're live
+    liveBody: Customers can find your shop now.
+    liveCta: Open my shop
+  stepOf(current, total): ${current}/${total}
+  continue_: Continue
+  shop:
+    overline: Your shop
+    title: How do customers find you?
+    nameLabel: Shop name
+    nameHelper: Customers see it exactly like this.
+    phoneLabel: Shop phone
+    phoneHelper: Customers can call you from the booking.
+    photoLabel: Photo
+    photoOptional: optional
+    photoAdd: Add a photo
+    photoHint: The inside or the window · you can do it later
+    photoSource: Shop photo
+    photoCamera: Take a photo
+    photoGallery: Choose from the library
+    photoRemove: Remove photo
+    photoVisible: Customers can see it
+    photoCameraNew: Take a new photo
+    photoSourceBody: It is the first thing customers see. The storefront or the inside, held landscape.
+    photoTipsTitle: For a good photo
+    photoTipLight: Natural light, in the daytime
+    photoTipLandscape: Phone held landscape
+    photoTipFaces: No customers' faces without permission
+    photoFailed: We could not open that photo. Try again.
+  details:
+    title: Shop details
+    addressLabel: Address
+    addressMissing: No address yet
+    addressMissingHelper: Choose where the shop is
+    addressPinned: pinned on the map
+    addressNotPinned: pin still to confirm
+    liveNote: Changes are visible to customers right away.
+    saved: Shop updated
+  address:
+    overline: Address
+    title: Where is it?
+    searchHint: Street and number
+    mapPreview: map preview
+    helper: Pick an address and we place the pin for you.
+  services:
+    overline: Services
+    title: What do customers book?
+    subtitle: Add every service you offer. At least one is needed.
+    newService: New service
+    nameHint: Service name
+    priceHint: Price
+    save: Save
+    edit: Edit
+    delete: Delete
+    editTitle: Edit service
+    actionsFor(name): Actions for ${name}
+    continueOne: Continue · 1 service
+    minutes(count): ${count} min
+    helper: Customers see the prices but pay you in the shop. The duration decides how much agenda space it takes.
+    continueWith(count): Continue · ${count} services
+    screenTitle: Services
+    manageSubtitle: Customers choose from these when they book. Tap a service to change it.
+    add: Add service
+    emptyTitle: No services yet
+    emptyBody: Add the first service customers can book.
+    nameLabel: Service name
+    durationLabel: Duration
+    priceLabel: Price
+    saveChanges: Save changes
+    previousPrice(price): Previous price ${price}
+    deleteTitle(name): Delete ${name}?
+    deleteBody: Bookings already made stay valid. The service can no longer be booked.
+    deleted: Service deleted
+    saved: Service updated
+    added: Service added
+  hours:
+    overline: Hours
+    title: When are you open?
+    closed: Closed
+    lunchBreak: Lunch break
+    copyToOpenDays: Copy to all open days
+    moreDays(days): + ${days}
+    screenTitle: Opening hours
+    weekly: Your week
+    continuous: open all day
+    open: Open
+    slots: Time slots
+    addSlot: Add slot
+    removeSlot: Remove slot
+    copyTo: Copy to other days
+    copyNone: None
+    overlap: Two slots overlap.
+    backwards: The end has to come after the start.
+    saved: Hours updated
+  review:
+    title: Ready to open
+    subtitle: Check it one last time. You can change everything later, from Shop.
+    edit: Edit
+    noPhoto: no photo
+    pinConfirmed: pin confirmed
+    servicesFrom(count, price): ${count} services · from ${price}
+    openDays(count): ${count} open days
+    closedDays(days): closed ${days}
+    hiddenBefore: Until you publish, your shop is
+    hiddenStrong: not visible
+    hiddenAfter: to customers.
+    publish: Publish the shop
+
+weekdays:
+  short:
+    mon: Mon
+    tue: Tue
+    wed: Wed
+    thu: Thu
+    fri: Fri
+    sat: Sat
+    sun: Sun
+  long:
+    mon: Monday
+    tue: Tuesday
+    wed: Wednesday
+    thu: Thursday
+    fri: Friday
+    sat: Saturday
+    sun: Sunday
+
+notifications:
+  allow: Turn on notifications
+  skip: Not now
+  owner:
+    title: Know who books, the moment they do
+    body: Without notifications you only find out about bookings by opening the agenda.
+    pointOne: Every new booking
+    pointTwo: Cancellations, so you can refill the slot
+    firstTitle: New booking
+    firstBody: Marco R. · Haircut · Sat 3 Oct, 10:30
+    firstWhen: now
+    secondTitle: Slot freed up
+    secondBody: Paolo M. cancelled 11:30.
+    secondWhen: 8 min ago
+  customer:
+    title: We'll remind you before your appointment
+    body: Only things about your own bookings. No advertising.
+    pointOne: A reminder 2 hours before
+    pointTwo: Cancellations and refunds
+    firstTitle: In 2 hours
+    firstBody: Men's cut at Barbieri Navona at 10:30.
+    firstWhen: now
+    secondTitle: Booking cancelled
+    secondBody: Barbieri Navona cancelled Sat 3 Oct. Fee refunded.
+    secondWhen: yesterday
+
+# Screens G and H: what the app may send, per role. Saved as soon as a switch
+# moves — the screen has no save button.
+notificationSettings:
+  screenTitle: Notifications
+  blocked:
+    title: Notifications are off on this phone
+    bodyOwner: New bookings are not reaching you.
+    bodyCustomer: Appointment reminders are not reaching you.
+    action: Open Settings
+  lead:
+    oneHour: 1 hour
+    twoHours: 2 hours
+    oneDay: 1 day
+  customer:
+    reminderSection: Reminders
+    reminder: Before my appointment
+    reminderSubtitle: A reminder so you don't miss it
+    bookingsSection: Your queue and bookings
+    cancellations: Your turn, cancellations, refunds
+    cancellationsSubtitle: 'Always on: they are about your money'
+    cancellationsLocked: Always on
+  owner:
+    agendaSection: Agenda
+    newBookings: New bookings
+    newBookingsSubtitle: As soon as a customer pays for the slot
+    cancellations: Cancellations
+    cancellationsSubtitle: The slot is free again
+    summarySection: Summary
+    dailySummary: Today's agenda
+    dailySummarySubtitle: How many customers you have today
+    summaryTime: Sending time
+
+bookings:
+  rightNow: Right now
+  upcoming: Upcoming
+  past: Past
+  emptyTitle: Nothing scheduled
+  emptyBody: The bookings you make show up here, with their current status.
+  emptyPastTitle: No history yet
+  emptyPastBody: Past appointments appear here.
+  inShop(price): ${price} in shop
+  expiresIn(plural):
+    one: Expires in ${n} min
+    other: Expires in ${n} min
+  holdLapsed: The slot is no longer held
+  payNow: Pay now
+  freeUntil(when): Free cancellation until ${when}
+  repeat: Book again
+  byYou: by you
+  byShop: by the shop
+  refunded: refunded
+  notRefunded: not refunded
+  paid: paid
+  paidWithCard(card): paid · •••• ${card}
+  feeNote: 'The haircut is paid in the shop. Here you only see the status of your spot.'
+  detailTitle: Your booking
+  serviceLine(service, minutes): ${service} · ${minutes} minutes
+  map: Map
+  callShop: Call the shop
+  payInShop: to pay in the shop
+  bookNowService: BookNow service
+  addToCalendar: Add to calendar
+  calendarFailed: No calendar app on this device.
+  mapFailed: No maps app on this device.
+  cancel:
+    action: Cancel booking
+    title: Cancel the haircut?
+    subtitle(when, time, shop): ${when} at ${time}, ${shop}.
+    refundTitle(fee): ${fee} refund
+    refundBody: More than 2 hours to go, so the service fee comes back in 3–5 days.
+    refundBodyCard(card): More than 2 hours to go, so the service fee comes back to •••• ${card} in 3–5 days.
+    noRefundTitle: The service fee is not refunded
+    noRefundBody(fee): Less than 2 hours to go, so ${fee} stays with the shop. You don't pay for the haircut.
+    slotFreed: The slot is free for other customers straight away.
+    confirm: Yes, cancel
+    keep: Keep the booking
+    done: Booking cancelled.
+    doneRefunded(fee): Booking cancelled · ${fee} refunded.
+    failed: The booking could not be cancelled. Try again.
+
+account:
+  title: Profile
+  signedInWith(provider): Signed in with ${provider}
+  editProfile: Edit profile
+  appearanceTitle: Appearance and language
+  themeSystem: System
+  themeLight: Light
+  themeDark: Dark
+  notificationsTitle: Notifications
+  reminderTitle: Cut reminder
+  reminderBody: 2 hours before
+  shopNewsTitle: Shop news
+  shopNewsBody: Opening hours and closures
+  accountTitle: Account
+  payments: Payments and receipts
+  switchToBarber: Switch to barber
+  help: Help and contact
+  signOut: Sign out
+  signOutConfirmTitle: Sign out?
+  signOutConfirmBody: You will need to sign in again to see your bookings.
+  deleteAccount: Delete account
+  comingSoon: Available soon.
+
+home:
+  waitShort(n, from, to): ${n} · ${from}–${to} min
+  useLocation: Use my location
+  useLocationLine: Show the nearest shops first
+  locationFailed: Couldn't get your location. Check it's on and allowed for BookNow.
+  guestBlocked: Sign in to see the shops near you.
+  intentNow: Right now
+  intentTomorrow: Tomorrow
+  searchHint: Search shops or services
+  clearCategory: Clear category
+  whereTitle: Where should we look?
+  list: List
+  map: Map
+  headlineNow(plural):
+    one: ${n} shop can see you now
+    other: ${n} shops can see you now
+  headlineToday(plural):
+    one: ${n} shop free today
+    other: ${n} shops free today
+  headlineTomorrow(plural):
+    one: ${n} shop to book tomorrow
+    other: ${n} shops to book tomorrow
+  feedNow: Shortest wait first
+  feedToday: Next free times
+  feedTomorrow: Book for tomorrow
+  categoryNotice: Shops aren't sorted by category yet, so this is every shop.
+  emptyNowTitle: No one can see you right now
+  emptyNowBody: Book a time later today instead.
+  emptyNowCta: See today's times
+  joinLine: Join the line
+  bookTime: Book a time
+  seeLine: See the line
+  seeTimes: See the times
+  headerTitle: Book a chair or skip the line
+  whatDoYouNeed: What do you need?
+  searchByName: Search by name
+  whereLabel: Where
+  whenLabel: When
+  today: Today
+  allCities: All cities
+  searchCategory(category): Search ${category}
+  foldSearch: Fold search
+  openSearch: Open full search
+  explore: Explore categories
+  all: All
+  nearYou: Near you
+  shortestWait: Shortest wait right now
+  join: Join
+  book: Book
+  filterOpenNow: Open now
+  filterNearest: Nearest
+  filterShortestQueue: Shortest queue
+  waiting(n, from, to): ${n} waiting · ${from}–${to} min
+  noWait: No wait
+  queueClosed: Queue closed
+  nextAt(time): Next ${time}
+  inQueue: In queue
+  view: View
+  mapNow: Now
+  mapWait(from, to): "${from}–${to}'"
+  inLine: in line
+  greeting(name): Ciao ${name}
+  greetingNoName: Ciao
+  nextBooking: Next booking
+  freeToday: Free today
+  shopsNearby: Shops near you
+  nothingBooked: Nothing booked yet
+  nothingBookedBody: 'Pick a time below: a deposit holds the spot.'
+  noFreeToday: No free times today.
+  noShops: No shops available right now.
+  moreTimes: more times
+  metresAway(metres): ${metres} m
+  kilometresAway(km): ${km} km
+  servicesCount(plural):
+    one: ${n} service
+    other: ${n} services
+  fromPrice(price): from ${price}
+  openNow: Open
+  openUntil(time): Open until ${time}
+  closedNow: Closed
+  closedUntil(time): Closed · opens ${time}
+
+agenda:
+  freeLine(length): ${length} · Tap to block
+  hours(count): ${count} h
+  today: Today
+  pickDate: Pick a date
+  closedShort: Shut
+  closedTitle: Closed
+  closedBody: No opening hours on this day.
+  closureBody: Closed for the day. Nothing can be booked.
+  emptyTitle: Nothing booked
+  emptyBody: No bookings for this day.
+  booked(plural):
+    one: ${n} booked
+    other: ${n} booked
+  free(plural):
+    one: ${n} free
+    other: ${n} free
+  toCollect(amount): ${amount} to collect
+  now: now
+  freeLabel: Free
+  customerFallback: Customer
+  minutes(count): ${count} min
+  cancelledBy(name): cancelled by ${name}
+  until(time, amount): until ${time} · ${amount} in shop
+  blockedLabel: Blocked
+  openBooking(name): Open ${name}'s booking
+  blockFree(time): Block the free time at ${time}
+  openBlock(time): Open the block at ${time}
+  sheet:
+    timeLine(from, to, service, minutes): ${from} – ${to} · ${service} · ${minutes} min
+    toCollect: To collect in shop
+    holdPaid(amount): ${amount} hold already paid in app
+    call(name): Call ${name}
+    callGeneric: Call
+    markArrived: Mark as arrived
+    noShow: No-show
+    noShowFrom(time): No-show · from ${time}
+    cancel: Cancel booking
+    noDialler: No phone app on this device.
+    comingSoon: Available soon.
+  block:
+    title: Block time
+    from: From
+    to: To
+    note: Note
+    noteHint: Break, walk-in client…
+    save: Block
+    backwards: The end has to come after the start.
+    tooLong: A block can't run longer than 8 hours.
+    blockedTitle: Blocked time
+    remove: Unblock
+    removeTitle: Unblock this time?
+    removeBody: Customers will be able to book it again.
+    blocked: Time blocked.
+    unblocked: Time unblocked.
+
+flow:
+  doneShort: You're booked
+  whenTitle: When suits you?
+  morning: Morning
+  afternoon: Afternoon
+  lunchBreak(from, to): ${from} – ${to} · lunch break
+  legendTaken: '— struck through: taken'
+  legendPast: '— faded: past'
+  continueWith(when, time): Continue · ${when}, ${time}
+  closedTitle: Closed
+  closedBody: The shop is not open on this day. Pick another one.
+  noTimesTitle: No free times
+  noTimesBody: Try another day.
+  confirmTitle: Check and confirm
+  change: Change
+  payInShopWithMinutes(minutes): ${minutes} min · paid in the shop
+  bookNowService: BookNow service
+  payNow: paid now
+  payAndConfirm(fee): Pay ${fee} and confirm
+  payAndConfirmNoFee: Pay and confirm
+  terms: Free to cancel up to 2 hours before.
+  freeCancellationUntil(when): Free cancellation until ${when}.
+  arriveEarly: 'Arrive 5 minutes early: the spot is held for 10 minutes.'
+  declinedTitle: Payment failed
+  declinedBody: The card was declined. You have not been charged.
+  holdLeft(plural):
+    one: Slot held for ${n} more min
+    other: Slot held for ${n} more min
+  holdLapsed: The slot is no longer held
+  retry: Try again
+  giveUp: Leave it
+  confirmingTitle: Confirming your booking
+  confirmingBody: The payment went through. This takes a few seconds.
+  doneTitle: You're all set
+  doneBody: Your spot is booked. We'll remind you 2 hours before.
+  feePaid(fee): ${fee} paid
+  inShop(price): ${price} in shop
+  done: Done
+
+queue:
+  liveNow: Live right now
+  turnTitleShort: Your turn
+  splashPlace(n, shop): "You're #${n} at ${shop}"
+  splashTurn(shop): It's your turn at ${shop}
+  live: Live queue
+  walkIn: Walk-in
+  stateOpen: Queue open
+  statePaused: Paused
+  stateFull: Full for today
+  stateClosed: Closed for today
+  stateOutside: Outside opening hours
+  waitingCount(plural):
+    one: person waiting
+    other: people waiting
+  estimateNow: If you join now, estimated wait
+  range(from, to): ${from}–${to} min
+  pausedBody: 'The barber has paused the queue. People already in line keep their place: try again shortly.'
+  fullBody: Anyone joining now would finish after closing. Try again tomorrow.
+  closedBody: The queue is closed for today.
+  outsideBody: The shop is closed right now.
+  services: Services
+  pickService: What do you need?
+  minutes(minutes): ${minutes} min
+  inShop(price): ${price} in shop
+  feeHint(fee): You pay ${fee} for your place in the queue. The service is paid in the shop.
+  join: Join
+  turnIn: Your turn in about
+  about(range): about ${range}
+  refundRule: The fee comes back if you leave while 3 or more people are ahead.
+  graceRule: 'We let you know when one person is left ahead of you and when it is your turn: from then you have 10 minutes to arrive.'
+  payAndJoin(fee): Pay ${fee} and join
+  placeAfterPayment: Your place is yours as soon as the payment goes through.
+  joiningTitle: Putting you in the queue
+  joiningBody: Your payment went through. This takes a few seconds.
+  inQueue: You're in the queue
+  almost: Almost your turn
+  position(n): '#${n}'
+  inLine: in line
+  ahead(plural):
+    one: 1 person ahead of you
+    other: ${n} people ahead of you
+  next: You're next
+  waitAnywhere: We'll notify you when you're next. You can leave the shop and come back.
+  leaveRefund: 'You have at least 3 people ahead: if you leave now, we refund the service fee.'
+  leaveNoRefund: 'You have fewer than 3 people ahead: if you leave now, the service fee is not refunded.'
+  leave: Leave the queue
+  turnTitle: It's your turn
+  turnBody: The barber is ready for you. You have 10 minutes to arrive.
+  turnLeft: to arrive
+  turnLate: 'After 10 minutes the barber can mark you as a no-show: the service fee is then not refunded.'
+  servingTitle: You're in the chair
+  servingBody: Your service has started. You pay for it in the shop, as usual.
+  leaveSheet:
+    title: Leave the queue?
+    body(shop): You lose your place at ${shop}. If you change your mind you'll go back to the end of the line.
+    refund(fee): We refund ${fee} within 5–10 business days.
+    noRefund(fee): 'Your turn is close: if you leave now, ${fee} is not refunded.'
+    confirm: Yes, leave the queue
+    confirmNoRefund: Leave anyway
+    stay: Stay in the queue
+  leftTitle: You left the queue
+  leftRefunded(fee): We refund ${fee} within 5–10 business days.
+  leftKept: The service fee was not refunded.
+  endedTitle: You're no longer in the queue
+  endedBody: If the barber removed you or closed for today, we refund the service fee.
+  declinedTitle: Payment failed
+  declinedBody: Your card was declined. You have not been charged.
+  retry: Try again
+  giveUp: Never mind
+  done: Done
+  homeTitle: You're in the queue
+  homePaid: Paid
+  seeQueue: See the queue
+  owner:
+    walkInFab: Walk-in
+    nobodyWaiting: Nobody waiting. Enjoy the coffee.
+    reopen: Reopen
+    minutesLeft(minutes): ${minutes} min left
+    doneWith(name): Done with ${name}
+    calledName(name): Called ${name}
+    waitingFor(minutes): Waiting ${minutes} min
+    theyreHere: They're here, start
+    noShowIn(time): No-show in ${time}
+    chair: Chair
+    freeNow: Free now
+    nobodyToCall: Nobody waiting
+    kindApp: App
+    kindWalkIn: Walk-in
+    removeFromLine: Remove from the line
+    rowNoteApp: Removing someone always refunds their fee.
+    rowNoteWalkIn: Walk-ins paid nothing in the app.
+    title: Today's queue
+    summary(waiting, until): ${waiting} waiting · the queue ends around ${until}
+    summaryEmpty: Nobody waiting
+    pause: Pause
+    resume: Resume
+    closeToday: Close for today
+    inChair: In the chair
+    called: Called
+    waiting: Waiting
+    since(minutes): for ${minutes} min
+    calledAt(time): called at ${time}
+    queuedAt(time): in line since ${time}
+    graceLeft(minutes): ${minutes} min left
+    done: Done
+    start: Start
+    noShow: No-show
+    noShowFrom(time): No-show · from ${time}
+    walkInName: Walk-in
+    remove(name): Remove ${name} from the queue
+    callNext: Call next
+    addWalkIn: Walk-in
+    emptyTitle: Nobody in the queue
+    emptyBody: Customers who join from the app show up here. Add people who walk in without it with Walk-in.
+    removeSheet:
+      title(name): Remove ${name}?
+      body: They leave the queue and we refund their service fee.
+      confirm: Remove from the queue
+      keep: Cancel
+    walkInSheet:
+      title: Add a walk-in
+      body: For someone who came in without the app. They go to the end of the line, so the wait stays right for everyone.
+      service: Service
+      name: Name (optional)
+      nameHint: e.g. Andrea
+      add: Add to the line
+      cancel: Cancel
+  mode:
+    row: How you work
+    booking: By appointment
+    queue: Queue
+    both: Both
+    title: How you work
+    lead: Choose how customers come to you. You can change it any time.
+    bookingBody: Customers pick a day and time in the app. Best if you work from an agenda.
+    queueBody: Customers see how many people are waiting and join the line from the app. Best if you work without appointments.
+    blocked: You can't switch right now. You can stop taking bookings once you have no future ones, and close the queue once it is empty.
+    bothBody: Customers choose to book a time or join the line. Booked times keep their place and the line flows around them.
+    save: Save
+    saved: Mode updated
+
+categories:
+  barber: Barber
+  salon: Hair salon
+  nails: Nails
+  beauty: Beauty
+  spa: Spa
+  lashes: Lashes
+  tattoo: Tattoo
+  makeup: Makeup
+  kids: Kids cuts
+  more: More
+
+search:
+  recent: Recent
+  allShops: All shops
+  title: Find a shop
+  hint: Name or street
+  noResults: No shops found.
+  categoryNotice(category): Shops aren't sorted by category yet, so this is every shop, not only ${category}.
+
+live:
+  overlineBooked: Booked
+  freeUntil(when): Free to cancel until ${when}
+  cancelBooking: Cancel booking
+  cancelTitle: Cancel this booking?
+  keepBooking: Keep my booking
+  yesCancel: Yes, cancel
+  refundYes2(fee): Your ${fee} fee will be refunded.
+  refundNo2(fee): It's less than 2 hours away, so the ${fee} fee is not refunded.
+  cancelledRefunded(fee): Booking cancelled. ${fee} refunded.
+  cancelledNoRefund: Booking cancelled.
+  cancelFailed: Couldn't cancel. Your booking still stands.
+  overline: In the line
+  headInAt(shop): Head in now · ${shop}
+  chair: Chair
+  directions: Get directions
+  inChair: In the chair
+  headIn: Head in now. They'll hold your place for 10 minutes.
+  leave: Leave the line
+  leaveTitle: Leave the line?
+  refundYes: Your service fee will be refunded.
+  refundNo: With fewer than 3 people ahead, the service fee is not refunded.
+  keep: Keep my place
+  leaveConfirm: Yes, leave
+  leftRefunded: You left the line. Fee refunded.
+  leftNoRefund: You left the line.
+  leaveFailed: Couldn't leave the line. You still have your place.
+
+guest:
+  ownerSheetTitle: Sign in to your shop
+  ownerCustomerAccount: This is a customer account. Using one account for both is coming soon.
+  title: Skip the wait, keep your place
+  body: One tap with the account you already have. New or returning, it's the same two buttons.
+  activityTitle: Your visits live here
+  activityBody: Sign in to follow your place in line and keep your bookings together.
+  signIn: Sign in
+  signInTitle: Sign in to BookNow
+  light: Light
+  dark: Dark
+  system: Auto
+  ownerTitle: Do you run a shop?
+  ownerBody: Take bookings and run your queue from your phone.
+  gateBook: Sign in to book this time
+  gateJoin: Sign in to join the line
+  gateBody(what): ${what}. Your choice is kept, and it takes one tap.
+
+welcome:
+  title: What should the shop call you?
+  nameLabel: Your name
+  body: Only shops you visit see it. You can change it later.
+  cta: Continue
+
+shopScreen:
+  closedDay(day): Closed on ${day}. Pick another day.
+  noTimes: No free times on this day. Pick another day.
+  joinNow(service): ${service} · join now
+  paying: Paying
+  tryAgain: Try again
+  payFee(fee): Pay ${fee}
+  placedAt(shop): ${shop} · we'll tell you when it's your turn
+  previewTitle: Preview
+  previewBody: This is what customers see.
+  whatLike: What would you like?
+  when: When?
+  sumPick: Pick a time to continue
+  sumShop(price): ${price} in shop
+  sumShopFee(price, fee): ${price} in shop · ${fee} now
+  continue_: Continue
+  bookTitle(when): Book ${when}?
+  joinTitle(shop): Join the line at ${shop}?
+  feeLabel: BookNow fee
+  feeWhen: Paid now
+  serviceWhen: Paid to the shop
+  noFee: Free to book
+  confirmFree: Confirm booking
+  heldFor(time): Held for you for ${time}
+  declined: That card was declined. You have not been charged.
+  placed: You're in the line
+  placedBody: We'll tell you when it's your turn.
+
+today:
+  untilTime(time): until ${time}
+  bookedTag: Booked
+  queueLine(n, time): ${n} waiting · until about ${time}
+  nowLabel: Now
+  nextLabel: Next up
+  comingUp: Coming up
+  details: Details
+  callName(name): Call ${name}
+  nothingLeftTitle: Nothing else booked today
+  nothingLeftBody: Your free time stays open to customers.
+  markedArrived(name): ${name} marked as arrived
+  markedNoShow(name): ${name} marked as a no-show
+  noShowTitle(name): Mark ${name} as a no-show?
+  noShowBody: This can't be undone.
+  cancelTitle(name): Cancel ${name}'s booking?
+  cancelBody: The customer is told, and the time opens up again.
+  cancelled: Booking cancelled
+  stateTitle: How's the queue today?
+  stateOpenTitle: Open
+  stateOpenBody: People can join from the app.
+  statePauseBody: Nobody new can join. People in line stay.
+  stateCloseBody(n): Nobody new can join. You still serve the ${n} in line, and anyone not served is refunded.
+  closedInfo: The queue is closed for today. You still serve the people in line, and anyone not served is refunded.
+  pausedBanner: Paused. Nobody new can join.
+  closedBanner: Closed for today. Finish the people in line.
+  wayLine: Line
+  wayBookings: Bookings
+  calendarTitle: Calendar
+  calendarQueueTitle: Your shop runs a queue
+  calendarQueueBody: Customers join the line instead of booking times, so there's nothing to plan here. Run the line from Today.
+  calendarQueueCta: Change how you work
+
+homeWidgets:
+  inLine: In line
+  nextVisit: Next visit
+  bookAgain: Book again
+  findTitle: Find a shop
+  findLine: Book a time or join a line
+  directions: Directions
+  headIn: Head in within 10 min
+  ahead(plural):
+    zero: You're next
+    one: ${n} person ahead
+    other: ${n} people ahead
+  waiting: waiting
+  waitingCount(n): ${n} waiting
+  nobodyWaiting: Nobody waiting
+  nextUp: Next up
+  calledLine: Called, on their way
+  nextAppointment: Next appointment
+  nothingLeft: Nothing else today
+  moreToday(n): ${n} more today
+  openToday: Open today
+  staleQueue: Open BookNow to check your place
+  staleBooking: Open BookNow to see your next visit
+  staleOwner: Open BookNow to see today

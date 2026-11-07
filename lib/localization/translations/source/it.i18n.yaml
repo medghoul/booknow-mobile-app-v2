@@ -1,0 +1,1011 @@
+common:
+  appName: BookNow
+  continue_: Continua
+  cancel: Annulla
+  close: Chiudi
+  confirm: Conferma
+  save: Salva
+  edit: Modifica
+  delete: Elimina
+  retry: Riprova
+  skip: Salta
+  notNow: Non ora
+  back: Indietro
+  clear: Cancella
+  search: Cerca
+  loading: Caricamento…
+  offline: Nessuna connessione
+  serviceLine(name, price, minutes): '${name} ${price} · ${minutes} min'
+
+nav:
+  today: Oggi
+  calendar: Calendario
+  shop: Negozio
+  discover: Scopri
+  activity: Attività
+  home: Home
+  bookings: Prenotazioni
+  agenda: Agenda
+  profile: Profilo
+
+errors:
+  generic: Qualcosa è andato storto. Riprova.
+  noConnection: Sembra che tu sia offline.
+  timeout: La richiesta ha impiegato troppo tempo.
+  server: Il servizio ha un problema. Riprova tra poco.
+  unauthorized: La sessione è scaduta. Accedi di nuovo.
+  forbidden: Non hai accesso a questa sezione.
+  notFound: Non l'abbiamo trovato.
+  tooManyRequests: Troppi tentativi. Attendi un momento.
+  slotTaken: Questo slot è appena stato preso. Scegline un altro.
+  holdExpired: Lo slot è stato liberato perché il pagamento ha impiegato troppo tempo.
+  leadTimeTooShort: Questo slot è troppo vicino per essere prenotato.
+  outsideBookingHorizon: Questa data non è ancora prenotabile.
+  shopClosed: Il negozio è chiuso in questo giorno.
+  cancellationWindowPassed: È troppo tardi per annullare ed essere rimborsato.
+  slotNotBookable: Questo orario non è prenotabile.
+  serviceNotAvailable: Questo servizio non è più disponibile.
+  invalidBlock: Questo intervallo non si può bloccare.
+  shopIncomplete: Mancano ancora alcuni dati prima di pubblicare.
+
+bookingStatus:
+  pendingPayment: In attesa di pagamento
+  confirmed: Confermata
+  arrived: Arrivato
+  noShow: Non presentato
+  cancelled: Annullata
+  completed: Completata
+  expired: Scaduta
+
+onboarding:
+  skip: Salta
+  next: Avanti
+  start: Inizia
+  haveAccount: Ho già un account
+  slideOne:
+    title: Prenota il taglio in 30 secondi
+    body: Scegli il giorno e l'ora liberi del tuo barbiere. Niente telefonate, niente attese in negozio.
+  slideTwo:
+    title: Il taglio lo paghi in negozio
+    body: In app paghi solo €1,49 per bloccare lo slot. Il taglio lo paghi al barbiere, anche in contanti.
+    serviceLabel: Taglio
+    serviceNote: in negozio, al barbiere
+    feeLabel: Servizio BookNow
+    feeNote: ora, in app
+    plus: più
+    serviceAmount: €18,00
+    feeAmount: €1,49
+  slideThree:
+    title: Hai un barber shop?
+    body: Gestisci l'agenda gratis dal telefono. Ogni prenotazione ti arriva con una notifica.
+    agendaToday: Oggi · agenda
+    agendaFree: libero
+    agendaPush: 'Nuova prenotazione: Marco, sab 3 ott ore 10:30'
+    agendaBookedTime: '10:30'
+    agendaBookedName: Marco R.
+    agendaFreeTime: '11:00'
+
+auth:
+  continueWithApple: Continua con Apple
+  continueWithGoogle: Continua con Google
+  signUpWithApple: Registrati con Apple
+  signUpWithGoogle: Registrati con Google
+  signIn:
+    title: Bentornato
+    body: Accedi in un tocco. Usiamo il tuo account solo per nome ed email.
+    firstTime: prima volta?
+    createAccount: Crea un account
+    terms: Continuando accetti i Termini e la Privacy.
+    termsLink: Termini
+    privacyLink: Privacy
+  signUp:
+    title: Crea il tuo account
+    body: 'Nessuna password da ricordare: usa Apple o Google e sei dentro.'
+    noCardTitle: Nessuna carta salvata
+    noCardBody: Paghi €1,49 solo quando prenoti.
+    dataTitle: Solo nome ed email
+    dataBody: Il telefono è facoltativo, lo vede solo il barbiere.
+    roleTitle: Barbiere o cliente
+    roleBody: Scegli tu al passo dopo. Per i negozi è gratis.
+    alreadyHaveAccount: Hai già un account?
+    signInLink: Accedi
+  role:
+    greeting(name): Ciao ${name}
+    title: Come usi BookNow?
+    body: Lo scegli una volta sola. Puoi cambiarlo dal profilo.
+    customerTitle: Voglio prenotare
+    customerBody: Scegli lo slot, blocchi il posto con €1,49 e paghi il taglio in negozio.
+    ownerTitle: Ho un barber shop
+    ownerBody: Gestisci agenda, prezzo e orari. Per i negozi BookNow è gratis.
+    pilotNote(shop, address): 'Nel pilota c''è un solo negozio: ${shop}, ${address}.'
+    selected: Selezionato
+  profile:
+    title: Ci siamo quasi
+    body(provider): Questi dati arrivano dal tuo account ${provider}. Correggili se vuoi.
+    nameLabel: Nome e cognome
+    nameRequired: Inserisci il tuo nome.
+    phoneLabel: Telefono
+    phoneOptional: facoltativo
+    phoneHelper: Serve solo al barbiere se deve avvisarti. Non lo usiamo per altro.
+    save: Salva e continua
+
+profile:
+  signedOut: Disconnesso
+  remindersOff: Promemoria disattivati
+  notificationsOnBefore(when): Attive, ${when} prima
+  ownerHelp: Aiuto
+  helpLine: Domande, scrivici
+  modeRow: Clienti
+  shopTitle: Il tuo negozio
+  shopLive: Online su BookNow
+  shopHidden: Non ancora visibile ai clienti
+  seeAsCustomer: Vedi come cliente
+  howYouWork: Come lavori
+  yourAccount: Il tuo account
+  title: Profilo
+  roleOwner: titolare
+  roleCustomer: cliente
+  shopSection: Cosa vedono i clienti
+  shopPhotoPlaceholder: foto
+  shopNameMissing: Il tuo negozio
+  shopDetailsMissing: Completa i dati del negozio
+  services: Servizi
+  servicesCount(plural):
+    one: ${n} servizio
+    other: ${n} servizi
+  hours: Orari e chiusure
+  hoursNone: Da impostare
+  bookingRules: Regole di prenotazione
+  appearanceSection: Aspetto e lingua
+  themeSystem: Sistema
+  themeLight: Chiaro
+  themeDark: Scuro
+  accountSection: Account
+  notifications: Notifiche
+  notificationsOn: Attive
+  notificationsOff: Disattivate
+  help: Aiuto e contatti
+  signOut: Esci
+  deleteAccount: Elimina account
+  signOutDialog:
+    title: Uscire dall'account?
+    bodyOwner: Il tuo negozio e la tua agenda restano dove sono.
+    bodyCustomer: Le tue prenotazioni restano salvate.
+    returnWith(provider): Rientri con un tocco su ${provider}.
+  deleteSheet:
+    title: Eliminare l'account?
+    body: "L'operazione è definitiva: non si può annullare."
+    keep: Tieni il mio account
+    confirm: Sì, elimina
+    shopLost(name): Il negozio ${name} e tutte le sue prenotazioni verranno eliminati.
+    shopLostUnnamed: Il tuo negozio e tutte le sue prenotazioni verranno eliminati.
+    historyLost: Perdi lo storico e le ricevute dei pagamenti.
+  personalData: Dati personali
+  editProfile: Modifica profilo
+  signedInWith(provider): Accesso con ${provider}
+  personal:
+    initialsNote: Le iniziali vengono dal tuo nome
+    ownerOf(shop): Titolare di ${shop}
+    nameLabel: Nome e cognome
+    nameRequired: Inserisci il tuo nome.
+    phoneLabelCustomer: Telefono (facoltativo)
+    phoneLabelOwner: Telefono (personale)
+    phoneOptional: facoltativo
+    phonePersonal: personale
+    phoneHelperCustomer: Lo vede solo il barbiere, se deve avvisarti.
+    phoneHelperOwner: 'Non è il numero del negozio: lo usiamo solo per contattarti.'
+    emailLabel: Email
+    emailLockedHint: Non modificabile qui
+    emailApple: Gestita da Apple. Per cambiarla modifica il tuo ID Apple.
+    emailGoogle: Gestita da Google. Per cambiarla modifica il tuo account Google.
+    emailProvider: Gestita dal servizio con cui hai fatto l'accesso.
+    saved: Dati aggiornati
+
+help:
+  screenTitle: Aiuto e contatti
+  faqSection: Domande frequenti
+  needMore: Serve altro?
+  faq:
+    feeQuestion: Perché pago €1,49?
+    feeAnswer: "È il costo del servizio di prenotazione: blocca il tuo posto. Il servizio lo paghi in negozio, come sempre."
+    cancelQuestion: Come annullo una prenotazione?
+    cancelAnswer: "Apri la prenotazione e tocca Annulla. Fino a 2 ore prima dell'inizio la commissione viene rimborsata; più tardi la prenotazione si annulla comunque, ma la commissione resta. Dopo l'orario di inizio non si annulla più."
+    refundQuestion: Quando arriva il rimborso?
+    refundAnswer: Parte appena annulli e torna sulla stessa carta, di solito in pochi giorni lavorativi secondo i tempi della tua banca. Se è il negozio ad annullare, la commissione è sempre rimborsata.
+    lateQuestion: Arrivo in ritardo, cosa succede?
+    lateAnswer: "Avvisa il negozio. Il posto resta tuo finché il titolare non ti segna come assente, cosa che può fare da 15 minuti dopo l'orario di inizio: in quel caso la commissione non viene rimborsata."
+  callShop: Chiama il negozio
+  callShopSubtitle: Per orari, servizi e appuntamenti
+  writeUs: Scrivi a BookNow
+  writeUsSubtitle: Pagamenti, rimborsi e app · entro 24 ore
+  terms: Termini
+  privacy: Privacy
+  version(version): Versione ${version}
+  callFailed: Non riesco ad aprire il telefono.
+  linkFailed: Non riesco ad aprire il link.
+  topics:
+    payment: Pagamento
+    booking: Prenotazione
+    account: Account
+    other: Altro
+  write:
+    title: Scrivi a BookNow
+    replyTo(email): Rispondiamo entro 24 ore a ${email}.
+    replyGeneric: Rispondiamo entro 24 ore.
+    handoff: Apriamo la tua app email con il messaggio già pronto.
+    topicLabel: Di cosa si tratta?
+    messageLabel: Messaggio
+    messageHint: Raccontaci cosa è successo
+    attach: Alleghiamo il tuo account e la versione dell'app
+    send: Invia
+    opened: Messaggio pronto nella tua app email.
+    noMailApp(email): Nessuna app email sul telefono. Scrivi a ${email}.
+  mail:
+    subject(topic): BookNow — ${topic}
+    account: Account
+    role: Ruolo
+    appVersion: Versione app
+    roleOwner: titolare
+    roleCustomer: cliente
+
+validation:
+  required: Questo campo è obbligatorio.
+  requiredNamed(field): ${field} è obbligatorio.
+  email: Inserisci un indirizzo email valido.
+  phone: Inserisci un numero di telefono valido.
+  tooShort(min): Almeno ${min} caratteri.
+  tooLong(max): Massimo ${max} caratteri.
+
+
+
+shopSetup:
+  checklist:
+    done: Fatto
+    typicalTitle: Partire da una settimana tipica?
+    typicalBody(hours): Da martedì a sabato, ${hours}. Puoi cambiare ogni giorno dopo.
+    typicalCta: Usa questa settimana
+    title: Mettiamo online il tuo negozio
+    left(plural):
+      one: Manca ${n} passaggio. I clienti non vedono ancora il negozio.
+      other: Mancano ${n} passaggi. I clienti non vedono ancora il negozio.
+    allDone: Tutto pronto. Un tocco e i clienti ti trovano.
+    continueWith(step): 'Prossimo: ${step}'
+    optional: Facoltativo
+    shop: Dati del negozio
+    shopHint: Nome e telefono
+    address: Indirizzo
+    addressHint: Dove ti trovano i clienti
+    services: Servizi e prezzi
+    servicesHint: Almeno uno, con il prezzo
+    hours: Orari di apertura
+    hoursHint: Quando ricevi i clienti
+    liveTitle: Sei online
+    liveBody: Ora i clienti possono trovare il tuo negozio.
+    liveCta: Apri il mio negozio
+  stepOf(current, total): ${current}/${total}
+  continue_: Continua
+  shop:
+    overline: Il tuo negozio
+    title: Come ti trovano i clienti?
+    nameLabel: Nome del negozio
+    nameHelper: Lo vedono i clienti, scritto così.
+    phoneLabel: Telefono del negozio
+    phoneHelper: I clienti possono chiamarti dalla prenotazione.
+    photoLabel: Foto
+    photoOptional: facoltativa
+    photoAdd: Aggiungi una foto
+    photoHint: L'interno o la vetrina · puoi farlo dopo
+    photoSource: Foto del negozio
+    photoCamera: Scatta una foto
+    photoGallery: Scegli dalla galleria
+    photoRemove: Rimuovi foto
+    photoVisible: Visibile ai clienti
+    photoCameraNew: Scatta una nuova foto
+    photoSourceBody: È la prima cosa che vedono i clienti. Meglio la vetrina o l'interno, in orizzontale.
+    photoTipsTitle: Per una buona foto
+    photoTipLight: Luce naturale, di giorno
+    photoTipLandscape: Telefono in orizzontale
+    photoTipFaces: Niente volti di clienti senza permesso
+    photoFailed: Non siamo riusciti ad aprire la foto. Riprova.
+  details:
+    title: Dati del negozio
+    addressLabel: Indirizzo
+    addressMissing: Indirizzo da scegliere
+    addressMissingHelper: Scegli dove si trova il negozio
+    addressPinned: pin sulla mappa
+    addressNotPinned: pin da confermare
+    liveNote: Le modifiche sono subito visibili ai clienti.
+    saved: Negozio aggiornato
+  address:
+    overline: Indirizzo
+    title: Dove si trova?
+    searchHint: Via e numero
+    mapPreview: anteprima mappa
+    helper: Scegli un indirizzo e posizioniamo il pin da soli.
+  services:
+    overline: Servizi
+    title: Cosa prenotano i clienti?
+    subtitle: Aggiungi tutti i servizi che offri. Ne serve almeno uno.
+    newService: Nuovo servizio
+    nameHint: Nome del servizio
+    priceHint: Prezzo
+    save: Salva
+    edit: Modifica
+    delete: Elimina
+    editTitle: Modifica servizio
+    actionsFor(name): Azioni per ${name}
+    continueOne: Continua · 1 servizio
+    minutes(count): ${count} min
+    helper: I prezzi li vedono i clienti, ma li pagano a te in negozio. La durata decide quanto spazio occupa in agenda.
+    continueWith(count): Continua · ${count} servizi
+    screenTitle: Servizi
+    manageSubtitle: I clienti scelgono tra questi quando prenotano. Tocca un servizio per modificarlo.
+    add: Aggiungi servizio
+    emptyTitle: Ancora nessun servizio
+    emptyBody: Aggiungi il primo servizio che i clienti possono prenotare.
+    nameLabel: Nome del servizio
+    durationLabel: Durata
+    priceLabel: Prezzo
+    saveChanges: Salva modifiche
+    previousPrice(price): Prezzo precedente ${price}
+    deleteTitle(name): Eliminare ${name}?
+    deleteBody: Le prenotazioni già fatte restano valide. Il servizio non sarà più prenotabile.
+    deleted: Servizio eliminato
+    saved: Servizio aggiornato
+    added: Servizio aggiunto
+  hours:
+    overline: Orari
+    title: Quando sei aperto?
+    closed: Chiuso
+    lunchBreak: Pausa pranzo
+    copyToOpenDays: Copia su tutti i giorni aperti
+    moreDays(days): + ${days}
+    screenTitle: Orari e chiusure
+    weekly: La tua settimana
+    continuous: orario continuato
+    open: Aperto
+    slots: Fasce orarie
+    addSlot: Aggiungi fascia
+    removeSlot: Rimuovi fascia
+    copyTo: Copia su altri giorni
+    copyNone: Nessuno
+    overlap: Due fasce si sovrappongono.
+    backwards: La fine deve venire dopo l'inizio.
+    saved: Orari aggiornati
+  review:
+    title: Tutto pronto per aprire
+    subtitle: Controlla un'ultima volta. Puoi cambiare tutto anche dopo, da Negozio.
+    edit: Modifica
+    noPhoto: senza foto
+    pinConfirmed: pin confermato
+    servicesFrom(count, price): ${count} servizi · da ${price}
+    openDays(count): ${count} giorni aperti
+    closedDays(days): chiuso ${days}
+    hiddenBefore: Finché non pubblichi, il negozio
+    hiddenStrong: non è visibile
+    hiddenAfter: ai clienti.
+    publish: Pubblica il negozio
+
+weekdays:
+  short:
+    mon: Lun
+    tue: Mar
+    wed: Mer
+    thu: Gio
+    fri: Ven
+    sat: Sab
+    sun: Dom
+  long:
+    mon: Lunedì
+    tue: Martedì
+    wed: Mercoledì
+    thu: Giovedì
+    fri: Venerdì
+    sat: Sabato
+    sun: Domenica
+
+notifications:
+  allow: Attiva le notifiche
+  skip: Non ora
+  owner:
+    title: Sappi subito chi prenota
+    body: Senza notifiche scopri le prenotazioni solo aprendo l'agenda.
+    pointOne: Ogni nuova prenotazione
+    pointTwo: Annullamenti, così riempi lo slot
+    firstTitle: Nuova prenotazione
+    firstBody: Marco R. · Taglio uomo · sab 3 ott, 10:30
+    firstWhen: ora
+    secondTitle: Slot liberato
+    secondBody: Paolo M. ha annullato le 11:30.
+    secondWhen: 8 min fa
+  customer:
+    title: Ti avvisiamo prima dell'appuntamento
+    body: Solo cose che riguardano le tue prenotazioni. Niente pubblicità.
+    pointOne: Promemoria 2 ore prima
+    pointTwo: Annullamenti e rimborsi
+    firstTitle: Tra 2 ore
+    firstBody: Taglio uomo da Barbieri Navona alle 10:30.
+    firstWhen: ora
+    secondTitle: Prenotazione annullata
+    secondBody: Barbieri Navona ha annullato sab 3 ott. Costo rimborsato.
+    secondWhen: ieri
+
+# Screens G and H: what the app may send, per role. Saved as soon as a switch
+# moves — the screen has no Salva button.
+notificationSettings:
+  screenTitle: Notifiche
+  blocked:
+    title: Notifiche disattivate sul telefono
+    bodyOwner: Non ti arrivano le nuove prenotazioni.
+    bodyCustomer: Non ti arrivano i promemoria degli appuntamenti.
+    action: Apri Impostazioni
+  lead:
+    oneHour: 1 ora
+    twoHours: 2 ore
+    oneDay: 1 giorno
+  customer:
+    reminderSection: Promemoria
+    reminder: Prima dell'appuntamento
+    reminderSubtitle: Ti avvisiamo quando è ora di andare
+    bookingsSection: Prenotazioni
+    cancellations: Annullamenti e rimborsi
+    cancellationsSubtitle: 'Sempre attive: riguardano i tuoi soldi'
+    cancellationsLocked: Attive
+  owner:
+    agendaSection: Agenda
+    newBookings: Nuove prenotazioni
+    newBookingsSubtitle: Appena un cliente paga il posto
+    cancellations: Annullamenti
+    cancellationsSubtitle: Lo slot torna libero
+    summarySection: Riepilogo
+    dailySummary: Agenda del giorno
+    dailySummarySubtitle: Quanti clienti hai oggi
+    summaryTime: Orario di invio
+
+bookings:
+  rightNow: Adesso
+  upcoming: Prossime
+  past: Passate
+  emptyTitle: Niente in programma
+  emptyBody: Le prenotazioni che fai compaiono qui, con lo stato aggiornato.
+  emptyPastTitle: Nessuno storico
+  emptyPastBody: Qui trovi i tagli già fatti.
+  inShop(price): ${price} in negozio
+  expiresIn(plural):
+    one: Scade tra ${n} min
+    other: Scade tra ${n} min
+  holdLapsed: Posto non più tenuto
+  payNow: Paga ora
+  freeUntil(when): Annullabile gratis fino a ${when}
+  repeat: Prenota di nuovo
+  byYou: da te
+  byShop: dal negozio
+  refunded: rimborsata
+  notRefunded: non rimborsata
+  paid: pagato
+  paidWithCard(card): pagato · •••• ${card}
+  feeNote: 'Il taglio si paga in negozio. Qui vedi solo lo stato del posto.'
+  detailTitle: La tua prenotazione
+  serviceLine(service, minutes): ${service} · ${minutes} minuti
+  map: Mappa
+  callShop: Chiama il negozio
+  payInShop: da pagare in negozio
+  bookNowService: Servizio BookNow
+  addToCalendar: Aggiungi al calendario
+  calendarFailed: Nessuna app calendario su questo dispositivo.
+  mapFailed: Nessuna app mappe su questo dispositivo.
+  cancel:
+    action: Annulla prenotazione
+    title: Annullare il taglio?
+    subtitle(when, time, shop): ${when} alle ${time}, ${shop}.
+    refundTitle(fee): Rimborso di ${fee}
+    refundBody: Mancano più di 2 ore, quindi il servizio ti viene restituito in 3–5 giorni.
+    refundBodyCard(card): Mancano più di 2 ore, quindi il servizio ti viene restituito su •••• ${card} in 3–5 giorni.
+    noRefundTitle: Il servizio non viene rimborsato
+    noRefundBody(fee): Mancano meno di 2 ore, quindi ${fee} resta al negozio. Il taglio non lo paghi.
+    slotFreed: Lo slot torna subito libero per altri clienti.
+    confirm: Sì, annulla
+    keep: Mantieni la prenotazione
+    done: Prenotazione annullata.
+    doneRefunded(fee): Prenotazione annullata · ${fee} rimborsati.
+    failed: Non è stato possibile annullare. Riprova.
+
+account:
+  title: Profilo
+  signedInWith(provider): Accesso con ${provider}
+  editProfile: Modifica profilo
+  appearanceTitle: Aspetto e lingua
+  themeSystem: Sistema
+  themeLight: Chiaro
+  themeDark: Scuro
+  notificationsTitle: Notifiche
+  reminderTitle: Promemoria del taglio
+  reminderBody: 2 ore prima
+  shopNewsTitle: Novità del negozio
+  shopNewsBody: Orari e chiusure
+  accountTitle: Account
+  payments: Pagamenti e ricevute
+  switchToBarber: Passa a barbiere
+  help: Aiuto e contatti
+  signOut: Esci
+  signOutConfirmTitle: Vuoi uscire?
+  signOutConfirmBody: Dovrai accedere di nuovo per vedere le tue prenotazioni.
+  deleteAccount: Elimina account
+  comingSoon: Disponibile a breve.
+
+home:
+  waitShort(n, from, to): ${n} · ${from}–${to} min
+  useLocation: Usa la mia posizione
+  useLocationLine: Mostra prima i negozi più vicini
+  locationFailed: Posizione non disponibile. Controlla che sia attiva e consentita per BookNow.
+  guestBlocked: Accedi per vedere i negozi vicino a te.
+  intentNow: Adesso
+  intentTomorrow: Domani
+  searchHint: Cerca negozi o servizi
+  clearCategory: Togli la categoria
+  whereTitle: Dove cerchiamo?
+  list: Lista
+  map: Mappa
+  headlineNow(plural):
+    one: ${n} negozio può riceverti ora
+    other: ${n} negozi possono riceverti ora
+  headlineToday(plural):
+    one: ${n} negozio libero oggi
+    other: ${n} negozi liberi oggi
+  headlineTomorrow(plural):
+    one: ${n} negozio da prenotare domani
+    other: ${n} negozi da prenotare domani
+  feedNow: Prima l'attesa più breve
+  feedToday: Prossimi orari liberi
+  feedTomorrow: Prenota per domani
+  categoryNotice: I negozi non sono ancora divisi per categoria, quindi li vedi tutti.
+  emptyNowTitle: Nessuno può riceverti adesso
+  emptyNowBody: Prenota un orario più tardi oggi.
+  emptyNowCta: Vedi gli orari di oggi
+  joinLine: Mettiti in coda
+  bookTime: Prenota un orario
+  seeLine: Vedi la coda
+  seeTimes: Vedi gli orari
+  headerTitle: Prenota una poltrona o salta la fila
+  whatDoYouNeed: Di cosa hai bisogno?
+  searchByName: Cerca per nome
+  whereLabel: Dove
+  whenLabel: Quando
+  today: Oggi
+  allCities: Tutte le città
+  searchCategory(category): Cerca ${category}
+  foldSearch: Chiudi la ricerca
+  openSearch: Apri la ricerca completa
+  explore: Esplora le categorie
+  all: Tutte
+  nearYou: Vicino a te
+  shortestWait: Attesa più breve ora
+  join: Entra
+  book: Prenota
+  filterOpenNow: Aperti ora
+  filterNearest: Più vicini
+  filterShortestQueue: Coda più breve
+  waiting(n, from, to): ${n} in attesa · ${from}–${to} min
+  noWait: Nessuna attesa
+  queueClosed: Coda chiusa
+  nextAt(time): Prossimo ${time}
+  inQueue: In coda
+  view: Vedi
+  mapNow: Ora
+  mapWait(from, to): "${from}–${to}'"
+  inLine: in fila
+  greeting(name): Ciao ${name}
+  greetingNoName: Ciao
+  nextBooking: Prossima prenotazione
+  freeToday: Liberi oggi
+  shopsNearby: Negozi vicino a te
+  nothingBooked: Ancora nessuna prenotazione
+  nothingBookedBody: 'Scegli un orario qui sotto: blocchi il posto con un acconto.'
+  noFreeToday: Nessun orario libero oggi.
+  noShops: Nessun negozio disponibile al momento.
+  moreTimes: altri orari
+  metresAway(metres): ${metres} m
+  kilometresAway(km): ${km} km
+  servicesCount(plural):
+    one: ${n} servizio
+    other: ${n} servizi
+  fromPrice(price): da ${price}
+  openNow: Aperto
+  openUntil(time): Aperto · chiude ${time}
+  closedNow: Chiuso
+  closedUntil(time): Chiuso · apre alle ${time}
+
+agenda:
+  freeLine(length): ${length} · Tocca per bloccare
+  hours(count): ${count} h
+  today: Oggi
+  pickDate: Scegli una data
+  closedShort: chiuso
+  closedTitle: Chiuso
+  closedBody: Nessun orario di apertura in questo giorno.
+  closureBody: Chiusura straordinaria. Nessuna prenotazione possibile.
+  emptyTitle: Giornata libera
+  emptyBody: Nessuna prenotazione per questo giorno.
+  booked(plural):
+    one: ${n} prenotazione
+    other: ${n} prenotazioni
+  free(plural):
+    one: ${n} orario libero
+    other: ${n} orari liberi
+  toCollect(amount): ${amount} da incassare
+  now: ora
+  freeLabel: Libero
+  customerFallback: Cliente
+  minutes(count): ${count} min
+  cancelledBy(name): annullata da ${name}
+  until(time, amount): fino alle ${time} · ${amount} in negozio
+  blockedLabel: Bloccato
+  openBooking(name): Apri la prenotazione di ${name}
+  blockFree(time): Blocca l'orario libero delle ${time}
+  openBlock(time): Apri il blocco delle ${time}
+  sheet:
+    timeLine(from, to, service, minutes): ${from} – ${to} · ${service} · ${minutes} min
+    toCollect: Da incassare in negozio
+    holdPaid(amount): '${amount} di acconto già pagato nell''app'
+    call(name): Chiama ${name}
+    callGeneric: Chiama
+    markArrived: Segna come arrivato
+    noShow: Non presentato
+    noShowFrom(time): Non presentato · dalle ${time}
+    cancel: Annulla prenotazione
+    noDialler: Nessuna app telefono su questo dispositivo.
+    comingSoon: Disponibile a breve.
+  block:
+    title: Blocca orario
+    from: Dalle
+    to: Alle
+    note: Nota
+    noteHint: Pausa, cliente senza prenotazione…
+    save: Blocca
+    backwards: La fine deve venire dopo l'inizio.
+    tooLong: Un blocco non può superare le 8 ore.
+    blockedTitle: Orario bloccato
+    remove: Sblocca orario
+    removeTitle: Sbloccare questo orario?
+    removeBody: Torna prenotabile dai clienti.
+    blocked: Orario bloccato.
+    unblocked: Orario sbloccato.
+
+flow:
+  doneShort: Prenotazione fatta
+  whenTitle: Quando ti va bene?
+  morning: Mattina
+  afternoon: Pomeriggio
+  lunchBreak(from, to): ${from} – ${to} · pausa pranzo
+  legendTaken: '— barrato: occupato'
+  legendPast: '— sbiadito: passato'
+  continueWith(when, time): Continua · ${when}, ${time}
+  closedTitle: Chiuso
+  closedBody: Il negozio non apre in questo giorno. Scegline un altro.
+  noTimesTitle: Nessun orario libero
+  noTimesBody: Prova un altro giorno.
+  confirmTitle: Controlla e conferma
+  change: Cambia
+  payInShopWithMinutes(minutes): ${minutes} min · paghi in negozio
+  bookNowService: Servizio BookNow
+  payNow: lo paghi adesso
+  payAndConfirm(fee): Paga ${fee} e conferma
+  payAndConfirmNoFee: Paga e conferma
+  terms: 'Confermando accetti i Termini. Il taglio si paga in negozio.'
+  freeCancellationUntil(when): Annullabile gratis fino a ${when}.
+  arriveEarly: 'Arriva 5 minuti prima: il posto è tenuto per 10 minuti.'
+  declinedTitle: Pagamento non riuscito
+  declinedBody: La carta è stata rifiutata. Non ti abbiamo addebitato nulla.
+  holdLeft(plural):
+    one: Slot tenuto ancora ${n} min
+    other: Slot tenuto ancora ${n} min
+  holdLapsed: Lo slot non è più tenuto
+  retry: Riprova
+  giveUp: Lascia perdere
+  confirmingTitle: Stiamo confermando
+  confirmingBody: Il pagamento è andato a buon fine. Ci vuole qualche secondo.
+  doneTitle: È tutto a posto
+  doneBody: Il tuo posto è prenotato. Ti mandiamo un promemoria 2 ore prima.
+  feePaid(fee): ${fee} pagati
+  inShop(price): ${price} in negozio
+  done: Fatto
+
+queue:
+  liveNow: In diretta adesso
+  turnTitleShort: Tocca a te
+  splashPlace(n, shop): Sei il n. ${n} da ${shop}
+  splashTurn(shop): Tocca a te da ${shop}
+  live: Coda dal vivo
+  walkIn: Senza appuntamento
+  stateOpen: Coda aperta
+  statePaused: In pausa
+  stateFull: Completa per oggi
+  stateClosed: Chiusa per oggi
+  stateOutside: Fuori orario
+  waitingCount(plural):
+    one: persona in attesa
+    other: persone in attesa
+  estimateNow: Se entri ora, attesa stimata
+  range(from, to): ${from}–${to} min
+  pausedBody: 'Il barbiere ha messo in pausa la coda. Chi è già in fila mantiene il posto: riprova tra poco.'
+  fullBody: Chi entra ora finirebbe dopo la chiusura. Riprova domani.
+  closedBody: La coda è chiusa per oggi.
+  outsideBody: Il negozio è chiuso in questo momento.
+  services: Servizi
+  pickService: Cosa ti serve?
+  minutes(minutes): ${minutes} min
+  inShop(price): ${price} in negozio
+  feeHint(fee): Paghi ${fee} per il posto in coda. Il servizio lo paghi in negozio.
+  join: Mettiti in coda
+  turnIn: Tocca a te tra
+  about(range): circa ${range}
+  refundRule: Se lasci la coda con almeno 3 persone davanti, ti rimborsiamo il costo del servizio.
+  graceRule: 'Ti avvisiamo quando manca una persona e quando tocca a te: da quel momento hai 10 minuti per arrivare.'
+  payAndJoin(fee): Paga ${fee} e mettiti in coda
+  placeAfterPayment: Il posto è tuo appena il pagamento va a buon fine.
+  joiningTitle: Ti stiamo mettendo in coda
+  joiningBody: Il pagamento è andato a buon fine. Ci vuole qualche secondo.
+  inQueue: Sei in coda
+  almost: Quasi il tuo turno
+  position(n): ${n}°
+  inLine: in coda
+  ahead(plural):
+    one: 1 persona prima di te
+    other: ${n} persone prima di te
+  next: Sei il prossimo
+  waitAnywhere: 'Puoi aspettare dove vuoi: ti avvisiamo quando manca una persona.'
+  leaveRefund: 'Hai almeno 3 persone davanti: se lasci ora, ti rimborsiamo il costo del servizio.'
+  leaveNoRefund: 'Hai meno di 3 persone davanti: se lasci ora, il costo del servizio non ti viene rimborsato.'
+  leave: Lascia la coda
+  turnTitle: È il tuo turno
+  turnBody: Il barbiere ti sta aspettando. Hai 10 minuti per arrivare.
+  turnLeft: per arrivare
+  turnLate: 'Dopo 10 minuti il barbiere può segnarti come non presentato: in quel caso il costo del servizio non viene rimborsato.'
+  servingTitle: Sei in poltrona
+  servingBody: Il servizio è iniziato. Lo paghi in negozio, come sempre.
+  leaveSheet:
+    title: Lasciare la coda?
+    body(shop): Perdi il tuo posto da ${shop}. Se cambi idea dovrai rimetterti in fondo alla coda.
+    refund(fee): Ti rimborsiamo ${fee} entro 5–10 giorni lavorativi.
+    noRefund(fee): 'Manca poco al tuo turno: se lasci ora, ${fee} non ti viene rimborsato.'
+    confirm: Sì, lascia la coda
+    confirmNoRefund: Lascia comunque
+    stay: Resta in coda
+  leftTitle: Hai lasciato la coda
+  leftRefunded(fee): Ti rimborsiamo ${fee} entro 5–10 giorni lavorativi.
+  leftKept: Il costo del servizio non è stato rimborsato.
+  endedTitle: Non sei più in coda
+  endedBody: Se il barbiere ti ha tolto dalla coda o ha chiuso per oggi, ti rimborsiamo il costo del servizio.
+  declinedTitle: Pagamento non riuscito
+  declinedBody: La carta è stata rifiutata. Non ti abbiamo addebitato nulla.
+  retry: Riprova
+  giveUp: Lascia perdere
+  done: Fatto
+  homeTitle: Sei in coda
+  homePaid: Pagato
+  seeQueue: Vedi la coda
+  owner:
+    walkInFab: Senza app
+    nobodyWaiting: Nessuno in attesa. Goditi il caffè.
+    reopen: Riapri
+    minutesLeft(minutes): ${minutes} min rimasti
+    doneWith(name): Fine con ${name}
+    calledName(name): Chiamato ${name}
+    waitingFor(minutes): Attesa ${minutes} min
+    theyreHere: È arrivato, inizia
+    noShowIn(time): Assente tra ${time}
+    chair: Poltrona
+    freeNow: Libero ora
+    nobodyToCall: Nessuno in attesa
+    kindApp: App
+    kindWalkIn: Senza app
+    removeFromLine: Togli dalla coda
+    rowNoteApp: Togliere qualcuno rimborsa sempre la sua commissione.
+    rowNoteWalkIn: Chi entra senza app non ha pagato nulla.
+    title: Coda di oggi
+    summary(waiting, until): ${waiting} in attesa · la coda finisce verso le ${until}
+    summaryEmpty: Nessuno in attesa
+    pause: Pausa
+    resume: Riprendi
+    closeToday: Chiudi per oggi
+    inChair: In poltrona
+    called: Chiamata
+    waiting: In attesa
+    since(minutes): da ${minutes} min
+    calledAt(time): chiamata alle ${time}
+    queuedAt(time): in coda dalle ${time}
+    graceLeft(minutes): ha ancora ${minutes} min
+    done: Fatto
+    start: Inizia
+    noShow: Non presentato
+    noShowFrom(time): Non presentato · dalle ${time}
+    walkInName: Walk-in
+    remove(name): Rimuovi ${name} dalla coda
+    callNext: Chiama il prossimo
+    addWalkIn: Walk-in
+    emptyTitle: Nessuno in coda
+    emptyBody: Quando un cliente si mette in coda dall'app lo vedi qui. Chi entra senza app lo aggiungi con Walk-in.
+    removeSheet:
+      title(name): Rimuovere ${name}?
+      body: Esce dalla coda e gli rimborsiamo il costo del servizio.
+      confirm: Rimuovi dalla coda
+      keep: Annulla
+    walkInSheet:
+      title: Aggiungi un walk-in
+      body: Per chi è entrato senza l'app. Va in fondo alla coda, così l'attesa resta giusta per tutti.
+      service: Servizio
+      name: Nome (facoltativo)
+      nameHint: Es. Andrea
+      add: Aggiungi alla coda
+      cancel: Annulla
+  mode:
+    row: Come lavori
+    booking: Su appuntamento
+    queue: Coda
+    both: Entrambi
+    title: Come lavori
+    lead: Scegli come i clienti arrivano da te. Puoi cambiare quando vuoi.
+    bookingBody: I clienti scelgono giorno e ora dall'app. Adatto se lavori su agenda.
+    queueBody: I clienti vedono quante persone aspettano e si mettono in fila dall'app. Adatto se lavori senza appuntamento.
+    blocked: Non puoi cambiare adesso. Puoi smettere di prendere prenotazioni quando non ne hai più di future, e chiudere la coda quando è vuota.
+    bothBody: I clienti scelgono se prenotare un orario o mettersi in coda. Gli orari prenotati restano fissi e la coda si adatta.
+    save: Salva
+    saved: Modalità aggiornata
+
+categories:
+  barber: Barbiere
+  salon: Parrucchiere
+  nails: Unghie
+  beauty: Bellezza
+  spa: Spa
+  lashes: Ciglia
+  tattoo: Tatuaggi
+  makeup: Trucco
+  kids: Taglio bimbi
+  more: Altro
+
+search:
+  recent: Recenti
+  allShops: Tutti i negozi
+  title: Cerca
+  hint: Cerca per nome
+  noResults: Nessun negozio trovato.
+  categoryNotice(category): I negozi non sono ancora divisi per categoria, quindi vedi tutti i negozi, non solo ${category}.
+
+live:
+  overlineBooked: Prenotato
+  freeUntil(when): Annulli gratis fino a ${when}
+  cancelBooking: Annulla prenotazione
+  cancelTitle: Annullare questa prenotazione?
+  keepBooking: Tieni la prenotazione
+  yesCancel: Sì, annulla
+  refundYes2(fee): La commissione di ${fee} ti viene rimborsata.
+  refundNo2(fee): Mancano meno di 2 ore, quindi la commissione di ${fee} non è rimborsata.
+  cancelledRefunded(fee): Prenotazione annullata. ${fee} rimborsati.
+  cancelledNoRefund: Prenotazione annullata.
+  cancelFailed: Annullamento non riuscito. La prenotazione resta valida.
+  overline: In coda
+  headInAt(shop): Vai ora · ${shop}
+  chair: Poltrona
+  directions: Indicazioni
+  inChair: Sei in poltrona
+  headIn: Entra adesso. Ti tengono il posto per 10 minuti.
+  leave: Lascia la coda
+  leaveTitle: Lasciare la coda?
+  refundYes: Ti rimborsiamo il costo del servizio.
+  refundNo: Con meno di 3 persone davanti, il costo del servizio non viene rimborsato.
+  keep: Tieni il posto
+  leaveConfirm: Sì, lascia
+  leftRefunded: Hai lasciato la coda. Costo rimborsato.
+  leftNoRefund: Hai lasciato la coda.
+  leaveFailed: Non siamo riusciti a toglierti dalla coda. Hai ancora il tuo posto.
+
+guest:
+  ownerSheetTitle: Accedi al tuo negozio
+  ownerCustomerAccount: Questo è un account cliente. Presto potrai usare un solo account per entrambi.
+  title: Salta l'attesa, tieni il posto
+  body: Un tocco con l'account che hai già. Nuovo o no, sono gli stessi due pulsanti.
+  activityTitle: Le tue visite stanno qui
+  activityBody: Accedi per seguire il tuo posto in coda e tenere insieme le prenotazioni.
+  signIn: Accedi
+  signInTitle: Accedi a BookNow
+  light: Chiaro
+  dark: Scuro
+  system: Auto
+  ownerTitle: Hai un negozio?
+  ownerBody: Accedi, o configuralo in pochi minuti.
+  gateBook: Accedi per prenotare questo orario
+  gateJoin: Accedi per metterti in coda
+  gateBody(what): ${what}. La tua scelta resta, basta un tocco.
+
+welcome:
+  title: Come deve chiamarti il negozio?
+  nameLabel: Il tuo nome
+  body: Lo vedono solo i negozi dove vai. Puoi cambiarlo dopo.
+  cta: Continua
+
+shopScreen:
+  closedDay(day): Chiuso ${day}. Scegli un altro giorno.
+  noTimes: Nessun orario libero in questo giorno. Scegline un altro.
+  joinNow(service): ${service} · entra ora
+  paying: Pagamento in corso
+  tryAgain: Riprova
+  payFee(fee): Paga ${fee}
+  placedAt(shop): ${shop} · ti avvisiamo quando tocca a te
+  previewTitle: Anteprima
+  previewBody: Questo è ciò che vedono i clienti.
+  whatLike: Cosa desideri?
+  when: Quando?
+  sumPick: Scegli un orario per continuare
+  sumShop(price): ${price} in negozio
+  sumShopFee(price, fee): ${price} in negozio · ${fee} ora
+  continue_: Continua
+  bookTitle(when): Prenotare ${when}?
+  joinTitle(shop): Metterti in coda da ${shop}?
+  feeLabel: Costo BookNow
+  feeWhen: Lo paghi ora
+  serviceWhen: Lo paghi al negozio
+  noFee: Prenotazione gratuita
+  confirmFree: Conferma la prenotazione
+  heldFor(time): Tenuto per te per ${time}
+  declined: La carta è stata rifiutata. Non ti abbiamo addebitato nulla.
+  placed: Sei in coda
+  placedBody: Ti avvisiamo quando tocca a te.
+
+today:
+  untilTime(time): fino alle ${time}
+  bookedTag: Prenotato
+  queueLine(n, time): ${n} in attesa · fino alle ${time} circa
+  nowLabel: Adesso
+  nextLabel: Prossimo
+  comingUp: In arrivo
+  details: Dettagli
+  callName(name): Chiama ${name}
+  nothingLeftTitle: Nient'altro prenotato oggi
+  nothingLeftBody: Il tempo libero resta aperto ai clienti.
+  markedArrived(name): ${name} segnato come arrivato
+  markedNoShow(name): ${name} segnato come assente
+  noShowTitle(name): Segnare ${name} come assente?
+  noShowBody: Non si può annullare.
+  cancelTitle(name): Annullare la prenotazione di ${name}?
+  cancelBody: Il cliente viene avvisato e l'orario torna libero.
+  cancelled: Prenotazione annullata
+  stateTitle: Com'è la coda oggi?
+  stateOpenTitle: Aperta
+  stateOpenBody: Ci si può mettere in coda dall'app.
+  statePauseBody: Nessun nuovo ingresso. Chi è in coda resta.
+  stateCloseBody(n): Nessun nuovo ingresso. Servi ancora i ${n} in coda, e chi non viene servito è rimborsato.
+  closedInfo: La coda è chiusa per oggi. Servi ancora chi è in coda, e chi non viene servito è rimborsato.
+  pausedBanner: In pausa. Nessun nuovo ingresso.
+  closedBanner: Chiusa per oggi. Finisci con chi è in coda.
+  wayLine: Coda
+  wayBookings: Prenotazioni
+  calendarTitle: Calendario
+  calendarQueueTitle: Il tuo negozio lavora con la coda
+  calendarQueueBody: I clienti si mettono in coda invece di prenotare un orario, quindi qui non c'è nulla da pianificare. Gestisci la coda da Oggi.
+  calendarQueueCta: Cambia come lavori
+
+homeWidgets:
+  inLine: In coda
+  nextVisit: Prossima visita
+  bookAgain: Prenota di nuovo
+  findTitle: Trova un negozio
+  findLine: Prenota un orario o mettiti in coda
+  directions: Indicazioni
+  headIn: Entra entro 10 min
+  ahead(plural):
+    zero: Sei il prossimo
+    one: ${n} persona davanti
+    other: ${n} persone davanti
+  waiting: in attesa
+  waitingCount(n): ${n} in attesa
+  nobodyWaiting: Nessuno in attesa
+  nextUp: Prossimo
+  calledLine: Chiamato, sta arrivando
+  nextAppointment: Prossimo appuntamento
+  nothingLeft: Nient'altro oggi
+  moreToday(n): altri ${n} oggi
+  openToday: Apri oggi
+  staleQueue: Apri BookNow per controllare il tuo posto
+  staleBooking: Apri BookNow per la prossima visita
+  staleOwner: Apri BookNow per vedere oggi
