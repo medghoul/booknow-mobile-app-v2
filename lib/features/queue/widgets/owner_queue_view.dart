@@ -295,7 +295,6 @@ class _QueueStateSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.t;
-    final closed = queue.state == QueueState.closed;
     void choose(Future<void> Function() action) {
       Navigator.of(context).pop();
       action();
@@ -304,36 +303,30 @@ class _QueueStateSheet extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      // Closing is for the rest of the day, but nothing about it is final:
+      // the end-of-day job refunds whoever is still waiting either way, so
+      // the owner can open again if they closed by mistake or stay late.
       children: [
-        if (closed)
-          Text(
-            t.today.closedInfo,
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: context.colorScheme.onSurfaceVariant,
-            ),
-          )
-        else ...[
-          _StateOption(
-            title: t.today.stateOpenTitle,
-            body: t.today.stateOpenBody,
-            selected: queue.state == QueueState.open,
-            onTap: () => choose(cubit.resume),
-          ),
-          const SizedBox(height: 14),
-          _StateOption(
-            title: t.queue.owner.pause,
-            body: t.today.statePauseBody,
-            selected: queue.state == QueueState.paused,
-            onTap: () => choose(cubit.pause),
-          ),
-          const SizedBox(height: 14),
-          _StateOption(
-            title: t.queue.owner.closeToday,
-            body: t.today.stateCloseBody(n: queue.waitingCount),
-            selected: false,
-            onTap: () => choose(cubit.closeForToday),
-          ),
-        ],
+        _StateOption(
+          title: t.today.stateOpenTitle,
+          body: t.today.stateOpenBody,
+          selected: queue.state == QueueState.open,
+          onTap: () => choose(cubit.resume),
+        ),
+        const SizedBox(height: 14),
+        _StateOption(
+          title: t.queue.owner.pause,
+          body: t.today.statePauseBody,
+          selected: queue.state == QueueState.paused,
+          onTap: () => choose(cubit.pause),
+        ),
+        const SizedBox(height: 14),
+        _StateOption(
+          title: t.queue.owner.closeToday,
+          body: t.today.stateCloseBody(n: queue.waitingCount),
+          selected: queue.state == QueueState.closed,
+          onTap: () => choose(cubit.closeForToday),
+        ),
       ],
     );
   }
@@ -430,29 +423,27 @@ class _NotOpenBanner extends StatelessWidget {
               ),
             ),
           ),
-          if (paused) ...[
-            SizedBox(width: 12.w),
-            SizedBox(
-              height: 44,
-              child: FilledButton(
-                onPressed: busy ? null : context.read<OwnerQueueCubit>().resume,
-                style: FilledButton.styleFrom(
-                  backgroundColor: tint.foreground,
-                  foregroundColor: tint.background,
-                  minimumSize: const Size(0, 44),
-                  padding: EdgeInsets.symmetric(horizontal: 14.w),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  textStyle: context.textTheme.labelMedium?.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
+          SizedBox(width: 12.w),
+          SizedBox(
+            height: 44,
+            child: FilledButton(
+              onPressed: busy ? null : context.read<OwnerQueueCubit>().resume,
+              style: FilledButton.styleFrom(
+                backgroundColor: tint.foreground,
+                foregroundColor: tint.background,
+                minimumSize: const Size(0, 44),
+                padding: EdgeInsets.symmetric(horizontal: 14.w),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(t.queue.owner.reopen),
+                textStyle: context.textTheme.labelMedium?.copyWith(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
+              child: Text(t.queue.owner.reopen),
             ),
-          ],
+          ),
         ],
       ),
     );

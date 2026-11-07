@@ -975,7 +975,6 @@ today:
   stateOpenBody: Ci si può mettere in coda dall'app.
   statePauseBody: Nessun nuovo ingresso. Chi è in coda resta.
   stateCloseBody(n): Nessun nuovo ingresso. Servi ancora i ${n} in coda, e chi non viene servito è rimborsato.
-  closedInfo: La coda è chiusa per oggi. Servi ancora chi è in coda, e chi non viene servito è rimborsato.
   pausedBanner: In pausa. Nessun nuovo ingresso.
   closedBanner: Chiusa per oggi. Finisci con chi è in coda.
   wayLine: Coda

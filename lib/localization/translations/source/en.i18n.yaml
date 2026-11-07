@@ -975,7 +975,6 @@ today:
   stateOpenBody: People can join from the app.
   statePauseBody: Nobody new can join. People in line stay.
   stateCloseBody(n): Nobody new can join. You still serve the ${n} in line, and anyone not served is refunded.
-  closedInfo: The queue is closed for today. You still serve the people in line, and anyone not served is refunded.
   pausedBanner: Paused. Nobody new can join.
   closedBanner: Closed for today. Finish the people in line.
   wayLine: Line

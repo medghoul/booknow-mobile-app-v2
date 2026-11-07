@@ -839,7 +839,6 @@ class _Translations$today$it extends Translations$today$en {
 	@override String get stateOpenBody => 'Ci si può mettere in coda dall\'app.';
 	@override String get statePauseBody => 'Nessun nuovo ingresso. Chi è in coda resta.';
 	@override String stateCloseBody({required Object n}) => 'Nessun nuovo ingresso. Servi ancora i ${n} in coda, e chi non viene servito è rimborsato.';
-	@override String get closedInfo => 'La coda è chiusa per oggi. Servi ancora chi è in coda, e chi non viene servito è rimborsato.';
 	@override String get pausedBanner => 'In pausa. Nessun nuovo ingresso.';
 	@override String get closedBanner => 'Chiusa per oggi. Finisci con chi è in coda.';
 	@override String get wayLine => 'Coda';
@@ -2482,7 +2481,6 @@ extension on TranslationsIt {
 			'today.stateOpenBody' => 'Ci si può mettere in coda dall\'app.',
 			'today.statePauseBody' => 'Nessun nuovo ingresso. Chi è in coda resta.',
 			'today.stateCloseBody' => ({required Object n}) => 'Nessun nuovo ingresso. Servi ancora i ${n} in coda, e chi non viene servito è rimborsato.',
-			'today.closedInfo' => 'La coda è chiusa per oggi. Servi ancora chi è in coda, e chi non viene servito è rimborsato.',
 			'today.pausedBanner' => 'In pausa. Nessun nuovo ingresso.',
 			'today.closedBanner' => 'Chiusa per oggi. Finisci con chi è in coda.',
 			'today.wayLine' => 'Coda',

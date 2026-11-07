@@ -1797,9 +1797,6 @@ class Translations$today$en {
 	/// en: 'Nobody new can join. You still serve the ${n} in line, and anyone not served is refunded.'
 	String stateCloseBody({required Object n}) => 'Nobody new can join. You still serve the ${n} in line, and anyone not served is refunded.';
 
-	/// en: 'The queue is closed for today. You still serve the people in line, and anyone not served is refunded.'
-	String get closedInfo => 'The queue is closed for today. You still serve the people in line, and anyone not served is refunded.';
-
 	/// en: 'Paused. Nobody new can join.'
 	String get pausedBanner => 'Paused. Nobody new can join.';
 
@@ -4278,7 +4275,6 @@ extension on Translations {
 			'today.stateOpenBody' => 'People can join from the app.',
 			'today.statePauseBody' => 'Nobody new can join. People in line stay.',
 			'today.stateCloseBody' => ({required Object n}) => 'Nobody new can join. You still serve the ${n} in line, and anyone not served is refunded.',
-			'today.closedInfo' => 'The queue is closed for today. You still serve the people in line, and anyone not served is refunded.',
 			'today.pausedBanner' => 'Paused. Nobody new can join.',
 			'today.closedBanner' => 'Closed for today. Finish the people in line.',
 			'today.wayLine' => 'Line',
