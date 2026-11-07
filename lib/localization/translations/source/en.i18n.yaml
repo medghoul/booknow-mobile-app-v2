@@ -902,7 +902,7 @@ live:
 
 guest:
   ownerSheetTitle: Sign in to your shop
-  ownerCustomerAccount: This is a customer account. Using one account for both is coming soon.
+  ownerCustomerAccount: You are signed in, but this account is already a customer account, so it cannot be used for a shop.
   title: Skip the wait, keep your place
   body: One tap with the account you already have. New or returning, it's the same two buttons.
   activityTitle: Your visits live here

@@ -196,15 +196,17 @@ class _RunAShopCard extends StatelessWidget {
               // An owner is taken to their shop by the journey. An account
               // that is already a customer stays one, so the sheet closes and
               // says why, rather than sitting there signed in.
+              //
+              // The message goes through the sheet: the Profile tab swaps
+              // this card out for a loader as soon as the session exists, so
+              // by the time the profile arrives the card is gone.
               child: BlocListener<AuthCubit, AuthState>(
                 listenWhen: (before, after) =>
                     before.profile == null && after.profile != null,
                 listener: (_, auth) {
                   if (auth.profile?.role != UserRole.customer) return;
+                  AppSnackBar.info(sheet, t.ownerCustomerAccount);
                   Navigator.of(sheet).pop();
-                  if (context.mounted) {
-                    AppSnackBar.info(context, t.ownerCustomerAccount);
-                  }
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

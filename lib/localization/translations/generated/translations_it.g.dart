@@ -745,7 +745,7 @@ class _Translations$guest$it extends Translations$guest$en {
 
 	// Translations
 	@override String get ownerSheetTitle => 'Accedi al tuo negozio';
-	@override String get ownerCustomerAccount => 'Questo è un account cliente. Presto potrai usare un solo account per entrambi.';
+	@override String get ownerCustomerAccount => 'Hai effettuato l\'accesso, ma questo account è già un account cliente, quindi non può essere usato per un negozio.';
 	@override String get title => 'Salta l\'attesa, tieni il posto';
 	@override String get body => 'Un tocco con l\'account che hai già. Nuovo o no, sono gli stessi due pulsanti.';
 	@override String get activityTitle => 'Le tue visite stanno qui';
@@ -2415,7 +2415,7 @@ extension on TranslationsIt {
 			'live.leftNoRefund' => 'Hai lasciato la coda.',
 			'live.leaveFailed' => 'Non siamo riusciti a toglierti dalla coda. Hai ancora il tuo posto.',
 			'guest.ownerSheetTitle' => 'Accedi al tuo negozio',
-			'guest.ownerCustomerAccount' => 'Questo è un account cliente. Presto potrai usare un solo account per entrambi.',
+			'guest.ownerCustomerAccount' => 'Hai effettuato l\'accesso, ma questo account è già un account cliente, quindi non può essere usato per un negozio.',
 			'guest.title' => 'Salta l\'attesa, tieni il posto',
 			'guest.body' => 'Un tocco con l\'account che hai già. Nuovo o no, sono gli stessi due pulsanti.',
 			'guest.activityTitle' => 'Le tue visite stanno qui',

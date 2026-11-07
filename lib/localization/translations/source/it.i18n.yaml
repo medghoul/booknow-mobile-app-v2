@@ -902,7 +902,7 @@ live:
 
 guest:
   ownerSheetTitle: Accedi al tuo negozio
-  ownerCustomerAccount: Questo è un account cliente. Presto potrai usare un solo account per entrambi.
+  ownerCustomerAccount: Hai effettuato l'accesso, ma questo account è già un account cliente, quindi non può essere usato per un negozio.
   title: Salta l'attesa, tieni il posto
   body: Un tocco con l'account che hai già. Nuovo o no, sono gli stessi due pulsanti.
   activityTitle: Le tue visite stanno qui

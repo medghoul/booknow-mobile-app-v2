@@ -1569,8 +1569,8 @@ class Translations$guest$en {
 	/// en: 'Sign in to your shop'
 	String get ownerSheetTitle => 'Sign in to your shop';
 
-	/// en: 'This is a customer account. Using one account for both is coming soon.'
-	String get ownerCustomerAccount => 'This is a customer account. Using one account for both is coming soon.';
+	/// en: 'You are signed in, but this account is already a customer account, so it cannot be used for a shop.'
+	String get ownerCustomerAccount => 'You are signed in, but this account is already a customer account, so it cannot be used for a shop.';
 
 	/// en: 'Skip the wait, keep your place'
 	String get title => 'Skip the wait, keep your place';
@@ -4211,7 +4211,7 @@ extension on Translations {
 			'live.leftNoRefund' => 'You left the line.',
 			'live.leaveFailed' => 'Couldn\'t leave the line. You still have your place.',
 			'guest.ownerSheetTitle' => 'Sign in to your shop',
-			'guest.ownerCustomerAccount' => 'This is a customer account. Using one account for both is coming soon.',
+			'guest.ownerCustomerAccount' => 'You are signed in, but this account is already a customer account, so it cannot be used for a shop.',
 			'guest.title' => 'Skip the wait, keep your place',
 			'guest.body' => 'One tap with the account you already have. New or returning, it\'s the same two buttons.',
 			'guest.activityTitle' => 'Your visits live here',
