@@ -1,0 +1,5 @@
+# Git hook configuration
+hooks:
+  # Set to true to enable checks
+  analyze: true
+  format: true

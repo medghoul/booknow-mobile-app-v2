@@ -1,0 +1,35 @@
+# dart run flutter_native_splash:create
+#
+# The native launch screen: what the OS draws between tapping the icon and
+# Flutter's first frame. Without it that gap is plain white or black.
+#
+# It is deliberately a still frame of `SplashView` — same mark, same wordmark,
+# same position — so the handoff is invisible. The spinner and the two blobs
+# only appear once Flutter takes over; a native splash cannot animate, and a
+# stretched full-screen background would distort the blobs on other aspect
+# ratios.
+flutter_native_splash:
+  # --bn-bg, light and dark.
+  color: "#0F2A4A"
+  color_dark: "#111A2E"
+
+  # Sized for 4x pixel density, as the plugin expects.
+  image: assets/splash/splash_light.png
+  image_dark: assets/splash/splash_dark.png
+
+  android: true
+  ios: true
+  web: false
+
+  # Android 12+ replaced the old splash with its own windowed API: it draws an
+  # icon only, inside a 768px circle on a 1152px canvas, so the wordmark cannot
+  # come along. The mark alone goes here, on the same background.
+  android_12:
+    image: assets/splash/splash_a12_light.png
+    image_dark: assets/splash/splash_a12_dark.png
+    color: "#0F2A4A"
+    color_dark: "#111A2E"
+
+  # The status bar stays visible throughout — hiding it here would make it pop
+  # back in on the first Flutter frame.
+  fullscreen: false

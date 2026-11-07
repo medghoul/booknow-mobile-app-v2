@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# shellcheck disable=SC1091
+. "$(dirname "$0")/_/husky.sh"
+
+HOOK_DIR="$(dirname "$0")"
+DART_SCRIPT="$HOOK_DIR/git_hooks.dart"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+echo "Running pre-commit checks..."
+
+# Check if dart is available
+if ! command -v dart >/dev/null 2>&1; then
+    echo "${RED}✗ Error: dart command not found${NC}"
+    exit 1
+fi
+
+# Check if the dart script exists
+if [ ! -f "$DART_SCRIPT" ]; then
+    echo "${RED}✗ Error: git_hooks.dart not found at $DART_SCRIPT${NC}"
+    exit 1
+fi
+
+# Run the dart script with error handling
+if dart run "$DART_SCRIPT" pre-commit 2>&1; then
+    echo "${GREEN}✓ Pre-commit checks completed successfully${NC}"
+    exit 0
+else
+    EXIT_CODE=$?
+    echo "${RED}✗ Pre-commit checks failed with exit code $EXIT_CODE${NC}"
+    exit $EXIT_CODE
+fi

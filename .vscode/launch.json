@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "local (localhost API)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor=local",
+                "--dart-define=ENV=local"
+            ]
+        },
+        {
+            "name": "development",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor=development",
+                "--dart-define=ENV=development"
+            ]
+        },
+        {
+            "name": "production (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor=production",
+                "--dart-define=ENV=production"
+            ]
+        }
+    ]
+}

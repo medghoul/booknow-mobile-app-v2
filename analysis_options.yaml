@@ -1,0 +1,33 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    constant_identifier_names: false
+    non_constant_identifier_names: false
+    file_names: false
+    avoid_unused_constructor_parameters: warning
+    prefer_final_locals: warning
+    cancel_subscriptions: true
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+  errors:
+    unused_element: warning
+    unused_local_variable: warning
+    unused_field: warning
+    dead_code: warning
+    invalid_annotation_target: ignore
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 4
+    maximum-nesting-level: 5
+  rules:
+    - no-unused-declaration
+    - no-unused-files
+
+

@@ -1,0 +1,26 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          include:
+            - lib/**
+        options:
+          explicit_to_json: true
+          include_if_null: false
+          field_rename: snake
+      freezed:
+        options:
+          union_key: type
+          union_value_case: snake
+          explicit_to_json: true
+      slang_build_runner:
+        enabled: false
+        options:
+          input_directory: lib/localization/translations/source
+          input_file_pattern: .i18n.yaml
+          output_directory: lib/localization/translations/generated
+          output_file_name: translations.g.dart
+          base_locale: en
+          fallback_strategy: base_locale
+          translate_var: t

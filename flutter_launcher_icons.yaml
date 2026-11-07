@@ -1,0 +1,27 @@
+# flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
+  image_path: "assets/icons/app_icon.png"
+
+  android: "launcher_icon"
+  # image_path_android: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  adaptive_icon_background: "assets/icons/app_icon_background.png"
+  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+  # The foreground already sits inside Android's safe zone — it is drawn into
+  # the central 66.7% of the canvas — so the generator must not inset it a
+  # second time. Its default of 16% would shrink the B twice.
+  adaptive_icon_foreground_inset: 0
+  # Android 13+ themed icons. Only the alpha is used — the launcher fills the
+  # shape with the wallpaper's colour — so this layer is the letter alone,
+  # counters left clear. The offset disc is omitted on purpose: it overlaps
+  # the letter, and with no colour to separate them the pair would read as one
+  # blob at 40px.
+  adaptive_icon_monochrome: "assets/icons/app_icon_monochrome.png"
+
+  ios: true
+  # image_path_ios: "assets/icon/icon.png"
+  remove_alpha_ios: true
+  # image_path_ios_dark_transparent: "assets/icon/icon_dark.png"
+  # image_path_ios_tinted_grayscale: "assets/icon/icon_tinted.png"
+  # desaturate_tinted_to_grayscale_ios: true
+  # background_color_ios: "#ffffff"
