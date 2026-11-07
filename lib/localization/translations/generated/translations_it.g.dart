@@ -728,6 +728,7 @@ class _Translations$live$it extends Translations$live$en {
 	@override String get keepBooking => 'Tieni la prenotazione';
 	@override String get yesCancel => 'Sì, annulla';
 	@override String refundYes2({required Object fee}) => 'La commissione di ${fee} ti viene rimborsata.';
+	@override String get refundFree => 'Era gratuita, quindi annullarla non costa nulla.';
 	@override String refundNo2({required Object fee}) => 'Mancano meno di 2 ore, quindi la commissione di ${fee} non è rimborsata.';
 	@override String cancelledRefunded({required Object fee}) => 'Prenotazione annullata. ${fee} rimborsati.';
 	@override String get cancelledNoRefund => 'Prenotazione annullata.';
@@ -1508,6 +1509,8 @@ class _Translations$bookings$cancel$it extends Translations$bookings$cancel$en {
 	@override String get title => 'Annullare il taglio?';
 	@override String subtitle({required Object when, required Object time, required Object shop}) => '${when} alle ${time}, ${shop}.';
 	@override String refundTitle({required Object fee}) => 'Rimborso di ${fee}';
+	@override String get freeTitle => 'Niente da rimborsare';
+	@override String get freeBody => 'Questa prenotazione era gratuita, quindi annullarla non ti costa nulla.';
 	@override String get refundBody => 'Mancano più di 2 ore, quindi il servizio ti viene restituito in 3–5 giorni.';
 	@override String refundBodyCard({required Object card}) => 'Mancano più di 2 ore, quindi il servizio ti viene restituito su •••• ${card} in 3–5 giorni.';
 	@override String get noRefundTitle => 'Il servizio non viene rimborsato';
@@ -2169,6 +2172,8 @@ extension on TranslationsIt {
 			'bookings.cancel.title' => 'Annullare il taglio?',
 			'bookings.cancel.subtitle' => ({required Object when, required Object time, required Object shop}) => '${when} alle ${time}, ${shop}.',
 			'bookings.cancel.refundTitle' => ({required Object fee}) => 'Rimborso di ${fee}',
+			'bookings.cancel.freeTitle' => 'Niente da rimborsare',
+			'bookings.cancel.freeBody' => 'Questa prenotazione era gratuita, quindi annullarla non ti costa nulla.',
 			'bookings.cancel.refundBody' => 'Mancano più di 2 ore, quindi il servizio ti viene restituito in 3–5 giorni.',
 			'bookings.cancel.refundBodyCard' => ({required Object card}) => 'Mancano più di 2 ore, quindi il servizio ti viene restituito su •••• ${card} in 3–5 giorni.',
 			'bookings.cancel.noRefundTitle' => 'Il servizio non viene rimborsato',
@@ -2198,10 +2203,10 @@ extension on TranslationsIt {
 			'account.signOut' => 'Esci',
 			'account.signOutConfirmTitle' => 'Vuoi uscire?',
 			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
-			'account.deleteAccount' => 'Elimina account',
-			'account.comingSoon' => 'Disponibile a breve.',
 			_ => null,
 		} ?? switch (path) {
+			'account.deleteAccount' => 'Elimina account',
+			'account.comingSoon' => 'Disponibile a breve.',
 			'home.waitShort' => ({required Object n, required Object from, required Object to}) => '${n} · ${from}–${to} min',
 			'home.useLocation' => 'Usa la mia posizione',
 			'home.useLocationLine' => 'Mostra prima i negozi più vicini',
@@ -2512,6 +2517,7 @@ extension on TranslationsIt {
 			'live.keepBooking' => 'Tieni la prenotazione',
 			'live.yesCancel' => 'Sì, annulla',
 			'live.refundYes2' => ({required Object fee}) => 'La commissione di ${fee} ti viene rimborsata.',
+			'live.refundFree' => 'Era gratuita, quindi annullarla non costa nulla.',
 			'live.refundNo2' => ({required Object fee}) => 'Mancano meno di 2 ore, quindi la commissione di ${fee} non è rimborsata.',
 			'live.cancelledRefunded' => ({required Object fee}) => 'Prenotazione annullata. ${fee} rimborsati.',
 			'live.cancelledNoRefund' => 'Prenotazione annullata.',

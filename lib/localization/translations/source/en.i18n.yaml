@@ -553,6 +553,8 @@ bookings:
     title: Cancel the haircut?
     subtitle(when, time, shop): ${when} at ${time}, ${shop}.
     refundTitle(fee): ${fee} refund
+    freeTitle: Nothing to refund
+    freeBody: This booking was free to make, so cancelling costs you nothing.
     refundBody: More than 2 hours to go, so the service fee comes back in 3–5 days.
     refundBodyCard(card): More than 2 hours to go, so the service fee comes back to •••• ${card} in 3–5 days.
     noRefundTitle: The service fee is not refunded
@@ -935,6 +937,7 @@ live:
   keepBooking: Keep my booking
   yesCancel: Yes, cancel
   refundYes2(fee): Your ${fee} fee will be refunded.
+  refundFree: It was free to book, so cancelling costs nothing.
   refundNo2(fee): It's less than 2 hours away, so the ${fee} fee is not refunded.
   cancelledRefunded(fee): Booking cancelled. ${fee} refunded.
   cancelledNoRefund: Booking cancelled.

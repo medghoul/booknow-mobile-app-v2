@@ -122,15 +122,19 @@ abstract class QueueJoinDto with _$QueueJoinDto {
   factory QueueJoinDto.fromJson(Map<String, dynamic> json) =>
       _$QueueJoinDtoFromJson(json);
 
-  /// Null unless there is something to pay for and a secret to pay with.
+  /// Null unless the place is usable: a fee needs a secret to pay it with,
+  /// and a free place has none (providers §12).
   QueueJoin? toDomain() {
     final pending = readQueueEntry(entry);
     final secret = asTextOrNull(clientSecret);
-    if (pending == null || secret == null) return null;
+    if (pending == null) return null;
+
+    final fee = asInt(feeAmountCents, pending.feeCents ?? 0);
+    if (secret == null && fee != 0) return null;
 
     return QueueJoin(
       entry: pending,
-      clientSecret: secret,
+      clientSecret: secret ?? '',
       holdExpiresAt:
           asInstantOrNull(holdExpiresAt) ??
           pending.holdExpiresAt ??

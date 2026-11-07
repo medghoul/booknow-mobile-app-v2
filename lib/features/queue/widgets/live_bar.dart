@@ -815,7 +815,8 @@ class _LiveBookingSheetState extends State<LiveBookingSheet> {
 
   Widget _confirm(BuildContext context, Booking booking) {
     final t = context.t.live;
-    final refundable = booking.refundableAt(DateTime.now().toUtc());
+    final isFree = booking.feeCents == 0;
+    final refundable = isFree || booking.refundableAt(DateTime.now().toUtc());
     final tint = refundable ? context.status.arrived : context.status.pending;
     final fee = Money.shortCents(booking.feeCents);
 
@@ -833,7 +834,11 @@ class _LiveBookingSheetState extends State<LiveBookingSheet> {
             borderRadius: context.radii.mdR,
           ),
           child: Text(
-            refundable ? t.refundYes2(fee: fee) : t.refundNo2(fee: fee),
+            isFree
+                ? t.refundFree
+                : refundable
+                ? t.refundYes2(fee: fee)
+                : t.refundNo2(fee: fee),
             style: context.textTheme.labelMedium?.copyWith(
               fontSize: 14.sp,
               color: tint.foreground,

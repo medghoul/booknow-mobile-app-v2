@@ -945,7 +945,8 @@ $QueueEntryCopyWith<$Res>? get myEntry {
 /// @nodoc
 mixin _$QueueJoin {
 
- QueueEntry get entry; String get clientSecret; DateTime get holdExpiresAt; int get feeCents; WaitRange get estimate;
+ QueueEntry get entry;/// Empty for a free place, which has nothing to pay.
+ String get clientSecret; DateTime get holdExpiresAt; int get feeCents; WaitRange get estimate;
 /// Create a copy of QueueJoin
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1163,6 +1164,7 @@ class _QueueJoin implements QueueJoin {
   
 
 @override final  QueueEntry entry;
+/// Empty for a free place, which has nothing to pay.
 @override final  String clientSecret;
 @override final  DateTime holdExpiresAt;
 @override final  int feeCents;

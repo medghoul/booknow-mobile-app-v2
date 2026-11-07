@@ -128,6 +128,12 @@ class QueueFlowCubit extends Cubit<QueueFlowState> {
 
     emit(state.copyWith(join: join, step: QueueStep.paying));
 
+    // A free place is given as it is taken: no sheet, only the line to read.
+    if (join.clientSecret.isEmpty) {
+      await _awaitPlace();
+      return;
+    }
+
     final outcome = await _payments.pay(
       clientSecret: join.clientSecret,
       merchantName: state.shop?.name ?? 'BookNow',

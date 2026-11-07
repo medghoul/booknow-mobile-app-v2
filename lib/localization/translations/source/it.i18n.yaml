@@ -553,6 +553,8 @@ bookings:
     title: Annullare il taglio?
     subtitle(when, time, shop): ${when} alle ${time}, ${shop}.
     refundTitle(fee): Rimborso di ${fee}
+    freeTitle: Niente da rimborsare
+    freeBody: Questa prenotazione era gratuita, quindi annullarla non ti costa nulla.
     refundBody: Mancano più di 2 ore, quindi il servizio ti viene restituito in 3–5 giorni.
     refundBodyCard(card): Mancano più di 2 ore, quindi il servizio ti viene restituito su •••• ${card} in 3–5 giorni.
     noRefundTitle: Il servizio non viene rimborsato
@@ -935,6 +937,7 @@ live:
   keepBooking: Tieni la prenotazione
   yesCancel: Sì, annulla
   refundYes2(fee): La commissione di ${fee} ti viene rimborsata.
+  refundFree: Era gratuita, quindi annullarla non costa nulla.
   refundNo2(fee): Mancano meno di 2 ore, quindi la commissione di ${fee} non è rimborsata.
   cancelledRefunded(fee): Prenotazione annullata. ${fee} rimborsati.
   cancelledNoRefund: Prenotazione annullata.

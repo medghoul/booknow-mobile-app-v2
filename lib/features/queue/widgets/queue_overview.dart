@@ -58,7 +58,7 @@ class QueueOverview extends StatelessWidget {
             : t.shopScreen.joinNow(service: service.name),
         line: service == null
             ? t.queue.pickService
-            : fee == null
+            : fee == null || fee == 0
             ? t.shopScreen.sumShop(price: price)
             : t.shopScreen.sumShopFee(price: price, fee: Money.shortCents(fee)),
         cta: _ctaLabel(context, queue),

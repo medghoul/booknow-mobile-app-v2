@@ -1528,6 +1528,9 @@ class Translations$live$en {
 	/// en: 'Your ${fee} fee will be refunded.'
 	String refundYes2({required Object fee}) => 'Your ${fee} fee will be refunded.';
 
+	/// en: 'It was free to book, so cancelling costs nothing.'
+	String get refundFree => 'It was free to book, so cancelling costs nothing.';
+
 	/// en: 'It's less than 2 hours away, so the ${fee} fee is not refunded.'
 	String refundNo2({required Object fee}) => 'It\'s less than 2 hours away, so the ${fee} fee is not refunded.';
 
@@ -3194,6 +3197,12 @@ class Translations$bookings$cancel$en {
 	/// en: '${fee} refund'
 	String refundTitle({required Object fee}) => '${fee} refund';
 
+	/// en: 'Nothing to refund'
+	String get freeTitle => 'Nothing to refund';
+
+	/// en: 'This booking was free to make, so cancelling costs you nothing.'
+	String get freeBody => 'This booking was free to make, so cancelling costs you nothing.';
+
 	/// en: 'More than 2 hours to go, so the service fee comes back in 3–5 days.'
 	String get refundBody => 'More than 2 hours to go, so the service fee comes back in 3–5 days.';
 
@@ -4065,6 +4074,8 @@ extension on Translations {
 			'bookings.cancel.title' => 'Cancel the haircut?',
 			'bookings.cancel.subtitle' => ({required Object when, required Object time, required Object shop}) => '${when} at ${time}, ${shop}.',
 			'bookings.cancel.refundTitle' => ({required Object fee}) => '${fee} refund',
+			'bookings.cancel.freeTitle' => 'Nothing to refund',
+			'bookings.cancel.freeBody' => 'This booking was free to make, so cancelling costs you nothing.',
 			'bookings.cancel.refundBody' => 'More than 2 hours to go, so the service fee comes back in 3–5 days.',
 			'bookings.cancel.refundBodyCard' => ({required Object card}) => 'More than 2 hours to go, so the service fee comes back to •••• ${card} in 3–5 days.',
 			'bookings.cancel.noRefundTitle' => 'The service fee is not refunded',
@@ -4094,10 +4105,10 @@ extension on Translations {
 			'account.signOut' => 'Sign out',
 			'account.signOutConfirmTitle' => 'Sign out?',
 			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
-			'account.deleteAccount' => 'Delete account',
-			'account.comingSoon' => 'Available soon.',
 			_ => null,
 		} ?? switch (path) {
+			'account.deleteAccount' => 'Delete account',
+			'account.comingSoon' => 'Available soon.',
 			'home.waitShort' => ({required Object n, required Object from, required Object to}) => '${n} · ${from}–${to} min',
 			'home.useLocation' => 'Use my location',
 			'home.useLocationLine' => 'Show the nearest shops first',
@@ -4408,6 +4419,7 @@ extension on Translations {
 			'live.keepBooking' => 'Keep my booking',
 			'live.yesCancel' => 'Yes, cancel',
 			'live.refundYes2' => ({required Object fee}) => 'Your ${fee} fee will be refunded.',
+			'live.refundFree' => 'It was free to book, so cancelling costs nothing.',
 			'live.refundNo2' => ({required Object fee}) => 'It\'s less than 2 hours away, so the ${fee} fee is not refunded.',
 			'live.cancelledRefunded' => ({required Object fee}) => 'Booking cancelled. ${fee} refunded.',
 			'live.cancelledNoRefund' => 'Booking cancelled.',

@@ -93,6 +93,10 @@ class _Verdict extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.t.bookings.cancel;
+    // Free to book, so there is nothing to refund and nothing to lose: the
+    // two-hour rule is only ever about the fee.
+    final isFree = booking.feeCents == 0;
+    final refundable = this.refundable || isFree;
     final tint = refundable ? context.status.confirmed : context.status.pending;
     final fee = Money.formatCents(booking.feeCents);
     final card = booking.cardLast4;
@@ -122,14 +126,20 @@ class _Verdict extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  refundable ? t.refundTitle(fee: fee) : t.noRefundTitle,
+                  isFree
+                      ? t.freeTitle
+                      : refundable
+                      ? t.refundTitle(fee: fee)
+                      : t.noRefundTitle,
                   style: context.textTheme.labelLarge?.copyWith(
                     color: tint.foreground,
                   ),
                 ),
                 SizedBox(height: context.spacing.xxs.h),
                 Text(
-                  refundable
+                  isFree
+                      ? t.freeBody
+                      : refundable
                       ? (card == null
                             ? t.refundBody
                             : t.refundBodyCard(card: card))

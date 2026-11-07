@@ -84,6 +84,8 @@ abstract class ShopQueue with _$ShopQueue {
 abstract class QueueJoin with _$QueueJoin {
   const factory QueueJoin({
     required QueueEntry entry,
+
+    /// Empty for a free place, which has nothing to pay.
     required String clientSecret,
     required DateTime holdExpiresAt,
     required int feeCents,

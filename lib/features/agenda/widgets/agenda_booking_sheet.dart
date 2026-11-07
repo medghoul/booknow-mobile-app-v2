@@ -250,16 +250,20 @@ class _MoneyCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: context.spacing.md.w),
-          Flexible(
-            child: Text(
-              t.holdPaid(amount: Money.formatCents(feeCents)),
-              textAlign: TextAlign.end,
-              style: context.textTheme.bodySmall?.copyWith(
-                color: context.colorScheme.onSurfaceVariant,
+          // A free booking paid nothing in the app, so there is no hold to
+          // set against the price.
+          if (feeCents > 0) ...[
+            SizedBox(width: context.spacing.md.w),
+            Flexible(
+              child: Text(
+                t.holdPaid(amount: Money.formatCents(feeCents)),
+                textAlign: TextAlign.end,
+                style: context.textTheme.bodySmall?.copyWith(
+                  color: context.colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

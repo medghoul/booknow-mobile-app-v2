@@ -382,17 +382,20 @@ class _Money extends StatelessWidget {
             subtitle: t.payInShop,
             amount: Money.formatCents(booking.priceCents),
           ),
-          const AppDivider(),
-          _Line(
-            title: t.bookNowService,
-            subtitle: booking.refunded
-                ? t.refunded
-                : booking.cardLast4 == null
-                ? t.paid
-                : t.paidWithCard(card: booking.cardLast4!),
-            subtitleColor: context.status.confirmed.foreground,
-            amount: Money.formatCents(booking.feeCents),
-          ),
+          // Free to book: nothing was paid in the app, so no line for it.
+          if (booking.feeCents > 0) ...[
+            const AppDivider(),
+            _Line(
+              title: t.bookNowService,
+              subtitle: booking.refunded
+                  ? t.refunded
+                  : booking.cardLast4 == null
+                  ? t.paid
+                  : t.paidWithCard(card: booking.cardLast4!),
+              subtitleColor: context.status.confirmed.foreground,
+              amount: Money.formatCents(booking.feeCents),
+            ),
+          ],
         ],
       ),
     );

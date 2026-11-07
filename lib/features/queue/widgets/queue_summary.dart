@@ -25,6 +25,8 @@ class QueueSummary extends StatelessWidget {
 
     // The server's number: the app carries no copy of the fee.
     final fee = state.join?.feeCents ?? queue.feeCents;
+    // Free to join: nothing to pay, nothing to refund, so no rule about it.
+    final isFree = fee == 0;
     final busy = state.isBusy || state.step == QueueStep.paying;
     final declined = state.step == QueueStep.declined;
 
@@ -48,10 +50,10 @@ class QueueSummary extends StatelessWidget {
         PayRows(
           rows: [
             PayRow(
-              title: t.feeLabel,
+              title: isFree ? t.noFee : t.feeLabel,
               subtitle: t.feeWhen,
               amount: Money.shortCents(fee),
-              strong: true,
+              strong: !isFree,
             ),
             PayRow(
               title: service.name,
@@ -60,13 +62,15 @@ class QueueSummary extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 14),
-        Text(
-          queueText.refundRule,
-          style: context.textTheme.bodySmall?.copyWith(
-            color: context.colorScheme.onSurfaceVariant,
+        if (!isFree) ...[
+          const SizedBox(height: 14),
+          Text(
+            queueText.refundRule,
+            style: context.textTheme.bodySmall?.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
+            ),
           ),
-        ),
+        ],
         if (declined) ...[
           const SizedBox(height: 14),
           PayDeclined(message: t.declined),
@@ -75,7 +79,11 @@ class QueueSummary extends StatelessWidget {
         PayButton(
           busy: busy,
           busyLabel: t.paying,
-          label: declined ? t.tryAgain : t.payFee(fee: Money.shortCents(fee)),
+          label: declined
+              ? t.tryAgain
+              : isFree
+              ? queueText.join
+              : t.payFee(fee: Money.shortCents(fee)),
           onPressed: declined ? cubit.retry : cubit.payAndJoin,
         ),
       ],

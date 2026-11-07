@@ -190,8 +190,19 @@ class BookingFlowCubit extends Cubit<BookingFlowState> {
     emit(state.copyWith(hold: held, step: BookingStep.paying));
 
     // Nothing to charge: the shop takes this booking for free, so there is no
-    // sheet to open and only the confirmation left to wait for.
+    // sheet to open. The server confirms a free booking as it holds it, so
+    // usually there is nothing to wait for either.
     if (held.clientSecret.isEmpty) {
+      if (held.booking.status == BookingStatus.confirmed) {
+        emit(
+          state.copyWith(
+            booking: held.booking,
+            isBusy: false,
+            step: BookingStep.done,
+          ),
+        );
+        return;
+      }
       await _awaitConfirmation(held.booking.id);
       return;
     }
