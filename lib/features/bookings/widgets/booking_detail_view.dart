@@ -198,10 +198,14 @@ class _When extends StatelessWidget {
               SizedBox(width: context.spacing.sm.w),
               Flexible(
                 child: Text(
-                  context.t.bookings.serviceLine(
-                    service: booking.serviceName,
-                    minutes: booking.durationMinutes,
-                  ),
+                  [
+                    context.t.bookings.serviceLine(
+                      service: booking.serviceName,
+                      minutes: booking.durationMinutes,
+                    ),
+                    if (booking.withWhom case final name?)
+                      context.t.shopScreen.withWhom(name: name),
+                  ].join(' · '),
                   style: context.textTheme.bodyMedium?.copyWith(
                     color: context.colorScheme.onSurfaceVariant,
                   ),

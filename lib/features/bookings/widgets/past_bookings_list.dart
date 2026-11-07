@@ -127,7 +127,12 @@ class _PastRow extends StatelessWidget {
       'd MMM',
       locale,
     ).format(ShopClock.wallTime(booking.startUtc, booking.timeZone));
-    final head = '${booking.serviceName} · $day';
+    final head = [
+      booking.serviceName,
+      if (booking.withWhom case final name?)
+        context.t.shopScreen.withWhom(name: name),
+      day,
+    ].join(' · ');
 
     return switch (booking.status) {
       BookingStatus.completed || BookingStatus.confirmed =>

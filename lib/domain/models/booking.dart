@@ -23,6 +23,10 @@ abstract class Booking with _$Booking {
     required String? shopPhone,
     required String serviceId,
     required String serviceName,
+
+    /// Who does the work, as it was when the booking was made. The API names
+    /// the shop for a shop of one, whose owner has no name of their own here.
+    String? providerName,
     required int priceCents,
     required int feeCents,
 
@@ -36,6 +40,15 @@ abstract class Booking with _$Booking {
     required String? cancelledBy,
     required bool refunded,
   }) = _Booking;
+
+  /// The person to name on the booking, or null when naming them adds
+  /// nothing: no name, or the shop's own, which is what a shop of one sends
+  /// (providers §11 names a provider only when there could have been another).
+  String? get withWhom {
+    final name = providerName?.trim();
+    if (name == null || name.isEmpty || name == shopName?.trim()) return null;
+    return name;
+  }
 
   const Booking._();
 

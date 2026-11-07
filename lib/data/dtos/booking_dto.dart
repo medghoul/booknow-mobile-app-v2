@@ -23,6 +23,7 @@ abstract class BookingDto with _$BookingDto {
     @JsonKey(name: 'shopPhone') Object? shopPhone,
     @JsonKey(name: 'serviceId') Object? serviceId,
     @JsonKey(name: 'serviceName') Object? serviceName,
+    @JsonKey(name: 'providerName') Object? providerName,
     @JsonKey(name: 'priceCents') Object? priceCents,
     @JsonKey(name: 'feeAmountCents') Object? feeAmountCents,
     @JsonKey(name: 'freeCancellationUntilUtc') Object? freeCancellationUntilUtc,
@@ -63,6 +64,7 @@ abstract class BookingDto with _$BookingDto {
       shopPhone: asTextOrNull(shopPhone),
       serviceId: asText(serviceId),
       serviceName: asText(serviceName),
+      providerName: asTextOrNull(providerName),
       priceCents: asInt(priceCents),
       feeCents: asInt(feeAmountCents),
       // The deadline is the server's arithmetic; falling back to it here keeps

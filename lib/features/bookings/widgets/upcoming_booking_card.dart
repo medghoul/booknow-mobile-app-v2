@@ -97,7 +97,12 @@ class UpcomingBookingCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${booking.serviceName} · ${_money(context)}',
+                          [
+                            booking.serviceName,
+                            if (booking.withWhom case final name?)
+                              context.t.shopScreen.withWhom(name: name),
+                            _money(context),
+                          ].join(' · '),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: context.textTheme.bodySmall?.copyWith(
