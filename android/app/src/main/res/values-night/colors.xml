@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppColors.darkPrimary. The light palette's terracotta is too dark to
+         read against the dark notification shade; dark is a separate palette,
+         not an inversion. -->
+    <color name="notification_accent">#E8935C</color>
+</resources>

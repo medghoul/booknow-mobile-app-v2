@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- What Android tints the notification's small icon with, and draws the
+         app name in above it. Terracotta, the one action colour, as in
+         AppColors.lightPrimary — the shade follows the system theme, so the
+         dark palette's lighter terracotta lives in values-night. -->
+    <color name="notification_accent">#A8511F</color>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_open_app">Apri BookNow</string>
+    <string name="widget_customer_label">BookNow: le tue visite</string>
+    <string name="widget_customer_description">Il tuo posto in coda o la prossima visita.</string>
+    <string name="widget_owner_label">BookNow: il tuo negozio</string>
+    <string name="widget_owner_description">Chi aspetta e chi è il prossimo nel tuo negozio.</string>
+</resources>

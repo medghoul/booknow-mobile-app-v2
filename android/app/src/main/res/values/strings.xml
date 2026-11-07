@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The notification channel's name and description, as the phone's own
+     Settings screen shows them. Italian is the default because that is the
+     shipped UI language; see values-en for the other one.
+
+     `app_name` is deliberately not here: it comes from the flavour, in
+     app/build.gradle.kts, so each one can be told apart on the home screen. -->
+<resources>
+    <string name="notification_channel_bookings">Prenotazioni</string>
+    <string name="notification_channel_bookings_description">Nuove prenotazioni, annullamenti e promemoria degli appuntamenti</string>
+</resources>

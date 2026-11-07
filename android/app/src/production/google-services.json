@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949244409557",
+    "project_id": "booknow-prod-33d87",
+    "storage_bucket": "booknow-prod-33d87.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949244409557:android:12f70bfa1885fb4b1a145c",
+        "android_client_info": {
+          "package_name": "com.booknow.production"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcM5BLTAyywNkvECDHKu-e8cSSXZQUQo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
