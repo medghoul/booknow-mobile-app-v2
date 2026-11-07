@@ -670,6 +670,7 @@ home:
   closedUntil(time): Closed · opens ${time}
 
 agenda:
+  everyone: Everyone
   freeLine(length): ${length} · Tap to block
   hours(count): ${count} h
   today: Today

@@ -520,6 +520,7 @@ class _Translations$agenda$it extends Translations$agenda$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get everyone => 'Tutti';
 	@override String freeLine({required Object length}) => '${length} · Tocca per bloccare';
 	@override String hours({required Object count}) => '${count} h';
 	@override String get today => 'Oggi';
@@ -2270,6 +2271,7 @@ extension on TranslationsIt {
 			'home.openUntil' => ({required Object time}) => 'Aperto · chiude ${time}',
 			'home.closedNow' => 'Chiuso',
 			'home.closedUntil' => ({required Object time}) => 'Chiuso · apre alle ${time}',
+			'agenda.everyone' => 'Tutti',
 			'agenda.freeLine' => ({required Object length}) => '${length} · Tocca per bloccare',
 			'agenda.hours' => ({required Object count}) => '${count} h',
 			'agenda.today' => 'Oggi',

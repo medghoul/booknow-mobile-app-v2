@@ -40,7 +40,10 @@ class OwnerAgendaCubit extends Cubit<OwnerAgendaState> {
           : state.copyWith(date: wanted, isLoading: true, failure: null),
     );
 
-    final result = await _repository.day(date: wanted);
+    final result = await _repository.day(
+      date: wanted,
+      providerId: state.providerId,
+    );
     if (isClosed) return;
 
     switch (result) {
@@ -61,11 +64,19 @@ class OwnerAgendaCubit extends Cubit<OwnerAgendaState> {
     }
   }
 
+  /// Shows one person's day, or everyone's for null. The date stays.
+  Future<void> showProvider(String? providerId) async {
+    if (providerId == state.providerId) return;
+    emit(state.copyWith(providerId: providerId));
+    await load();
+  }
+
   /// Takes a range off the grid. True once the server has it.
   Future<bool> blockTime({
     required DateTime startUtc,
     required DateTime endUtc,
     String? note,
+    String? providerId,
   }) async {
     emit(state.copyWith(isSaving: true, failure: null));
 
@@ -73,6 +84,7 @@ class OwnerAgendaCubit extends Cubit<OwnerAgendaState> {
       startUtc: startUtc,
       endUtc: endUtc,
       note: note,
+      providerId: providerId,
     );
     if (isClosed) return false;
 

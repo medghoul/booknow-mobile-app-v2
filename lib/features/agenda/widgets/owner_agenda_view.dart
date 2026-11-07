@@ -6,6 +6,7 @@ import 'package:booknow_mobile/domain/models/index.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_cubit.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_state.dart';
 import 'package:booknow_mobile/features/agenda/widgets/agenda_date_strip.dart';
+import 'package:booknow_mobile/features/agenda/widgets/agenda_provider_filter.dart';
 import 'package:booknow_mobile/features/agenda/widgets/agenda_row_actions.dart';
 import 'package:booknow_mobile/features/agenda/widgets/agenda_row_tile.dart';
 import 'package:booknow_mobile/features/agenda/widgets/owner_today_parts.dart';
@@ -58,12 +59,22 @@ class OwnerAgendaView extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.h),
-                      child: AgendaDateStrip(
-                        days: day.days,
-                        selected: state.date ?? day.date,
-                        today: ShopClock.dateOf(state.now, state.timeZone),
-                        onSelected: (date) =>
-                            context.read<OwnerAgendaCubit>().load(date: date),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AgendaDateStrip(
+                            days: day.days,
+                            selected: state.date ?? day.date,
+                            today: ShopClock.dateOf(state.now, state.timeZone),
+                            onSelected: (date) => context
+                                .read<OwnerAgendaCubit>()
+                                .load(date: date),
+                          ),
+                          if (AgendaProviderFilter.showsFor(state)) ...[
+                            SizedBox(height: 8.h),
+                            const AgendaProviderFilter(),
+                          ],
+                        ],
                       ),
                     ),
                   ),
@@ -79,7 +90,7 @@ class OwnerAgendaView extends StatelessWidget {
                       ),
                     OwnerAgendaState(day: final day?) => _Timeline(
                       day: day,
-                      now: state.now,
+                      state: state,
                     ),
                     // No day, no error, not loading: only reachable for the
                     // instant between construction and the first load.
@@ -97,10 +108,12 @@ class OwnerAgendaView extends StatelessWidget {
 
 /// The day, in the order it is drawn.
 class _Timeline extends StatelessWidget {
-  const _Timeline({required this.day, required this.now});
+  const _Timeline({required this.day, required this.state});
 
   final AgendaDay day;
-  final DateTime now;
+  final OwnerAgendaState state;
+
+  DateTime get now => state.now;
 
   @override
   Widget build(BuildContext context) {
@@ -143,16 +156,17 @@ class _Timeline extends StatelessWidget {
         separatorBuilder: (_, _) => const SizedBox(height: 6),
         itemBuilder: (context, index) {
           final row = day.rows[index];
-
           return AgendaRowTile(
             row: row,
             timeZone: day.timeZone,
             now: now,
+            providerName: AgendaProviderFilter.labelFor(state, row),
             onTap: agendaRowTap(
               context,
               row: row,
               timeZone: day.timeZone,
               now: now,
+              providerName: day.hasTeam ? day.nameOf(row.providerId) : null,
             ),
           );
         },

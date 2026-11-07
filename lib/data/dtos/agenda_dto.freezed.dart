@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AgendaDayDto {
 
-@JsonKey(name: 'date') Object? get date;@JsonKey(name: 'timeZone') Object? get timeZone;@JsonKey(name: 'closed') Object? get closed;@JsonKey(name: 'closure') Object? get closure;@JsonKey(name: 'openingHours') List<dynamic>? get openingHours;@JsonKey(name: 'summary') Map<String, dynamic>? get summary;@JsonKey(name: 'days') List<dynamic>? get days;@JsonKey(name: 'rows') List<dynamic>? get rows;
+@JsonKey(name: 'date') Object? get date;@JsonKey(name: 'timeZone') Object? get timeZone;@JsonKey(name: 'closed') Object? get closed;@JsonKey(name: 'closure') Object? get closure;@JsonKey(name: 'openingHours') List<dynamic>? get openingHours;@JsonKey(name: 'summary') Map<String, dynamic>? get summary;@JsonKey(name: 'days') List<dynamic>? get days;@JsonKey(name: 'rows') List<dynamic>? get rows;@JsonKey(name: 'providers') List<dynamic>? get providers;
 /// Create a copy of AgendaDayDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AgendaDayDtoCopyWith<AgendaDayDto> get copyWith => _$AgendaDayDtoCopyWithImpl<A
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaDayDto&&const DeepCollectionEquality().equals(other.date, date)&&const DeepCollectionEquality().equals(other.timeZone, timeZone)&&const DeepCollectionEquality().equals(other.closed, closed)&&const DeepCollectionEquality().equals(other.closure, closure)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&const DeepCollectionEquality().equals(other.summary, summary)&&const DeepCollectionEquality().equals(other.days, days)&&const DeepCollectionEquality().equals(other.rows, rows));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaDayDto&&const DeepCollectionEquality().equals(other.date, date)&&const DeepCollectionEquality().equals(other.timeZone, timeZone)&&const DeepCollectionEquality().equals(other.closed, closed)&&const DeepCollectionEquality().equals(other.closure, closure)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&const DeepCollectionEquality().equals(other.summary, summary)&&const DeepCollectionEquality().equals(other.days, days)&&const DeepCollectionEquality().equals(other.rows, rows)&&const DeepCollectionEquality().equals(other.providers, providers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(date),const DeepCollectionEquality().hash(timeZone),const DeepCollectionEquality().hash(closed),const DeepCollectionEquality().hash(closure),const DeepCollectionEquality().hash(openingHours),const DeepCollectionEquality().hash(summary),const DeepCollectionEquality().hash(days),const DeepCollectionEquality().hash(rows));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(date),const DeepCollectionEquality().hash(timeZone),const DeepCollectionEquality().hash(closed),const DeepCollectionEquality().hash(closure),const DeepCollectionEquality().hash(openingHours),const DeepCollectionEquality().hash(summary),const DeepCollectionEquality().hash(days),const DeepCollectionEquality().hash(rows),const DeepCollectionEquality().hash(providers));
 
 @override
 String toString() {
-  return 'AgendaDayDto(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows)';
+  return 'AgendaDayDto(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows, providers: $providers)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AgendaDayDtoCopyWith<$Res>  {
   factory $AgendaDayDtoCopyWith(AgendaDayDto value, $Res Function(AgendaDayDto) _then) = _$AgendaDayDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'date') Object? date,@JsonKey(name: 'timeZone') Object? timeZone,@JsonKey(name: 'closed') Object? closed,@JsonKey(name: 'closure') Object? closure,@JsonKey(name: 'openingHours') List<dynamic>? openingHours,@JsonKey(name: 'summary') Map<String, dynamic>? summary,@JsonKey(name: 'days') List<dynamic>? days,@JsonKey(name: 'rows') List<dynamic>? rows
+@JsonKey(name: 'date') Object? date,@JsonKey(name: 'timeZone') Object? timeZone,@JsonKey(name: 'closed') Object? closed,@JsonKey(name: 'closure') Object? closure,@JsonKey(name: 'openingHours') List<dynamic>? openingHours,@JsonKey(name: 'summary') Map<String, dynamic>? summary,@JsonKey(name: 'days') List<dynamic>? days,@JsonKey(name: 'rows') List<dynamic>? rows,@JsonKey(name: 'providers') List<dynamic>? providers
 });
 
 
@@ -65,12 +65,13 @@ class _$AgendaDayDtoCopyWithImpl<$Res>
 
 /// Create a copy of AgendaDayDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? date = freezed,Object? timeZone = freezed,Object? closed = freezed,Object? closure = freezed,Object? openingHours = freezed,Object? summary = freezed,Object? days = freezed,Object? rows = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? date = freezed,Object? timeZone = freezed,Object? closed = freezed,Object? closure = freezed,Object? openingHours = freezed,Object? summary = freezed,Object? days = freezed,Object? rows = freezed,Object? providers = freezed,}) {
   return _then(_self.copyWith(
 date: freezed == date ? _self.date : date ,timeZone: freezed == timeZone ? _self.timeZone : timeZone ,closed: freezed == closed ? _self.closed : closed ,closure: freezed == closure ? _self.closure : closure ,openingHours: freezed == openingHours ? _self.openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,summary: freezed == summary ? _self.summary : summary // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,days: freezed == days ? _self.days : days // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,rows: freezed == rows ? _self.rows : rows // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,providers: freezed == providers ? _self.providers : providers // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,
   ));
 }
@@ -156,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows, @JsonKey(name: 'providers')  List<dynamic>? providers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AgendaDayDto() when $default != null:
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   return orElse();
 
 }
@@ -177,10 +178,10 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows, @JsonKey(name: 'providers')  List<dynamic>? providers)  $default,) {final _that = this;
 switch (_that) {
 case _AgendaDayDto():
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +198,10 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'date')  Object? date, @JsonKey(name: 'timeZone')  Object? timeZone, @JsonKey(name: 'closed')  Object? closed, @JsonKey(name: 'closure')  Object? closure, @JsonKey(name: 'openingHours')  List<dynamic>? openingHours, @JsonKey(name: 'summary')  Map<String, dynamic>? summary, @JsonKey(name: 'days')  List<dynamic>? days, @JsonKey(name: 'rows')  List<dynamic>? rows, @JsonKey(name: 'providers')  List<dynamic>? providers)?  $default,) {final _that = this;
 switch (_that) {
 case _AgendaDayDto() when $default != null:
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   return null;
 
 }
@@ -212,7 +213,7 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 @JsonSerializable()
 
 class _AgendaDayDto implements AgendaDayDto {
-  const _AgendaDayDto({@JsonKey(name: 'date') this.date, @JsonKey(name: 'timeZone') this.timeZone, @JsonKey(name: 'closed') this.closed, @JsonKey(name: 'closure') this.closure, @JsonKey(name: 'openingHours') final  List<dynamic>? openingHours, @JsonKey(name: 'summary') final  Map<String, dynamic>? summary, @JsonKey(name: 'days') final  List<dynamic>? days, @JsonKey(name: 'rows') final  List<dynamic>? rows}): _openingHours = openingHours,_summary = summary,_days = days,_rows = rows;
+  const _AgendaDayDto({@JsonKey(name: 'date') this.date, @JsonKey(name: 'timeZone') this.timeZone, @JsonKey(name: 'closed') this.closed, @JsonKey(name: 'closure') this.closure, @JsonKey(name: 'openingHours') final  List<dynamic>? openingHours, @JsonKey(name: 'summary') final  Map<String, dynamic>? summary, @JsonKey(name: 'days') final  List<dynamic>? days, @JsonKey(name: 'rows') final  List<dynamic>? rows, @JsonKey(name: 'providers') final  List<dynamic>? providers}): _openingHours = openingHours,_summary = summary,_days = days,_rows = rows,_providers = providers;
   factory _AgendaDayDto.fromJson(Map<String, dynamic> json) => _$AgendaDayDtoFromJson(json);
 
 @override@JsonKey(name: 'date') final  Object? date;
@@ -255,6 +256,15 @@ class _AgendaDayDto implements AgendaDayDto {
   return EqualUnmodifiableListView(value);
 }
 
+ final  List<dynamic>? _providers;
+@override@JsonKey(name: 'providers') List<dynamic>? get providers {
+  final value = _providers;
+  if (value == null) return null;
+  if (_providers is EqualUnmodifiableListView) return _providers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 
 /// Create a copy of AgendaDayDto
 /// with the given fields replaced by the non-null parameter values.
@@ -269,16 +279,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgendaDayDto&&const DeepCollectionEquality().equals(other.date, date)&&const DeepCollectionEquality().equals(other.timeZone, timeZone)&&const DeepCollectionEquality().equals(other.closed, closed)&&const DeepCollectionEquality().equals(other.closure, closure)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&const DeepCollectionEquality().equals(other._summary, _summary)&&const DeepCollectionEquality().equals(other._days, _days)&&const DeepCollectionEquality().equals(other._rows, _rows));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgendaDayDto&&const DeepCollectionEquality().equals(other.date, date)&&const DeepCollectionEquality().equals(other.timeZone, timeZone)&&const DeepCollectionEquality().equals(other.closed, closed)&&const DeepCollectionEquality().equals(other.closure, closure)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&const DeepCollectionEquality().equals(other._summary, _summary)&&const DeepCollectionEquality().equals(other._days, _days)&&const DeepCollectionEquality().equals(other._rows, _rows)&&const DeepCollectionEquality().equals(other._providers, _providers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(date),const DeepCollectionEquality().hash(timeZone),const DeepCollectionEquality().hash(closed),const DeepCollectionEquality().hash(closure),const DeepCollectionEquality().hash(_openingHours),const DeepCollectionEquality().hash(_summary),const DeepCollectionEquality().hash(_days),const DeepCollectionEquality().hash(_rows));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(date),const DeepCollectionEquality().hash(timeZone),const DeepCollectionEquality().hash(closed),const DeepCollectionEquality().hash(closure),const DeepCollectionEquality().hash(_openingHours),const DeepCollectionEquality().hash(_summary),const DeepCollectionEquality().hash(_days),const DeepCollectionEquality().hash(_rows),const DeepCollectionEquality().hash(_providers));
 
 @override
 String toString() {
-  return 'AgendaDayDto(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows)';
+  return 'AgendaDayDto(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows, providers: $providers)';
 }
 
 
@@ -289,7 +299,7 @@ abstract mixin class _$AgendaDayDtoCopyWith<$Res> implements $AgendaDayDtoCopyWi
   factory _$AgendaDayDtoCopyWith(_AgendaDayDto value, $Res Function(_AgendaDayDto) _then) = __$AgendaDayDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'date') Object? date,@JsonKey(name: 'timeZone') Object? timeZone,@JsonKey(name: 'closed') Object? closed,@JsonKey(name: 'closure') Object? closure,@JsonKey(name: 'openingHours') List<dynamic>? openingHours,@JsonKey(name: 'summary') Map<String, dynamic>? summary,@JsonKey(name: 'days') List<dynamic>? days,@JsonKey(name: 'rows') List<dynamic>? rows
+@JsonKey(name: 'date') Object? date,@JsonKey(name: 'timeZone') Object? timeZone,@JsonKey(name: 'closed') Object? closed,@JsonKey(name: 'closure') Object? closure,@JsonKey(name: 'openingHours') List<dynamic>? openingHours,@JsonKey(name: 'summary') Map<String, dynamic>? summary,@JsonKey(name: 'days') List<dynamic>? days,@JsonKey(name: 'rows') List<dynamic>? rows,@JsonKey(name: 'providers') List<dynamic>? providers
 });
 
 
@@ -306,12 +316,13 @@ class __$AgendaDayDtoCopyWithImpl<$Res>
 
 /// Create a copy of AgendaDayDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? date = freezed,Object? timeZone = freezed,Object? closed = freezed,Object? closure = freezed,Object? openingHours = freezed,Object? summary = freezed,Object? days = freezed,Object? rows = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? date = freezed,Object? timeZone = freezed,Object? closed = freezed,Object? closure = freezed,Object? openingHours = freezed,Object? summary = freezed,Object? days = freezed,Object? rows = freezed,Object? providers = freezed,}) {
   return _then(_AgendaDayDto(
 date: freezed == date ? _self.date : date ,timeZone: freezed == timeZone ? _self.timeZone : timeZone ,closed: freezed == closed ? _self.closed : closed ,closure: freezed == closure ? _self.closure : closure ,openingHours: freezed == openingHours ? _self._openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,summary: freezed == summary ? _self._summary : summary // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,days: freezed == days ? _self._days : days // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,rows: freezed == rows ? _self._rows : rows // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,providers: freezed == providers ? _self._providers : providers // ignore: cast_nullable_to_non_nullable
 as List<dynamic>?,
   ));
 }

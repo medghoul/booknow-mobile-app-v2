@@ -8,6 +8,7 @@ import 'package:booknow_mobile/domain/models/index.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_cubit.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_state.dart';
 import 'package:booknow_mobile/features/agenda/widgets/agenda_booking_sheet.dart';
+import 'package:booknow_mobile/features/agenda/widgets/agenda_provider_filter.dart';
 import 'package:booknow_mobile/features/agenda/widgets/agenda_row_actions.dart';
 import 'package:booknow_mobile/features/agenda/widgets/owner_today_parts.dart';
 import 'package:booknow_mobile/features/auth/cubit/auth_cubit.dart';
@@ -138,6 +139,12 @@ class _Day extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.fromLTRB(16.w, 14.h, 16.w, 24.h),
         children: [
+          // Today is worked one chair at a time: with a team, the owner picks
+          // whose day this is, and "Everyone" shows the shop's next booking.
+          if (AgendaProviderFilter.showsFor(state)) ...[
+            const AgendaProviderFilter(padding: EdgeInsets.zero),
+            SizedBox(height: 14.h),
+          ],
           if (focus != null)
             _Focus(row: focus, timeZone: day.timeZone, state: state)
           else ...[
@@ -167,7 +174,10 @@ class _Day extends StatelessWidget {
                 ),
                 leadAmber: false,
                 name: row.customerName ?? t.agenda.customerFallback,
-                line: row.serviceName,
+                line: [
+                  row.serviceName,
+                  ?AgendaProviderFilter.labelFor(state, row),
+                ].join(' · '),
                 tag: row.status == BookingStatus.arrived
                     ? row.status.label(t)
                     : t.today.bookedTag,
@@ -217,7 +227,10 @@ class _Focus extends StatelessWidget {
 
     return TodayChairCard(
       initial: initial,
-      overline: isNow ? t.today.nowLabel : t.today.nextLabel,
+      overline: [
+        isNow ? t.today.nowLabel : t.today.nextLabel,
+        ?AgendaProviderFilter.labelFor(state, row),
+      ].join(' · '),
       title: '$name · ${row.serviceName}',
       meta: isNow ? t.queue.owner.minutesLeft(minutes: left) : start,
       progress: isNow && total > 0 ? gone / total : null,

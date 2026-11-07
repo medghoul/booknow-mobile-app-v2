@@ -20,7 +20,9 @@ mixin _$AgendaDay {
  String get timeZone;/// No opening hours at all on this weekday.
  bool get closed;/// Closed because the owner closed it, rather than because the weekday is
 /// not a working one. The strip looks the same; the empty day does not.
- bool get closure; List<AgendaOpening> get openingHours; AgendaSummary get summary; List<AgendaStripDay> get days; List<AgendaRow> get rows;
+ bool get closure; List<AgendaOpening> get openingHours; AgendaSummary get summary; List<AgendaStripDay> get days; List<AgendaRow> get rows;/// Everyone working, by order, plus anyone removed since who still has a
+/// row on this day, so every row can be labelled (providers §5).
+ List<AgendaProvider> get providers;
 /// Create a copy of AgendaDay
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,16 +33,16 @@ $AgendaDayCopyWith<AgendaDay> get copyWith => _$AgendaDayCopyWithImpl<AgendaDay>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaDay&&(identical(other.date, date) || other.date == date)&&(identical(other.timeZone, timeZone) || other.timeZone == timeZone)&&(identical(other.closed, closed) || other.closed == closed)&&(identical(other.closure, closure) || other.closure == closure)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&(identical(other.summary, summary) || other.summary == summary)&&const DeepCollectionEquality().equals(other.days, days)&&const DeepCollectionEquality().equals(other.rows, rows));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaDay&&(identical(other.date, date) || other.date == date)&&(identical(other.timeZone, timeZone) || other.timeZone == timeZone)&&(identical(other.closed, closed) || other.closed == closed)&&(identical(other.closure, closure) || other.closure == closure)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&(identical(other.summary, summary) || other.summary == summary)&&const DeepCollectionEquality().equals(other.days, days)&&const DeepCollectionEquality().equals(other.rows, rows)&&const DeepCollectionEquality().equals(other.providers, providers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,date,timeZone,closed,closure,const DeepCollectionEquality().hash(openingHours),summary,const DeepCollectionEquality().hash(days),const DeepCollectionEquality().hash(rows));
+int get hashCode => Object.hash(runtimeType,date,timeZone,closed,closure,const DeepCollectionEquality().hash(openingHours),summary,const DeepCollectionEquality().hash(days),const DeepCollectionEquality().hash(rows),const DeepCollectionEquality().hash(providers));
 
 @override
 String toString() {
-  return 'AgendaDay(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows)';
+  return 'AgendaDay(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows, providers: $providers)';
 }
 
 
@@ -51,7 +53,7 @@ abstract mixin class $AgendaDayCopyWith<$Res>  {
   factory $AgendaDayCopyWith(AgendaDay value, $Res Function(AgendaDay) _then) = _$AgendaDayCopyWithImpl;
 @useResult
 $Res call({
- String date, String timeZone, bool closed, bool closure, List<AgendaOpening> openingHours, AgendaSummary summary, List<AgendaStripDay> days, List<AgendaRow> rows
+ String date, String timeZone, bool closed, bool closure, List<AgendaOpening> openingHours, AgendaSummary summary, List<AgendaStripDay> days, List<AgendaRow> rows, List<AgendaProvider> providers
 });
 
 
@@ -68,7 +70,7 @@ class _$AgendaDayCopyWithImpl<$Res>
 
 /// Create a copy of AgendaDay
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? date = null,Object? timeZone = null,Object? closed = null,Object? closure = null,Object? openingHours = null,Object? summary = null,Object? days = null,Object? rows = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? date = null,Object? timeZone = null,Object? closed = null,Object? closure = null,Object? openingHours = null,Object? summary = null,Object? days = null,Object? rows = null,Object? providers = null,}) {
   return _then(_self.copyWith(
 date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,timeZone: null == timeZone ? _self.timeZone : timeZone // ignore: cast_nullable_to_non_nullable
@@ -78,7 +80,8 @@ as bool,openingHours: null == openingHours ? _self.openingHours : openingHours /
 as List<AgendaOpening>,summary: null == summary ? _self.summary : summary // ignore: cast_nullable_to_non_nullable
 as AgendaSummary,days: null == days ? _self.days : days // ignore: cast_nullable_to_non_nullable
 as List<AgendaStripDay>,rows: null == rows ? _self.rows : rows // ignore: cast_nullable_to_non_nullable
-as List<AgendaRow>,
+as List<AgendaRow>,providers: null == providers ? _self.providers : providers // ignore: cast_nullable_to_non_nullable
+as List<AgendaProvider>,
   ));
 }
 /// Create a copy of AgendaDay
@@ -172,10 +175,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows,  List<AgendaProvider> providers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AgendaDay() when $default != null:
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   return orElse();
 
 }
@@ -193,10 +196,10 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows,  List<AgendaProvider> providers)  $default,) {final _that = this;
 switch (_that) {
 case _AgendaDay():
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -213,10 +216,10 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String date,  String timeZone,  bool closed,  bool closure,  List<AgendaOpening> openingHours,  AgendaSummary summary,  List<AgendaStripDay> days,  List<AgendaRow> rows,  List<AgendaProvider> providers)?  $default,) {final _that = this;
 switch (_that) {
 case _AgendaDay() when $default != null:
-return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows);case _:
+return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openingHours,_that.summary,_that.days,_that.rows,_that.providers);case _:
   return null;
 
 }
@@ -227,8 +230,8 @@ return $default(_that.date,_that.timeZone,_that.closed,_that.closure,_that.openi
 /// @nodoc
 
 
-class _AgendaDay implements AgendaDay {
-  const _AgendaDay({required this.date, required this.timeZone, required this.closed, required this.closure, required final  List<AgendaOpening> openingHours, required this.summary, required final  List<AgendaStripDay> days, required final  List<AgendaRow> rows}): _openingHours = openingHours,_days = days,_rows = rows;
+class _AgendaDay extends AgendaDay {
+  const _AgendaDay({required this.date, required this.timeZone, required this.closed, required this.closure, required final  List<AgendaOpening> openingHours, required this.summary, required final  List<AgendaStripDay> days, required final  List<AgendaRow> rows, final  List<AgendaProvider> providers = const <AgendaProvider>[]}): _openingHours = openingHours,_days = days,_rows = rows,_providers = providers,super._();
   
 
 /// The day this is, as `YYYY-MM-DD` in the shop's own calendar.
@@ -263,6 +266,17 @@ class _AgendaDay implements AgendaDay {
   return EqualUnmodifiableListView(_rows);
 }
 
+/// Everyone working, by order, plus anyone removed since who still has a
+/// row on this day, so every row can be labelled (providers §5).
+ final  List<AgendaProvider> _providers;
+/// Everyone working, by order, plus anyone removed since who still has a
+/// row on this day, so every row can be labelled (providers §5).
+@override@JsonKey() List<AgendaProvider> get providers {
+  if (_providers is EqualUnmodifiableListView) return _providers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_providers);
+}
+
 
 /// Create a copy of AgendaDay
 /// with the given fields replaced by the non-null parameter values.
@@ -274,16 +288,16 @@ _$AgendaDayCopyWith<_AgendaDay> get copyWith => __$AgendaDayCopyWithImpl<_Agenda
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgendaDay&&(identical(other.date, date) || other.date == date)&&(identical(other.timeZone, timeZone) || other.timeZone == timeZone)&&(identical(other.closed, closed) || other.closed == closed)&&(identical(other.closure, closure) || other.closure == closure)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&(identical(other.summary, summary) || other.summary == summary)&&const DeepCollectionEquality().equals(other._days, _days)&&const DeepCollectionEquality().equals(other._rows, _rows));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgendaDay&&(identical(other.date, date) || other.date == date)&&(identical(other.timeZone, timeZone) || other.timeZone == timeZone)&&(identical(other.closed, closed) || other.closed == closed)&&(identical(other.closure, closure) || other.closure == closure)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&(identical(other.summary, summary) || other.summary == summary)&&const DeepCollectionEquality().equals(other._days, _days)&&const DeepCollectionEquality().equals(other._rows, _rows)&&const DeepCollectionEquality().equals(other._providers, _providers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,date,timeZone,closed,closure,const DeepCollectionEquality().hash(_openingHours),summary,const DeepCollectionEquality().hash(_days),const DeepCollectionEquality().hash(_rows));
+int get hashCode => Object.hash(runtimeType,date,timeZone,closed,closure,const DeepCollectionEquality().hash(_openingHours),summary,const DeepCollectionEquality().hash(_days),const DeepCollectionEquality().hash(_rows),const DeepCollectionEquality().hash(_providers));
 
 @override
 String toString() {
-  return 'AgendaDay(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows)';
+  return 'AgendaDay(date: $date, timeZone: $timeZone, closed: $closed, closure: $closure, openingHours: $openingHours, summary: $summary, days: $days, rows: $rows, providers: $providers)';
 }
 
 
@@ -294,7 +308,7 @@ abstract mixin class _$AgendaDayCopyWith<$Res> implements $AgendaDayCopyWith<$Re
   factory _$AgendaDayCopyWith(_AgendaDay value, $Res Function(_AgendaDay) _then) = __$AgendaDayCopyWithImpl;
 @override @useResult
 $Res call({
- String date, String timeZone, bool closed, bool closure, List<AgendaOpening> openingHours, AgendaSummary summary, List<AgendaStripDay> days, List<AgendaRow> rows
+ String date, String timeZone, bool closed, bool closure, List<AgendaOpening> openingHours, AgendaSummary summary, List<AgendaStripDay> days, List<AgendaRow> rows, List<AgendaProvider> providers
 });
 
 
@@ -311,7 +325,7 @@ class __$AgendaDayCopyWithImpl<$Res>
 
 /// Create a copy of AgendaDay
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? date = null,Object? timeZone = null,Object? closed = null,Object? closure = null,Object? openingHours = null,Object? summary = null,Object? days = null,Object? rows = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? date = null,Object? timeZone = null,Object? closed = null,Object? closure = null,Object? openingHours = null,Object? summary = null,Object? days = null,Object? rows = null,Object? providers = null,}) {
   return _then(_AgendaDay(
 date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,timeZone: null == timeZone ? _self.timeZone : timeZone // ignore: cast_nullable_to_non_nullable
@@ -321,7 +335,8 @@ as bool,openingHours: null == openingHours ? _self._openingHours : openingHours 
 as List<AgendaOpening>,summary: null == summary ? _self.summary : summary // ignore: cast_nullable_to_non_nullable
 as AgendaSummary,days: null == days ? _self._days : days // ignore: cast_nullable_to_non_nullable
 as List<AgendaStripDay>,rows: null == rows ? _self._rows : rows // ignore: cast_nullable_to_non_nullable
-as List<AgendaRow>,
+as List<AgendaRow>,providers: null == providers ? _self._providers : providers // ignore: cast_nullable_to_non_nullable
+as List<AgendaProvider>,
   ));
 }
 
@@ -335,6 +350,268 @@ $AgendaSummaryCopyWith<$Res> get summary {
     return _then(_self.copyWith(summary: value));
   });
 }
+}
+
+/// @nodoc
+mixin _$AgendaProvider {
+
+ String get id;/// The owner's own provider shows the shop's name until given one.
+ String? get name;
+/// Create a copy of AgendaProvider
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AgendaProviderCopyWith<AgendaProvider> get copyWith => _$AgendaProviderCopyWithImpl<AgendaProvider>(this as AgendaProvider, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaProvider&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,name);
+
+@override
+String toString() {
+  return 'AgendaProvider(id: $id, name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AgendaProviderCopyWith<$Res>  {
+  factory $AgendaProviderCopyWith(AgendaProvider value, $Res Function(AgendaProvider) _then) = _$AgendaProviderCopyWithImpl;
+@useResult
+$Res call({
+ String id, String? name
+});
+
+
+
+
+}
+/// @nodoc
+class _$AgendaProviderCopyWithImpl<$Res>
+    implements $AgendaProviderCopyWith<$Res> {
+  _$AgendaProviderCopyWithImpl(this._self, this._then);
+
+  final AgendaProvider _self;
+  final $Res Function(AgendaProvider) _then;
+
+/// Create a copy of AgendaProvider
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [AgendaProvider].
+extension AgendaProviderPatterns on AgendaProvider {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AgendaProvider value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AgendaProvider() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AgendaProvider value)  $default,){
+final _that = this;
+switch (_that) {
+case _AgendaProvider():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AgendaProvider value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AgendaProvider() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? name)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AgendaProvider() when $default != null:
+return $default(_that.id,_that.name);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? name)  $default,) {final _that = this;
+switch (_that) {
+case _AgendaProvider():
+return $default(_that.id,_that.name);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? name)?  $default,) {final _that = this;
+switch (_that) {
+case _AgendaProvider() when $default != null:
+return $default(_that.id,_that.name);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _AgendaProvider implements AgendaProvider {
+  const _AgendaProvider({required this.id, this.name});
+  
+
+@override final  String id;
+/// The owner's own provider shows the shop's name until given one.
+@override final  String? name;
+
+/// Create a copy of AgendaProvider
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AgendaProviderCopyWith<_AgendaProvider> get copyWith => __$AgendaProviderCopyWithImpl<_AgendaProvider>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgendaProvider&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,name);
+
+@override
+String toString() {
+  return 'AgendaProvider(id: $id, name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AgendaProviderCopyWith<$Res> implements $AgendaProviderCopyWith<$Res> {
+  factory _$AgendaProviderCopyWith(_AgendaProvider value, $Res Function(_AgendaProvider) _then) = __$AgendaProviderCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String? name
+});
+
+
+
+
+}
+/// @nodoc
+class __$AgendaProviderCopyWithImpl<$Res>
+    implements _$AgendaProviderCopyWith<$Res> {
+  __$AgendaProviderCopyWithImpl(this._self, this._then);
+
+  final _AgendaProvider _self;
+  final $Res Function(_AgendaProvider) _then;
+
+/// Create a copy of AgendaProvider
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,}) {
+  return _then(_AgendaProvider(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
 }
 
 /// @nodoc

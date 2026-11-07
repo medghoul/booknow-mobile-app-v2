@@ -25,6 +25,7 @@ abstract class AgendaDayDto with _$AgendaDayDto {
     @JsonKey(name: 'summary') Map<String, dynamic>? summary,
     @JsonKey(name: 'days') List<dynamic>? days,
     @JsonKey(name: 'rows') List<dynamic>? rows,
+    @JsonKey(name: 'providers') List<dynamic>? providers,
   }) = _AgendaDayDto;
 
   factory AgendaDayDto.fromJson(Map<String, dynamic> json) =>
@@ -62,6 +63,11 @@ extension AgendaDayDtoX on AgendaDayDto {
       summary: _summary(summary),
       days: _strip(days),
       rows: _rows(rows),
+      providers: [
+        for (final entry in providers?.whereType<Map>() ?? const <Map>[])
+          if (asTextOrNull(entry['providerId']) case final id?)
+            AgendaProvider(id: id, name: asTextOrNull(entry['name'])),
+      ],
     );
   }
 }
@@ -142,17 +148,20 @@ AgendaRow? _row(Map<dynamic, dynamic> json) {
       feeCents: asInt(json['feeAmountCents']),
       customerName: asTextOrNull(json['customerName']),
       customerPhone: asTextOrNull(json['customerPhone']),
+      providerId: asTextOrNull(json['providerId']),
     ),
     'block' => AgendaRow.block(
       id: asText(json['blockId'], asText(json['id'])),
       startUtc: from,
       endUtc: to,
       note: asTextOrNull(json['note']),
+      providerId: asTextOrNull(json['providerId']),
     ),
     'free' => AgendaRow.free(
       startUtc: from,
       endUtc: to,
       freedBy: asTextOrNull(json['freedBy']),
+      providerId: asTextOrNull(json['providerId']),
     ),
     _ => null,
   };

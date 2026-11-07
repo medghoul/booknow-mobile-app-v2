@@ -16,6 +16,7 @@ _AgendaDayDto _$AgendaDayDtoFromJson(Map<String, dynamic> json) =>
       summary: json['summary'] as Map<String, dynamic>?,
       days: json['days'] as List<dynamic>?,
       rows: json['rows'] as List<dynamic>?,
+      providers: json['providers'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$AgendaDayDtoToJson(_AgendaDayDto instance) =>
@@ -28,6 +29,7 @@ Map<String, dynamic> _$AgendaDayDtoToJson(_AgendaDayDto instance) =>
       'summary': ?instance.summary,
       'days': ?instance.days,
       'rows': ?instance.rows,
+      'providers': ?instance.providers,
     };
 
 _BlockDto _$BlockDtoFromJson(Map<String, dynamic> json) => _BlockDto(

@@ -8,12 +8,18 @@ import '../models/time_block.dart';
 abstract class AgendaRepository {
   /// One day of the timeline. A null [date] asks for today **in the shop's**
   /// timezone, which the server knows and the device does not.
-  Future<ApiResult<AgendaDay>> day({String? date});
+  ///
+  /// With [providerId], that person's day: their rows, hours, summary and
+  /// strip. Without, everyone's (providers §5).
+  Future<ApiResult<AgendaDay>> day({String? date, String? providerId});
 
   Future<ApiResult<TimeBlock>> block({
     required DateTime startUtc,
     required DateTime endUtc,
     String? note,
+
+    /// Whose time. Required by the server once more than one person works.
+    String? providerId,
   });
 
   /// [date] is the block's own day, in the shop's calendar: blocks are stored

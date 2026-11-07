@@ -670,6 +670,7 @@ home:
   closedUntil(time): Chiuso · apre alle ${time}
 
 agenda:
+  everyone: Tutti
   freeLine(length): ${length} · Tocca per bloccare
   hours(count): ${count} h
   today: Oggi

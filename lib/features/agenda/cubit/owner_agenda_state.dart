@@ -13,6 +13,9 @@ abstract class OwnerAgendaState with _$OwnerAgendaState {
 
     AgendaDay? day,
 
+    /// Whose day is shown; null is everyone's.
+    String? providerId,
+
     /// The first load, and every date change. A swipe of the strip replaces
     /// the whole timeline, so it is a load rather than a refresh.
     @Default(true) bool isLoading,

@@ -86,7 +86,7 @@ class _StubRepository implements AgendaRepository {
       _action('cancel:$bookingId');
 
   @override
-  Future<ApiResult<AgendaDay>> day({String? date}) async {
+  Future<ApiResult<AgendaDay>> day({String? date, String? providerId}) async {
     reads++;
     return Success(_day);
   }
@@ -96,6 +96,7 @@ class _StubRepository implements AgendaRepository {
     required DateTime startUtc,
     required DateTime endUtc,
     String? note,
+    String? providerId,
   }) async {
     blocked++;
     return Success(

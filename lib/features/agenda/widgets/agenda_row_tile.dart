@@ -19,9 +19,13 @@ class AgendaRowTile extends StatelessWidget {
     required this.timeZone,
     required this.now,
     required this.onTap,
+    this.providerName,
   });
 
   final AgendaRow row;
+
+  /// Whose row it is, shown when the day mixes several people's.
+  final String? providerName;
   final String timeZone;
 
   /// The clock the past state is decided against. Passed in rather than read
@@ -72,6 +76,9 @@ class AgendaRowTile extends StatelessWidget {
       ),
     };
 
+    final who = providerName;
+    final shownLine = who == null ? line : '$who · $line';
+
     final content = Container(
       constraints: BoxConstraints(minHeight: _minHeight.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
@@ -105,7 +112,7 @@ class AgendaRowTile extends StatelessWidget {
           ),
           const SizedBox(height: 1),
           Text(
-            line,
+            shownLine,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: context.textTheme.bodySmall?.copyWith(

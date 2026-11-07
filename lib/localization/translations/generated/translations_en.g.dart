@@ -1031,6 +1031,9 @@ class Translations$agenda$en {
 
 	// Translations
 
+	/// en: 'Everyone'
+	String get everyone => 'Everyone';
+
 	/// en: '${length} · Tap to block'
 	String freeLine({required Object length}) => '${length} · Tap to block';
 
@@ -4158,6 +4161,7 @@ extension on Translations {
 			'home.openUntil' => ({required Object time}) => 'Open until ${time}',
 			'home.closedNow' => 'Closed',
 			'home.closedUntil' => ({required Object time}) => 'Closed · opens ${time}',
+			'agenda.everyone' => 'Everyone',
 			'agenda.freeLine' => ({required Object length}) => '${length} · Tap to block',
 			'agenda.hours' => ({required Object count}) => '${count} h',
 			'agenda.today' => 'Today',

@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AgendaRow {
 
- DateTime get startUtc; DateTime get endUtc;
+ DateTime get startUtc; DateTime get endUtc;/// Whose time it is (providers §5). Null from an API older than providers.
+ String? get providerId;
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +26,16 @@ $AgendaRowCopyWith<AgendaRow> get copyWith => _$AgendaRowCopyWithImpl<AgendaRow>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaRow&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaRow&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.providerId, providerId) || other.providerId == providerId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,startUtc,endUtc);
+int get hashCode => Object.hash(runtimeType,startUtc,endUtc,providerId);
 
 @override
 String toString() {
-  return 'AgendaRow(startUtc: $startUtc, endUtc: $endUtc)';
+  return 'AgendaRow(startUtc: $startUtc, endUtc: $endUtc, providerId: $providerId)';
 }
 
 
@@ -45,7 +46,7 @@ abstract mixin class $AgendaRowCopyWith<$Res>  {
   factory $AgendaRowCopyWith(AgendaRow value, $Res Function(AgendaRow) _then) = _$AgendaRowCopyWithImpl;
 @useResult
 $Res call({
- DateTime startUtc, DateTime endUtc
+ DateTime startUtc, DateTime endUtc, String? providerId
 });
 
 
@@ -62,11 +63,12 @@ class _$AgendaRowCopyWithImpl<$Res>
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? startUtc = null,Object? endUtc = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? startUtc = null,Object? endUtc = null,Object? providerId = freezed,}) {
   return _then(_self.copyWith(
 startUtc: null == startUtc ? _self.startUtc : startUtc // ignore: cast_nullable_to_non_nullable
 as DateTime,endUtc: null == endUtc ? _self.endUtc : endUtc // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as DateTime,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -154,12 +156,12 @@ return free(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone)?  booking,TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note)?  block,TResult Function( DateTime startUtc,  DateTime endUtc,  String? freedBy)?  free,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone,  String? providerId)?  booking,TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note,  String? providerId)?  block,TResult Function( DateTime startUtc,  DateTime endUtc,  String? freedBy,  String? providerId)?  free,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AgendaBookingRow() when booking != null:
-return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone);case AgendaBlockRow() when block != null:
-return block(_that.id,_that.startUtc,_that.endUtc,_that.note);case AgendaFreeRow() when free != null:
-return free(_that.startUtc,_that.endUtc,_that.freedBy);case _:
+return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone,_that.providerId);case AgendaBlockRow() when block != null:
+return block(_that.id,_that.startUtc,_that.endUtc,_that.note,_that.providerId);case AgendaFreeRow() when free != null:
+return free(_that.startUtc,_that.endUtc,_that.freedBy,_that.providerId);case _:
   return orElse();
 
 }
@@ -177,12 +179,12 @@ return free(_that.startUtc,_that.endUtc,_that.freedBy);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone)  booking,required TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note)  block,required TResult Function( DateTime startUtc,  DateTime endUtc,  String? freedBy)  free,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone,  String? providerId)  booking,required TResult Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note,  String? providerId)  block,required TResult Function( DateTime startUtc,  DateTime endUtc,  String? freedBy,  String? providerId)  free,}) {final _that = this;
 switch (_that) {
 case AgendaBookingRow():
-return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone);case AgendaBlockRow():
-return block(_that.id,_that.startUtc,_that.endUtc,_that.note);case AgendaFreeRow():
-return free(_that.startUtc,_that.endUtc,_that.freedBy);}
+return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone,_that.providerId);case AgendaBlockRow():
+return block(_that.id,_that.startUtc,_that.endUtc,_that.note,_that.providerId);case AgendaFreeRow():
+return free(_that.startUtc,_that.endUtc,_that.freedBy,_that.providerId);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -196,12 +198,12 @@ return free(_that.startUtc,_that.endUtc,_that.freedBy);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone)?  booking,TResult? Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note)?  block,TResult? Function( DateTime startUtc,  DateTime endUtc,  String? freedBy)?  free,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  DateTime startUtc,  DateTime endUtc,  DateTime occupiedUntilUtc,  int durationMinutes,  BookingStatus status,  String serviceName,  int priceCents,  int feeCents,  String? customerName,  String? customerPhone,  String? providerId)?  booking,TResult? Function( String id,  DateTime startUtc,  DateTime endUtc,  String? note,  String? providerId)?  block,TResult? Function( DateTime startUtc,  DateTime endUtc,  String? freedBy,  String? providerId)?  free,}) {final _that = this;
 switch (_that) {
 case AgendaBookingRow() when booking != null:
-return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone);case AgendaBlockRow() when block != null:
-return block(_that.id,_that.startUtc,_that.endUtc,_that.note);case AgendaFreeRow() when free != null:
-return free(_that.startUtc,_that.endUtc,_that.freedBy);case _:
+return booking(_that.id,_that.startUtc,_that.endUtc,_that.occupiedUntilUtc,_that.durationMinutes,_that.status,_that.serviceName,_that.priceCents,_that.feeCents,_that.customerName,_that.customerPhone,_that.providerId);case AgendaBlockRow() when block != null:
+return block(_that.id,_that.startUtc,_that.endUtc,_that.note,_that.providerId);case AgendaFreeRow() when free != null:
+return free(_that.startUtc,_that.endUtc,_that.freedBy,_that.providerId);case _:
   return null;
 
 }
@@ -213,7 +215,7 @@ return free(_that.startUtc,_that.endUtc,_that.freedBy);case _:
 
 
 class AgendaBookingRow extends AgendaRow {
-  const AgendaBookingRow({required this.id, required this.startUtc, required this.endUtc, required this.occupiedUntilUtc, required this.durationMinutes, required this.status, required this.serviceName, required this.priceCents, required this.feeCents, required this.customerName, required this.customerPhone}): super._();
+  const AgendaBookingRow({required this.id, required this.startUtc, required this.endUtc, required this.occupiedUntilUtc, required this.durationMinutes, required this.status, required this.serviceName, required this.priceCents, required this.feeCents, required this.customerName, required this.customerPhone, this.providerId}): super._();
   
 
  final  String id;
@@ -233,6 +235,8 @@ class AgendaBookingRow extends AgendaRow {
  final  int feeCents;
  final  String? customerName;
  final  String? customerPhone;
+/// Whose time it is (providers §5). Null from an API older than providers.
+@override final  String? providerId;
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
@@ -244,16 +248,16 @@ $AgendaBookingRowCopyWith<AgendaBookingRow> get copyWith => _$AgendaBookingRowCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaBookingRow&&(identical(other.id, id) || other.id == id)&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.occupiedUntilUtc, occupiedUntilUtc) || other.occupiedUntilUtc == occupiedUntilUtc)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.status, status) || other.status == status)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.priceCents, priceCents) || other.priceCents == priceCents)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaBookingRow&&(identical(other.id, id) || other.id == id)&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.occupiedUntilUtc, occupiedUntilUtc) || other.occupiedUntilUtc == occupiedUntilUtc)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&(identical(other.status, status) || other.status == status)&&(identical(other.serviceName, serviceName) || other.serviceName == serviceName)&&(identical(other.priceCents, priceCents) || other.priceCents == priceCents)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone)&&(identical(other.providerId, providerId) || other.providerId == providerId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,startUtc,endUtc,occupiedUntilUtc,durationMinutes,status,serviceName,priceCents,feeCents,customerName,customerPhone);
+int get hashCode => Object.hash(runtimeType,id,startUtc,endUtc,occupiedUntilUtc,durationMinutes,status,serviceName,priceCents,feeCents,customerName,customerPhone,providerId);
 
 @override
 String toString() {
-  return 'AgendaRow.booking(id: $id, startUtc: $startUtc, endUtc: $endUtc, occupiedUntilUtc: $occupiedUntilUtc, durationMinutes: $durationMinutes, status: $status, serviceName: $serviceName, priceCents: $priceCents, feeCents: $feeCents, customerName: $customerName, customerPhone: $customerPhone)';
+  return 'AgendaRow.booking(id: $id, startUtc: $startUtc, endUtc: $endUtc, occupiedUntilUtc: $occupiedUntilUtc, durationMinutes: $durationMinutes, status: $status, serviceName: $serviceName, priceCents: $priceCents, feeCents: $feeCents, customerName: $customerName, customerPhone: $customerPhone, providerId: $providerId)';
 }
 
 
@@ -264,7 +268,7 @@ abstract mixin class $AgendaBookingRowCopyWith<$Res> implements $AgendaRowCopyWi
   factory $AgendaBookingRowCopyWith(AgendaBookingRow value, $Res Function(AgendaBookingRow) _then) = _$AgendaBookingRowCopyWithImpl;
 @override @useResult
 $Res call({
- String id, DateTime startUtc, DateTime endUtc, DateTime occupiedUntilUtc, int durationMinutes, BookingStatus status, String serviceName, int priceCents, int feeCents, String? customerName, String? customerPhone
+ String id, DateTime startUtc, DateTime endUtc, DateTime occupiedUntilUtc, int durationMinutes, BookingStatus status, String serviceName, int priceCents, int feeCents, String? customerName, String? customerPhone, String? providerId
 });
 
 
@@ -281,7 +285,7 @@ class _$AgendaBookingRowCopyWithImpl<$Res>
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? startUtc = null,Object? endUtc = null,Object? occupiedUntilUtc = null,Object? durationMinutes = null,Object? status = null,Object? serviceName = null,Object? priceCents = null,Object? feeCents = null,Object? customerName = freezed,Object? customerPhone = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? startUtc = null,Object? endUtc = null,Object? occupiedUntilUtc = null,Object? durationMinutes = null,Object? status = null,Object? serviceName = null,Object? priceCents = null,Object? feeCents = null,Object? customerName = freezed,Object? customerPhone = freezed,Object? providerId = freezed,}) {
   return _then(AgendaBookingRow(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,startUtc: null == startUtc ? _self.startUtc : startUtc // ignore: cast_nullable_to_non_nullable
@@ -294,6 +298,7 @@ as String,priceCents: null == priceCents ? _self.priceCents : priceCents // igno
 as int,feeCents: null == feeCents ? _self.feeCents : feeCents // ignore: cast_nullable_to_non_nullable
 as int,customerName: freezed == customerName ? _self.customerName : customerName // ignore: cast_nullable_to_non_nullable
 as String?,customerPhone: freezed == customerPhone ? _self.customerPhone : customerPhone // ignore: cast_nullable_to_non_nullable
+as String?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -305,13 +310,14 @@ as String?,
 
 
 class AgendaBlockRow extends AgendaRow {
-  const AgendaBlockRow({required this.id, required this.startUtc, required this.endUtc, required this.note}): super._();
+  const AgendaBlockRow({required this.id, required this.startUtc, required this.endUtc, required this.note, this.providerId}): super._();
   
 
  final  String id;
 @override final  DateTime startUtc;
 @override final  DateTime endUtc;
  final  String? note;
+@override final  String? providerId;
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
@@ -323,16 +329,16 @@ $AgendaBlockRowCopyWith<AgendaBlockRow> get copyWith => _$AgendaBlockRowCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaBlockRow&&(identical(other.id, id) || other.id == id)&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.note, note) || other.note == note));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaBlockRow&&(identical(other.id, id) || other.id == id)&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.note, note) || other.note == note)&&(identical(other.providerId, providerId) || other.providerId == providerId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,startUtc,endUtc,note);
+int get hashCode => Object.hash(runtimeType,id,startUtc,endUtc,note,providerId);
 
 @override
 String toString() {
-  return 'AgendaRow.block(id: $id, startUtc: $startUtc, endUtc: $endUtc, note: $note)';
+  return 'AgendaRow.block(id: $id, startUtc: $startUtc, endUtc: $endUtc, note: $note, providerId: $providerId)';
 }
 
 
@@ -343,7 +349,7 @@ abstract mixin class $AgendaBlockRowCopyWith<$Res> implements $AgendaRowCopyWith
   factory $AgendaBlockRowCopyWith(AgendaBlockRow value, $Res Function(AgendaBlockRow) _then) = _$AgendaBlockRowCopyWithImpl;
 @override @useResult
 $Res call({
- String id, DateTime startUtc, DateTime endUtc, String? note
+ String id, DateTime startUtc, DateTime endUtc, String? note, String? providerId
 });
 
 
@@ -360,12 +366,13 @@ class _$AgendaBlockRowCopyWithImpl<$Res>
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? startUtc = null,Object? endUtc = null,Object? note = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? startUtc = null,Object? endUtc = null,Object? note = freezed,Object? providerId = freezed,}) {
   return _then(AgendaBlockRow(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,startUtc: null == startUtc ? _self.startUtc : startUtc // ignore: cast_nullable_to_non_nullable
 as DateTime,endUtc: null == endUtc ? _self.endUtc : endUtc // ignore: cast_nullable_to_non_nullable
 as DateTime,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -377,7 +384,7 @@ as String?,
 
 
 class AgendaFreeRow extends AgendaRow {
-  const AgendaFreeRow({required this.startUtc, required this.endUtc, required this.freedBy}): super._();
+  const AgendaFreeRow({required this.startUtc, required this.endUtc, required this.freedBy, this.providerId}): super._();
   
 
 @override final  DateTime startUtc;
@@ -386,6 +393,8 @@ class AgendaFreeRow extends AgendaRow {
 /// morning and a client who dropped out read differently — the second is
 /// someone the owner may want to call.
  final  String? freedBy;
+/// Whose free time: blocking it takes theirs and nobody else's.
+@override final  String? providerId;
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
@@ -397,16 +406,16 @@ $AgendaFreeRowCopyWith<AgendaFreeRow> get copyWith => _$AgendaFreeRowCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaFreeRow&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.freedBy, freedBy) || other.freedBy == freedBy));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgendaFreeRow&&(identical(other.startUtc, startUtc) || other.startUtc == startUtc)&&(identical(other.endUtc, endUtc) || other.endUtc == endUtc)&&(identical(other.freedBy, freedBy) || other.freedBy == freedBy)&&(identical(other.providerId, providerId) || other.providerId == providerId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,startUtc,endUtc,freedBy);
+int get hashCode => Object.hash(runtimeType,startUtc,endUtc,freedBy,providerId);
 
 @override
 String toString() {
-  return 'AgendaRow.free(startUtc: $startUtc, endUtc: $endUtc, freedBy: $freedBy)';
+  return 'AgendaRow.free(startUtc: $startUtc, endUtc: $endUtc, freedBy: $freedBy, providerId: $providerId)';
 }
 
 
@@ -417,7 +426,7 @@ abstract mixin class $AgendaFreeRowCopyWith<$Res> implements $AgendaRowCopyWith<
   factory $AgendaFreeRowCopyWith(AgendaFreeRow value, $Res Function(AgendaFreeRow) _then) = _$AgendaFreeRowCopyWithImpl;
 @override @useResult
 $Res call({
- DateTime startUtc, DateTime endUtc, String? freedBy
+ DateTime startUtc, DateTime endUtc, String? freedBy, String? providerId
 });
 
 
@@ -434,11 +443,12 @@ class _$AgendaFreeRowCopyWithImpl<$Res>
 
 /// Create a copy of AgendaRow
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? startUtc = null,Object? endUtc = null,Object? freedBy = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? startUtc = null,Object? endUtc = null,Object? freedBy = freezed,Object? providerId = freezed,}) {
   return _then(AgendaFreeRow(
 startUtc: null == startUtc ? _self.startUtc : startUtc // ignore: cast_nullable_to_non_nullable
 as DateTime,endUtc: null == endUtc ? _self.endUtc : endUtc // ignore: cast_nullable_to_non_nullable
 as DateTime,freedBy: freezed == freedBy ? _self.freedBy : freedBy // ignore: cast_nullable_to_non_nullable
+as String?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

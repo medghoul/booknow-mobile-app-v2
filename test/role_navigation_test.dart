@@ -80,24 +80,26 @@ class _StubBookingRepository implements BookingRepository {
 /// on, not what that screen says.
 class _StubAgendaRepository implements AgendaRepository {
   @override
-  Future<ApiResult<AgendaDay>> day({String? date}) async => Success(
-    AgendaDay(
-      date: date ?? '2026-10-03',
-      timeZone: 'Europe/Rome',
-      closed: false,
-      closure: false,
-      openingHours: const [],
-      summary: const AgendaSummary(booked: 0, free: 0, toCollectCents: 0),
-      days: const [],
-      rows: const [],
-    ),
-  );
+  Future<ApiResult<AgendaDay>> day({String? date, String? providerId}) async =>
+      Success(
+        AgendaDay(
+          date: date ?? '2026-10-03',
+          timeZone: 'Europe/Rome',
+          closed: false,
+          closure: false,
+          openingHours: const [],
+          summary: const AgendaSummary(booked: 0, free: 0, toCollectCents: 0),
+          days: const [],
+          rows: const [],
+        ),
+      );
 
   @override
   Future<ApiResult<TimeBlock>> block({
     required DateTime startUtc,
     required DateTime endUtc,
     String? note,
+    String? providerId,
   }) async => throw UnimplementedError();
 
   @override

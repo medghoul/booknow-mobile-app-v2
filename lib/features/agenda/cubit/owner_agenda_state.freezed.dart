@@ -16,7 +16,8 @@ mixin _$OwnerAgendaState {
 
 /// The day being shown, as `YYYY-MM-DD`. Null until the first load
 /// answers: which day "today" is, is the shop's question, not the phone's.
- String? get date; AgendaDay? get day;/// The first load, and every date change. A swipe of the strip replaces
+ String? get date; AgendaDay? get day;/// Whose day is shown; null is everyone's.
+ String? get providerId;/// The first load, and every date change. A swipe of the strip replaces
 /// the whole timeline, so it is a load rather than a refresh.
  bool get isLoading;/// A block is being written or removed. Blocks the sheet's own action, not
 /// the day behind it.
@@ -35,16 +36,16 @@ $OwnerAgendaStateCopyWith<OwnerAgendaState> get copyWith => _$OwnerAgendaStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerAgendaState&&(identical(other.date, date) || other.date == date)&&(identical(other.day, day) || other.day == day)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OwnerAgendaState&&(identical(other.date, date) || other.date == date)&&(identical(other.day, day) || other.day == day)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,date,day,isLoading,isSaving,now,failure);
+int get hashCode => Object.hash(runtimeType,date,day,providerId,isLoading,isSaving,now,failure);
 
 @override
 String toString() {
-  return 'OwnerAgendaState(date: $date, day: $day, isLoading: $isLoading, isSaving: $isSaving, now: $now, failure: $failure)';
+  return 'OwnerAgendaState(date: $date, day: $day, providerId: $providerId, isLoading: $isLoading, isSaving: $isSaving, now: $now, failure: $failure)';
 }
 
 
@@ -55,7 +56,7 @@ abstract mixin class $OwnerAgendaStateCopyWith<$Res>  {
   factory $OwnerAgendaStateCopyWith(OwnerAgendaState value, $Res Function(OwnerAgendaState) _then) = _$OwnerAgendaStateCopyWithImpl;
 @useResult
 $Res call({
- String? date, AgendaDay? day, bool isLoading, bool isSaving, DateTime now, NetworkException? failure
+ String? date, AgendaDay? day, String? providerId, bool isLoading, bool isSaving, DateTime now, NetworkException? failure
 });
 
 
@@ -72,11 +73,12 @@ class _$OwnerAgendaStateCopyWithImpl<$Res>
 
 /// Create a copy of OwnerAgendaState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? date = freezed,Object? day = freezed,Object? isLoading = null,Object? isSaving = null,Object? now = null,Object? failure = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? date = freezed,Object? day = freezed,Object? providerId = freezed,Object? isLoading = null,Object? isSaving = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,day: freezed == day ? _self.day : day // ignore: cast_nullable_to_non_nullable
-as AgendaDay?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as AgendaDay?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
 as bool,now: null == now ? _self.now : now // ignore: cast_nullable_to_non_nullable
 as DateTime,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
@@ -177,10 +179,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? date,  AgendaDay? day,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? date,  AgendaDay? day,  String? providerId,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OwnerAgendaState() when $default != null:
-return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
+return $default(_that.date,_that.day,_that.providerId,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
   return orElse();
 
 }
@@ -198,10 +200,10 @@ return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? date,  AgendaDay? day,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? date,  AgendaDay? day,  String? providerId,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
 switch (_that) {
 case _OwnerAgendaState():
-return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
+return $default(_that.date,_that.day,_that.providerId,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -218,10 +220,10 @@ return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? date,  AgendaDay? day,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? date,  AgendaDay? day,  String? providerId,  bool isLoading,  bool isSaving,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _OwnerAgendaState() when $default != null:
-return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
+return $default(_that.date,_that.day,_that.providerId,_that.isLoading,_that.isSaving,_that.now,_that.failure);case _:
   return null;
 
 }
@@ -233,13 +235,15 @@ return $default(_that.date,_that.day,_that.isLoading,_that.isSaving,_that.now,_t
 
 
 class _OwnerAgendaState extends OwnerAgendaState {
-  const _OwnerAgendaState({this.date, this.day, this.isLoading = true, this.isSaving = false, required this.now, this.failure}): super._();
+  const _OwnerAgendaState({this.date, this.day, this.providerId, this.isLoading = true, this.isSaving = false, required this.now, this.failure}): super._();
   
 
 /// The day being shown, as `YYYY-MM-DD`. Null until the first load
 /// answers: which day "today" is, is the shop's question, not the phone's.
 @override final  String? date;
 @override final  AgendaDay? day;
+/// Whose day is shown; null is everyone's.
+@override final  String? providerId;
 /// The first load, and every date change. A swipe of the strip replaces
 /// the whole timeline, so it is a load rather than a refresh.
 @override@JsonKey() final  bool isLoading;
@@ -263,16 +267,16 @@ _$OwnerAgendaStateCopyWith<_OwnerAgendaState> get copyWith => __$OwnerAgendaStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerAgendaState&&(identical(other.date, date) || other.date == date)&&(identical(other.day, day) || other.day == day)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OwnerAgendaState&&(identical(other.date, date) || other.date == date)&&(identical(other.day, day) || other.day == day)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,date,day,isLoading,isSaving,now,failure);
+int get hashCode => Object.hash(runtimeType,date,day,providerId,isLoading,isSaving,now,failure);
 
 @override
 String toString() {
-  return 'OwnerAgendaState(date: $date, day: $day, isLoading: $isLoading, isSaving: $isSaving, now: $now, failure: $failure)';
+  return 'OwnerAgendaState(date: $date, day: $day, providerId: $providerId, isLoading: $isLoading, isSaving: $isSaving, now: $now, failure: $failure)';
 }
 
 
@@ -283,7 +287,7 @@ abstract mixin class _$OwnerAgendaStateCopyWith<$Res> implements $OwnerAgendaSta
   factory _$OwnerAgendaStateCopyWith(_OwnerAgendaState value, $Res Function(_OwnerAgendaState) _then) = __$OwnerAgendaStateCopyWithImpl;
 @override @useResult
 $Res call({
- String? date, AgendaDay? day, bool isLoading, bool isSaving, DateTime now, NetworkException? failure
+ String? date, AgendaDay? day, String? providerId, bool isLoading, bool isSaving, DateTime now, NetworkException? failure
 });
 
 
@@ -300,11 +304,12 @@ class __$OwnerAgendaStateCopyWithImpl<$Res>
 
 /// Create a copy of OwnerAgendaState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? date = freezed,Object? day = freezed,Object? isLoading = null,Object? isSaving = null,Object? now = null,Object? failure = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? date = freezed,Object? day = freezed,Object? providerId = freezed,Object? isLoading = null,Object? isSaving = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_OwnerAgendaState(
 date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,day: freezed == day ? _self.day : day // ignore: cast_nullable_to_non_nullable
-as AgendaDay?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as AgendaDay?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
 as bool,now: null == now ? _self.now : now // ignore: cast_nullable_to_non_nullable
 as DateTime,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable

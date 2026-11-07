@@ -23,11 +23,20 @@ class BlockTimeSheet extends StatefulWidget {
     required this.startUtc,
     required this.endUtc,
     required this.timeZone,
+    this.providerId,
+    this.providerName,
   });
 
   final DateTime startUtc;
   final DateTime endUtc;
   final String timeZone;
+
+  /// Whose time is blocked: the free row's own person.
+  final String? providerId;
+
+  /// Their name, said under the times when the shop has a team, so the owner
+  /// sees whose hour they are taking.
+  final String? providerName;
 
   /// Resolves to true once the server has the block.
   static Future<bool?> open(
@@ -35,6 +44,8 @@ class BlockTimeSheet extends StatefulWidget {
     required DateTime startUtc,
     required DateTime endUtc,
     required String timeZone,
+    String? providerId,
+    String? providerName,
   }) => AppBottomSheet.show<bool>(
     context,
     title: context.t.agenda.block.title,
@@ -44,6 +55,8 @@ class BlockTimeSheet extends StatefulWidget {
         startUtc: startUtc,
         endUtc: endUtc,
         timeZone: timeZone,
+        providerId: providerId,
+        providerName: providerName,
       ),
     ),
   );
@@ -119,6 +132,7 @@ class _BlockTimeSheetState extends State<BlockTimeSheet> {
       ),
       endUtc: ShopClock.instantOf(day, _to.hour, _to.minute, widget.timeZone),
       note: _note.text.trim().isEmpty ? null : _note.text.trim(),
+      providerId: widget.providerId,
     );
     if (!mounted) return;
 
@@ -184,10 +198,13 @@ class _BlockTimeSheetState extends State<BlockTimeSheet> {
         // The day this lands on, spelled out: the sheet only shows two clock
         // times, and the strip may be days away from today.
         Text(
-          DateFormat(
-            'EEEE d MMMM',
-            locale,
-          ).format(ShopClock.wallTime(widget.startUtc, widget.timeZone)),
+          [
+            DateFormat(
+              'EEEE d MMMM',
+              locale,
+            ).format(ShopClock.wallTime(widget.startUtc, widget.timeZone)),
+            ?widget.providerName,
+          ].join(' · '),
           textAlign: TextAlign.center,
           style: context.textTheme.bodySmall?.copyWith(
             color: context.colorScheme.onSurfaceVariant,

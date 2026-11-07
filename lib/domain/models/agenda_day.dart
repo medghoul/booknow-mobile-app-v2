@@ -29,7 +29,34 @@ abstract class AgendaDay with _$AgendaDay {
     required AgendaSummary summary,
     required List<AgendaStripDay> days,
     required List<AgendaRow> rows,
+
+    /// Everyone working, by order, plus anyone removed since who still has a
+    /// row on this day, so every row can be labelled (providers §5).
+    @Default(<AgendaProvider>[]) List<AgendaProvider> providers,
   }) = _AgendaDay;
+
+  const AgendaDay._();
+
+  /// More than one person's time on this day, so rows say whose they are.
+  bool get hasTeam => providers.length > 1;
+
+  String? nameOf(String? providerId) {
+    for (final provider in providers) {
+      if (provider.id == providerId) return provider.name;
+    }
+    return null;
+  }
+}
+
+/// Someone whose time is on the agenda.
+@freezed
+abstract class AgendaProvider with _$AgendaProvider {
+  const factory AgendaProvider({
+    required String id,
+
+    /// The owner's own provider shows the shop's name until given one.
+    String? name,
+  }) = _AgendaProvider;
 }
 
 /// One opening range, already in instants.

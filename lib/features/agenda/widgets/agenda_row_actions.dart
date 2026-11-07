@@ -19,6 +19,9 @@ VoidCallback? agendaRowTap(
   required AgendaRow row,
   required String timeZone,
   required DateTime now,
+
+  /// The row's person, named in the block sheet when the shop has a team.
+  String? providerName,
 }) {
   final isPast = row.endUtc.isBefore(now);
 
@@ -34,6 +37,8 @@ VoidCallback? agendaRowTap(
       startUtc: free.startUtc,
       endUtc: free.endUtc,
       timeZone: timeZone,
+      providerId: free.providerId,
+      providerName: providerName,
     ),
     final AgendaBlockRow block when !isPast => () => _confirmUnblock(
       context,

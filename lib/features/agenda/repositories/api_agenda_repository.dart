@@ -13,10 +13,10 @@ class ApiAgendaRepository implements AgendaRepository {
   final DioClient _client;
 
   @override
-  Future<ApiResult<AgendaDay>> day({String? date}) async {
+  Future<ApiResult<AgendaDay>> day({String? date, String? providerId}) async {
     final result = await _client.get<Map<String, dynamic>>(
       ApiEndpoints.myShopAgenda,
-      queryParameters: {'date': ?date},
+      queryParameters: {'date': ?date, 'providerId': ?providerId},
     );
 
     return result.parsed((json) => AgendaDayDto.fromJson(json).toDomain());
@@ -27,6 +27,7 @@ class ApiAgendaRepository implements AgendaRepository {
     required DateTime startUtc,
     required DateTime endUtc,
     String? note,
+    String? providerId,
   }) async {
     final result = await _client.post<Map<String, dynamic>>(
       ApiEndpoints.myShopBlocks,
@@ -34,6 +35,7 @@ class ApiAgendaRepository implements AgendaRepository {
         'startUtc': startUtc.toUtc().toIso8601String(),
         'endUtc': endUtc.toUtc().toIso8601String(),
         'note': ?note,
+        'providerId': ?providerId,
       },
     );
 

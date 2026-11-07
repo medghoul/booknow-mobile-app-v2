@@ -36,6 +36,9 @@ sealed class AgendaRow with _$AgendaRow {
 
     required String? customerName,
     required String? customerPhone,
+
+    /// Whose time it is (providers §5). Null from an API older than providers.
+    String? providerId,
   }) = AgendaBookingRow;
 
   /// Time the owner took off the grid themselves.
@@ -44,6 +47,7 @@ sealed class AgendaRow with _$AgendaRow {
     required DateTime startUtc,
     required DateTime endUtc,
     required String? note,
+    String? providerId,
   }) = AgendaBlockRow;
 
   /// A run of bookable time, long enough for the shop's shortest service.
@@ -55,6 +59,9 @@ sealed class AgendaRow with _$AgendaRow {
     /// morning and a client who dropped out read differently — the second is
     /// someone the owner may want to call.
     required String? freedBy,
+
+    /// Whose free time: blocking it takes theirs and nobody else's.
+    String? providerId,
   }) = AgendaFreeRow;
 
   const AgendaRow._();
