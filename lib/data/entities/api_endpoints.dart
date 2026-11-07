@@ -35,6 +35,12 @@ abstract final class ApiEndpoints {
   static String myShopService(String serviceId) =>
       '/shops/me/services/$serviceId';
 
+  /// Who works in the shop (providers §9). `DELETE` on one removes them.
+  static const String myShopProviders = '/shops/me/providers';
+
+  static String myShopProvider(String providerId) =>
+      '/shops/me/providers/$providerId';
+
   static String myShopBlock(String blockId) => '/shops/me/blocks/$blockId';
 
   /// Everything the customer's home draws, in one call (§7.3).

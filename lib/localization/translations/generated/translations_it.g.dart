@@ -137,6 +137,10 @@ class _Translations$errors$it extends Translations$errors$en {
 	@override String get serviceNotAvailable => 'Questo servizio non è più disponibile.';
 	@override String get invalidBlock => 'Questo intervallo non si può bloccare.';
 	@override String get shopIncomplete => 'Mancano ancora alcuni dati prima di pubblicare.';
+	@override String get providerLimitReached => 'Un negozio può avere fino a 10 persone al lavoro.';
+	@override String get providerInUse => 'Ci sono ancora clienti prenotati o in coda con questa persona. Sposta o annulla prima quelle.';
+	@override String get defaultProvider => 'Sei tu, quindi non puoi essere rimosso.';
+	@override String get providerNotAvailable => 'Questa persona non è disponibile per questo servizio. Scegline un\'altra.';
 }
 
 // Path: bookingStatus
@@ -221,6 +225,12 @@ class _Translations$profile$it extends Translations$profile$en {
 	);
 	@override String get hours => 'Orari e chiusure';
 	@override String get hoursNone => 'Da impostare';
+	@override String get team => 'Team';
+	@override String get teamJustYou => 'Solo tu';
+	@override String teamCount({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n,
+		one: '${n} persona',
+		other: '${n} persone',
+	);
 	@override String get bookingRules => 'Regole di prenotazione';
 	@override String get appearanceSection => 'Aspetto e lingua';
 	@override String get themeSystem => 'Sistema';
@@ -288,6 +298,7 @@ class _Translations$shopSetup$it extends Translations$shopSetup$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override late final _Translations$shopSetup$team$it team = _Translations$shopSetup$team$it._(_root);
 	@override late final _Translations$shopSetup$checklist$it checklist = _Translations$shopSetup$checklist$it._(_root);
 	@override String stepOf({required Object current, required Object total}) => '${current}/${total}';
 	@override String get continue_ => 'Continua';
@@ -1117,6 +1128,61 @@ class _Translations$help$mail$it extends Translations$help$mail$en {
 	@override String get roleCustomer => 'cliente';
 }
 
+// Path: shopSetup.team
+class _Translations$shopSetup$team$it extends Translations$shopSetup$team$en {
+	_Translations$shopSetup$team$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get screenTitle => 'Team';
+	@override String get subtitle => 'Chi riceve i clienti qui. I clienti scelgono una persona, o chi si libera prima.';
+	@override String get you => 'Tu';
+	@override String get add => 'Aggiungi una persona';
+	@override String get added => 'Aggiunto al team';
+	@override String get saved => 'Modifiche salvate';
+	@override String removed({required Object name}) => '${name} non è più nel team';
+	@override String restored({required Object name}) => '${name} è di nuovo nel team';
+	@override String get removedSection => 'Rimossi';
+	@override String get restore => 'Riporta nel team';
+	@override String get everyService => 'Tutti i servizi';
+	@override String servicesCount({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n,
+		one: '${n} servizio',
+		other: '${n} servizi',
+	);
+	@override String get shopHours => 'Orari del negozio';
+	@override String get ownHours => 'Orari propri';
+	@override String daysOff({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n,
+		one: '${n} giorno libero',
+		other: '${n} giorni liberi',
+	);
+	@override String actionsFor({required Object name}) => 'Opzioni per ${name}';
+	@override String get edit => 'Modifica';
+	@override String get remove => 'Rimuovi dal team';
+	@override String removeTitle({required Object name}) => 'Rimuovere ${name}?';
+	@override String get removeBody => 'I clienti non potranno più prenotare con questa persona né aspettarla in coda. Le prenotazioni passate mantengono il nome, e potrai riportarla nel team.';
+	@override String get newTitle => 'Nuova persona nel team';
+	@override String get editTitle => 'Persona del team';
+	@override String get nameLabel => 'Nome';
+	@override String get nameHint => 'Marco';
+	@override String get nameHelper => 'I clienti lo vedono quando scelgono con chi prenotare.';
+	@override String get typeLabel => 'Chi o cosa';
+	@override String get typePerson => 'Persona';
+	@override String get typeResource => 'Poltrona o postazione';
+	@override String get servicesLabel => 'Servizi';
+	@override String get everyServiceHelper => 'Anche quelli che aggiungerai';
+	@override String get noService => 'Scegli almeno un servizio.';
+	@override String get hoursLabel => 'Orari';
+	@override String get sameAsShop => 'Come il negozio';
+	@override String get ownHoursHelper => 'Solo dentro gli orari del negozio. Fuori nessuno può prenotare.';
+	@override String get daysOffLabel => 'Giorni liberi';
+	@override String get addDayOff => 'Aggiungi un giorno libero';
+	@override String removeDayOff({required Object day}) => 'Rimuovi ${day}';
+	@override String get noDaysOff => 'Nessuno in programma';
+	@override String get save => 'Aggiungi al team';
+	@override String get saveChanges => 'Salva modifiche';
+}
+
 // Path: shopSetup.checklist
 class _Translations$shopSetup$checklist$it extends Translations$shopSetup$checklist$en {
 	_Translations$shopSetup$checklist$it._(TranslationsIt root) : this._root = root, super.internal(root);
@@ -1662,6 +1728,10 @@ extension on TranslationsIt {
 			'errors.serviceNotAvailable' => 'Questo servizio non è più disponibile.',
 			'errors.invalidBlock' => 'Questo intervallo non si può bloccare.',
 			'errors.shopIncomplete' => 'Mancano ancora alcuni dati prima di pubblicare.',
+			'errors.providerLimitReached' => 'Un negozio può avere fino a 10 persone al lavoro.',
+			'errors.providerInUse' => 'Ci sono ancora clienti prenotati o in coda con questa persona. Sposta o annulla prima quelle.',
+			'errors.defaultProvider' => 'Sei tu, quindi non puoi essere rimosso.',
+			'errors.providerNotAvailable' => 'Questa persona non è disponibile per questo servizio. Scegline un\'altra.',
 			'bookingStatus.pendingPayment' => 'In attesa di pagamento',
 			'bookingStatus.confirmed' => 'Confermata',
 			'bookingStatus.arrived' => 'Arrivato',
@@ -1753,6 +1823,9 @@ extension on TranslationsIt {
 			'profile.servicesCount' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n, one: '${n} servizio', other: '${n} servizi', ), 
 			'profile.hours' => 'Orari e chiusure',
 			'profile.hoursNone' => 'Da impostare',
+			'profile.team' => 'Team',
+			'profile.teamJustYou' => 'Solo tu',
+			'profile.teamCount' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n, one: '${n} persona', other: '${n} persone', ), 
 			'profile.bookingRules' => 'Regole di prenotazione',
 			'profile.appearanceSection' => 'Aspetto e lingua',
 			'profile.themeSystem' => 'Sistema',
@@ -1842,6 +1915,46 @@ extension on TranslationsIt {
 			'validation.phone' => 'Inserisci un numero di telefono valido.',
 			'validation.tooShort' => ({required Object min}) => 'Almeno ${min} caratteri.',
 			'validation.tooLong' => ({required Object max}) => 'Massimo ${max} caratteri.',
+			'shopSetup.team.screenTitle' => 'Team',
+			'shopSetup.team.subtitle' => 'Chi riceve i clienti qui. I clienti scelgono una persona, o chi si libera prima.',
+			'shopSetup.team.you' => 'Tu',
+			'shopSetup.team.add' => 'Aggiungi una persona',
+			'shopSetup.team.added' => 'Aggiunto al team',
+			'shopSetup.team.saved' => 'Modifiche salvate',
+			'shopSetup.team.removed' => ({required Object name}) => '${name} non è più nel team',
+			'shopSetup.team.restored' => ({required Object name}) => '${name} è di nuovo nel team',
+			'shopSetup.team.removedSection' => 'Rimossi',
+			'shopSetup.team.restore' => 'Riporta nel team',
+			'shopSetup.team.everyService' => 'Tutti i servizi',
+			'shopSetup.team.servicesCount' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n, one: '${n} servizio', other: '${n} servizi', ), 
+			'shopSetup.team.shopHours' => 'Orari del negozio',
+			'shopSetup.team.ownHours' => 'Orari propri',
+			'shopSetup.team.daysOff' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n, one: '${n} giorno libero', other: '${n} giorni liberi', ), 
+			'shopSetup.team.actionsFor' => ({required Object name}) => 'Opzioni per ${name}',
+			'shopSetup.team.edit' => 'Modifica',
+			'shopSetup.team.remove' => 'Rimuovi dal team',
+			'shopSetup.team.removeTitle' => ({required Object name}) => 'Rimuovere ${name}?',
+			'shopSetup.team.removeBody' => 'I clienti non potranno più prenotare con questa persona né aspettarla in coda. Le prenotazioni passate mantengono il nome, e potrai riportarla nel team.',
+			'shopSetup.team.newTitle' => 'Nuova persona nel team',
+			'shopSetup.team.editTitle' => 'Persona del team',
+			'shopSetup.team.nameLabel' => 'Nome',
+			'shopSetup.team.nameHint' => 'Marco',
+			'shopSetup.team.nameHelper' => 'I clienti lo vedono quando scelgono con chi prenotare.',
+			'shopSetup.team.typeLabel' => 'Chi o cosa',
+			'shopSetup.team.typePerson' => 'Persona',
+			'shopSetup.team.typeResource' => 'Poltrona o postazione',
+			'shopSetup.team.servicesLabel' => 'Servizi',
+			'shopSetup.team.everyServiceHelper' => 'Anche quelli che aggiungerai',
+			'shopSetup.team.noService' => 'Scegli almeno un servizio.',
+			'shopSetup.team.hoursLabel' => 'Orari',
+			'shopSetup.team.sameAsShop' => 'Come il negozio',
+			'shopSetup.team.ownHoursHelper' => 'Solo dentro gli orari del negozio. Fuori nessuno può prenotare.',
+			'shopSetup.team.daysOffLabel' => 'Giorni liberi',
+			'shopSetup.team.addDayOff' => 'Aggiungi un giorno libero',
+			'shopSetup.team.removeDayOff' => ({required Object day}) => 'Rimuovi ${day}',
+			'shopSetup.team.noDaysOff' => 'Nessuno in programma',
+			'shopSetup.team.save' => 'Aggiungi al team',
+			'shopSetup.team.saveChanges' => 'Salva modifiche',
 			'shopSetup.checklist.done' => 'Fatto',
 			'shopSetup.checklist.typicalTitle' => 'Partire da una settimana tipica?',
 			'shopSetup.checklist.typicalBody' => ({required Object hours}) => 'Da martedì a sabato, ${hours}. Puoi cambiare ogni giorno dopo.',
@@ -2083,6 +2196,8 @@ extension on TranslationsIt {
 			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
 			'account.deleteAccount' => 'Elimina account',
 			'account.comingSoon' => 'Disponibile a breve.',
+			_ => null,
+		} ?? switch (path) {
 			'home.waitShort' => ({required Object n, required Object from, required Object to}) => '${n} · ${from}–${to} min',
 			'home.useLocation' => 'Usa la mia posizione',
 			'home.useLocationLine' => 'Mostra prima i negozi più vicini',
@@ -2130,8 +2245,6 @@ extension on TranslationsIt {
 			'home.filterShortestQueue' => 'Coda più breve',
 			'home.waiting' => ({required Object n, required Object from, required Object to}) => '${n} in attesa · ${from}–${to} min',
 			'home.noWait' => 'Nessuna attesa',
-			_ => null,
-		} ?? switch (path) {
 			'home.queueClosed' => 'Coda chiusa',
 			'home.nextAt' => ({required Object time}) => 'Prossimo ${time}',
 			'home.inQueue' => 'In coda',

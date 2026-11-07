@@ -1,4 +1,5 @@
 export 'day_hours_sheet.dart';
+export 'provider_editor_sheet.dart';
 export 'service_actions_sheet.dart';
 export 'service_duration_chips.dart';
 export 'service_editor_sheet.dart';
@@ -11,3 +12,4 @@ export 'shop_services_list.dart';
 export 'shop_setup_chrome.dart';
 export 'shop_setup_steps.dart';
 export 'shop_setup_checklist.dart';
+export 'team_list.dart';

@@ -43,6 +43,7 @@ class AppRouter extends RootStackRouter {
     _route(ShopDetailsRoute.page, '/shop-details'),
     _route(ServicesRoute.page, '/services'),
     _route(HoursRoute.page, '/hours'),
+    _route(TeamRoute.page, '/team'),
     _route(NotificationPermissionRoute.page, '/notifications'),
     _route(HelpRoute.page, '/help'),
     _route(NotificationSettingsRoute.page, '/notification-settings'),

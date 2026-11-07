@@ -352,6 +352,64 @@ class ShopSetupCubit extends Cubit<ShopSetupState> {
     return true;
   }
 
+  /// Saves one person on the team and says whether it landed.
+  ///
+  /// A null [providerId] adds someone. [name] and [type] are sent only when
+  /// they changed: the owner's own provider shows the shop's name until it is
+  /// given one, and saving it back unchanged would pin a copy that a later
+  /// shop rename leaves behind.
+  Future<bool> saveProvider({
+    String? providerId,
+    String? name,
+    ProviderType? type,
+    required List<String>? serviceIds,
+    required OpeningHours? openingHours,
+    required List<String> timeOff,
+  }) => _write(
+    () => providerId == null
+        ? _shops.addProvider(
+            name: name ?? '',
+            type: type ?? ProviderType.person,
+            serviceIds: serviceIds,
+            openingHours: openingHours,
+            timeOff: timeOff,
+          )
+        : _shops.updateProvider(
+            providerId,
+            name: name,
+            type: type,
+            serviceIds: serviceIds,
+            openingHours: openingHours,
+            timeOff: timeOff,
+          ),
+  );
+
+  /// Takes someone off the team. The caller has already asked.
+  Future<bool> removeProvider(String providerId) =>
+      _write(() => _shops.removeProvider(providerId));
+
+  /// Puts someone removed back on the team, with the same id and history.
+  Future<bool> restoreProvider(String providerId) =>
+      _write(() => _shops.restoreProvider(providerId));
+
+  /// Runs one write, re-reads the shop on success, and says whether it
+  /// landed. A failure stays in [ShopSetupState.failure] for the screen.
+  Future<bool> _write(Future<ApiResult<Object?>> Function() call) async {
+    if (state.isSaving) return false;
+    emit(state.copyWith(isSaving: true, failure: null));
+
+    final result = await call();
+    if (isClosed) return false;
+
+    if (result.isFailure) {
+      emit(state.copyWith(isSaving: false, failure: result.errorOrNull));
+      return false;
+    }
+
+    await _reload();
+    return true;
+  }
+
   /// Step 4.
   Future<void> saveHours(OpeningHours hours, {List<String>? closures}) => _save(
     () => _shops.updateShop(openingHours: hours, closures: closures),

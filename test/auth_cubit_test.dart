@@ -265,6 +265,9 @@ class _FakeShopRepository implements ShopRepository {
   @override
   Future<ApiResult<List<PlaceSuggestion>>> searchAddresses(String q) async =>
       const ApiResult.success([]);
+
+  @override
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 Shop activeShop() => const Shop(

@@ -22,6 +22,7 @@ _ShopDto _$ShopDtoFromJson(Map<String, dynamic> json) => _ShopDto(
   openingHours: json['openingHours'] as Map<String, dynamic>?,
   closures: json['closures'] as List<dynamic>?,
   services: json['services'] as List<dynamic>?,
+  providers: json['providers'] as List<dynamic>?,
   feeAmountCents: json['feeAmountCents'],
   mode: json['mode'],
 );
@@ -38,6 +39,7 @@ Map<String, dynamic> _$ShopDtoToJson(_ShopDto instance) => <String, dynamic>{
   'openingHours': ?instance.openingHours,
   'closures': ?instance.closures,
   'services': ?instance.services,
+  'providers': ?instance.providers,
   'feeAmountCents': ?instance.feeAmountCents,
   'mode': ?instance.mode,
 };
@@ -80,6 +82,29 @@ Map<String, dynamic> _$ServiceDtoToJson(_ServiceDto instance) =>
       'name': ?instance.name,
       'durationMin': ?instance.durationMin,
       'priceCents': ?instance.priceCents,
+      'active': ?instance.active,
+      'order': ?instance.order,
+    };
+
+_ProviderDto _$ProviderDtoFromJson(Map<String, dynamic> json) => _ProviderDto(
+  providerId: json['providerId'],
+  name: json['name'],
+  type: json['type'],
+  serviceIds: json['serviceIds'] as List<dynamic>?,
+  openingHours: json['openingHours'] as Map<String, dynamic>?,
+  timeOff: json['timeOff'] as List<dynamic>?,
+  active: json['active'],
+  order: json['order'],
+);
+
+Map<String, dynamic> _$ProviderDtoToJson(_ProviderDto instance) =>
+    <String, dynamic>{
+      'providerId': ?instance.providerId,
+      'name': ?instance.name,
+      'type': ?instance.type,
+      'serviceIds': ?instance.serviceIds,
+      'openingHours': ?instance.openingHours,
+      'timeOff': ?instance.timeOff,
       'active': ?instance.active,
       'order': ?instance.order,
     };

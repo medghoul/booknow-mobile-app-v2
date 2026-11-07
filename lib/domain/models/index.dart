@@ -12,6 +12,7 @@ export 'opening_hours.dart';
 export 'queue.dart';
 export 'shop.dart';
 export 'shop_address.dart';
+export 'shop_provider.dart';
 export 'shop_service.dart';
 export 'shop_summary.dart';
 export 'time_block.dart';

@@ -102,6 +102,66 @@ class ApiShopRepository implements ShopRepository {
       _client.delete<void>(ApiEndpoints.myShopService(serviceId));
 
   @override
+  Future<ApiResult<ShopProvider>> addProvider({
+    required String name,
+    required ProviderType type,
+    required List<String>? serviceIds,
+    required OpeningHours? openingHours,
+    required List<String> timeOff,
+  }) async {
+    final result = await _client.post<Map<String, dynamic>>(
+      ApiEndpoints.myShopProviders,
+      data: {
+        'name': name,
+        'type': type.wireName,
+        'serviceIds': serviceIds,
+        'openingHours': openingHours == null
+            ? null
+            : ShopRequests.openingHours(openingHours),
+        'timeOff': timeOff,
+      },
+    );
+    return result._provider();
+  }
+
+  @override
+  Future<ApiResult<ShopProvider>> updateProvider(
+    String providerId, {
+    String? name,
+    ProviderType? type,
+    required List<String>? serviceIds,
+    required OpeningHours? openingHours,
+    required List<String> timeOff,
+  }) async {
+    final result = await _client.patch<Map<String, dynamic>>(
+      ApiEndpoints.myShopProvider(providerId),
+      data: {
+        'name': ?name,
+        'type': ?type?.wireName,
+        'serviceIds': serviceIds,
+        'openingHours': openingHours == null
+            ? null
+            : ShopRequests.openingHours(openingHours),
+        'timeOff': timeOff,
+      },
+    );
+    return result._provider();
+  }
+
+  @override
+  Future<ApiResult<void>> removeProvider(String providerId) =>
+      _client.delete<void>(ApiEndpoints.myShopProvider(providerId));
+
+  @override
+  Future<ApiResult<ShopProvider>> restoreProvider(String providerId) async {
+    final result = await _client.patch<Map<String, dynamic>>(
+      ApiEndpoints.myShopProvider(providerId),
+      data: {'active': true},
+    );
+    return result._provider();
+  }
+
+  @override
   Future<ApiResult<Shop>> publish() async {
     final result = await _client.post<Map<String, dynamic>>(
       ApiEndpoints.myShopPublish,
@@ -194,4 +254,7 @@ extension on ApiResult<Map<String, dynamic>> {
 
   ApiResult<ShopService> _service() =>
       parsed((json) => ServiceDto.fromJson(json).toDomain());
+
+  ApiResult<ShopProvider> _provider() =>
+      parsed((json) => ProviderDto.fromJson(json).toDomain());
 }

@@ -21,9 +21,16 @@ import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 /// state: here the owner is changing hours customers are already booking
 /// against, so a mis-tapped switch has to be recoverable by dismissing.
 class DayHoursSheet extends StatefulWidget {
-  const DayHoursSheet({super.key, required this.day});
+  const DayHoursSheet({super.key, required this.day, this.draft, this.onDraft});
 
   final Weekday day;
+
+  /// A week that is not saved yet, edited in place of the shop's: a team
+  /// member's own hours, which save with the rest of their editor.
+  final OpeningHours? draft;
+
+  /// Takes the changed [draft] instead of saving it.
+  final ValueChanged<OpeningHours>? onDraft;
 
   /// Opens the editor and resolves to true once the server has the hours.
   static Future<bool?> open(BuildContext context, Weekday day) =>
@@ -34,6 +41,21 @@ class DayHoursSheet extends StatefulWidget {
           child: DayHoursSheet(day: day),
         ),
       );
+
+  /// Edits one day of [hours] without saving it, and hands the week back
+  /// through [onChanged] when the owner taps Salva.
+  static Future<bool?> openDraft(
+    BuildContext context, {
+    required Weekday day,
+    required OpeningHours hours,
+    required ValueChanged<OpeningHours> onChanged,
+  }) => AppBottomSheet.show<bool>(
+    context,
+    builder: (_) => BlocProvider.value(
+      value: context.read<ShopSetupCubit>(),
+      child: DayHoursSheet(day: day, draft: hours, onDraft: onChanged),
+    ),
+  );
 
   @override
   State<DayHoursSheet> createState() => _DayHoursSheetState();
@@ -51,6 +73,7 @@ class _DayHoursSheetState extends State<DayHoursSheet> {
   void initState() {
     super.initState();
     final hours =
+        widget.draft ??
         context.read<ShopSetupCubit>().state.shop?.openingHours ??
         const OpeningHours();
     _ranges = [...hours.rangesOn(widget.day)];
@@ -130,6 +153,14 @@ class _DayHoursSheetState extends State<DayHoursSheet> {
       setState(() => _ranges = [..._ranges]..removeAt(index));
 
   Future<void> _save() async {
+    final onDraft = widget.onDraft;
+    final draft = widget.draft;
+    if (onDraft != null && draft != null) {
+      onDraft(draft.setDay(widget.day, _ranges).copyDay(widget.day, _copyTo));
+      Navigator.of(context).pop(true);
+      return;
+    }
+
     final cubit = context.read<ShopSetupCubit>();
     final hours = cubit.state.shop?.openingHours ?? const OpeningHours();
 
@@ -144,7 +175,10 @@ class _DayHoursSheetState extends State<DayHoursSheet> {
   @override
   Widget build(BuildContext context) {
     final t = context.t.shopSetup.hours;
-    final isSaving = context.watch<ShopSetupCubit>().state.isSaving;
+    // A draft saves nothing here, so the shop's own save never greys it out.
+    final isSaving =
+        widget.onDraft == null &&
+        context.watch<ShopSetupCubit>().state.isSaving;
     final problem = _problem;
 
     return Column(

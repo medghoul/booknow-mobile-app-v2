@@ -50,6 +50,41 @@ abstract interface class ShopRepository {
   /// shop.
   Future<ApiResult<void>> deleteService(String serviceId);
 
+  /// `POST /shops/me/providers` — someone new working in the shop.
+  ///
+  /// Null [serviceIds] is every service, including ones added later; null
+  /// [openingHours] is the shop's hours.
+  Future<ApiResult<ShopProvider>> addProvider({
+    required String name,
+    required ProviderType type,
+    required List<String>? serviceIds,
+    required OpeningHours? openingHours,
+    required List<String> timeOff,
+  });
+
+  /// `PATCH /shops/me/providers/{id}`.
+  ///
+  /// [name] and [type] go only when given. The other three always go, because
+  /// null is a value for both of the first two: every service, the shop's
+  /// hours. Taking a service away is refused with `PROVIDER_IN_USE` while a
+  /// customer still needs it from them.
+  Future<ApiResult<ShopProvider>> updateProvider(
+    String providerId, {
+    String? name,
+    ProviderType? type,
+    required List<String>? serviceIds,
+    required OpeningHours? openingHours,
+    required List<String> timeOff,
+  });
+
+  /// `DELETE /shops/me/providers/{id}` — a soft delete, so past bookings keep
+  /// their name. Refused for the owner's own provider, and while customers
+  /// are booked with them or waiting for them.
+  Future<ApiResult<void>> removeProvider(String providerId);
+
+  /// Brings back a removed provider, under the same limit as adding one.
+  Future<ApiResult<ShopProvider>> restoreProvider(String providerId);
+
   /// `POST /shops/me/publish` — validates and flips the shop to `active`.
   ///
   /// A 422 carries the list of missing fields; the cubit turns that into the

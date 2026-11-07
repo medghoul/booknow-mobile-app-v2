@@ -49,7 +49,7 @@ class ShopHoursList extends StatelessWidget {
       AppSettingsCard(
         children: [
           for (final day in Weekday.values)
-            _DayRow(
+            ShopDayRow(
               day: day,
               ranges: hours.rangesOn(day),
               onTap: state.isSaving ? null : () => _edit(context, day),
@@ -149,8 +149,15 @@ class _TypicalWeek extends StatelessWidget {
 }
 
 /// One day: its name, its hours, and the way into editing them.
-class _DayRow extends StatelessWidget {
-  const _DayRow({required this.day, required this.ranges, required this.onTap});
+///
+/// Public so a team member's own week reads exactly like the shop's.
+class ShopDayRow extends StatelessWidget {
+  const ShopDayRow({
+    super.key,
+    required this.day,
+    required this.ranges,
+    required this.onTap,
+  });
 
   final Weekday day;
   final List<TimeRange> ranges;

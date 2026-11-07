@@ -47,6 +47,10 @@ errors:
   serviceNotAvailable: Questo servizio non è più disponibile.
   invalidBlock: Questo intervallo non si può bloccare.
   shopIncomplete: Mancano ancora alcuni dati prima di pubblicare.
+  providerLimitReached: Un negozio può avere fino a 10 persone al lavoro.
+  providerInUse: Ci sono ancora clienti prenotati o in coda con questa persona. Sposta o annulla prima quelle.
+  defaultProvider: Sei tu, quindi non puoi essere rimosso.
+  providerNotAvailable: Questa persona non è disponibile per questo servizio. Scegline un'altra.
 
 bookingStatus:
   pendingPayment: In attesa di pagamento
@@ -155,6 +159,11 @@ profile:
     other: ${n} servizi
   hours: Orari e chiusure
   hoursNone: Da impostare
+  team: Team
+  teamJustYou: Solo tu
+  teamCount(plural):
+    one: ${n} persona
+    other: ${n} persone
   bookingRules: Regole di prenotazione
   appearanceSection: Aspetto e lingua
   themeSystem: Sistema
@@ -259,6 +268,51 @@ validation:
 
 
 shopSetup:
+  team:
+    screenTitle: Team
+    subtitle: Chi riceve i clienti qui. I clienti scelgono una persona, o chi si libera prima.
+    you: Tu
+    add: Aggiungi una persona
+    added: Aggiunto al team
+    saved: Modifiche salvate
+    removed(name): ${name} non è più nel team
+    restored(name): ${name} è di nuovo nel team
+    removedSection: Rimossi
+    restore: Riporta nel team
+    everyService: Tutti i servizi
+    servicesCount(plural):
+      one: ${n} servizio
+      other: ${n} servizi
+    shopHours: Orari del negozio
+    ownHours: Orari propri
+    daysOff(plural):
+      one: ${n} giorno libero
+      other: ${n} giorni liberi
+    actionsFor(name): Opzioni per ${name}
+    edit: Modifica
+    remove: Rimuovi dal team
+    removeTitle(name): Rimuovere ${name}?
+    removeBody: I clienti non potranno più prenotare con questa persona né aspettarla in coda. Le prenotazioni passate mantengono il nome, e potrai riportarla nel team.
+    newTitle: Nuova persona nel team
+    editTitle: Persona del team
+    nameLabel: Nome
+    nameHint: Marco
+    nameHelper: I clienti lo vedono quando scelgono con chi prenotare.
+    typeLabel: Chi o cosa
+    typePerson: Persona
+    typeResource: Poltrona o postazione
+    servicesLabel: Servizi
+    everyServiceHelper: Anche quelli che aggiungerai
+    noService: Scegli almeno un servizio.
+    hoursLabel: Orari
+    sameAsShop: Come il negozio
+    ownHoursHelper: Solo dentro gli orari del negozio. Fuori nessuno può prenotare.
+    daysOffLabel: Giorni liberi
+    addDayOff: Aggiungi un giorno libero
+    removeDayOff(day): Rimuovi ${day}
+    noDaysOff: Nessuno in programma
+    save: Aggiungi al team
+    saveChanges: Salva modifiche
   checklist:
     done: Fatto
     typicalTitle: Partire da una settimana tipica?

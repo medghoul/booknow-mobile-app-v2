@@ -67,6 +67,20 @@ enum ApiErrorCode {
   /// A no-show marked before its time — bookings and queue alike.
   noShowTooEarly('NO_SHOW_TOO_EARLY'),
 
+  // ─── Providers (providers spec) ─────────────────────────────────────────────
+
+  /// Ten people working is the most a shop can have.
+  providerLimitReached('PROVIDER_LIMIT_REACHED'),
+
+  /// Customers are still booked with them, or waiting for them.
+  providerInUse('PROVIDER_IN_USE'),
+
+  /// The owner's own place in the shop, which cannot be removed.
+  defaultProvider('DEFAULT_PROVIDER'),
+
+  /// The person chosen is not working, or does not do this service.
+  providerNotAvailable('PROVIDER_NOT_AVAILABLE'),
+
   /// Anything the app does not recognise.
   shopIncomplete('SHOP_INCOMPLETE'),
   shopAlreadyExists('SHOP_ALREADY_EXISTS'),

@@ -47,6 +47,10 @@ errors:
   serviceNotAvailable: That service is no longer available.
   invalidBlock: That range can't be blocked.
   shopIncomplete: Some details are still missing before you can publish.
+  providerLimitReached: A shop can have up to 10 people working.
+  providerInUse: Customers are still booked with them or waiting for them. Move or cancel those first.
+  defaultProvider: That's you, so you can't be removed.
+  providerNotAvailable: They aren't available for this service. Please choose someone else.
 
 bookingStatus:
   pendingPayment: Awaiting payment
@@ -155,6 +159,11 @@ profile:
     other: ${n} services
   hours: Hours
   hoursNone: Not set
+  team: Team
+  teamJustYou: Just you
+  teamCount(plural):
+    one: ${n} person
+    other: ${n} people
   bookingRules: Booking rules
   appearanceSection: Appearance
   themeSystem: System
@@ -259,6 +268,51 @@ validation:
 
 
 shopSetup:
+  team:
+    screenTitle: Team
+    subtitle: Who takes customers here. Customers choose one of them, or whoever is free first.
+    you: You
+    add: Add someone
+    added: Added to the team
+    saved: Changes saved
+    removed(name): ${name} is off the team
+    restored(name): ${name} is back on the team
+    removedSection: Removed
+    restore: Bring back
+    everyService: Every service
+    servicesCount(plural):
+      one: ${n} service
+      other: ${n} services
+    shopHours: Shop's hours
+    ownHours: Own hours
+    daysOff(plural):
+      one: ${n} day off
+      other: ${n} days off
+    actionsFor(name): Options for ${name}
+    edit: Edit
+    remove: Remove from the team
+    removeTitle(name): Remove ${name}?
+    removeBody: Customers can no longer book them or wait for them. Past bookings keep their name, and you can bring them back later.
+    newTitle: New team member
+    editTitle: Team member
+    nameLabel: Name
+    nameHint: Marco
+    nameHelper: Customers see it when they choose who to book with.
+    typeLabel: Who or what
+    typePerson: Person
+    typeResource: Chair or station
+    servicesLabel: Services
+    everyServiceHelper: Including services you add later
+    noService: Choose at least one service.
+    hoursLabel: Hours
+    sameAsShop: Same as the shop
+    ownHoursHelper: Only inside the shop's hours. Nobody can book outside them.
+    daysOffLabel: Days off
+    addDayOff: Add a day off
+    removeDayOff(day): Remove ${day}
+    noDaysOff: None planned
+    save: Add to the team
+    saveChanges: Save changes
   checklist:
     done: Done
     typicalTitle: Start from a typical week?

@@ -5,6 +5,7 @@ import 'package:booknow_mobile/data/dtos/coercion.dart';
 import 'package:booknow_mobile/domain/models/opening_hours.dart';
 import 'package:booknow_mobile/domain/models/shop.dart';
 import 'package:booknow_mobile/domain/models/shop_address.dart';
+import 'package:booknow_mobile/domain/models/shop_provider.dart';
 import 'package:booknow_mobile/domain/models/shop_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -34,6 +35,7 @@ abstract class ShopDto with _$ShopDto {
 
     @JsonKey(name: 'closures') List<dynamic>? closures,
     @JsonKey(name: 'services') List<dynamic>? services,
+    @JsonKey(name: 'providers') List<dynamic>? providers,
     @JsonKey(name: 'feeAmountCents') Object? feeAmountCents,
     @JsonKey(name: 'mode') Object? mode,
   }) = _ShopDto;
@@ -82,6 +84,24 @@ abstract class ServiceDto with _$ServiceDto {
       _$ServiceDtoFromJson(json);
 }
 
+/// One provider: the owner's full row, or the customer page's short one.
+@freezed
+abstract class ProviderDto with _$ProviderDto {
+  const factory ProviderDto({
+    @JsonKey(name: 'providerId') Object? providerId,
+    @JsonKey(name: 'name') Object? name,
+    @JsonKey(name: 'type') Object? type,
+    @JsonKey(name: 'serviceIds') List<dynamic>? serviceIds,
+    @JsonKey(name: 'openingHours') Map<String, dynamic>? openingHours,
+    @JsonKey(name: 'timeOff') List<dynamic>? timeOff,
+    @JsonKey(name: 'active') Object? active,
+    @JsonKey(name: 'order') Object? order,
+  }) = _ProviderDto;
+
+  factory ProviderDto.fromJson(Map<String, dynamic> json) =>
+      _$ProviderDtoFromJson(json);
+}
+
 extension ShopDtoX on ShopDto {
   Shop toDomain() => Shop(
     id: asText(shopId, asText(id)),
@@ -102,6 +122,35 @@ extension ShopDtoX on ShopDto {
             .map((json) => ServiceDto.fromJson(json).toDomain())
             .toList() ??
         const [],
+    providers: providersFrom(providers),
+  );
+}
+
+/// A provider list as any response carries it, by display order.
+List<ShopProvider> providersFrom(List<dynamic>? json) {
+  final providers =
+      json
+          ?.whereType<Map<String, dynamic>>()
+          .map((json) => ProviderDto.fromJson(json).toDomain())
+          .where((provider) => provider.id.isNotEmpty)
+          .toList() ??
+      <ShopProvider>[];
+  return providers..sort((a, b) => a.order.compareTo(b.order));
+}
+
+extension ProviderDtoX on ProviderDto {
+  ShopProvider toDomain() => ShopProvider(
+    id: asText(providerId),
+    name: asTextOrNull(name),
+    type: ProviderType.fromWire(asTextOrNull(type)),
+    // Null is a value here, "every service", not a missing field.
+    serviceIds: serviceIds?.whereType<String>().toList(),
+    // Likewise: null is "the shop's hours", where an empty map would be a
+    // provider who never works.
+    openingHours: openingHours == null ? null : _openingHours(openingHours),
+    timeOff: timeOff?.whereType<String>().toList() ?? const [],
+    isActive: asBool(active, fallback: true),
+    order: asInt(order),
   );
 }
 

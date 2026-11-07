@@ -14,7 +14,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Shop {
 
- String get id; ShopStatus get status; String? get name; String? get phone; String? get photoUrl; ShopAddress? get address; OpeningHours get openingHours; List<String> get closures; List<ShopService> get services;/// What holding a slot here costs, sent with the customer-facing shop page
+ String get id; ShopStatus get status; String? get name; String? get phone; String? get photoUrl; ShopAddress? get address; OpeningHours get openingHours; List<String> get closures; List<ShopService> get services;/// Who does the work, by display order. The owner's own shop lists the
+/// removed ones too; the page a customer sees lists only who can be chosen.
+ List<ShopProvider> get providers;/// What holding a slot here costs, sent with the customer-facing shop page
 /// only. Null on the owner's own shop, which never shows it.
  int? get feeCents;/// Bookings or a live queue; everything saved before queue mode reads as
 /// [ShopMode.booking].
@@ -29,16 +31,16 @@ $ShopCopyWith<Shop> get copyWith => _$ShopCopyWithImpl<Shop>(this as Shop, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Shop&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.photoUrl, photoUrl) || other.photoUrl == photoUrl)&&(identical(other.address, address) || other.address == address)&&(identical(other.openingHours, openingHours) || other.openingHours == openingHours)&&const DeepCollectionEquality().equals(other.closures, closures)&&const DeepCollectionEquality().equals(other.services, services)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.mode, mode) || other.mode == mode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Shop&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.photoUrl, photoUrl) || other.photoUrl == photoUrl)&&(identical(other.address, address) || other.address == address)&&(identical(other.openingHours, openingHours) || other.openingHours == openingHours)&&const DeepCollectionEquality().equals(other.closures, closures)&&const DeepCollectionEquality().equals(other.services, services)&&const DeepCollectionEquality().equals(other.providers, providers)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.mode, mode) || other.mode == mode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,name,phone,photoUrl,address,openingHours,const DeepCollectionEquality().hash(closures),const DeepCollectionEquality().hash(services),feeCents,mode);
+int get hashCode => Object.hash(runtimeType,id,status,name,phone,photoUrl,address,openingHours,const DeepCollectionEquality().hash(closures),const DeepCollectionEquality().hash(services),const DeepCollectionEquality().hash(providers),feeCents,mode);
 
 @override
 String toString() {
-  return 'Shop(id: $id, status: $status, name: $name, phone: $phone, photoUrl: $photoUrl, address: $address, openingHours: $openingHours, closures: $closures, services: $services, feeCents: $feeCents, mode: $mode)';
+  return 'Shop(id: $id, status: $status, name: $name, phone: $phone, photoUrl: $photoUrl, address: $address, openingHours: $openingHours, closures: $closures, services: $services, providers: $providers, feeCents: $feeCents, mode: $mode)';
 }
 
 
@@ -49,7 +51,7 @@ abstract mixin class $ShopCopyWith<$Res>  {
   factory $ShopCopyWith(Shop value, $Res Function(Shop) _then) = _$ShopCopyWithImpl;
 @useResult
 $Res call({
- String id, ShopStatus status, String? name, String? phone, String? photoUrl, ShopAddress? address, OpeningHours openingHours, List<String> closures, List<ShopService> services, int? feeCents, ShopMode mode
+ String id, ShopStatus status, String? name, String? phone, String? photoUrl, ShopAddress? address, OpeningHours openingHours, List<String> closures, List<ShopService> services, List<ShopProvider> providers, int? feeCents, ShopMode mode
 });
 
 
@@ -66,7 +68,7 @@ class _$ShopCopyWithImpl<$Res>
 
 /// Create a copy of Shop
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? name = freezed,Object? phone = freezed,Object? photoUrl = freezed,Object? address = freezed,Object? openingHours = null,Object? closures = null,Object? services = null,Object? feeCents = freezed,Object? mode = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? name = freezed,Object? phone = freezed,Object? photoUrl = freezed,Object? address = freezed,Object? openingHours = null,Object? closures = null,Object? services = null,Object? providers = null,Object? feeCents = freezed,Object? mode = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
@@ -77,7 +79,8 @@ as String?,address: freezed == address ? _self.address : address // ignore: cast
 as ShopAddress?,openingHours: null == openingHours ? _self.openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as OpeningHours,closures: null == closures ? _self.closures : closures // ignore: cast_nullable_to_non_nullable
 as List<String>,services: null == services ? _self.services : services // ignore: cast_nullable_to_non_nullable
-as List<ShopService>,feeCents: freezed == feeCents ? _self.feeCents : feeCents // ignore: cast_nullable_to_non_nullable
+as List<ShopService>,providers: null == providers ? _self.providers : providers // ignore: cast_nullable_to_non_nullable
+as List<ShopProvider>,feeCents: freezed == feeCents ? _self.feeCents : feeCents // ignore: cast_nullable_to_non_nullable
 as int?,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as ShopMode,
   ));
@@ -185,10 +188,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  int? feeCents,  ShopMode mode)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  List<ShopProvider> providers,  int? feeCents,  ShopMode mode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Shop() when $default != null:
-return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.feeCents,_that.mode);case _:
+return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.providers,_that.feeCents,_that.mode);case _:
   return orElse();
 
 }
@@ -206,10 +209,10 @@ return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  int? feeCents,  ShopMode mode)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  List<ShopProvider> providers,  int? feeCents,  ShopMode mode)  $default,) {final _that = this;
 switch (_that) {
 case _Shop():
-return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.feeCents,_that.mode);case _:
+return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.providers,_that.feeCents,_that.mode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -226,10 +229,10 @@ return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  int? feeCents,  ShopMode mode)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ShopStatus status,  String? name,  String? phone,  String? photoUrl,  ShopAddress? address,  OpeningHours openingHours,  List<String> closures,  List<ShopService> services,  List<ShopProvider> providers,  int? feeCents,  ShopMode mode)?  $default,) {final _that = this;
 switch (_that) {
 case _Shop() when $default != null:
-return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.feeCents,_that.mode);case _:
+return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_that.address,_that.openingHours,_that.closures,_that.services,_that.providers,_that.feeCents,_that.mode);case _:
   return null;
 
 }
@@ -241,7 +244,7 @@ return $default(_that.id,_that.status,_that.name,_that.phone,_that.photoUrl,_tha
 
 
 class _Shop extends Shop {
-  const _Shop({required this.id, required this.status, this.name, this.phone, this.photoUrl, this.address, this.openingHours = const OpeningHours(), final  List<String> closures = const <String>[], final  List<ShopService> services = const <ShopService>[], this.feeCents, this.mode = ShopMode.booking}): _closures = closures,_services = services,super._();
+  const _Shop({required this.id, required this.status, this.name, this.phone, this.photoUrl, this.address, this.openingHours = const OpeningHours(), final  List<String> closures = const <String>[], final  List<ShopService> services = const <ShopService>[], final  List<ShopProvider> providers = const <ShopProvider>[], this.feeCents, this.mode = ShopMode.booking}): _closures = closures,_services = services,_providers = providers,super._();
   
 
 @override final  String id;
@@ -265,6 +268,17 @@ class _Shop extends Shop {
   return EqualUnmodifiableListView(_services);
 }
 
+/// Who does the work, by display order. The owner's own shop lists the
+/// removed ones too; the page a customer sees lists only who can be chosen.
+ final  List<ShopProvider> _providers;
+/// Who does the work, by display order. The owner's own shop lists the
+/// removed ones too; the page a customer sees lists only who can be chosen.
+@override@JsonKey() List<ShopProvider> get providers {
+  if (_providers is EqualUnmodifiableListView) return _providers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_providers);
+}
+
 /// What holding a slot here costs, sent with the customer-facing shop page
 /// only. Null on the owner's own shop, which never shows it.
 @override final  int? feeCents;
@@ -282,16 +296,16 @@ _$ShopCopyWith<_Shop> get copyWith => __$ShopCopyWithImpl<_Shop>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Shop&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.photoUrl, photoUrl) || other.photoUrl == photoUrl)&&(identical(other.address, address) || other.address == address)&&(identical(other.openingHours, openingHours) || other.openingHours == openingHours)&&const DeepCollectionEquality().equals(other._closures, _closures)&&const DeepCollectionEquality().equals(other._services, _services)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.mode, mode) || other.mode == mode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Shop&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.photoUrl, photoUrl) || other.photoUrl == photoUrl)&&(identical(other.address, address) || other.address == address)&&(identical(other.openingHours, openingHours) || other.openingHours == openingHours)&&const DeepCollectionEquality().equals(other._closures, _closures)&&const DeepCollectionEquality().equals(other._services, _services)&&const DeepCollectionEquality().equals(other._providers, _providers)&&(identical(other.feeCents, feeCents) || other.feeCents == feeCents)&&(identical(other.mode, mode) || other.mode == mode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,name,phone,photoUrl,address,openingHours,const DeepCollectionEquality().hash(_closures),const DeepCollectionEquality().hash(_services),feeCents,mode);
+int get hashCode => Object.hash(runtimeType,id,status,name,phone,photoUrl,address,openingHours,const DeepCollectionEquality().hash(_closures),const DeepCollectionEquality().hash(_services),const DeepCollectionEquality().hash(_providers),feeCents,mode);
 
 @override
 String toString() {
-  return 'Shop(id: $id, status: $status, name: $name, phone: $phone, photoUrl: $photoUrl, address: $address, openingHours: $openingHours, closures: $closures, services: $services, feeCents: $feeCents, mode: $mode)';
+  return 'Shop(id: $id, status: $status, name: $name, phone: $phone, photoUrl: $photoUrl, address: $address, openingHours: $openingHours, closures: $closures, services: $services, providers: $providers, feeCents: $feeCents, mode: $mode)';
 }
 
 
@@ -302,7 +316,7 @@ abstract mixin class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
   factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) _then) = __$ShopCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ShopStatus status, String? name, String? phone, String? photoUrl, ShopAddress? address, OpeningHours openingHours, List<String> closures, List<ShopService> services, int? feeCents, ShopMode mode
+ String id, ShopStatus status, String? name, String? phone, String? photoUrl, ShopAddress? address, OpeningHours openingHours, List<String> closures, List<ShopService> services, List<ShopProvider> providers, int? feeCents, ShopMode mode
 });
 
 
@@ -319,7 +333,7 @@ class __$ShopCopyWithImpl<$Res>
 
 /// Create a copy of Shop
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? name = freezed,Object? phone = freezed,Object? photoUrl = freezed,Object? address = freezed,Object? openingHours = null,Object? closures = null,Object? services = null,Object? feeCents = freezed,Object? mode = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? name = freezed,Object? phone = freezed,Object? photoUrl = freezed,Object? address = freezed,Object? openingHours = null,Object? closures = null,Object? services = null,Object? providers = null,Object? feeCents = freezed,Object? mode = null,}) {
   return _then(_Shop(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
@@ -330,7 +344,8 @@ as String?,address: freezed == address ? _self.address : address // ignore: cast
 as ShopAddress?,openingHours: null == openingHours ? _self.openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as OpeningHours,closures: null == closures ? _self._closures : closures // ignore: cast_nullable_to_non_nullable
 as List<String>,services: null == services ? _self._services : services // ignore: cast_nullable_to_non_nullable
-as List<ShopService>,feeCents: freezed == feeCents ? _self.feeCents : feeCents // ignore: cast_nullable_to_non_nullable
+as List<ShopService>,providers: null == providers ? _self._providers : providers // ignore: cast_nullable_to_non_nullable
+as List<ShopProvider>,feeCents: freezed == feeCents ? _self.feeCents : feeCents // ignore: cast_nullable_to_non_nullable
 as int?,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as ShopMode,
   ));

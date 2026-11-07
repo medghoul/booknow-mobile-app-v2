@@ -26,6 +26,10 @@ extension NetworkExceptionMessage on NetworkException {
       ApiErrorCode.slotNotBookable => t.errors.slotNotBookable,
       ApiErrorCode.serviceNotAvailable => t.errors.serviceNotAvailable,
       ApiErrorCode.invalidBlock => t.errors.invalidBlock,
+      ApiErrorCode.providerLimitReached => t.errors.providerLimitReached,
+      ApiErrorCode.providerInUse => t.errors.providerInUse,
+      ApiErrorCode.defaultProvider => t.errors.defaultProvider,
+      ApiErrorCode.providerNotAvailable => t.errors.providerNotAvailable,
       _ => null,
     };
     if (byCode != null) return byCode;
