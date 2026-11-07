@@ -30,6 +30,9 @@ abstract class BookingFlowState with _$BookingFlowState {
     @Default(BookingStep.slot) BookingStep step,
     Shop? shop,
     ShopService? service,
+
+    /// Who the customer asked for; null is anyone free.
+    String? providerId,
     Availability? availability,
     DateTime? start,
     BookingHold? hold,

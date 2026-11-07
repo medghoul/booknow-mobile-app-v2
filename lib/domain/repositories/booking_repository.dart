@@ -21,10 +21,13 @@ enum BookingScope {
 /// the app never writes `confirmed` itself.
 abstract interface class BookingRepository {
   /// `GET /v1/shops/{shopId}/availability` — the times one service can start.
+  ///
+  /// With [providerId], that person's times; without, anyone's.
   Future<ApiResult<Availability>> availability({
     required String shopId,
     required String serviceId,
     required String date,
+    String? providerId,
   });
 
   /// `POST /v1/bookings` — holds the slot and opens its payment.
@@ -35,6 +38,10 @@ abstract interface class BookingRepository {
     required String shopId,
     required String serviceId,
     required DateTime startUtc,
+
+    /// Who to book; null lets the server pick whoever is free with the
+    /// fewest bookings that day.
+    String? providerId,
   });
 
   /// `GET /v1/me/bookings?scope=`.

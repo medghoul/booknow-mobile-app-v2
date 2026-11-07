@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BookingFlowState {
 
- String get shopId; String get date; BookingStep get step; Shop? get shop; ShopService? get service; Availability? get availability; DateTime? get start; BookingHold? get hold; Booking? get booking; bool get isLoading; bool get isBusy;/// The clock the hold countdown is drawn against.
+ String get shopId; String get date; BookingStep get step; Shop? get shop; ShopService? get service;/// Who the customer asked for; null is anyone free.
+ String? get providerId; Availability? get availability; DateTime? get start; BookingHold? get hold; Booking? get booking; bool get isLoading; bool get isBusy;/// The clock the hold countdown is drawn against.
  DateTime get now; NetworkException? get failure;
 /// Create a copy of BookingFlowState
 /// with the given fields replaced by the non-null parameter values.
@@ -26,16 +27,16 @@ $BookingFlowStateCopyWith<BookingFlowState> get copyWith => _$BookingFlowStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookingFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.date, date) || other.date == date)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.service, service) || other.service == service)&&(identical(other.availability, availability) || other.availability == availability)&&(identical(other.start, start) || other.start == start)&&(identical(other.hold, hold) || other.hold == hold)&&(identical(other.booking, booking) || other.booking == booking)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BookingFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.date, date) || other.date == date)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.service, service) || other.service == service)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.availability, availability) || other.availability == availability)&&(identical(other.start, start) || other.start == start)&&(identical(other.hold, hold) || other.hold == hold)&&(identical(other.booking, booking) || other.booking == booking)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,shopId,date,step,shop,service,availability,start,hold,booking,isLoading,isBusy,now,failure);
+int get hashCode => Object.hash(runtimeType,shopId,date,step,shop,service,providerId,availability,start,hold,booking,isLoading,isBusy,now,failure);
 
 @override
 String toString() {
-  return 'BookingFlowState(shopId: $shopId, date: $date, step: $step, shop: $shop, service: $service, availability: $availability, start: $start, hold: $hold, booking: $booking, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
+  return 'BookingFlowState(shopId: $shopId, date: $date, step: $step, shop: $shop, service: $service, providerId: $providerId, availability: $availability, start: $start, hold: $hold, booking: $booking, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
 }
 
 
@@ -46,7 +47,7 @@ abstract mixin class $BookingFlowStateCopyWith<$Res>  {
   factory $BookingFlowStateCopyWith(BookingFlowState value, $Res Function(BookingFlowState) _then) = _$BookingFlowStateCopyWithImpl;
 @useResult
 $Res call({
- String shopId, String date, BookingStep step, Shop? shop, ShopService? service, Availability? availability, DateTime? start, BookingHold? hold, Booking? booking, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
+ String shopId, String date, BookingStep step, Shop? shop, ShopService? service, String? providerId, Availability? availability, DateTime? start, BookingHold? hold, Booking? booking, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
 });
 
 
@@ -63,14 +64,15 @@ class _$BookingFlowStateCopyWithImpl<$Res>
 
 /// Create a copy of BookingFlowState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? shopId = null,Object? date = null,Object? step = null,Object? shop = freezed,Object? service = freezed,Object? availability = freezed,Object? start = freezed,Object? hold = freezed,Object? booking = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? shopId = null,Object? date = null,Object? step = null,Object? shop = freezed,Object? service = freezed,Object? providerId = freezed,Object? availability = freezed,Object? start = freezed,Object? hold = freezed,Object? booking = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 shopId: null == shopId ? _self.shopId : shopId // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as BookingStep,shop: freezed == shop ? _self.shop : shop // ignore: cast_nullable_to_non_nullable
 as Shop?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
-as ShopService?,availability: freezed == availability ? _self.availability : availability // ignore: cast_nullable_to_non_nullable
+as ShopService?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,availability: freezed == availability ? _self.availability : availability // ignore: cast_nullable_to_non_nullable
 as Availability?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
 as DateTime?,hold: freezed == hold ? _self.hold : hold // ignore: cast_nullable_to_non_nullable
 as BookingHold?,booking: freezed == booking ? _self.booking : booking // ignore: cast_nullable_to_non_nullable
@@ -223,10 +225,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  String? providerId,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BookingFlowState() when $default != null:
-return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.providerId,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   return orElse();
 
 }
@@ -244,10 +246,10 @@ return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  String? providerId,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
 switch (_that) {
 case _BookingFlowState():
-return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.providerId,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -264,10 +266,10 @@ return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String shopId,  String date,  BookingStep step,  Shop? shop,  ShopService? service,  String? providerId,  Availability? availability,  DateTime? start,  BookingHold? hold,  Booking? booking,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _BookingFlowState() when $default != null:
-return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_that.providerId,_that.availability,_that.start,_that.hold,_that.booking,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   return null;
 
 }
@@ -279,7 +281,7 @@ return $default(_that.shopId,_that.date,_that.step,_that.shop,_that.service,_tha
 
 
 class _BookingFlowState extends BookingFlowState {
-  const _BookingFlowState({required this.shopId, required this.date, this.step = BookingStep.slot, this.shop, this.service, this.availability, this.start, this.hold, this.booking, this.isLoading = true, this.isBusy = false, required this.now, this.failure}): super._();
+  const _BookingFlowState({required this.shopId, required this.date, this.step = BookingStep.slot, this.shop, this.service, this.providerId, this.availability, this.start, this.hold, this.booking, this.isLoading = true, this.isBusy = false, required this.now, this.failure}): super._();
   
 
 @override final  String shopId;
@@ -287,6 +289,8 @@ class _BookingFlowState extends BookingFlowState {
 @override@JsonKey() final  BookingStep step;
 @override final  Shop? shop;
 @override final  ShopService? service;
+/// Who the customer asked for; null is anyone free.
+@override final  String? providerId;
 @override final  Availability? availability;
 @override final  DateTime? start;
 @override final  BookingHold? hold;
@@ -307,16 +311,16 @@ _$BookingFlowStateCopyWith<_BookingFlowState> get copyWith => __$BookingFlowStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookingFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.date, date) || other.date == date)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.service, service) || other.service == service)&&(identical(other.availability, availability) || other.availability == availability)&&(identical(other.start, start) || other.start == start)&&(identical(other.hold, hold) || other.hold == hold)&&(identical(other.booking, booking) || other.booking == booking)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BookingFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.date, date) || other.date == date)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.service, service) || other.service == service)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.availability, availability) || other.availability == availability)&&(identical(other.start, start) || other.start == start)&&(identical(other.hold, hold) || other.hold == hold)&&(identical(other.booking, booking) || other.booking == booking)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,shopId,date,step,shop,service,availability,start,hold,booking,isLoading,isBusy,now,failure);
+int get hashCode => Object.hash(runtimeType,shopId,date,step,shop,service,providerId,availability,start,hold,booking,isLoading,isBusy,now,failure);
 
 @override
 String toString() {
-  return 'BookingFlowState(shopId: $shopId, date: $date, step: $step, shop: $shop, service: $service, availability: $availability, start: $start, hold: $hold, booking: $booking, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
+  return 'BookingFlowState(shopId: $shopId, date: $date, step: $step, shop: $shop, service: $service, providerId: $providerId, availability: $availability, start: $start, hold: $hold, booking: $booking, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
 }
 
 
@@ -327,7 +331,7 @@ abstract mixin class _$BookingFlowStateCopyWith<$Res> implements $BookingFlowSta
   factory _$BookingFlowStateCopyWith(_BookingFlowState value, $Res Function(_BookingFlowState) _then) = __$BookingFlowStateCopyWithImpl;
 @override @useResult
 $Res call({
- String shopId, String date, BookingStep step, Shop? shop, ShopService? service, Availability? availability, DateTime? start, BookingHold? hold, Booking? booking, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
+ String shopId, String date, BookingStep step, Shop? shop, ShopService? service, String? providerId, Availability? availability, DateTime? start, BookingHold? hold, Booking? booking, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
 });
 
 
@@ -344,14 +348,15 @@ class __$BookingFlowStateCopyWithImpl<$Res>
 
 /// Create a copy of BookingFlowState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? shopId = null,Object? date = null,Object? step = null,Object? shop = freezed,Object? service = freezed,Object? availability = freezed,Object? start = freezed,Object? hold = freezed,Object? booking = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? shopId = null,Object? date = null,Object? step = null,Object? shop = freezed,Object? service = freezed,Object? providerId = freezed,Object? availability = freezed,Object? start = freezed,Object? hold = freezed,Object? booking = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_BookingFlowState(
 shopId: null == shopId ? _self.shopId : shopId // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as BookingStep,shop: freezed == shop ? _self.shop : shop // ignore: cast_nullable_to_non_nullable
 as Shop?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
-as ShopService?,availability: freezed == availability ? _self.availability : availability // ignore: cast_nullable_to_non_nullable
+as ShopService?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,availability: freezed == availability ? _self.availability : availability // ignore: cast_nullable_to_non_nullable
 as Availability?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
 as DateTime?,hold: freezed == hold ? _self.hold : hold // ignore: cast_nullable_to_non_nullable
 as BookingHold?,booking: freezed == booking ? _self.booking : booking // ignore: cast_nullable_to_non_nullable

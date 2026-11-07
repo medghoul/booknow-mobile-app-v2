@@ -980,6 +980,9 @@ welcome:
   cta: Continue
 
 shopScreen:
+  whoLike: With whom?
+  anyone: Anyone free
+  withWhom(name): with ${name}
   closedDay(day): Closed on ${day}. Pick another day.
   noTimes: No free times on this day. Pick another day.
   joinNow(service): ${service} · join now

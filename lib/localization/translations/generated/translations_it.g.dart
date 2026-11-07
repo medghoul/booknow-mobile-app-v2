@@ -794,6 +794,9 @@ class _Translations$shopScreen$it extends Translations$shopScreen$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get whoLike => 'Con chi?';
+	@override String get anyone => 'Chi è libero';
+	@override String withWhom({required Object name}) => 'con ${name}';
 	@override String closedDay({required Object day}) => 'Chiuso ${day}. Scegli un altro giorno.';
 	@override String get noTimes => 'Nessun orario libero in questo giorno. Scegline un altro.';
 	@override String joinNow({required Object service}) => '${service} · entra ora';
@@ -2548,6 +2551,9 @@ extension on TranslationsIt {
 			'welcome.nameLabel' => 'Il tuo nome',
 			'welcome.body' => 'Lo vedono solo i negozi dove vai. Puoi cambiarlo dopo.',
 			'welcome.cta' => 'Continua',
+			'shopScreen.whoLike' => 'Con chi?',
+			'shopScreen.anyone' => 'Chi è libero',
+			'shopScreen.withWhom' => ({required Object name}) => 'con ${name}',
 			'shopScreen.closedDay' => ({required Object day}) => 'Chiuso ${day}. Scegli un altro giorno.',
 			'shopScreen.noTimes' => 'Nessun orario libero in questo giorno. Scegline un altro.',
 			'shopScreen.joinNow' => ({required Object service}) => '${service} · entra ora',

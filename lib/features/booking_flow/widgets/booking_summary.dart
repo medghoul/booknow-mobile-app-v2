@@ -40,6 +40,15 @@ class BookingSummary extends StatelessWidget {
       onDismiss: busy ? null : cubit.backToSlots,
       children: [
         Text(t.bookTitle(when: when), style: context.textTheme.titleMedium),
+        if (state.shop?.providerName(state.providerId) case final name?) ...[
+          const SizedBox(height: 2),
+          Text(
+            t.withWhom(name: name),
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
         if (left != null && left > Duration.zero) ...[
           const SizedBox(height: 14),
           HoldPill(label: t.heldFor(time: _clock(left))),

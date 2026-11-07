@@ -1672,6 +1672,15 @@ class Translations$shopScreen$en {
 
 	// Translations
 
+	/// en: 'With whom?'
+	String get whoLike => 'With whom?';
+
+	/// en: 'Anyone free'
+	String get anyone => 'Anyone free';
+
+	/// en: 'with ${name}'
+	String withWhom({required Object name}) => 'with ${name}';
+
 	/// en: 'Closed on ${day}. Pick another day.'
 	String closedDay({required Object day}) => 'Closed on ${day}. Pick another day.';
 
@@ -4438,6 +4447,9 @@ extension on Translations {
 			'welcome.nameLabel' => 'Your name',
 			'welcome.body' => 'Only shops you visit see it. You can change it later.',
 			'welcome.cta' => 'Continue',
+			'shopScreen.whoLike' => 'With whom?',
+			'shopScreen.anyone' => 'Anyone free',
+			'shopScreen.withWhom' => ({required Object name}) => 'with ${name}',
 			'shopScreen.closedDay' => ({required Object day}) => 'Closed on ${day}. Pick another day.',
 			'shopScreen.noTimes' => 'No free times on this day. Pick another day.',
 			'shopScreen.joinNow' => ({required Object service}) => '${service} · join now',

@@ -18,9 +18,13 @@ abstract interface class QueueRepository {
   ///
   /// `409 QUEUE_NOT_ACCEPTING` is an ordinary answer: the queue can fill up
   /// or pause while the customer reads the summary.
+  ///
+  /// With [providerId] the customer waits for that person; without, whoever
+  /// is free first calls them.
   Future<ApiResult<QueueJoin>> join({
     required String shopId,
     required String serviceId,
+    String? providerId,
   });
 
   /// `GET /v1/me/queue` — the customer's active entry, or null.

@@ -93,6 +93,7 @@ class _Queue implements QueueRepository {
   Future<ApiResult<QueueJoin>> join({
     required String shopId,
     required String serviceId,
+    String? providerId,
   }) async {
     calls.add('join');
     return joinResult!;

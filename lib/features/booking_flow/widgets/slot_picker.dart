@@ -6,6 +6,7 @@ import 'package:booknow_mobile/features/booking_flow/cubit/booking_flow_cubit.da
 import 'package:booknow_mobile/features/booking_flow/cubit/booking_flow_state.dart';
 import 'package:booknow_mobile/features/booking_flow/widgets/day_plan.dart';
 import 'package:booknow_mobile/features/booking_flow/widgets/flow_day_strip.dart';
+import 'package:booknow_mobile/features/booking_flow/widgets/provider_choice.dart';
 import 'package:booknow_mobile/features/auth/widgets/sign_in_sheet.dart';
 import 'package:booknow_mobile/features/booking_flow/widgets/shop_scaffold.dart';
 import 'package:booknow_mobile/features/booking_flow/widgets/slot_grid.dart';
@@ -56,6 +57,17 @@ class SlotPicker extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 20.h),
           sliver: SliverToBoxAdapter(child: _Services(state: state)),
         ),
+        if (ProviderChoice.offers(shop, state.service))
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 20.h),
+            sliver: SliverToBoxAdapter(
+              child: ProviderChoice(
+                providers: shop!.providersFor(state.service!.id),
+                selected: state.providerId,
+                onSelected: context.read<BookingFlowCubit>().chooseProvider,
+              ),
+            ),
+          ),
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           sliver: SliverToBoxAdapter(

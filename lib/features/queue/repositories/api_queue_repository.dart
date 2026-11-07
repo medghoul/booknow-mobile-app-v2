@@ -27,10 +27,11 @@ class ApiQueueRepository implements QueueRepository {
   Future<ApiResult<QueueJoin>> join({
     required String shopId,
     required String serviceId,
+    String? providerId,
   }) async {
     final result = await _client.post<Map<String, dynamic>>(
       ApiEndpoints.shopQueue(shopId),
-      data: {'serviceId': serviceId},
+      data: {'serviceId': serviceId, 'providerId': ?providerId},
     );
 
     return result.fold(

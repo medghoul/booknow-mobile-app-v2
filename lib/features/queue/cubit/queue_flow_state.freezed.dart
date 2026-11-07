@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$QueueFlowState {
 
- String get shopId; QueueStep get step; Shop? get shop; ShopQueue? get queue; ShopService? get service;/// The pending place and its payment, kept so a closed sheet re-opens the
+ String get shopId; QueueStep get step; Shop? get shop; ShopQueue? get queue; ShopService? get service;/// Who the customer will wait for; null is whoever is free first.
+ String? get providerId;/// The pending place and its payment, kept so a closed sheet re-opens the
 /// same payment instead of asking the server for a second place.
  QueueJoin? get join;/// The customer's own place while in line.
  QueueEntry? get entry;/// Set once the customer left, to say whether the fee came back.
@@ -30,16 +31,16 @@ $QueueFlowStateCopyWith<QueueFlowState> get copyWith => _$QueueFlowStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is QueueFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.queue, queue) || other.queue == queue)&&(identical(other.service, service) || other.service == service)&&(identical(other.join, join) || other.join == join)&&(identical(other.entry, entry) || other.entry == entry)&&(identical(other.leftRefunded, leftRefunded) || other.leftRefunded == leftRefunded)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is QueueFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.queue, queue) || other.queue == queue)&&(identical(other.service, service) || other.service == service)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.join, join) || other.join == join)&&(identical(other.entry, entry) || other.entry == entry)&&(identical(other.leftRefunded, leftRefunded) || other.leftRefunded == leftRefunded)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,shopId,step,shop,queue,service,join,entry,leftRefunded,isLoading,isBusy,now,failure);
+int get hashCode => Object.hash(runtimeType,shopId,step,shop,queue,service,providerId,join,entry,leftRefunded,isLoading,isBusy,now,failure);
 
 @override
 String toString() {
-  return 'QueueFlowState(shopId: $shopId, step: $step, shop: $shop, queue: $queue, service: $service, join: $join, entry: $entry, leftRefunded: $leftRefunded, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
+  return 'QueueFlowState(shopId: $shopId, step: $step, shop: $shop, queue: $queue, service: $service, providerId: $providerId, join: $join, entry: $entry, leftRefunded: $leftRefunded, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
 }
 
 
@@ -50,7 +51,7 @@ abstract mixin class $QueueFlowStateCopyWith<$Res>  {
   factory $QueueFlowStateCopyWith(QueueFlowState value, $Res Function(QueueFlowState) _then) = _$QueueFlowStateCopyWithImpl;
 @useResult
 $Res call({
- String shopId, QueueStep step, Shop? shop, ShopQueue? queue, ShopService? service, QueueJoin? join, QueueEntry? entry, bool? leftRefunded, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
+ String shopId, QueueStep step, Shop? shop, ShopQueue? queue, ShopService? service, String? providerId, QueueJoin? join, QueueEntry? entry, bool? leftRefunded, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
 });
 
 
@@ -67,14 +68,15 @@ class _$QueueFlowStateCopyWithImpl<$Res>
 
 /// Create a copy of QueueFlowState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? shopId = null,Object? step = null,Object? shop = freezed,Object? queue = freezed,Object? service = freezed,Object? join = freezed,Object? entry = freezed,Object? leftRefunded = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? shopId = null,Object? step = null,Object? shop = freezed,Object? queue = freezed,Object? service = freezed,Object? providerId = freezed,Object? join = freezed,Object? entry = freezed,Object? leftRefunded = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 shopId: null == shopId ? _self.shopId : shopId // ignore: cast_nullable_to_non_nullable
 as String,step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as QueueStep,shop: freezed == shop ? _self.shop : shop // ignore: cast_nullable_to_non_nullable
 as Shop?,queue: freezed == queue ? _self.queue : queue // ignore: cast_nullable_to_non_nullable
 as ShopQueue?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
-as ShopService?,join: freezed == join ? _self.join : join // ignore: cast_nullable_to_non_nullable
+as ShopService?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,join: freezed == join ? _self.join : join // ignore: cast_nullable_to_non_nullable
 as QueueJoin?,entry: freezed == entry ? _self.entry : entry // ignore: cast_nullable_to_non_nullable
 as QueueEntry?,leftRefunded: freezed == leftRefunded ? _self.leftRefunded : leftRefunded // ignore: cast_nullable_to_non_nullable
 as bool?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
@@ -226,10 +228,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  String? providerId,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _QueueFlowState() when $default != null:
-return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.providerId,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   return orElse();
 
 }
@@ -247,10 +249,10 @@ return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  String? providerId,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)  $default,) {final _that = this;
 switch (_that) {
 case _QueueFlowState():
-return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.providerId,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -267,10 +269,10 @@ return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String shopId,  QueueStep step,  Shop? shop,  ShopQueue? queue,  ShopService? service,  String? providerId,  QueueJoin? join,  QueueEntry? entry,  bool? leftRefunded,  bool isLoading,  bool isBusy,  DateTime now,  NetworkException? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _QueueFlowState() when $default != null:
-return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
+return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_that.providerId,_that.join,_that.entry,_that.leftRefunded,_that.isLoading,_that.isBusy,_that.now,_that.failure);case _:
   return null;
 
 }
@@ -282,7 +284,7 @@ return $default(_that.shopId,_that.step,_that.shop,_that.queue,_that.service,_th
 
 
 class _QueueFlowState extends QueueFlowState {
-  const _QueueFlowState({required this.shopId, this.step = QueueStep.overview, this.shop, this.queue, this.service, this.join, this.entry, this.leftRefunded, this.isLoading = true, this.isBusy = false, required this.now, this.failure}): super._();
+  const _QueueFlowState({required this.shopId, this.step = QueueStep.overview, this.shop, this.queue, this.service, this.providerId, this.join, this.entry, this.leftRefunded, this.isLoading = true, this.isBusy = false, required this.now, this.failure}): super._();
   
 
 @override final  String shopId;
@@ -290,6 +292,8 @@ class _QueueFlowState extends QueueFlowState {
 @override final  Shop? shop;
 @override final  ShopQueue? queue;
 @override final  ShopService? service;
+/// Who the customer will wait for; null is whoever is free first.
+@override final  String? providerId;
 /// The pending place and its payment, kept so a closed sheet re-opens the
 /// same payment instead of asking the server for a second place.
 @override final  QueueJoin? join;
@@ -313,16 +317,16 @@ _$QueueFlowStateCopyWith<_QueueFlowState> get copyWith => __$QueueFlowStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QueueFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.queue, queue) || other.queue == queue)&&(identical(other.service, service) || other.service == service)&&(identical(other.join, join) || other.join == join)&&(identical(other.entry, entry) || other.entry == entry)&&(identical(other.leftRefunded, leftRefunded) || other.leftRefunded == leftRefunded)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QueueFlowState&&(identical(other.shopId, shopId) || other.shopId == shopId)&&(identical(other.step, step) || other.step == step)&&(identical(other.shop, shop) || other.shop == shop)&&(identical(other.queue, queue) || other.queue == queue)&&(identical(other.service, service) || other.service == service)&&(identical(other.providerId, providerId) || other.providerId == providerId)&&(identical(other.join, join) || other.join == join)&&(identical(other.entry, entry) || other.entry == entry)&&(identical(other.leftRefunded, leftRefunded) || other.leftRefunded == leftRefunded)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isBusy, isBusy) || other.isBusy == isBusy)&&(identical(other.now, now) || other.now == now)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,shopId,step,shop,queue,service,join,entry,leftRefunded,isLoading,isBusy,now,failure);
+int get hashCode => Object.hash(runtimeType,shopId,step,shop,queue,service,providerId,join,entry,leftRefunded,isLoading,isBusy,now,failure);
 
 @override
 String toString() {
-  return 'QueueFlowState(shopId: $shopId, step: $step, shop: $shop, queue: $queue, service: $service, join: $join, entry: $entry, leftRefunded: $leftRefunded, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
+  return 'QueueFlowState(shopId: $shopId, step: $step, shop: $shop, queue: $queue, service: $service, providerId: $providerId, join: $join, entry: $entry, leftRefunded: $leftRefunded, isLoading: $isLoading, isBusy: $isBusy, now: $now, failure: $failure)';
 }
 
 
@@ -333,7 +337,7 @@ abstract mixin class _$QueueFlowStateCopyWith<$Res> implements $QueueFlowStateCo
   factory _$QueueFlowStateCopyWith(_QueueFlowState value, $Res Function(_QueueFlowState) _then) = __$QueueFlowStateCopyWithImpl;
 @override @useResult
 $Res call({
- String shopId, QueueStep step, Shop? shop, ShopQueue? queue, ShopService? service, QueueJoin? join, QueueEntry? entry, bool? leftRefunded, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
+ String shopId, QueueStep step, Shop? shop, ShopQueue? queue, ShopService? service, String? providerId, QueueJoin? join, QueueEntry? entry, bool? leftRefunded, bool isLoading, bool isBusy, DateTime now, NetworkException? failure
 });
 
 
@@ -350,14 +354,15 @@ class __$QueueFlowStateCopyWithImpl<$Res>
 
 /// Create a copy of QueueFlowState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? shopId = null,Object? step = null,Object? shop = freezed,Object? queue = freezed,Object? service = freezed,Object? join = freezed,Object? entry = freezed,Object? leftRefunded = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? shopId = null,Object? step = null,Object? shop = freezed,Object? queue = freezed,Object? service = freezed,Object? providerId = freezed,Object? join = freezed,Object? entry = freezed,Object? leftRefunded = freezed,Object? isLoading = null,Object? isBusy = null,Object? now = null,Object? failure = freezed,}) {
   return _then(_QueueFlowState(
 shopId: null == shopId ? _self.shopId : shopId // ignore: cast_nullable_to_non_nullable
 as String,step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as QueueStep,shop: freezed == shop ? _self.shop : shop // ignore: cast_nullable_to_non_nullable
 as Shop?,queue: freezed == queue ? _self.queue : queue // ignore: cast_nullable_to_non_nullable
 as ShopQueue?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
-as ShopService?,join: freezed == join ? _self.join : join // ignore: cast_nullable_to_non_nullable
+as ShopService?,providerId: freezed == providerId ? _self.providerId : providerId // ignore: cast_nullable_to_non_nullable
+as String?,join: freezed == join ? _self.join : join // ignore: cast_nullable_to_non_nullable
 as QueueJoin?,entry: freezed == entry ? _self.entry : entry // ignore: cast_nullable_to_non_nullable
 as QueueEntry?,leftRefunded: freezed == leftRefunded ? _self.leftRefunded : leftRefunded // ignore: cast_nullable_to_non_nullable
 as bool?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable

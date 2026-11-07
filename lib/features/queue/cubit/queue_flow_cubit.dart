@@ -90,8 +90,24 @@ class QueueFlowCubit extends Cubit<QueueFlowState> {
     }
   }
 
-  void chooseService(ShopService service) =>
-      emit(state.copyWith(service: service));
+  void chooseService(ShopService service) {
+    final keeps =
+        state.shop
+            ?.providersFor(service.id)
+            .any((p) => p.id == state.providerId) ??
+        false;
+    // Someone who does not do the new service cannot stay chosen.
+    emit(
+      state.copyWith(
+        service: service,
+        providerId: keeps ? state.providerId : null,
+      ),
+    );
+  }
+
+  /// Who to wait for: one person, or whoever is free first for null.
+  void chooseProvider(String? providerId) =>
+      emit(state.copyWith(providerId: providerId));
 
   void review() {
     if (!state.canJoin) return;
@@ -134,6 +150,7 @@ class QueueFlowCubit extends Cubit<QueueFlowState> {
     final result = await _queue.join(
       shopId: state.shopId,
       serviceId: serviceId,
+      providerId: state.providerId,
     );
 
     switch (result) {

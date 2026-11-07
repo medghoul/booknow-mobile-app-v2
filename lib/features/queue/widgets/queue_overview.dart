@@ -2,6 +2,7 @@ import 'package:booknow_mobile/core/extensions/context_extension.dart';
 import 'package:booknow_mobile/core/structures/enums/queue_enums.dart';
 import 'package:booknow_mobile/domain/models/index.dart';
 import 'package:booknow_mobile/features/auth/widgets/sign_in_sheet.dart';
+import 'package:booknow_mobile/features/booking_flow/widgets/provider_choice.dart';
 import 'package:booknow_mobile/features/booking_flow/widgets/shop_scaffold.dart';
 import 'package:booknow_mobile/features/queue/cubit/queue_flow_cubit.dart';
 import 'package:booknow_mobile/features/queue/cubit/queue_flow_state.dart';
@@ -85,6 +86,14 @@ class QueueOverview extends StatelessWidget {
                     service: option,
                     selected: option.id == service?.id,
                     onTap: () => cubit.chooseService(option),
+                  ),
+                ],
+                if (ProviderChoice.offers(state.shop, service)) ...[
+                  SizedBox(height: 20.h),
+                  ProviderChoice(
+                    providers: state.shop!.providersFor(service!.id),
+                    selected: state.providerId,
+                    onSelected: cubit.chooseProvider,
                   ),
                 ],
               ],

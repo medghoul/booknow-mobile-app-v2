@@ -116,6 +116,7 @@ class BookingFlowCubit extends Cubit<BookingFlowState> {
       shopId: state.shopId,
       serviceId: service.id,
       date: date,
+      providerId: state.providerId,
     );
     if (isClosed) return;
 
@@ -137,9 +138,28 @@ class BookingFlowCubit extends Cubit<BookingFlowState> {
 
   /// Switches service, which changes which times fit (§6.3).
   Future<void> chooseService(ShopService service) async {
-    emit(state.copyWith(service: service, start: null));
+    emit(
+      state.copyWith(
+        service: service,
+        start: null,
+        // Someone who does not do the new service cannot stay chosen.
+        providerId: _keeps(state.providerId, service) ? state.providerId : null,
+      ),
+    );
     await loadDay(state.date);
   }
+
+  /// Switches who the times are for: one person, or anyone for null.
+  Future<void> chooseProvider(String? providerId) async {
+    if (providerId == state.providerId) return;
+    emit(state.copyWith(providerId: providerId, start: null));
+    await loadDay(state.date);
+  }
+
+  bool _keeps(String? providerId, ShopService service) =>
+      providerId != null &&
+      (state.shop?.providersFor(service.id).any((p) => p.id == providerId) ??
+          false);
 
   void chooseStart(DateTime start) => emit(state.copyWith(start: start));
 
@@ -199,6 +219,7 @@ class BookingFlowCubit extends Cubit<BookingFlowState> {
       shopId: state.shopId,
       serviceId: serviceId,
       startUtc: start,
+      providerId: state.providerId,
     );
 
     switch (result) {

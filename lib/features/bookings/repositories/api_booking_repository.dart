@@ -17,10 +17,15 @@ class ApiBookingRepository implements BookingRepository {
     required String shopId,
     required String serviceId,
     required String date,
+    String? providerId,
   }) async {
     final result = await _client.get<Map<String, dynamic>>(
       ApiEndpoints.shopAvailability(shopId),
-      queryParameters: {'serviceId': serviceId, 'date': date},
+      queryParameters: {
+        'serviceId': serviceId,
+        'date': date,
+        'providerId': ?providerId,
+      },
     );
 
     return result.parsed((json) => AvailabilityDto.fromJson(json).toDomain());
@@ -31,6 +36,7 @@ class ApiBookingRepository implements BookingRepository {
     required String shopId,
     required String serviceId,
     required DateTime startUtc,
+    String? providerId,
   }) async {
     final result = await _client.post<Map<String, dynamic>>(
       ApiEndpoints.bookings,
@@ -38,6 +44,7 @@ class ApiBookingRepository implements BookingRepository {
         'shopId': shopId,
         'serviceId': serviceId,
         'startUtc': startUtc.toUtc().toIso8601String(),
+        'providerId': ?providerId,
       },
     );
 

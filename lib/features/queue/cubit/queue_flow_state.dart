@@ -36,6 +36,9 @@ abstract class QueueFlowState with _$QueueFlowState {
     ShopQueue? queue,
     ShopService? service,
 
+    /// Who the customer will wait for; null is whoever is free first.
+    String? providerId,
+
     /// The pending place and its payment, kept so a closed sheet re-opens the
     /// same payment instead of asking the server for a second place.
     QueueJoin? join,
