@@ -166,6 +166,23 @@ void main() {
       expect(find.text('BookNow'), findsOneWidget);
     });
 
+    // The native launch screen shows the tile; an empty navy frame before it
+    // grew back in read as a blank blue screen.
+    testWidgets('shows the mark on its first frame', (tester) async {
+      await pumpThemed(
+        tester,
+        const SplashView(leaving: false),
+        animations: true,
+      );
+
+      final mark = find.text('B');
+      expect(mark, findsOneWidget);
+      expect(
+        find.ancestor(of: mark, matching: find.byType(ScaleTransition)),
+        findsNothing,
+      );
+    });
+
     testWidgets('hands over once it has contracted', (tester) async {
       var finished = false;
       Widget view({required bool leaving}) =>

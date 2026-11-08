@@ -88,26 +88,25 @@ class _SplashViewState extends State<SplashView>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ScaleTransition(
-                        scale: _interval(0, 0.6, Curves.elasticOut),
-                        child: Container(
-                          width: 84.w,
-                          height: 84.w,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: context.onHeaderColor,
-                            borderRadius: BorderRadius.circular(24.r),
-                          ),
-                          child: Text(
-                            'B',
-                            style: TextStyle(
-                              fontFamily:
-                                  context.textTheme.displayLarge?.fontFamily,
-                              fontSize: 54.sp,
-                              fontWeight: FontWeight.w800,
-                              height: 1,
-                              color: context.headerColor,
-                            ),
+                      // Already in place on the first frame, where the native
+                      // launch screen left it, so the handoff doesn't show.
+                      Container(
+                        width: 84.w,
+                        height: 84.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: context.onHeaderColor,
+                          borderRadius: BorderRadius.circular(24.r),
+                        ),
+                        child: Text(
+                          'B',
+                          style: TextStyle(
+                            fontFamily:
+                                context.textTheme.displayLarge?.fontFamily,
+                            fontSize: 54.sp,
+                            fontWeight: FontWeight.w800,
+                            height: 1,
+                            color: context.headerColor,
                           ),
                         ),
                       ),
