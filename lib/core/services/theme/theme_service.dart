@@ -24,8 +24,7 @@ class ThemeService extends ChangeNotifier {
 
   ThemeMode _themeMode;
 
-  /// [ThemeMode.system] until the user chooses otherwise, which is what the
-  /// design specifies for a first launch.
+  /// [ThemeMode.light] until the user chooses otherwise.
   ThemeMode get themeMode => _themeMode;
 
   /// Applies the choice, then stores it.

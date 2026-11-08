@@ -15,13 +15,13 @@ class PrefsService {
   static Future<PrefsService> create() async =>
       PrefsService(await SharedPreferences.getInstance());
 
-  /// The user's theme choice. Defaults to [ThemeMode.system], which is what
-  /// the design specifies for a first launch.
+  /// The user's theme choice. Light until they choose otherwise, even on a
+  /// phone in dark mode.
   ThemeMode get themeMode =>
       switch (_prefs.getString(PrefsKey.themeMode.value)) {
-        'light' => ThemeMode.light,
         'dark' => ThemeMode.dark,
-        _ => ThemeMode.system,
+        'system' => ThemeMode.system,
+        _ => ThemeMode.light,
       };
 
   Future<void> setThemeMode(ThemeMode mode) =>

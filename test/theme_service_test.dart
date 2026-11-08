@@ -47,8 +47,14 @@ void main() {
   setUp(() async => prefs = await prefsWith({}));
 
   group('ThemeService', () {
-    test('a first launch follows the system', () {
-      expect(ThemeService(prefs).themeMode, ThemeMode.system);
+    test('a first launch is light, whatever the phone is set to', () {
+      expect(ThemeService(prefs).themeMode, ThemeMode.light);
+    });
+
+    test('someone who chose to follow the phone still does', () async {
+      final stored = await prefsWith({'theme_mode': 'system'});
+
+      expect(ThemeService(stored).themeMode, ThemeMode.system);
     });
 
     test('a stored choice is in force before the first frame', () async {
@@ -76,7 +82,7 @@ void main() {
       var notifications = 0;
       service.addListener(() => notifications++);
 
-      await service.setThemeMode(ThemeMode.system);
+      await service.setThemeMode(ThemeMode.light);
 
       expect(notifications, 0);
     });
@@ -98,7 +104,7 @@ void main() {
         ),
       );
 
-      expect(find.text('system'), findsOneWidget);
+      expect(find.text('light'), findsOneWidget);
 
       await tester.tap(find.text('scegli scuro'));
       await tester.pumpAndSettle();
