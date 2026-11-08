@@ -53,4 +53,4 @@ CLAUDE.md
 # Environment variables
 .env
 .env.*
-!.env.example
+*.env
