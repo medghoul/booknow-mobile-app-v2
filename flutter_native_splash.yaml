@@ -3,17 +3,16 @@
 # The native launch screen: what the OS draws between tapping the icon and
 # Flutter's first frame. Without it that gap is plain white or black.
 #
-# It is deliberately a still frame of `SplashView` — same mark, same wordmark,
-# same position — so the handoff is invisible. The spinner and the two blobs
-# only appear once Flutter takes over; a native splash cannot animate, and a
-# stretched full-screen background would distort the blobs on other aspect
-# ratios.
+# It is a picture of SplashMark, the mark and the dots without the name,
+# drawn from the widget itself by tool/render_splash.dart. SplashView opens on
+# the same thing in the same place, so the handoff can't show; only the name
+# fades in after. Run that tool again after any change to SplashMark.
 flutter_native_splash:
   # --bn-bg, light and dark.
   color: "#0F2A4A"
   color_dark: "#111A2E"
 
-  # Sized for 4x pixel density, as the plugin expects.
+  # 288dp at 4x, the Android 12+ canvas, so every platform gets one picture.
   image: assets/splash/splash_light.png
   image_dark: assets/splash/splash_dark.png
 
@@ -21,9 +20,9 @@ flutter_native_splash:
   ios: true
   web: false
 
-  # Android 12+ replaced the old splash with its own windowed API: it draws an
-  # icon only, inside a 768px circle on a 1152px canvas, so the wordmark cannot
-  # come along. The mark alone goes here, on the same background.
+  # Android 12+ draws its own launch screen: one icon on a 288dp canvas, shown
+  # through a 192dp circle. The mark and the dots fit inside it; the name would
+  # not, which is why it is left out everywhere.
   android_12:
     image: assets/splash/splash_a12_light.png
     image_dark: assets/splash/splash_a12_dark.png

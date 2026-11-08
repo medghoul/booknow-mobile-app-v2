@@ -1,10 +1,13 @@
-import 'package:booknow_mobile/core/constants/app_colors.dart';
 import 'package:booknow_mobile/core/extensions/context_extension.dart';
+import 'package:booknow_mobile/features/splash/widgets/splash_mark.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 
-/// The splash: the mark, the name, and three dots forming a little queue, the
-/// last one teal: your place.
+/// The splash: [SplashMark] on the navy.
+///
+/// Its first frame is the native launch screen exactly, the mark and the dots
+/// in the same place at the same size, so opening the app shows no seam. Only
+/// the name, which Android 12+ can't put on the launch screen, fades in.
 ///
 /// The navy then contracts into the Discover header, so opening the app reads
 /// as one motion. [onFinished] fires when it has, which is when the app may
@@ -33,9 +36,9 @@ class _SplashViewState extends State<SplashView>
   /// Where the navy lands: the height of the open Discover header.
   static const double _headerHeight = 192;
 
-  late final AnimationController _enter = AnimationController(
+  late final AnimationController _name = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 800),
+    duration: const Duration(milliseconds: 400),
   )..forward();
 
   @override
@@ -49,20 +52,15 @@ class _SplashViewState extends State<SplashView>
 
   @override
   void dispose() {
-    _enter.dispose();
+    _name.dispose();
     super.dispose();
   }
-
-  Animation<double> _interval(double from, double to, Curve curve) =>
-      CurvedAnimation(
-        parent: _enter,
-        curve: Interval(from, to, curve: curve),
-      );
 
   @override
   Widget build(BuildContext context) {
     final full = context.mediaQuery.size.height;
     final target = _headerHeight.h + context.mediaQuery.padding.top;
+    final queueLine = widget.queueLine;
 
     return Material(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -85,114 +83,60 @@ class _SplashViewState extends State<SplashView>
                 child: AnimatedOpacity(
                   opacity: widget.leaving ? 0 : 1,
                   duration: const Duration(milliseconds: 200),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Already in place on the first frame, where the native
-                      // launch screen left it, so the handoff doesn't show.
-                      Container(
-                        width: 84.w,
-                        height: 84.w,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: context.onHeaderColor,
-                          borderRadius: BorderRadius.circular(24.r),
-                        ),
-                        child: Text(
-                          'B',
-                          style: TextStyle(
-                            fontFamily:
-                                context.textTheme.displayLarge?.fontFamily,
-                            fontSize: 54.sp,
-                            fontWeight: FontWeight.w800,
-                            height: 1,
-                            color: context.headerColor,
+                  // Centred on the screen, as the launch screen centres its
+                  // picture. The queue line hangs below rather than joining
+                  // the column, so it can't nudge the mark when it arrives.
+                  child: Center(
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      alignment: Alignment.topCenter,
+                      children: [
+                        SplashMark(
+                          name: CurvedAnimation(
+                            parent: _name,
+                            curve: Curves.easeOut,
                           ),
                         ),
-                      ),
-                      SizedBox(height: context.spacing.lg.h),
-                      FadeTransition(
-                        opacity: _interval(0.25, 0.7, Curves.easeOut),
-                        child: Text(
-                          'BookNow',
-                          style: context.textTheme.displayLarge?.copyWith(
-                            color: context.onHeaderColor,
-                          ),
-                        ),
-                      ),
-                      AnimatedSize(
-                        duration: context.motion.fast,
-                        child: widget.queueLine == null
-                            ? const SizedBox(width: double.infinity)
-                            : Padding(
-                                padding: EdgeInsets.only(
-                                  top: context.spacing.sm.h,
-                                ),
-                                child: Text(
-                                  widget.queueLine!,
-                                  textAlign: TextAlign.center,
-                                  style: context.textTheme.bodyMedium?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: context.onHeaderColor.withValues(
-                                      alpha: 0.85,
+                        Positioned(
+                          bottom: 0,
+                          child: FractionalTranslation(
+                            translation: const Offset(0, 1),
+                            child: AnimatedSwitcher(
+                              duration: context.motion.fast,
+                              child: queueLine == null
+                                  ? const SizedBox.shrink()
+                                  : Padding(
+                                      key: ValueKey(queueLine),
+                                      padding: EdgeInsets.only(
+                                        top: context.spacing.lg,
+                                      ),
+                                      child: SizedBox(
+                                        width:
+                                            context.mediaQuery.size.width -
+                                            2 * context.spacing.lg,
+                                        child: Text(
+                                          queueLine,
+                                          textAlign: TextAlign.center,
+                                          style: context.textTheme.bodyMedium
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.w600,
+                                                color: context.onHeaderColor
+                                                    .withValues(alpha: 0.85),
+                                              ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                      ),
-                      SizedBox(height: context.spacing.lg.h),
-                      SizedBox(
-                        height: 14.w,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            _Dot(
-                              _interval(0.4, 0.7, Curves.elasticOut),
-                              8,
-                              context.onHeaderColor.withValues(alpha: 0.7),
                             ),
-                            SizedBox(width: context.spacing.sm.w),
-                            _Dot(
-                              _interval(0.5, 0.8, Curves.elasticOut),
-                              8,
-                              context.onHeaderColor.withValues(alpha: 0.7),
-                            ),
-                            SizedBox(width: context.spacing.sm.w),
-                            _Dot(
-                              _interval(0.6, 0.95, Curves.elasticOut),
-                              12,
-                              AppColors.mintRing,
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _Dot extends StatelessWidget {
-  const _Dot(this.scale, this.size, this.color);
-
-  final Animation<double> scale;
-  final double size;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: scale,
-      child: Container(
-        width: size.w,
-        height: size.w,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       ),
     );
   }

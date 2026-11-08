@@ -2,6 +2,7 @@ import 'package:booknow_mobile/core/constants/app_animations.dart';
 import 'package:booknow_mobile/core/services/storage/prefs_service.dart';
 import 'package:booknow_mobile/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:booknow_mobile/features/onboarding/widgets/onboarding_view.dart';
+import 'package:booknow_mobile/features/splash/widgets/splash_mark.dart';
 import 'package:booknow_mobile/features/splash/widgets/splash_view.dart';
 import 'package:booknow_mobile/localization/localization.dart';
 import 'package:booknow_mobile/widgets/index.dart';
@@ -181,6 +182,25 @@ void main() {
         find.ancestor(of: mark, matching: find.byType(ScaleTransition)),
         findsNothing,
       );
+      // Where the launch screen draws its picture: the middle of the screen.
+      expect(
+        tester.getCenter(find.byType(SplashMark)),
+        tester.getCenter(find.byType(SplashView)),
+      );
+    });
+
+    testWidgets('a queue line does not move the mark', (tester) async {
+      await pumpThemed(tester, const SplashView(leaving: false));
+      final before = tester.getCenter(find.text('B'));
+
+      await pumpThemed(
+        tester,
+        const SplashView(leaving: false, queueLine: "You're #3 at Barbieri"),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text("You're #3 at Barbieri"), findsOneWidget);
+      expect(tester.getCenter(find.text('B')), before);
     });
 
     testWidgets('hands over once it has contracted', (tester) async {
