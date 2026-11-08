@@ -1,4 +1,5 @@
 import 'package:booknow_mobile/core/constants/app_animations.dart';
+import 'package:booknow_mobile/core/constants/app_colors.dart';
 import 'package:booknow_mobile/core/services/storage/prefs_service.dart';
 import 'package:booknow_mobile/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:booknow_mobile/features/onboarding/widgets/onboarding_view.dart';
@@ -187,6 +188,25 @@ void main() {
         tester.getCenter(find.byType(SplashMark)),
         tester.getCenter(find.byType(SplashView)),
       );
+    });
+
+    // The launch screen follows the phone, and is what this has to match.
+    testWidgets("opens in the phone's mode, not the app's", (tester) async {
+      tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+      addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+      Color navy() {
+        final box = tester.widget<AnimatedContainer>(
+          find.byType(AnimatedContainer),
+        );
+        return (box.decoration as BoxDecoration).color!;
+      }
+
+      await pumpThemed(tester, const SplashView(leaving: false));
+      expect(navy(), AppColors.darkSurfaceElevated);
+
+      // On its way into the header it becomes the app's colour after all.
+      await pumpThemed(tester, const SplashView(leaving: true));
+      expect(navy(), AppColors.lightPrimary);
     });
 
     testWidgets('a queue line does not move the mark', (tester) async {

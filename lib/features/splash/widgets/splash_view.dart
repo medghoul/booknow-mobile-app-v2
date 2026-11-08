@@ -1,4 +1,6 @@
+import 'package:booknow_mobile/core/constants/app_colors.dart';
 import 'package:booknow_mobile/core/extensions/context_extension.dart';
+import 'package:booknow_mobile/core/theme/app_theme.dart';
 import 'package:booknow_mobile/features/splash/widgets/splash_mark.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_layout_kit/responsive_layout_kit.dart';
@@ -9,7 +11,9 @@ import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 /// in the same place at the same size, so opening the app shows no seam. Only
 /// the name, which Android 12+ can't put on the launch screen, fades in.
 ///
-/// The navy then contracts into the Discover header, so opening the app reads
+/// It opens in the phone's light or dark, as the launch screen does, whatever
+/// theme was chosen in the app. The navy then contracts into the Discover
+/// header, turning into that theme's colour on the way, so opening the app reads
 /// as one motion. [onFinished] fires when it has, which is when the app may
 /// take over from here.
 class SplashView extends StatefulWidget {
@@ -61,6 +65,11 @@ class _SplashViewState extends State<SplashView>
     final full = context.mediaQuery.size.height;
     final target = _headerHeight.h + context.mediaQuery.padding.top;
     final queueLine = widget.queueLine;
+    final dark = MediaQuery.platformBrightnessOf(context) == Brightness.dark;
+    // The two colours in flutter_native_splash.yaml.
+    final launchColor = dark
+        ? AppColors.darkSurfaceElevated
+        : AppColors.lightPrimary;
 
     return Material(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -70,7 +79,7 @@ class _SplashViewState extends State<SplashView>
           duration: const Duration(milliseconds: 550),
           curve: Curves.easeInOutCubicEmphasized,
           height: widget.leaving ? target : full,
-          color: context.headerColor,
+          color: widget.leaving ? context.headerColor : launchColor,
           onEnd: () {
             if (widget.leaving) widget.onFinished?.call();
           },
@@ -91,10 +100,13 @@ class _SplashViewState extends State<SplashView>
                       clipBehavior: Clip.none,
                       alignment: Alignment.topCenter,
                       children: [
-                        SplashMark(
-                          name: CurvedAnimation(
-                            parent: _name,
-                            curve: Curves.easeOut,
+                        Theme(
+                          data: dark ? AppTheme.dark : AppTheme.light,
+                          child: SplashMark(
+                            name: CurvedAnimation(
+                              parent: _name,
+                              curve: Curves.easeOut,
+                            ),
                           ),
                         ),
                         Positioned(

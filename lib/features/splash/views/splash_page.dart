@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:booknow_mobile/core/di/dependency_injection.dart';
+import 'package:booknow_mobile/core/services/theme/launch_screen.dart';
 import 'package:booknow_mobile/features/auth/cubit/auth_cubit.dart';
 import 'package:booknow_mobile/features/auth/routing/auth_destination.dart';
 import 'package:booknow_mobile/features/auth/widgets/auth_step_listener.dart';
@@ -55,6 +56,7 @@ class SplashPage extends StatelessWidget {
   }
 
   void _leave(BuildContext context) {
+    LaunchScreen.release();
     final route = AuthStepListener.routeFor(
       di<AuthCubit>().state.destination ?? const SignInDestination(),
     );

@@ -6,6 +6,7 @@ import 'package:booknow_mobile/core/config/app_config.dart';
 import 'package:booknow_mobile/core/di/dependency_injection.dart';
 import 'package:booknow_mobile/features/home_widgets/home_widget_sync.dart';
 import 'package:booknow_mobile/core/services/push/push_service.dart';
+import 'package:booknow_mobile/core/services/theme/launch_screen.dart';
 import 'package:booknow_mobile/core/services/theme/theme_service.dart';
 import 'package:booknow_mobile/localization/localization.dart';
 import 'package:booknow_mobile/routing/app_router.dart';
@@ -41,6 +42,8 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(pushBackgroundHandler);
 
   await setupDependencies();
+
+  LaunchScreen.follow(di<ThemeService>());
 
   runApp(
     TranslationProvider(

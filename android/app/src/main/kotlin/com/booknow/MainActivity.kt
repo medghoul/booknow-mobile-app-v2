@@ -2,9 +2,14 @@ package com.booknow
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.UiModeManager
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import io.flutter.embedding.android.FlutterFragmentActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
 
 // flutter_stripe presents the Payment Sheet as a fragment, so the host
 // activity has to be a FlutterFragmentActivity rather than a FlutterActivity.
@@ -12,6 +17,60 @@ class MainActivity : FlutterFragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createBookingsChannel()
+
+        // Left alone, some phones fade the launch screen out, and the mark
+        // dims and comes back. SplashView opens on the same picture, so it can
+        // simply go.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener { it.remove() }
+        }
+    }
+
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        super.configureFlutterEngine(flutterEngine)
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, LAUNCH_SCREEN_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "followTheme" -> {
+                        followTheme(call.arguments as String)
+                        result.success(null)
+                    }
+                    "release" -> {
+                        releaseWindowBackground()
+                        result.success(null)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+    }
+
+    /**
+     * Tells Android the theme chosen in the app. It is what the launch screen
+     * is drawn from, before any Flutter runs, so without this the launch screen
+     * follows the phone even when the app has been set to the opposite.
+     */
+    private fun followTheme(mode: String) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+
+        getSystemService(UiModeManager::class.java).setApplicationNightMode(
+            when (mode) {
+                "light" -> UiModeManager.MODE_NIGHT_NO
+                "dark" -> UiModeManager.MODE_NIGHT_YES
+                else -> UiModeManager.MODE_NIGHT_AUTO
+            },
+        )
+    }
+
+    /**
+     * NormalTheme keeps the launch picture behind Flutter for the handoff. Past
+     * the splash it would show wherever the app's surface lags, as it does for
+     * a moment when the keyboard opens.
+     */
+    private fun releaseWindowBackground() {
+        val background = TypedValue()
+        theme.resolveAttribute(android.R.attr.colorBackground, background, true)
+        window.setBackgroundDrawable(ColorDrawable(background.data))
     }
 
     /**
@@ -51,5 +110,8 @@ class MainActivity : FlutterFragmentActivity() {
          * Lambda and the default-channel meta-data in AndroidManifest.xml.
          */
         const val BOOKINGS_CHANNEL_ID = "bookings"
+
+        /** Must match `LaunchScreen` on the Dart side. */
+        const val LAUNCH_SCREEN_CHANNEL = "com.booknow/launch_screen"
     }
 }
