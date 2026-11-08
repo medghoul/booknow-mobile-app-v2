@@ -183,6 +183,15 @@ void main() {
         find.ancestor(of: mark, matching: find.byType(ScaleTransition)),
         findsNothing,
       );
+      // The launch screen is a still picture: nothing here may arrive late.
+      expect(
+        find.descendant(
+          of: find.byType(SplashMark),
+          matching: find.byType(FadeTransition),
+        ),
+        findsNothing,
+      );
+      expect(find.text('BookNow'), findsOneWidget);
       // Where the launch screen draws its picture: the middle of the screen.
       expect(
         tester.getCenter(find.byType(SplashMark)),

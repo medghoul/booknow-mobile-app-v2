@@ -7,9 +7,8 @@ import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 
 /// The splash: [SplashMark] on the navy.
 ///
-/// Its first frame is the native launch screen exactly, the mark and the dots
-/// in the same place at the same size, so opening the app shows no seam. Only
-/// the name, which Android 12+ can't put on the launch screen, fades in.
+/// It is the native launch screen exactly, everything in the same place at the
+/// same size and nothing animating in, so opening the app shows no seam.
 ///
 /// It opens in the phone's light or dark, as the launch screen does, whatever
 /// theme was chosen in the app. The navy then contracts into the Discover
@@ -35,15 +34,9 @@ class SplashView extends StatefulWidget {
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView>
-    with SingleTickerProviderStateMixin {
+class _SplashViewState extends State<SplashView> {
   /// Where the navy lands: the height of the open Discover header.
   static const double _headerHeight = 192;
-
-  late final AnimationController _name = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 400),
-  )..forward();
 
   @override
   void didUpdateWidget(SplashView old) {
@@ -52,12 +45,6 @@ class _SplashViewState extends State<SplashView>
       final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
       if (reduce) widget.onFinished?.call();
     }
-  }
-
-  @override
-  void dispose() {
-    _name.dispose();
-    super.dispose();
   }
 
   @override
@@ -102,12 +89,7 @@ class _SplashViewState extends State<SplashView>
                       children: [
                         Theme(
                           data: dark ? AppTheme.dark : AppTheme.light,
-                          child: SplashMark(
-                            name: CurvedAnimation(
-                              parent: _name,
-                              curve: Curves.easeOut,
-                            ),
-                          ),
+                          child: const SplashMark(),
                         ),
                         Positioned(
                           bottom: 0,

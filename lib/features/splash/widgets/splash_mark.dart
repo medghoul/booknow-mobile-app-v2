@@ -6,17 +6,13 @@ import 'package:flutter/material.dart';
 /// The mark, the name, and three dots forming a little queue, the last one
 /// teal: your place.
 ///
-/// The native launch screen is a picture of this with the name hidden,
-/// rendered by `tool/render_splash.dart`, so the handoff to Flutter can't
-/// show. That is why every size here is a plain logical pixel, never scaled to
-/// the screen: the picture is drawn once and can't follow the scaling. Change
-/// anything here and run that tool again.
+/// The native launch screen is a picture of this, rendered by
+/// `tool/render_splash.dart`, so the handoff to Flutter can't show. That is why
+/// every size here is a plain logical pixel, never scaled to the screen: the
+/// picture is drawn once and can't follow the scaling. Change anything here and
+/// run that tool again.
 class SplashMark extends StatelessWidget {
-  const SplashMark({super.key, this.name = kAlwaysCompleteAnimation});
-
-  /// How visible the name is. Android 12+ can't show it on the launch screen,
-  /// so it fades in once Flutter takes over.
-  final Animation<double> name;
+  const SplashMark({super.key});
 
   static const double _gap = 16;
   static const double _dotGap = 8;
@@ -48,18 +44,15 @@ class SplashMark extends StatelessWidget {
           ),
         ),
         const SizedBox(height: _gap),
-        FadeTransition(
-          opacity: name,
-          child: Text(
-            'BookNow',
-            style: TextStyle(
-              fontFamily: AppTypography.fontFamily,
-              fontSize: 32,
-              fontWeight: FontWeight.w800,
-              letterSpacing: AppTypography.trackingDisplay,
-              height: AppTypography.leadingDisplay,
-              color: on,
-            ),
+        Text(
+          'BookNow',
+          style: TextStyle(
+            fontFamily: AppTypography.fontFamily,
+            fontSize: 32,
+            fontWeight: FontWeight.w800,
+            letterSpacing: AppTypography.trackingDisplay,
+            height: AppTypography.leadingDisplay,
+            color: on,
           ),
         ),
         const SizedBox(height: _gap),

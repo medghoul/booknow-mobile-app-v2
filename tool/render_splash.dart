@@ -47,11 +47,7 @@ void main() {
                 key: boundary,
                 child: const SizedBox.square(
                   dimension: _canvas,
-                  // The name is left out: Android 12+ has no room for it, and
-                  // every platform should open on the same picture.
-                  child: Center(
-                    child: SplashMark(name: kAlwaysDismissedAnimation),
-                  ),
+                  child: Center(child: SplashMark()),
                 ),
               ),
             ),
