@@ -94,6 +94,7 @@ abstract final class ApiEndpoints {
   static const String myShopQueueClose = '/shops/me/queue/close';
   static const String myShopQueueTurnedAway = '/shops/me/queue/turned-away';
   static const String myShopChairs = '/shops/me/chairs';
+  static const String myShopStatistics = '/shops/me/statistics';
 
   /// `start` or `done` on one chair.
   static String chairAction(String providerId, String action) =>

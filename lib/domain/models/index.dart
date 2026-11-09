@@ -16,5 +16,6 @@ export 'shop_address.dart';
 export 'shop_provider.dart';
 export 'shop_service.dart';
 export 'shop_summary.dart';
+export 'statistics.dart';
 export 'time_block.dart';
 export 'user_profile.dart';

@@ -13,4 +13,5 @@ export 'place_suggestion_dto.dart';
 export 'queue_dto.dart';
 export 'shop_dto.dart';
 export 'shop_requests.dart';
+export 'statistics_dto.dart';
 export 'user_profile_dto.dart';
