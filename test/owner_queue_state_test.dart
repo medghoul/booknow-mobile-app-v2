@@ -76,7 +76,7 @@ void main() {
       tester,
       BlocProvider(
         create: (_) => OwnerQueueCubit(queue, _OwnerShop())..load(),
-        child: const OwnerQueueView(),
+        child: const OwnerQueueView(board: SizedBox.shrink()),
       ),
     );
     await tester.pumpAndSettle();

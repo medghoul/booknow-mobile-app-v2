@@ -113,22 +113,28 @@ class TodayChairCard extends StatelessWidget {
     required this.overline,
     required this.title,
     this.meta,
-    this.metaAmber = false,
+    this.metaColor,
     this.progress,
-    required this.actions,
+    this.progressColor,
+    this.actions,
+    this.footer,
   });
 
   final String initial;
   final String overline;
   final String title;
 
-  /// "11 min left", "Waiting 2 min".
+  /// "until 15:30", "6 min over plan".
   final String? meta;
-  final bool metaAmber;
+  final Color? metaColor;
 
   /// How far through the service, zero to one.
   final double? progress;
-  final Widget actions;
+  final Color? progressColor;
+  final Widget? actions;
+
+  /// What is next for this chair, under the buttons.
+  final Widget? footer;
 
   @override
   Widget build(BuildContext context) {
@@ -186,9 +192,7 @@ class TodayChairCard extends StatelessWidget {
                   meta,
                   style: context.textTheme.labelMedium?.copyWith(
                     fontWeight: FontWeight.w700,
-                    color: metaAmber
-                        ? context.status.pending.foreground
-                        : scheme.onSurfaceVariant,
+                    color: metaColor ?? scheme.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -202,12 +206,15 @@ class TodayChairCard extends StatelessWidget {
                 value: progress,
                 minHeight: 6,
                 backgroundColor: scheme.surfaceContainerHighest,
-                color: scheme.secondary,
+                color: progressColor ?? scheme.secondary,
               ),
             ),
           ],
-          const SizedBox(height: 12),
-          actions,
+          if (actions case final actions?) ...[
+            const SizedBox(height: 12),
+            actions,
+          ],
+          ?footer,
         ],
       ),
     );

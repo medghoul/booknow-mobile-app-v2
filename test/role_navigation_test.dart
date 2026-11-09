@@ -11,6 +11,8 @@ import 'package:booknow_mobile/domain/repositories/agenda_repository.dart';
 import 'package:booknow_mobile/domain/repositories/booking_repository.dart';
 import 'package:booknow_mobile/domain/repositories/customer_home_repository.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_cubit.dart';
+import 'package:booknow_mobile/features/chairs/cubit/owner_chairs_cubit.dart';
+import 'package:booknow_mobile/domain/repositories/chairs_repository.dart';
 import 'package:booknow_mobile/domain/repositories/queue_repository.dart';
 import 'package:booknow_mobile/features/auth/cubit/auth_cubit.dart';
 import 'package:booknow_mobile/features/queue/cubit/live_status_cubit.dart';
@@ -33,6 +35,16 @@ import 'auth_router_test.dart' show profile, shop;
 import 'theme_test.dart' show pumpThemed;
 
 /// The live bar only reads a place when there is a session; these have none.
+class _StubChairs implements ChairsRepository {
+  @override
+  Future<ApiResult<ChairBoard>> board() async => const Success(
+    ChairBoard(localDate: '2026-11-09', timeZone: 'UTC', chairs: []),
+  );
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => throw UnimplementedError();
+}
+
 class _StubQueue implements QueueRepository {
   @override
   noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -311,6 +323,9 @@ void main() {
       di.registerSingleton<NextBookingCubit>(NextBookingCubit(_StubBookings()));
 
       // Same for the owner's first tab, which builds its own cubit too.
+      di.registerFactory<OwnerChairsCubit>(
+        () => OwnerChairsCubit(_StubChairs(), _StubQueue()),
+      );
       di.registerFactory<OwnerAgendaCubit>(
         () => OwnerAgendaCubit(_StubAgendaRepository()),
       );

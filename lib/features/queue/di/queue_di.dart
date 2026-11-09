@@ -1,3 +1,6 @@
+import 'package:booknow_mobile/domain/repositories/chairs_repository.dart';
+import 'package:booknow_mobile/features/chairs/cubit/owner_chairs_cubit.dart';
+import 'package:booknow_mobile/features/chairs/repositories/api_chairs_repository.dart';
 import 'package:booknow_mobile/features/home_widgets/home_widget_sync.dart';
 import 'package:booknow_mobile/features/queue/cubit/live_status_cubit.dart';
 import 'package:booknow_mobile/data/dio_client/dio_client.dart';
@@ -28,5 +31,11 @@ void registerQueueFeature(GetIt di) {
   di.registerLazySingleton<ShopModeNotifier>(ShopModeNotifier.new);
   di.registerFactory(
     () => OwnerQueueCubit(di<QueueRepository>(), di<ShopRepository>()),
+  );
+  di.registerLazySingleton<ChairsRepository>(
+    () => ApiChairsRepository(di<DioClient>()),
+  );
+  di.registerFactory(
+    () => OwnerChairsCubit(di<ChairsRepository>(), di<QueueRepository>()),
   );
 }

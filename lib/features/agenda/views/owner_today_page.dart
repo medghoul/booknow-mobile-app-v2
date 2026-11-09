@@ -4,7 +4,11 @@ import 'package:booknow_mobile/core/error/api_result.dart';
 import 'package:booknow_mobile/core/structures/enums/queue_enums.dart';
 import 'package:booknow_mobile/domain/models/index.dart';
 import 'package:booknow_mobile/domain/repositories/shop_repository.dart';
+import 'package:booknow_mobile/core/error/error_messages.dart';
 import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_cubit.dart';
+import 'package:booknow_mobile/features/agenda/cubit/owner_agenda_state.dart';
+import 'package:booknow_mobile/features/chairs/cubit/owner_chairs_cubit.dart';
+import 'package:booknow_mobile/features/chairs/widgets/chairs_board.dart';
 import 'package:booknow_mobile/features/agenda/widgets/owner_today_parts.dart';
 import 'package:booknow_mobile/features/agenda/widgets/owner_today_view.dart';
 import 'package:booknow_mobile/features/queue/cubit/owner_queue_cubit.dart';
@@ -17,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// The owner's first tab, and where they land once the shop is published: the
-/// day as it is happening.
+/// day as it is happening, one card per chair and then who is still to come.
 ///
 /// A shop in queue mode runs its day as a line, one taking bookings as a list
 /// of times, and one taking both switches between the two. The mode is read once and then followed through
@@ -51,14 +55,36 @@ class _OwnerTodayPageState extends State<OwnerTodayPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<ShopMode?>(
-      valueListenable: _mode,
-      builder: (context, mode, _) => switch (mode) {
-        null => const AppScaffold(body: AppLoader.centered()),
-        ShopMode.queue => const _Line(key: ValueKey(ShopMode.queue)),
-        ShopMode.booking => const _Bookings(key: ValueKey(ShopMode.booking)),
-        ShopMode.both => const _Both(key: ValueKey(ShopMode.both)),
-      },
+    // Above the modes, so the chairs survive a switch between line and bookings.
+    return BlocProvider(
+      create: (_) => di<OwnerChairsCubit>()..load(),
+      child: Builder(
+        builder: (context) => RefreshWhenShown(
+          routeName: OwnerTodayRoute.name,
+          onShown: context.read<OwnerChairsCubit>().refresh,
+          child: BlocListener<OwnerChairsCubit, OwnerChairsState>(
+            listenWhen: (before, after) =>
+                before.failure != after.failure && after.board != null,
+            listener: (context, state) {
+              if (state.failure case final failure?) {
+                AppSnackBar.error(context, failure.localized(context));
+              }
+            },
+            child: ValueListenableBuilder<ShopMode?>(
+              valueListenable: _mode,
+              builder: (context, mode, _) => switch (mode) {
+                null => const AppScaffold(body: AppLoader.centered()),
+                ShopMode.queue => const _Line(key: ValueKey(ShopMode.queue)),
+                ShopMode.booking => const _Bookings(
+                  key: ValueKey(ShopMode.booking),
+                  runsLine: false,
+                ),
+                ShopMode.both => const _Both(key: ValueKey(ShopMode.both)),
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -70,13 +96,37 @@ class _Line extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => di<OwnerQueueCubit>()..load(),
-      child: const OwnerQueueView(),
+      child: MultiBlocListener(
+        listeners: [
+          _whenChairsChange(
+            (context) => context.read<OwnerQueueCubit>().refresh(),
+          ),
+          // Someone joined, left or was added: the chairs show who is next.
+          BlocListener<OwnerQueueCubit, OwnerQueueState>(
+            listenWhen: (before, after) =>
+                before.queue != null && before.queue != after.queue,
+            listener: (context, _) =>
+                context.read<OwnerChairsCubit>().refresh(),
+          ),
+        ],
+        child: const OwnerQueueView(board: ChairsBoard(showTurnedAway: true)),
+      ),
     );
   }
 }
 
+/// Reads the list under the board again after a button on the board.
+BlocListener<OwnerChairsCubit, OwnerChairsState> _whenChairsChange(
+  void Function(BuildContext context) read,
+) => BlocListener<OwnerChairsCubit, OwnerChairsState>(
+  listenWhen: (before, after) => before.revision != after.revision,
+  listener: (context, _) => read(context),
+);
+
 class _Bookings extends StatelessWidget {
-  const _Bookings({super.key});
+  const _Bookings({super.key, this.runsLine = true});
+
+  final bool runsLine;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +137,22 @@ class _Bookings extends StatelessWidget {
         builder: (context) => RefreshWhenShown(
           routeName: OwnerTodayRoute.name,
           onShown: () => context.read<OwnerAgendaCubit>().load(refresh: true),
-          child: const OwnerTodayView(),
+          child: MultiBlocListener(
+            listeners: [
+              _whenChairsChange(
+                (context) =>
+                    context.read<OwnerAgendaCubit>().load(refresh: true),
+              ),
+              // Marked arrived or cancelled from the booking sheet.
+              BlocListener<OwnerAgendaCubit, OwnerAgendaState>(
+                listenWhen: (before, after) =>
+                    before.day != null && before.day != after.day,
+                listener: (context, _) =>
+                    context.read<OwnerChairsCubit>().refresh(),
+              ),
+            ],
+            child: OwnerTodayView(board: ChairsBoard(showTurnedAway: runsLine)),
+          ),
         ),
       ),
     );

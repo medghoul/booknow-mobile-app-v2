@@ -16,16 +16,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 
-/// Today for a shop that runs a queue: who is in the chair, who is called, who
-/// waits, and the buttons that move them (queue spec §5).
+/// Today for a shop that runs a queue: the chairs, who waits, and the state of
+/// the line (queue spec §5).
 ///
-/// Built for someone at the counter with busy hands: one card says the one
-/// thing to do next, and adding a walk-in is always in reach of the thumb.
+/// Built for someone at the counter with busy hands: adding a walk-in is always
+/// in reach of the thumb. [board] is the chairs themselves.
 ///
 /// Times are shown on the phone's clock: an owner runs the queue from inside
 /// the shop, where the two are the same.
 class OwnerQueueView extends StatelessWidget {
-  const OwnerQueueView({super.key});
+  const OwnerQueueView({super.key, required this.board});
+
+  final Widget board;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class OwnerQueueView extends StatelessWidget {
           useSafeArea: false,
           body: AnnotatedRegion<SystemUiOverlayStyle>(
             value: SystemUiOverlayStyle.light,
-            child: _Body(state: state, queue: queue),
+            child: _Body(state: state, queue: queue, board: board),
           ),
         );
       },
@@ -64,10 +66,11 @@ class OwnerQueueView extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  const _Body({required this.state, required this.queue});
+  const _Body({required this.state, required this.queue, required this.board});
 
   final OwnerQueueState state;
   final OwnerQueue queue;
+  final Widget board;
 
   Future<void> _addWalkIn(BuildContext context) async {
     final cubit = context.read<OwnerQueueCubit>();
@@ -82,10 +85,7 @@ class _Body extends StatelessWidget {
     final t = context.t;
     final owner = t.queue.owner;
     final cubit = context.read<OwnerQueueCubit>();
-    final inChair = queue.inChair;
-    final called = queue.called;
     final waiting = queue.waiting;
-    final next = waiting.firstOrNull;
     final until = queue.emptiesAt;
 
     return Column(
@@ -122,27 +122,7 @@ class _Body extends StatelessWidget {
                         _NotOpenBanner(queue: queue, busy: state.busy),
                         SizedBox(height: 20.h),
                       ],
-                      if (queue.hasTeam)
-                        // One chair per person, each with its own "call
-                        // next": who they call is the server's choice.
-                        for (final chair in queue.providers) ...[
-                          _ChairSection(
-                            chair: chair,
-                            queue: queue,
-                            state: state,
-                          ),
-                          SizedBox(height: 14.h),
-                        ]
-                      else ...[
-                        if (inChair != null) ...[
-                          _InChairCard(entry: inChair, state: state),
-                          SizedBox(height: 10.h),
-                        ],
-                        if (called != null)
-                          _CalledCard(entry: called, state: state)
-                        else
-                          _FreeCard(next: next, state: state),
-                      ],
+                      board,
                       SizedBox(height: 20.h),
                       Text(
                         t.today.comingUp,
@@ -461,202 +441,6 @@ class _NotOpenBanner extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-String _initial(String? name) => name == null || name.trim().isEmpty
-    ? '•'
-    : name.trim().substring(0, 1).toUpperCase();
-
-String _first(String name) => name.trim().split(RegExp(r'\s+')).first;
-
-class _InChairCard extends StatelessWidget {
-  const _InChairCard({required this.entry, required this.state, this.who});
-
-  final OwnerQueueEntry entry;
-  final OwnerQueueState state;
-
-  /// Whose chair, with a team.
-  final String? who;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = context.t.queue.owner;
-    final name = entry.customerName ?? t.walkInName;
-    final started = entry.startedAt;
-    final total = entry.durationMinutes * 60;
-    final gone = started == null
-        ? 0
-        : state.now.difference(started).inSeconds.clamp(0, total);
-    final left = ((total - gone) / 60).ceil();
-
-    return TodayChairCard(
-      initial: _initial(name),
-      overline: [t.inChair, ?who].join(' · '),
-      title: '$name · ${entry.serviceName}',
-      meta: t.minutesLeft(minutes: left),
-      progress: total == 0 ? 0 : gone / total,
-      actions: TodayActionButton(
-        navy: true,
-        label: t.doneWith(name: _first(name)),
-        isLoading: state.busy,
-        onPressed: () {
-          HapticFeedback.mediumImpact();
-          context.read<OwnerQueueCubit>().done(entry.id);
-        },
-      ),
-    );
-  }
-}
-
-class _CalledCard extends StatelessWidget {
-  const _CalledCard({required this.entry, required this.state, this.who});
-
-  final OwnerQueueEntry entry;
-  final OwnerQueueState state;
-
-  /// Who called them, with a team.
-  final String? who;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = context.t.queue.owner;
-    final scheme = context.colorScheme;
-    final cubit = context.read<OwnerQueueCubit>();
-    final name = entry.customerName ?? t.walkInName;
-    final calledAt = entry.calledAt;
-    final waited = calledAt == null
-        ? null
-        : state.now.difference(calledAt).inMinutes.clamp(0, 999);
-    final left = entry.noShowFrom?.difference(state.now);
-    final locked = left != null && !left.isNegative;
-    final clock = locked
-        ? '${left.inMinutes}:${(left.inSeconds % 60).toString().padLeft(2, '0')}'
-        : '';
-
-    return TodayChairCard(
-      initial: _initial(name),
-      overline: [t.called, ?who].join(' · '),
-      title: t.calledName(name: name),
-      meta: waited == null ? null : t.waitingFor(minutes: waited),
-      metaAmber: true,
-      actions: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: TodayActionButton(
-              label: t.theyreHere,
-              isLoading: state.busy,
-              onPressed: () {
-                HapticFeedback.mediumImpact();
-                cubit.start(entry.id);
-              },
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Opacity(
-              opacity: locked ? 0.65 : 1,
-              child: OutlinedButton(
-                onPressed: state.busy || locked
-                    ? null
-                    : () => cubit.noShow(entry.id),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(50.h),
-                  padding: EdgeInsets.symmetric(horizontal: 4.w),
-                  foregroundColor: context.status.error.foreground,
-                  disabledForegroundColor: scheme.onSurfaceVariant,
-                  textStyle: context.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                child: Text(
-                  locked ? t.noShowIn(time: clock) : t.noShow,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// Nobody in the chair's next step yet: who to call, or that there is no one.
-class _FreeCard extends StatelessWidget {
-  const _FreeCard({required this.next, required this.state, this.chair});
-
-  final OwnerQueueEntry? next;
-  final OwnerQueueState state;
-
-  /// The person this card calls for, with a team; null for the shop's one
-  /// chair, which the owner works themselves.
-  final OwnerQueueProvider? chair;
-
-  @override
-  Widget build(BuildContext context) {
-    final t = context.t;
-    final owner = t.queue.owner;
-    final next = this.next;
-    final chair = this.chair;
-    final me = chair == null ? di<AuthCubit>().state.profile?.name : chair.name;
-
-    return TodayChairCard(
-      initial: _initial(me),
-      overline: me == null ? owner.chair : (chair == null ? _first(me) : me),
-      title: owner.freeNow,
-      actions: TodayActionButton(
-        label: next == null
-            ? owner.nobodyToCall
-            : t.today.callName(name: next.customerName ?? owner.walkInName),
-        isLoading: state.busy,
-        onPressed: next == null
-            ? null
-            : () {
-                HapticFeedback.mediumImpact();
-                context.read<OwnerQueueCubit>().callNext(providerId: chair?.id);
-              },
-      ),
-    );
-  }
-}
-
-/// One person's chair, with a team: who is in it, who they called, or who
-/// they would call next.
-class _ChairSection extends StatelessWidget {
-  const _ChairSection({
-    required this.chair,
-    required this.queue,
-    required this.state,
-  });
-
-  final OwnerQueueProvider chair;
-  final OwnerQueue queue;
-  final OwnerQueueState state;
-
-  @override
-  Widget build(BuildContext context) {
-    final serving = queue.entry(chair.servingEntryId);
-    final called = queue.entry(chair.calledEntryId);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (serving != null) ...[
-          _InChairCard(entry: serving, state: state, who: chair.name),
-          SizedBox(height: 10.h),
-        ],
-        if (called != null)
-          _CalledCard(entry: called, state: state, who: chair.name)
-        else
-          _FreeCard(
-            next: queue.entry(chair.nextEntryId),
-            state: state,
-            chair: chair,
-          ),
-      ],
     );
   }
 }

@@ -10,7 +10,6 @@ import 'package:booknow_mobile/features/auth/cubit/auth_cubit.dart';
 import 'package:booknow_mobile/features/auth/cubit/auth_state.dart';
 import 'package:booknow_mobile/features/queue/cubit/owner_queue_cubit.dart';
 import 'package:booknow_mobile/features/queue/widgets/owner_queue_view.dart';
-import 'package:booknow_mobile/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -83,29 +82,13 @@ OwnerQueue _teamLine() => OwnerQueue(
   ],
 );
 
-OwnerQueue _oneChairLine() => OwnerQueue(
-  localDate: '2026-11-07',
-  state: QueueState.open,
-  waitingCount: 1,
-  emptiesAt: null,
-  entries: [_anna],
-  providers: const [OwnerQueueProvider(id: 'shop-1', name: 'Barbieri Navona')],
-);
-
 class _Queue implements QueueRepository {
   _Queue(this.line);
 
   final OwnerQueue line;
-  final calls = <String?>[];
 
   @override
   Future<ApiResult<OwnerQueue>> ownerQueue() async => Success(line);
-
-  @override
-  Future<ApiResult<OwnerQueue>> callNext({String? providerId}) async {
-    calls.add(providerId);
-    return Success(line);
-  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) => throw UnimplementedError();
@@ -129,13 +112,10 @@ class _StubAuthCubit extends Cubit<AuthState> implements AuthCubit {
 }
 
 void main() {
-  final t = AppLocale.en.buildSync();
-  final owner = t.queue.owner;
-
   setUp(() => di.registerSingleton<AuthCubit>(_StubAuthCubit()));
   tearDown(() async => di.reset());
 
-  Future<_Queue> pump(WidgetTester tester, OwnerQueue line) async {
+  Future<void> pump(WidgetTester tester, OwnerQueue line) async {
     tester.view.physicalSize = const Size(1170, 2532);
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
@@ -145,11 +125,10 @@ void main() {
       tester,
       BlocProvider(
         create: (_) => OwnerQueueCubit(queue, _OwnerShop())..load(),
-        child: const OwnerQueueView(),
+        child: const OwnerQueueView(board: SizedBox.shrink()),
       ),
     );
     await tester.pumpAndSettle();
-    return queue;
   }
 
   // The cubit ticks every second; taking the screen down closes it.
@@ -157,46 +136,12 @@ void main() {
       tester.pumpWidget(const SizedBox.shrink());
 
   group('with a team', () {
-    testWidgets('shows a chair for each person', (tester) async {
-      await pump(tester, _teamLine());
-
-      expect(find.text('${owner.called} · Marco'), findsOneWidget);
-      expect(find.text(owner.calledName(name: 'Paolo')), findsOneWidget);
-      // The owner's chair is free, and offers who it would call.
-      expect(find.text('Barbieri Navona'), findsOneWidget);
-      expect(find.text(t.today.callName(name: 'Anna')), findsOneWidget);
-      await leave(tester);
-    });
-
-    testWidgets("calls next for that person's chair", (tester) async {
-      final queue = await pump(tester, _teamLine());
-
-      await tester.tap(find.text(t.today.callName(name: 'Anna')));
-      await tester.pumpAndSettle();
-
-      expect(queue.calls, ['shop-1']);
-      await leave(tester);
-    });
-
     testWidgets('says who a customer asked for', (tester) async {
       await pump(tester, _teamLine());
 
       expect(find.text('Taglio · Marco'), findsOneWidget);
       // Anna takes whoever is free first, so her row names nobody.
       expect(find.text('Taglio'), findsOneWidget);
-      await leave(tester);
-    });
-  });
-
-  group('with one chair', () {
-    testWidgets('calls without naming anyone, as before', (tester) async {
-      final queue = await pump(tester, _oneChairLine());
-
-      await tester.tap(find.text(t.today.callName(name: 'Anna')));
-      await tester.pumpAndSettle();
-
-      expect(queue.calls, [null]);
-      expect(find.textContaining('Marco'), findsNothing);
       await leave(tester);
     });
   });
