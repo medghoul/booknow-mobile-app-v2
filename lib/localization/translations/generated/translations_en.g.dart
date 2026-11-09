@@ -68,6 +68,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$shopScreen$en shopScreen = Translations$shopScreen$en.internal(_root);
 	late final Translations$today$en today = Translations$today$en.internal(_root);
 	late final Translations$chairs$en chairs = Translations$chairs$en.internal(_root);
+	late final Translations$statistics$en statistics = Translations$statistics$en.internal(_root);
 	late final Translations$homeWidgets$en homeWidgets = Translations$homeWidgets$en.internal(_root);
 }
 
@@ -138,6 +139,9 @@ class Translations$nav$en {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Statistics'
+	String get statistics => 'Statistics';
 
 	/// en: 'Today'
 	String get today => 'Today';
@@ -1902,6 +1906,57 @@ class Translations$chairs$en {
 	String get turnedAwayRecorded => 'Recorded';
 }
 
+// Path: statistics
+class Translations$statistics$en {
+	Translations$statistics$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Statistics'
+	String get title => 'Statistics';
+
+	/// en: 'Today'
+	String get today => 'Today';
+
+	/// en: '7 days'
+	String get sevenDays => '7 days';
+
+	/// en: '30 days'
+	String get thirtyDays => '30 days';
+
+	/// en: 'Custom'
+	String get custom => 'Custom';
+
+	/// en: 'Everyone'
+	String get everyone => 'Everyone';
+
+	/// en: 'All services'
+	String get allServices => 'All services';
+
+	/// en: 'Staff'
+	String get staffFilter => 'Staff';
+
+	/// en: 'Service'
+	String get serviceFilter => 'Service';
+
+	/// en: 'Choose ${days} days or fewer'
+	String rangeTooLong({required Object days}) => 'Choose ${days} days or fewer';
+
+	/// en: '${value} min'
+	String minutes({required Object value}) => '${value} min';
+
+	/// en: 'Nothing to show yet'
+	String get emptyTitle => 'Nothing to show yet';
+
+	/// en: 'Figures appear here once you start using Start and Done on Today.'
+	String get emptyBody => 'Figures appear here once you start using Start and Done on Today.';
+
+	late final Translations$statistics$kpi$en kpi = Translations$statistics$kpi$en.internal(_root);
+	late final Translations$statistics$detail$en detail = Translations$statistics$detail$en.internal(_root);
+}
+
 // Path: homeWidgets
 class Translations$homeWidgets$en {
 	Translations$homeWidgets$en.internal(this._root);
@@ -3574,6 +3629,216 @@ class Translations$queue$mode$en {
 	String get saved => 'Mode updated';
 }
 
+// Path: statistics.kpi
+class Translations$statistics$kpi$en {
+	Translations$statistics$kpi$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Walk-in wait'
+	String get wait => 'Walk-in wait';
+
+	/// en: '9 in 10 within ${p90}'
+	String waitDetail({required Object p90}) => '9 in 10 within ${p90}';
+
+	/// en: 'Lost revenue'
+	String get lost => 'Lost revenue';
+
+	/// en: '${left} left · ${away} turned away'
+	String lostDetail({required Object left, required Object away}) => '${left} left · ${away} turned away';
+
+	/// en: 'Bookings on time'
+	String get onTime => 'Bookings on time';
+
+	/// en: 'Average delay ${delay}'
+	String onTimeDetail({required Object delay}) => 'Average delay ${delay}';
+
+	/// en: 'Chair utilization'
+	String get utilization => 'Chair utilization';
+
+	/// en: '${after} after closing'
+	String utilizationDetail({required Object after}) => '${after} after closing';
+
+	/// en: 'Over plan by 5+ min'
+	String get overruns => 'Over plan by 5+ min';
+
+	/// en: 'Typically ${real}, menu ${plan}'
+	String overrunsDetail({required Object real, required Object plan}) => 'Typically ${real}, menu ${plan}';
+
+	/// en: 'Estimated revenue'
+	String get revenue => 'Estimated revenue';
+
+	/// en: '${visits} visits, at menu prices'
+	String revenueDetail({required Object visits}) => '${visits} visits, at menu prices';
+
+	/// en: 'Wait estimates in range'
+	String get estimates => 'Wait estimates in range';
+
+	/// en: 'Typically off by ${miss}'
+	String estimatesDetail({required Object miss}) => 'Typically off by ${miss}';
+}
+
+// Path: statistics.detail
+class Translations$statistics$detail$en {
+	Translations$statistics$detail$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Services'
+	String get servicesTitle => 'Services';
+
+	/// en: 'Waits and walk-aways'
+	String get waitsTitle => 'Waits and walk-aways';
+
+	/// en: 'Bookings and no-shows'
+	String get bookingsTitle => 'Bookings and no-shows';
+
+	/// en: 'Busy hours'
+	String get busyTitle => 'Busy hours';
+
+	/// en: 'Estimate accuracy'
+	String get estimatesTitle => 'Estimate accuracy';
+
+	/// en: 'All services'
+	String get allServices => 'All services';
+
+	/// en: 'Real'
+	String get real => 'Real';
+
+	/// en: 'Menu'
+	String get menu => 'Menu';
+
+	/// en: 'Over plan by 5+ min'
+	String get overPlan => 'Over plan by 5+ min';
+
+	/// en: 'Visits'
+	String get visits => 'Visits';
+
+	/// en: 'Estimated revenue'
+	String get estimatedRevenue => 'Estimated revenue';
+
+	/// en: 'Deleted service'
+	String get deletedService => 'Deleted service';
+
+	/// en: 'Former staff'
+	String get formerStaff => 'Former staff';
+
+	/// en: '${real} · ${visits} visits'
+	String medianOf({required Object real, required Object visits}) => '${real} · ${visits} visits';
+
+	/// en: 'Walk-in wait'
+	String get walkInWait => 'Walk-in wait';
+
+	/// en: 'Average'
+	String get average => 'Average';
+
+	/// en: '9 in 10 waited less than'
+	String get p90 => '9 in 10 waited less than';
+
+	/// en: 'Customers served'
+	String get served => 'Customers served';
+
+	/// en: 'Customers lost'
+	String get lostCustomers => 'Customers lost';
+
+	/// en: 'Walked away'
+	String get walkedAway => 'Walked away';
+
+	/// en: 'Turned away'
+	String get turnedAway => 'Turned away';
+
+	/// en: 'Still waiting at closing'
+	String get neverServed => 'Still waiting at closing';
+
+	/// en: 'Estimated lost revenue'
+	String get lostRevenue => 'Estimated lost revenue';
+
+	/// en: 'Total'
+	String get total => 'Total';
+
+	/// en: 'Based on menu prices, or your median price when nobody found out what they wanted.'
+	String get lostNote => 'Based on menu prices, or your median price when nobody found out what they wanted.';
+
+	/// en: 'Punctuality'
+	String get punctuality => 'Punctuality';
+
+	/// en: 'Started on time'
+	String get onTime => 'Started on time';
+
+	/// en: 'Average delay'
+	String get averageDelay => 'Average delay';
+
+	/// en: 'Bookings started'
+	String get started => 'Bookings started';
+
+	/// en: 'On time means within 5 minutes of the booked time.'
+	String get onTimeNote => 'On time means within 5 minutes of the booked time.';
+
+	/// en: 'No-shows'
+	String get noShows => 'No-shows';
+
+	/// en: 'No-show rate'
+	String get noShowRate => 'No-show rate';
+
+	/// en: 'Booked'
+	String get booked => 'Booked';
+
+	/// en: 'Cancelled'
+	String get cancelled => 'Cancelled';
+
+	/// en: 'When you're busiest'
+	String get heatmapTitle => 'When you\'re busiest';
+
+	/// en: 'Busiest on ${day} at ${hour}'
+	String heatmapSummary({required Object day, required Object hour}) => 'Busiest on ${day} at ${hour}';
+
+	/// en: 'Quiet'
+	String get quiet => 'Quiet';
+
+	/// en: 'Busy'
+	String get busy => 'Busy';
+
+	/// en: 'Chairs'
+	String get chairs => 'Chairs';
+
+	/// en: 'Utilization'
+	String get utilization => 'Utilization';
+
+	/// en: 'Time serving'
+	String get busyTime => 'Time serving';
+
+	/// en: 'Time available'
+	String get availableTime => 'Time available';
+
+	/// en: 'Worked after closing'
+	String get afterClosing => 'Worked after closing';
+
+	/// en: 'The wait we showed'
+	String get estimateAccuracy => 'The wait we showed';
+
+	/// en: 'Inside the range shown'
+	String get withinRange => 'Inside the range shown';
+
+	/// en: 'Typically off by'
+	String get typicalMiss => 'Typically off by';
+
+	/// en: 'Real waits ran longer by'
+	String get longerThanShown => 'Real waits ran longer by';
+
+	/// en: 'Real waits ran shorter by'
+	String get shorterThanShown => 'Real waits ran shorter by';
+
+	/// en: 'Waits compared'
+	String get compared => 'Waits compared';
+
+	/// en: 'Compares the wait shown when someone joined with the wait they really had.'
+	String get estimateNote => 'Compares the wait shown when someone joined with the wait they really had.';
+}
+
 // Path: queue.owner.removeSheet
 class Translations$queue$owner$removeSheet$en {
 	Translations$queue$owner$removeSheet$en.internal(this._root);
@@ -3650,6 +3915,7 @@ extension on Translations {
 			'common.loading' => 'Loading…',
 			'common.offline' => 'No connection',
 			'common.serviceLine' => ({required Object name, required Object price, required Object minutes}) => '${name} ${price} · ${minutes} min',
+			'nav.statistics' => 'Statistics',
 			'nav.today' => 'Today',
 			'nav.calendar' => 'Calendar',
 			'nav.shop' => 'Shop',
@@ -4144,9 +4410,9 @@ extension on Translations {
 			'account.switchToBarber' => 'Switch to barber',
 			'account.help' => 'Help and contact',
 			'account.signOut' => 'Sign out',
-			'account.signOutConfirmTitle' => 'Sign out?',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOutConfirmTitle' => 'Sign out?',
 			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
 			'account.deleteAccount' => 'Delete account',
 			'account.comingSoon' => 'Available soon.',
@@ -4568,6 +4834,83 @@ extension on Translations {
 			'chairs.nextBooking' => 'Next booking',
 			'chairs.turnedAway' => 'Someone turned away',
 			'chairs.turnedAwayRecorded' => 'Recorded',
+			'statistics.title' => 'Statistics',
+			'statistics.today' => 'Today',
+			'statistics.sevenDays' => '7 days',
+			'statistics.thirtyDays' => '30 days',
+			'statistics.custom' => 'Custom',
+			'statistics.everyone' => 'Everyone',
+			'statistics.allServices' => 'All services',
+			'statistics.staffFilter' => 'Staff',
+			'statistics.serviceFilter' => 'Service',
+			'statistics.rangeTooLong' => ({required Object days}) => 'Choose ${days} days or fewer',
+			'statistics.minutes' => ({required Object value}) => '${value} min',
+			'statistics.emptyTitle' => 'Nothing to show yet',
+			'statistics.emptyBody' => 'Figures appear here once you start using Start and Done on Today.',
+			'statistics.kpi.wait' => 'Walk-in wait',
+			'statistics.kpi.waitDetail' => ({required Object p90}) => '9 in 10 within ${p90}',
+			'statistics.kpi.lost' => 'Lost revenue',
+			'statistics.kpi.lostDetail' => ({required Object left, required Object away}) => '${left} left · ${away} turned away',
+			'statistics.kpi.onTime' => 'Bookings on time',
+			'statistics.kpi.onTimeDetail' => ({required Object delay}) => 'Average delay ${delay}',
+			'statistics.kpi.utilization' => 'Chair utilization',
+			'statistics.kpi.utilizationDetail' => ({required Object after}) => '${after} after closing',
+			'statistics.kpi.overruns' => 'Over plan by 5+ min',
+			'statistics.kpi.overrunsDetail' => ({required Object real, required Object plan}) => 'Typically ${real}, menu ${plan}',
+			'statistics.kpi.revenue' => 'Estimated revenue',
+			'statistics.kpi.revenueDetail' => ({required Object visits}) => '${visits} visits, at menu prices',
+			'statistics.kpi.estimates' => 'Wait estimates in range',
+			'statistics.kpi.estimatesDetail' => ({required Object miss}) => 'Typically off by ${miss}',
+			'statistics.detail.servicesTitle' => 'Services',
+			'statistics.detail.waitsTitle' => 'Waits and walk-aways',
+			'statistics.detail.bookingsTitle' => 'Bookings and no-shows',
+			'statistics.detail.busyTitle' => 'Busy hours',
+			'statistics.detail.estimatesTitle' => 'Estimate accuracy',
+			'statistics.detail.allServices' => 'All services',
+			'statistics.detail.real' => 'Real',
+			'statistics.detail.menu' => 'Menu',
+			'statistics.detail.overPlan' => 'Over plan by 5+ min',
+			'statistics.detail.visits' => 'Visits',
+			'statistics.detail.estimatedRevenue' => 'Estimated revenue',
+			'statistics.detail.deletedService' => 'Deleted service',
+			'statistics.detail.formerStaff' => 'Former staff',
+			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visits',
+			'statistics.detail.walkInWait' => 'Walk-in wait',
+			'statistics.detail.average' => 'Average',
+			'statistics.detail.p90' => '9 in 10 waited less than',
+			'statistics.detail.served' => 'Customers served',
+			'statistics.detail.lostCustomers' => 'Customers lost',
+			'statistics.detail.walkedAway' => 'Walked away',
+			'statistics.detail.turnedAway' => 'Turned away',
+			'statistics.detail.neverServed' => 'Still waiting at closing',
+			'statistics.detail.lostRevenue' => 'Estimated lost revenue',
+			'statistics.detail.total' => 'Total',
+			'statistics.detail.lostNote' => 'Based on menu prices, or your median price when nobody found out what they wanted.',
+			'statistics.detail.punctuality' => 'Punctuality',
+			'statistics.detail.onTime' => 'Started on time',
+			'statistics.detail.averageDelay' => 'Average delay',
+			'statistics.detail.started' => 'Bookings started',
+			'statistics.detail.onTimeNote' => 'On time means within 5 minutes of the booked time.',
+			'statistics.detail.noShows' => 'No-shows',
+			'statistics.detail.noShowRate' => 'No-show rate',
+			'statistics.detail.booked' => 'Booked',
+			'statistics.detail.cancelled' => 'Cancelled',
+			'statistics.detail.heatmapTitle' => 'When you\'re busiest',
+			'statistics.detail.heatmapSummary' => ({required Object day, required Object hour}) => 'Busiest on ${day} at ${hour}',
+			'statistics.detail.quiet' => 'Quiet',
+			'statistics.detail.busy' => 'Busy',
+			'statistics.detail.chairs' => 'Chairs',
+			'statistics.detail.utilization' => 'Utilization',
+			'statistics.detail.busyTime' => 'Time serving',
+			'statistics.detail.availableTime' => 'Time available',
+			'statistics.detail.afterClosing' => 'Worked after closing',
+			'statistics.detail.estimateAccuracy' => 'The wait we showed',
+			'statistics.detail.withinRange' => 'Inside the range shown',
+			'statistics.detail.typicalMiss' => 'Typically off by',
+			'statistics.detail.longerThanShown' => 'Real waits ran longer by',
+			'statistics.detail.shorterThanShown' => 'Real waits ran shorter by',
+			'statistics.detail.compared' => 'Waits compared',
+			'statistics.detail.estimateNote' => 'Compares the wait shown when someone joined with the wait they really had.',
 			'homeWidgets.inLine' => 'In line',
 			'homeWidgets.nextVisit' => 'Next visit',
 			'homeWidgets.bookAgain' => 'Book again',
@@ -4581,6 +4924,8 @@ extension on Translations {
 			'homeWidgets.nobodyWaiting' => 'Nobody waiting',
 			'homeWidgets.nextUp' => 'Next up',
 			'homeWidgets.calledLine' => 'Called, on their way',
+			_ => null,
+		} ?? switch (path) {
 			'homeWidgets.nextAppointment' => 'Next appointment',
 			'homeWidgets.nothingLeft' => 'Nothing else today',
 			'homeWidgets.moreToday' => ({required Object n}) => '${n} more today',

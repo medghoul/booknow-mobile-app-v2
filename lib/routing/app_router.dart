@@ -64,6 +64,11 @@ class AppRouter extends RootStackRouter {
     ),
     _route(ShopModeRoute.page, '/shop-mode'),
     _route(BookingDetailRoute.page, '/bookings/:bookingId'),
+    _route(
+      StatisticsDetailRoute.page,
+      '/statistics/detail',
+      guards: [const RoleGuard(UserRole.owner)],
+    ),
 
     _route(
       OwnerShellRoute.page,
@@ -72,6 +77,7 @@ class AppRouter extends RootStackRouter {
       children: [
         _tab(OwnerTodayRoute.page, 'today', initial: true),
         _tab(OwnerAgendaRoute.page, 'agenda'),
+        _tab(OwnerStatisticsRoute.page, 'statistics'),
         _tab(ProfileRoute.page, 'profile'),
       ],
     ),

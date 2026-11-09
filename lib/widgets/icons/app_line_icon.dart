@@ -12,6 +12,7 @@ abstract final class AppLineIcons {
   static const String today =
       'M12 8v4l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z';
   static const String calendar = 'M3 4h18v18H3zM16 2v4M8 2v4M3 10h18';
+  static const String statistics = 'M5 20v-8M12 20V5M19 20v-12M3 20h18';
   static const String shop =
       'M3 10l2-6h14l2 6M4 10v10h16V10M3 10h18M9 20v-6h6v6';
   static const String services = 'M6 6l12 12M18 6L6 18';

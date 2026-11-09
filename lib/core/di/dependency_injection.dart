@@ -19,6 +19,7 @@ import 'package:booknow_mobile/features/auth/di/auth_di.dart';
 import 'package:booknow_mobile/features/booking_flow/di/booking_flow_di.dart';
 import 'package:booknow_mobile/features/bookings/di/bookings_di.dart';
 import 'package:booknow_mobile/features/queue/di/queue_di.dart';
+import 'package:booknow_mobile/features/statistics/di/statistics_di.dart';
 import 'package:booknow_mobile/features/home/di/home_di.dart';
 import 'package:booknow_mobile/features/shop_setup/di/shop_di.dart';
 import 'package:booknow_mobile/localization/localization.dart';
@@ -96,6 +97,7 @@ void _registerFeatures() {
   registerBookingsFeature(di);
   registerQueueFeature(di);
   registerBookingFlowFeature(di);
+  registerStatisticsFeature(di);
 }
 
 /// Push is a singleton because the token and the message streams have to be

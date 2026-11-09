@@ -18,6 +18,7 @@ common:
   serviceLine(name, price, minutes): '${name} ${price} · ${minutes} min'
 
 nav:
+  statistics: Statistiche
   today: Oggi
   calendar: Calendario
   shop: Negozio
@@ -1056,6 +1057,87 @@ chairs:
   nextBooking: Prossima prenotazione
   turnedAway: Qualcuno mandato via
   turnedAwayRecorded: Registrato
+
+statistics:
+  title: Statistiche
+  today: Oggi
+  sevenDays: 7 giorni
+  thirtyDays: 30 giorni
+  custom: Periodo
+  everyone: Tutti
+  allServices: Tutti i servizi
+  staffFilter: Staff
+  serviceFilter: Servizio
+  rangeTooLong(days): Scegli al massimo ${days} giorni
+  minutes(value): ${value} min
+  emptyTitle: Ancora niente da mostrare
+  emptyBody: I dati compaiono qui quando inizi a usare Inizia e Fatto in Oggi.
+  kpi:
+    wait: Attesa walk-in
+    waitDetail(p90): 9 su 10 entro ${p90}
+    lost: Incasso perso
+    lostDetail(left, away): ${left} andati via · ${away} non accolti
+    onTime: Prenotazioni puntuali
+    onTimeDetail(delay): Ritardo medio ${delay}
+    utilization: Uso delle poltrone
+    utilizationDetail(after): ${after} dopo la chiusura
+    overruns: Oltre il previsto di 5+ min
+    overrunsDetail(real, plan): Di solito ${real}, listino ${plan}
+    revenue: Incasso stimato
+    revenueDetail(visits): ${visits} visite, a prezzi di listino
+    estimates: Attese stimate corrette
+    estimatesDetail(miss): Di solito sbagliate di ${miss}
+  detail:
+    servicesTitle: Servizi
+    waitsTitle: Attese e abbandoni
+    bookingsTitle: Prenotazioni e assenze
+    busyTitle: Orari di punta
+    estimatesTitle: Precisione delle stime
+    allServices: Tutti i servizi
+    real: Reale
+    menu: Listino
+    overPlan: Oltre il previsto di 5+ min
+    visits: Visite
+    estimatedRevenue: Incasso stimato
+    deletedService: Servizio eliminato
+    formerStaff: Ex collaboratore
+    medianOf(real, visits): ${real} · ${visits} visite
+    walkInWait: Attesa walk-in
+    average: Media
+    p90: 9 su 10 hanno atteso meno di
+    served: Clienti serviti
+    lostCustomers: Clienti persi
+    walkedAway: Andati via
+    turnedAway: Non accolti
+    neverServed: Ancora in attesa alla chiusura
+    lostRevenue: Incasso perso stimato
+    total: Totale
+    lostNote: Basato sui prezzi di listino, o sul tuo prezzo mediano quando non si sa cosa volessero.
+    punctuality: Puntualità
+    onTime: Iniziate in orario
+    averageDelay: Ritardo medio
+    started: Prenotazioni iniziate
+    onTimeNote: In orario significa entro 5 minuti dall'ora prenotata.
+    noShows: Assenze
+    noShowRate: Tasso di assenze
+    booked: Prenotate
+    cancelled: Annullate
+    heatmapTitle: Quando hai più lavoro
+    heatmapSummary(day, hour): Più lavoro ${day} alle ${hour}
+    quiet: Calmo
+    busy: Pieno
+    chairs: Poltrone
+    utilization: Utilizzo
+    busyTime: Tempo di servizio
+    availableTime: Tempo disponibile
+    afterClosing: Lavorato dopo la chiusura
+    estimateAccuracy: L'attesa che abbiamo mostrato
+    withinRange: Dentro l'intervallo mostrato
+    typicalMiss: Di solito sbagliata di
+    longerThanShown: Attese reali più lunghe di
+    shorterThanShown: Attese reali più brevi di
+    compared: Attese confrontate
+    estimateNote: Confronta l'attesa mostrata quando qualcuno si è messo in coda con quella reale.
 
 homeWidgets:
   inLine: In coda

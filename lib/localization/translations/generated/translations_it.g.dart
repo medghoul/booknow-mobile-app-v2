@@ -66,6 +66,7 @@ class TranslationsIt extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$shopScreen$it shopScreen = _Translations$shopScreen$it._(_root);
 	@override late final _Translations$today$it today = _Translations$today$it._(_root);
 	@override late final _Translations$chairs$it chairs = _Translations$chairs$it._(_root);
+	@override late final _Translations$statistics$it statistics = _Translations$statistics$it._(_root);
 	@override late final _Translations$homeWidgets$it homeWidgets = _Translations$homeWidgets$it._(_root);
 }
 
@@ -102,6 +103,7 @@ class _Translations$nav$it extends Translations$nav$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get statistics => 'Statistiche';
 	@override String get today => 'Oggi';
 	@override String get calendar => 'Calendario';
 	@override String get shop => 'Negozio';
@@ -883,6 +885,30 @@ class _Translations$chairs$it extends Translations$chairs$en {
 	@override String get nextBooking => 'Prossima prenotazione';
 	@override String get turnedAway => 'Qualcuno mandato via';
 	@override String get turnedAwayRecorded => 'Registrato';
+}
+
+// Path: statistics
+class _Translations$statistics$it extends Translations$statistics$en {
+	_Translations$statistics$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Statistiche';
+	@override String get today => 'Oggi';
+	@override String get sevenDays => '7 giorni';
+	@override String get thirtyDays => '30 giorni';
+	@override String get custom => 'Periodo';
+	@override String get everyone => 'Tutti';
+	@override String get allServices => 'Tutti i servizi';
+	@override String get staffFilter => 'Staff';
+	@override String get serviceFilter => 'Servizio';
+	@override String rangeTooLong({required Object days}) => 'Scegli al massimo ${days} giorni';
+	@override String minutes({required Object value}) => '${value} min';
+	@override String get emptyTitle => 'Ancora niente da mostrare';
+	@override String get emptyBody => 'I dati compaiono qui quando inizi a usare Inizia e Fatto in Oggi.';
+	@override late final _Translations$statistics$kpi$it kpi = _Translations$statistics$kpi$it._(_root);
+	@override late final _Translations$statistics$detail$it detail = _Translations$statistics$detail$it._(_root);
 }
 
 // Path: homeWidgets
@@ -1674,6 +1700,88 @@ class _Translations$queue$mode$it extends Translations$queue$mode$en {
 	@override String get saved => 'Modalità aggiornata';
 }
 
+// Path: statistics.kpi
+class _Translations$statistics$kpi$it extends Translations$statistics$kpi$en {
+	_Translations$statistics$kpi$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get wait => 'Attesa walk-in';
+	@override String waitDetail({required Object p90}) => '9 su 10 entro ${p90}';
+	@override String get lost => 'Incasso perso';
+	@override String lostDetail({required Object left, required Object away}) => '${left} andati via · ${away} non accolti';
+	@override String get onTime => 'Prenotazioni puntuali';
+	@override String onTimeDetail({required Object delay}) => 'Ritardo medio ${delay}';
+	@override String get utilization => 'Uso delle poltrone';
+	@override String utilizationDetail({required Object after}) => '${after} dopo la chiusura';
+	@override String get overruns => 'Oltre il previsto di 5+ min';
+	@override String overrunsDetail({required Object real, required Object plan}) => 'Di solito ${real}, listino ${plan}';
+	@override String get revenue => 'Incasso stimato';
+	@override String revenueDetail({required Object visits}) => '${visits} visite, a prezzi di listino';
+	@override String get estimates => 'Attese stimate corrette';
+	@override String estimatesDetail({required Object miss}) => 'Di solito sbagliate di ${miss}';
+}
+
+// Path: statistics.detail
+class _Translations$statistics$detail$it extends Translations$statistics$detail$en {
+	_Translations$statistics$detail$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get servicesTitle => 'Servizi';
+	@override String get waitsTitle => 'Attese e abbandoni';
+	@override String get bookingsTitle => 'Prenotazioni e assenze';
+	@override String get busyTitle => 'Orari di punta';
+	@override String get estimatesTitle => 'Precisione delle stime';
+	@override String get allServices => 'Tutti i servizi';
+	@override String get real => 'Reale';
+	@override String get menu => 'Listino';
+	@override String get overPlan => 'Oltre il previsto di 5+ min';
+	@override String get visits => 'Visite';
+	@override String get estimatedRevenue => 'Incasso stimato';
+	@override String get deletedService => 'Servizio eliminato';
+	@override String get formerStaff => 'Ex collaboratore';
+	@override String medianOf({required Object real, required Object visits}) => '${real} · ${visits} visite';
+	@override String get walkInWait => 'Attesa walk-in';
+	@override String get average => 'Media';
+	@override String get p90 => '9 su 10 hanno atteso meno di';
+	@override String get served => 'Clienti serviti';
+	@override String get lostCustomers => 'Clienti persi';
+	@override String get walkedAway => 'Andati via';
+	@override String get turnedAway => 'Non accolti';
+	@override String get neverServed => 'Ancora in attesa alla chiusura';
+	@override String get lostRevenue => 'Incasso perso stimato';
+	@override String get total => 'Totale';
+	@override String get lostNote => 'Basato sui prezzi di listino, o sul tuo prezzo mediano quando non si sa cosa volessero.';
+	@override String get punctuality => 'Puntualità';
+	@override String get onTime => 'Iniziate in orario';
+	@override String get averageDelay => 'Ritardo medio';
+	@override String get started => 'Prenotazioni iniziate';
+	@override String get onTimeNote => 'In orario significa entro 5 minuti dall\'ora prenotata.';
+	@override String get noShows => 'Assenze';
+	@override String get noShowRate => 'Tasso di assenze';
+	@override String get booked => 'Prenotate';
+	@override String get cancelled => 'Annullate';
+	@override String get heatmapTitle => 'Quando hai più lavoro';
+	@override String heatmapSummary({required Object day, required Object hour}) => 'Più lavoro ${day} alle ${hour}';
+	@override String get quiet => 'Calmo';
+	@override String get busy => 'Pieno';
+	@override String get chairs => 'Poltrone';
+	@override String get utilization => 'Utilizzo';
+	@override String get busyTime => 'Tempo di servizio';
+	@override String get availableTime => 'Tempo disponibile';
+	@override String get afterClosing => 'Lavorato dopo la chiusura';
+	@override String get estimateAccuracy => 'L\'attesa che abbiamo mostrato';
+	@override String get withinRange => 'Dentro l\'intervallo mostrato';
+	@override String get typicalMiss => 'Di solito sbagliata di';
+	@override String get longerThanShown => 'Attese reali più lunghe di';
+	@override String get shorterThanShown => 'Attese reali più brevi di';
+	@override String get compared => 'Attese confrontate';
+	@override String get estimateNote => 'Confronta l\'attesa mostrata quando qualcuno si è messo in coda con quella reale.';
+}
+
 // Path: queue.owner.removeSheet
 class _Translations$queue$owner$removeSheet$it extends Translations$queue$owner$removeSheet$en {
 	_Translations$queue$owner$removeSheet$it._(TranslationsIt root) : this._root = root, super.internal(root);
@@ -1728,6 +1836,7 @@ extension on TranslationsIt {
 			'common.loading' => 'Caricamento…',
 			'common.offline' => 'Nessuna connessione',
 			'common.serviceLine' => ({required Object name, required Object price, required Object minutes}) => '${name} ${price} · ${minutes} min',
+			'nav.statistics' => 'Statistiche',
 			'nav.today' => 'Oggi',
 			'nav.calendar' => 'Calendario',
 			'nav.shop' => 'Negozio',
@@ -2222,9 +2331,9 @@ extension on TranslationsIt {
 			'account.switchToBarber' => 'Passa a barbiere',
 			'account.help' => 'Aiuto e contatti',
 			'account.signOut' => 'Esci',
-			'account.signOutConfirmTitle' => 'Vuoi uscire?',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOutConfirmTitle' => 'Vuoi uscire?',
 			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
 			'account.deleteAccount' => 'Elimina account',
 			'account.comingSoon' => 'Disponibile a breve.',
@@ -2646,6 +2755,83 @@ extension on TranslationsIt {
 			'chairs.nextBooking' => 'Prossima prenotazione',
 			'chairs.turnedAway' => 'Qualcuno mandato via',
 			'chairs.turnedAwayRecorded' => 'Registrato',
+			'statistics.title' => 'Statistiche',
+			'statistics.today' => 'Oggi',
+			'statistics.sevenDays' => '7 giorni',
+			'statistics.thirtyDays' => '30 giorni',
+			'statistics.custom' => 'Periodo',
+			'statistics.everyone' => 'Tutti',
+			'statistics.allServices' => 'Tutti i servizi',
+			'statistics.staffFilter' => 'Staff',
+			'statistics.serviceFilter' => 'Servizio',
+			'statistics.rangeTooLong' => ({required Object days}) => 'Scegli al massimo ${days} giorni',
+			'statistics.minutes' => ({required Object value}) => '${value} min',
+			'statistics.emptyTitle' => 'Ancora niente da mostrare',
+			'statistics.emptyBody' => 'I dati compaiono qui quando inizi a usare Inizia e Fatto in Oggi.',
+			'statistics.kpi.wait' => 'Attesa walk-in',
+			'statistics.kpi.waitDetail' => ({required Object p90}) => '9 su 10 entro ${p90}',
+			'statistics.kpi.lost' => 'Incasso perso',
+			'statistics.kpi.lostDetail' => ({required Object left, required Object away}) => '${left} andati via · ${away} non accolti',
+			'statistics.kpi.onTime' => 'Prenotazioni puntuali',
+			'statistics.kpi.onTimeDetail' => ({required Object delay}) => 'Ritardo medio ${delay}',
+			'statistics.kpi.utilization' => 'Uso delle poltrone',
+			'statistics.kpi.utilizationDetail' => ({required Object after}) => '${after} dopo la chiusura',
+			'statistics.kpi.overruns' => 'Oltre il previsto di 5+ min',
+			'statistics.kpi.overrunsDetail' => ({required Object real, required Object plan}) => 'Di solito ${real}, listino ${plan}',
+			'statistics.kpi.revenue' => 'Incasso stimato',
+			'statistics.kpi.revenueDetail' => ({required Object visits}) => '${visits} visite, a prezzi di listino',
+			'statistics.kpi.estimates' => 'Attese stimate corrette',
+			'statistics.kpi.estimatesDetail' => ({required Object miss}) => 'Di solito sbagliate di ${miss}',
+			'statistics.detail.servicesTitle' => 'Servizi',
+			'statistics.detail.waitsTitle' => 'Attese e abbandoni',
+			'statistics.detail.bookingsTitle' => 'Prenotazioni e assenze',
+			'statistics.detail.busyTitle' => 'Orari di punta',
+			'statistics.detail.estimatesTitle' => 'Precisione delle stime',
+			'statistics.detail.allServices' => 'Tutti i servizi',
+			'statistics.detail.real' => 'Reale',
+			'statistics.detail.menu' => 'Listino',
+			'statistics.detail.overPlan' => 'Oltre il previsto di 5+ min',
+			'statistics.detail.visits' => 'Visite',
+			'statistics.detail.estimatedRevenue' => 'Incasso stimato',
+			'statistics.detail.deletedService' => 'Servizio eliminato',
+			'statistics.detail.formerStaff' => 'Ex collaboratore',
+			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visite',
+			'statistics.detail.walkInWait' => 'Attesa walk-in',
+			'statistics.detail.average' => 'Media',
+			'statistics.detail.p90' => '9 su 10 hanno atteso meno di',
+			'statistics.detail.served' => 'Clienti serviti',
+			'statistics.detail.lostCustomers' => 'Clienti persi',
+			'statistics.detail.walkedAway' => 'Andati via',
+			'statistics.detail.turnedAway' => 'Non accolti',
+			'statistics.detail.neverServed' => 'Ancora in attesa alla chiusura',
+			'statistics.detail.lostRevenue' => 'Incasso perso stimato',
+			'statistics.detail.total' => 'Totale',
+			'statistics.detail.lostNote' => 'Basato sui prezzi di listino, o sul tuo prezzo mediano quando non si sa cosa volessero.',
+			'statistics.detail.punctuality' => 'Puntualità',
+			'statistics.detail.onTime' => 'Iniziate in orario',
+			'statistics.detail.averageDelay' => 'Ritardo medio',
+			'statistics.detail.started' => 'Prenotazioni iniziate',
+			'statistics.detail.onTimeNote' => 'In orario significa entro 5 minuti dall\'ora prenotata.',
+			'statistics.detail.noShows' => 'Assenze',
+			'statistics.detail.noShowRate' => 'Tasso di assenze',
+			'statistics.detail.booked' => 'Prenotate',
+			'statistics.detail.cancelled' => 'Annullate',
+			'statistics.detail.heatmapTitle' => 'Quando hai più lavoro',
+			'statistics.detail.heatmapSummary' => ({required Object day, required Object hour}) => 'Più lavoro ${day} alle ${hour}',
+			'statistics.detail.quiet' => 'Calmo',
+			'statistics.detail.busy' => 'Pieno',
+			'statistics.detail.chairs' => 'Poltrone',
+			'statistics.detail.utilization' => 'Utilizzo',
+			'statistics.detail.busyTime' => 'Tempo di servizio',
+			'statistics.detail.availableTime' => 'Tempo disponibile',
+			'statistics.detail.afterClosing' => 'Lavorato dopo la chiusura',
+			'statistics.detail.estimateAccuracy' => 'L\'attesa che abbiamo mostrato',
+			'statistics.detail.withinRange' => 'Dentro l\'intervallo mostrato',
+			'statistics.detail.typicalMiss' => 'Di solito sbagliata di',
+			'statistics.detail.longerThanShown' => 'Attese reali più lunghe di',
+			'statistics.detail.shorterThanShown' => 'Attese reali più brevi di',
+			'statistics.detail.compared' => 'Attese confrontate',
+			'statistics.detail.estimateNote' => 'Confronta l\'attesa mostrata quando qualcuno si è messo in coda con quella reale.',
 			'homeWidgets.inLine' => 'In coda',
 			'homeWidgets.nextVisit' => 'Prossima visita',
 			'homeWidgets.bookAgain' => 'Prenota di nuovo',
@@ -2659,6 +2845,8 @@ extension on TranslationsIt {
 			'homeWidgets.nobodyWaiting' => 'Nessuno in attesa',
 			'homeWidgets.nextUp' => 'Prossimo',
 			'homeWidgets.calledLine' => 'Chiamato, sta arrivando',
+			_ => null,
+		} ?? switch (path) {
 			'homeWidgets.nextAppointment' => 'Prossimo appuntamento',
 			'homeWidgets.nothingLeft' => 'Nient\'altro oggi',
 			'homeWidgets.moreToday' => ({required Object n}) => 'altri ${n} oggi',

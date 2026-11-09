@@ -18,6 +18,7 @@ common:
   serviceLine(name, price, minutes): '${name} ${price} · ${minutes} min'
 
 nav:
+  statistics: Statistics
   today: Today
   calendar: Calendar
   shop: Shop
@@ -1056,6 +1057,87 @@ chairs:
   nextBooking: Next booking
   turnedAway: Someone turned away
   turnedAwayRecorded: Recorded
+
+statistics:
+  title: Statistics
+  today: Today
+  sevenDays: 7 days
+  thirtyDays: 30 days
+  custom: Custom
+  everyone: Everyone
+  allServices: All services
+  staffFilter: Staff
+  serviceFilter: Service
+  rangeTooLong(days): Choose ${days} days or fewer
+  minutes(value): ${value} min
+  emptyTitle: Nothing to show yet
+  emptyBody: Figures appear here once you start using Start and Done on Today.
+  kpi:
+    wait: Walk-in wait
+    waitDetail(p90): 9 in 10 within ${p90}
+    lost: Lost revenue
+    lostDetail(left, away): ${left} left · ${away} turned away
+    onTime: Bookings on time
+    onTimeDetail(delay): Average delay ${delay}
+    utilization: Chair utilization
+    utilizationDetail(after): ${after} after closing
+    overruns: Over plan by 5+ min
+    overrunsDetail(real, plan): Typically ${real}, menu ${plan}
+    revenue: Estimated revenue
+    revenueDetail(visits): ${visits} visits, at menu prices
+    estimates: Wait estimates in range
+    estimatesDetail(miss): Typically off by ${miss}
+  detail:
+    servicesTitle: Services
+    waitsTitle: Waits and walk-aways
+    bookingsTitle: Bookings and no-shows
+    busyTitle: Busy hours
+    estimatesTitle: Estimate accuracy
+    allServices: All services
+    real: Real
+    menu: Menu
+    overPlan: Over plan by 5+ min
+    visits: Visits
+    estimatedRevenue: Estimated revenue
+    deletedService: Deleted service
+    formerStaff: Former staff
+    medianOf(real, visits): ${real} · ${visits} visits
+    walkInWait: Walk-in wait
+    average: Average
+    p90: 9 in 10 waited less than
+    served: Customers served
+    lostCustomers: Customers lost
+    walkedAway: Walked away
+    turnedAway: Turned away
+    neverServed: Still waiting at closing
+    lostRevenue: Estimated lost revenue
+    total: Total
+    lostNote: Based on menu prices, or your median price when nobody found out what they wanted.
+    punctuality: Punctuality
+    onTime: Started on time
+    averageDelay: Average delay
+    started: Bookings started
+    onTimeNote: On time means within 5 minutes of the booked time.
+    noShows: No-shows
+    noShowRate: No-show rate
+    booked: Booked
+    cancelled: Cancelled
+    heatmapTitle: When you're busiest
+    heatmapSummary(day, hour): Busiest on ${day} at ${hour}
+    quiet: Quiet
+    busy: Busy
+    chairs: Chairs
+    utilization: Utilization
+    busyTime: Time serving
+    availableTime: Time available
+    afterClosing: Worked after closing
+    estimateAccuracy: The wait we showed
+    withinRange: Inside the range shown
+    typicalMiss: Typically off by
+    longerThanShown: Real waits ran longer by
+    shorterThanShown: Real waits ran shorter by
+    compared: Waits compared
+    estimateNote: Compares the wait shown when someone joined with the wait they really had.
 
 homeWidgets:
   inLine: In line

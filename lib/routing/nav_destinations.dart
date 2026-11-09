@@ -27,7 +27,7 @@ class AppNavDestination {
 ///
 /// Two different bars, not one with a hidden tab: a customer books and reads
 /// their own bookings, an owner runs an agenda. Taken from the design, where
-/// the customer and the owner have three destinations each.
+/// a customer has three destinations and an owner four.
 ///
 /// Profile is last for both, and shared: one screen, because the header, the
 /// appearance controls and the account rows are identical and only the shop
@@ -63,6 +63,10 @@ List<AppNavDestination> navDestinationsFor(
       AppNavDestination(
         tab: AppNavTab(icon: AppLineIcons.calendar, label: t.calendar),
         route: const OwnerAgendaRoute(),
+      ),
+      AppNavDestination(
+        tab: AppNavTab(icon: AppLineIcons.statistics, label: t.statistics),
+        route: const OwnerStatisticsRoute(),
       ),
       // The same route as a customer's profile: for an owner it leads with the
       // shop, and that is what the tab is for.

@@ -168,12 +168,15 @@ void main() {
       ]);
     });
 
-    testWidgets('an owner gets today, calendar and shop', (tester) async {
+    testWidgets('an owner gets today, calendar, statistics and shop', (
+      tester,
+    ) async {
       final result = await destinations(tester, UserRole.owner);
 
       expect(result.map((destination) => destination.tab.label), [
         t.today,
         t.calendar,
+        t.statistics,
         t.shop,
       ]);
     });
@@ -423,13 +426,14 @@ void main() {
     );
     final customerAuth = AuthState(profile: profile(role: UserRole.customer));
 
-    testWidgets('an owner lands on Today, with their three tabs', (
+    testWidgets('an owner lands on Today, with their four tabs', (
       tester,
     ) async {
       await pumpAt(tester, const OwnerShellRoute(), auth: ownerAuth);
 
       expect(find.text(t.today), findsOneWidget);
       expect(find.text(t.calendar), findsOneWidget);
+      expect(find.text(t.statistics), findsOneWidget);
       expect(find.text(t.shop), findsOneWidget);
       // A customer's tabs are not merely hidden — they are not in this tree.
       expect(find.text(t.home), findsNothing);
