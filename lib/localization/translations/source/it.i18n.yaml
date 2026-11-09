@@ -163,6 +163,7 @@ profile:
   hours: Orari e chiusure
   hoursNone: Da impostare
   team: Team
+  dataRow: Dati
   teamJustYou: Solo tu
   teamCount(plural):
     one: ${n} persona
@@ -1060,6 +1061,23 @@ chairs:
   turnedAwayRecorded: Registrato
 
 statistics:
+  data:
+    title: Dati
+    storedTitle: Cosa viene salvato
+    storedBody: Per ogni visita il servizio, il collaboratore, il prezzo e gli orari, per mostrarti l'andamento del negozio e usare tempi reali nelle stime di attesa.
+    notStored: Nomi e ID dei clienti non fanno parte delle statistiche.
+    retentionTitle: Conserva i dettagli delle visite per
+    retentionBody: Dopo questo periodo i dettagli vengono eliminati e restano solo i totali giornalieri anonimi.
+    months(n): ${n} mesi
+    shortenTitle(months): Conservare solo ${months} mesi?
+    shortenBody: I dettagli delle visite più vecchi verranno eliminati definitivamente. I totali giornalieri restano.
+    shortenConfirm: Elimina i dettagli più vecchi
+    staffTitle: Statistiche per persona
+    staffBody: Mostra i dati di ogni collaboratore e confrontali con il negozio.
+    staffNote: Disattivate di default. In Italia e in altri paesi UE, monitorare il lavoro dei dipendenti può richiedere la loro informativa, un accordo sindacale o un'autorizzazione. Verifica prima di attivarle.
+    staffConfirmTitle: Attivare le statistiche per persona?
+    staffConfirmBody: Verranno mostrati dati nominativi per ogni collaboratore. Verifica di poterlo fare e di aver informato il tuo team.
+    staffConfirm: Attiva
   staffTitle: Staff
   staff:
     compared: Confronto con il negozio

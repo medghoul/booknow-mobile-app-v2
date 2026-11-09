@@ -192,3 +192,15 @@ abstract class ReviewList with _$ReviewList {
     required List<ReviewItem> items,
   }) = _ReviewList;
 }
+
+/// What the shop has chosen about its statistics.
+@freezed
+abstract class StatisticsSettings with _$StatisticsSettings {
+  const factory StatisticsSettings({
+    required int retentionMonths,
+    required List<int> retentionChoices,
+
+    /// Off by default: comparing named staff has to be chosen.
+    required bool staffStatistics,
+  }) = _StatisticsSettings;
+}

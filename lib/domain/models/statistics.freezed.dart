@@ -3205,4 +3205,275 @@ as List<ReviewItem>,
 
 }
 
+/// @nodoc
+mixin _$StatisticsSettings {
+
+ int get retentionMonths; List<int> get retentionChoices;/// Off by default: comparing named staff has to be chosen.
+ bool get staffStatistics;
+/// Create a copy of StatisticsSettings
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$StatisticsSettingsCopyWith<StatisticsSettings> get copyWith => _$StatisticsSettingsCopyWithImpl<StatisticsSettings>(this as StatisticsSettings, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatisticsSettings&&(identical(other.retentionMonths, retentionMonths) || other.retentionMonths == retentionMonths)&&const DeepCollectionEquality().equals(other.retentionChoices, retentionChoices)&&(identical(other.staffStatistics, staffStatistics) || other.staffStatistics == staffStatistics));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,retentionMonths,const DeepCollectionEquality().hash(retentionChoices),staffStatistics);
+
+@override
+String toString() {
+  return 'StatisticsSettings(retentionMonths: $retentionMonths, retentionChoices: $retentionChoices, staffStatistics: $staffStatistics)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $StatisticsSettingsCopyWith<$Res>  {
+  factory $StatisticsSettingsCopyWith(StatisticsSettings value, $Res Function(StatisticsSettings) _then) = _$StatisticsSettingsCopyWithImpl;
+@useResult
+$Res call({
+ int retentionMonths, List<int> retentionChoices, bool staffStatistics
+});
+
+
+
+
+}
+/// @nodoc
+class _$StatisticsSettingsCopyWithImpl<$Res>
+    implements $StatisticsSettingsCopyWith<$Res> {
+  _$StatisticsSettingsCopyWithImpl(this._self, this._then);
+
+  final StatisticsSettings _self;
+  final $Res Function(StatisticsSettings) _then;
+
+/// Create a copy of StatisticsSettings
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? retentionMonths = null,Object? retentionChoices = null,Object? staffStatistics = null,}) {
+  return _then(_self.copyWith(
+retentionMonths: null == retentionMonths ? _self.retentionMonths : retentionMonths // ignore: cast_nullable_to_non_nullable
+as int,retentionChoices: null == retentionChoices ? _self.retentionChoices : retentionChoices // ignore: cast_nullable_to_non_nullable
+as List<int>,staffStatistics: null == staffStatistics ? _self.staffStatistics : staffStatistics // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [StatisticsSettings].
+extension StatisticsSettingsPatterns on StatisticsSettings {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _StatisticsSettings value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _StatisticsSettings() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _StatisticsSettings value)  $default,){
+final _that = this;
+switch (_that) {
+case _StatisticsSettings():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _StatisticsSettings value)?  $default,){
+final _that = this;
+switch (_that) {
+case _StatisticsSettings() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int retentionMonths,  List<int> retentionChoices,  bool staffStatistics)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _StatisticsSettings() when $default != null:
+return $default(_that.retentionMonths,_that.retentionChoices,_that.staffStatistics);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int retentionMonths,  List<int> retentionChoices,  bool staffStatistics)  $default,) {final _that = this;
+switch (_that) {
+case _StatisticsSettings():
+return $default(_that.retentionMonths,_that.retentionChoices,_that.staffStatistics);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int retentionMonths,  List<int> retentionChoices,  bool staffStatistics)?  $default,) {final _that = this;
+switch (_that) {
+case _StatisticsSettings() when $default != null:
+return $default(_that.retentionMonths,_that.retentionChoices,_that.staffStatistics);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _StatisticsSettings implements StatisticsSettings {
+  const _StatisticsSettings({required this.retentionMonths, required final  List<int> retentionChoices, required this.staffStatistics}): _retentionChoices = retentionChoices;
+  
+
+@override final  int retentionMonths;
+ final  List<int> _retentionChoices;
+@override List<int> get retentionChoices {
+  if (_retentionChoices is EqualUnmodifiableListView) return _retentionChoices;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_retentionChoices);
+}
+
+/// Off by default: comparing named staff has to be chosen.
+@override final  bool staffStatistics;
+
+/// Create a copy of StatisticsSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$StatisticsSettingsCopyWith<_StatisticsSettings> get copyWith => __$StatisticsSettingsCopyWithImpl<_StatisticsSettings>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatisticsSettings&&(identical(other.retentionMonths, retentionMonths) || other.retentionMonths == retentionMonths)&&const DeepCollectionEquality().equals(other._retentionChoices, _retentionChoices)&&(identical(other.staffStatistics, staffStatistics) || other.staffStatistics == staffStatistics));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,retentionMonths,const DeepCollectionEquality().hash(_retentionChoices),staffStatistics);
+
+@override
+String toString() {
+  return 'StatisticsSettings(retentionMonths: $retentionMonths, retentionChoices: $retentionChoices, staffStatistics: $staffStatistics)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$StatisticsSettingsCopyWith<$Res> implements $StatisticsSettingsCopyWith<$Res> {
+  factory _$StatisticsSettingsCopyWith(_StatisticsSettings value, $Res Function(_StatisticsSettings) _then) = __$StatisticsSettingsCopyWithImpl;
+@override @useResult
+$Res call({
+ int retentionMonths, List<int> retentionChoices, bool staffStatistics
+});
+
+
+
+
+}
+/// @nodoc
+class __$StatisticsSettingsCopyWithImpl<$Res>
+    implements _$StatisticsSettingsCopyWith<$Res> {
+  __$StatisticsSettingsCopyWithImpl(this._self, this._then);
+
+  final _StatisticsSettings _self;
+  final $Res Function(_StatisticsSettings) _then;
+
+/// Create a copy of StatisticsSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? retentionMonths = null,Object? retentionChoices = null,Object? staffStatistics = null,}) {
+  return _then(_StatisticsSettings(
+retentionMonths: null == retentionMonths ? _self.retentionMonths : retentionMonths // ignore: cast_nullable_to_non_nullable
+as int,retentionChoices: null == retentionChoices ? _self._retentionChoices : retentionChoices // ignore: cast_nullable_to_non_nullable
+as List<int>,staffStatistics: null == staffStatistics ? _self.staffStatistics : staffStatistics // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
 // dart format on

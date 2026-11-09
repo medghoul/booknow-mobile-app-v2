@@ -43,4 +43,11 @@ abstract interface class StatisticsRepository {
 
   /// Leaves the visit as it is, out of the averages and off the list.
   Future<ApiResult<void>> dismissVisit(ReviewItem item);
+
+  Future<ApiResult<StatisticsSettings>> settings();
+
+  Future<ApiResult<StatisticsSettings>> updateSettings({
+    int? retentionMonths,
+    bool? staffStatistics,
+  });
 }

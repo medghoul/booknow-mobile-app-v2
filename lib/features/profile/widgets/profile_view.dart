@@ -39,6 +39,7 @@ class ProfileView extends StatelessWidget {
     this.onOpenServices,
     this.onOpenHours,
     this.onOpenTeam,
+    this.onOpenData,
     this.onOpenBookingRules,
     this.onOpenMode,
     this.onPreviewShop,
@@ -67,6 +68,7 @@ class ProfileView extends StatelessWidget {
   final VoidCallback? onOpenServices;
   final VoidCallback? onOpenHours;
   final VoidCallback? onOpenTeam;
+  final VoidCallback? onOpenData;
   final VoidCallback? onOpenBookingRules;
   final VoidCallback? onOpenMode;
   final VoidCallback? onPreviewShop;
@@ -123,6 +125,7 @@ class ProfileView extends StatelessWidget {
         onOpenServices: onOpenServices,
         onOpenHours: onOpenHours,
         onOpenTeam: onOpenTeam,
+        onOpenData: onOpenData,
         onOpenBookingRules: onOpenBookingRules,
         onOpenMode: onOpenMode,
         onPreview: onPreviewShop,

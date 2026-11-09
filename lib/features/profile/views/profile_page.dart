@@ -92,6 +92,7 @@ class ProfilePage extends StatelessWidget {
                 _openAndReload(context, const ServicesRoute()),
             onOpenHours: () => _openAndReload(context, const HoursRoute()),
             onOpenTeam: () => _openAndReload(context, const TeamRoute()),
+            onOpenData: () => context.router.push(const DataSettingsRoute()),
             onOpenMode: state.shop == null
                 ? null
                 : () => _openAndReload(

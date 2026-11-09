@@ -163,6 +163,7 @@ profile:
   hours: Hours
   hoursNone: Not set
   team: Team
+  dataRow: Data
   teamJustYou: Just you
   teamCount(plural):
     one: ${n} person
@@ -1060,6 +1061,23 @@ chairs:
   turnedAwayRecorded: Recorded
 
 statistics:
+  data:
+    title: Data
+    storedTitle: What is stored
+    storedBody: Each visit's service, staff member, price and times, so you can see how the shop is doing and wait estimates can use real times.
+    notStored: Customer names and IDs are not part of the statistics.
+    retentionTitle: Keep visit details for
+    retentionBody: After this, visit details are deleted and only the anonymous daily totals stay.
+    months(n): ${n} months
+    shortenTitle(months): Keep only ${months} months?
+    shortenBody: Visit details older than that will be permanently deleted. Your daily totals stay.
+    shortenConfirm: Delete older details
+    staffTitle: Statistics per person
+    staffBody: Show each team member's figures and compare them with the shop.
+    staffNote: Off by default. In Italy and other EU countries, tracking how employees work can need their information, a union agreement or an authorisation. Check before turning this on.
+    staffConfirmTitle: Turn on statistics per person?
+    staffConfirmBody: This shows named figures for each team member. Check that you are allowed to do this and that your team has been told.
+    staffConfirm: Turn on
   staffTitle: Staff
   staff:
     compared: Compared with the shop

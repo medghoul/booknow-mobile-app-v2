@@ -189,3 +189,56 @@ class NeedsReviewCubit extends Cubit<StatisticsLoadState<ReviewList>> {
     }
   }
 }
+
+/// What the shop has chosen about its statistics.
+class DataSettingsCubit extends Cubit<StatisticsLoadState<StatisticsSettings>> {
+  DataSettingsCubit(this._repository) : super(const StatisticsLoadState());
+
+  final StatisticsRepository _repository;
+
+  Future<void> load() async {
+    emit(StatisticsLoadState(data: state.data));
+
+    final result = await _repository.settings();
+    if (isClosed) return;
+
+    switch (result) {
+      case Success<StatisticsSettings>(:final data):
+        emit(StatisticsLoadState(data: data, isLoading: false));
+      case Failure<StatisticsSettings>(:final error):
+        emit(
+          StatisticsLoadState(
+            data: state.data,
+            isLoading: false,
+            failure: error,
+          ),
+        );
+    }
+  }
+
+  Future<void> setRetention(int months) =>
+      _save(() => _repository.updateSettings(retentionMonths: months));
+
+  Future<void> setStaffStatistics(bool on) =>
+      _save(() => _repository.updateSettings(staffStatistics: on));
+
+  Future<void> _save(
+    Future<ApiResult<StatisticsSettings>> Function() action,
+  ) async {
+    if (state.busy) return;
+    final before = state.data;
+    emit(StatisticsLoadState(data: before, isLoading: false, busy: true));
+
+    final result = await action();
+    if (isClosed) return;
+
+    switch (result) {
+      case Success<StatisticsSettings>(:final data):
+        emit(StatisticsLoadState(data: data, isLoading: false));
+      case Failure<StatisticsSettings>(:final error):
+        emit(
+          StatisticsLoadState(data: before, isLoading: false, failure: error),
+        );
+    }
+  }
+}

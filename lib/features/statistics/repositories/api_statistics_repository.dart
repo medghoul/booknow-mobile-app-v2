@@ -97,6 +97,29 @@ class ApiStatisticsRepository implements StatisticsRepository {
   );
 
   @override
+  Future<ApiResult<StatisticsSettings>> settings() async {
+    final result = await _client.get<Map<String, dynamic>>(
+      ApiEndpoints.statisticsSettings,
+    );
+    return result.parsed(statisticsSettingsFromJson);
+  }
+
+  @override
+  Future<ApiResult<StatisticsSettings>> updateSettings({
+    int? retentionMonths,
+    bool? staffStatistics,
+  }) async {
+    final result = await _client.patch<Map<String, dynamic>>(
+      ApiEndpoints.statisticsSettings,
+      data: {
+        'retentionMonths': ?retentionMonths,
+        'staffStatistics': ?staffStatistics,
+      },
+    );
+    return result.parsed(statisticsSettingsFromJson);
+  }
+
+  @override
   Future<ApiResult<void>> dismissVisit(ReviewItem item) => _client.post<void>(
     ApiEndpoints.statisticsReviewVisit(item.visitId),
     data: {'localDate': item.localDate, 'dismiss': true},

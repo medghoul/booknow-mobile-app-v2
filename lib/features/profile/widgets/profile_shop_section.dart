@@ -20,6 +20,7 @@ class ProfileShopSection extends StatelessWidget {
     this.onOpenServices,
     this.onOpenHours,
     this.onOpenTeam,
+    this.onOpenData,
     this.onOpenBookingRules,
     this.onOpenMode,
     this.onPreview,
@@ -32,6 +33,9 @@ class ProfileShopSection extends StatelessWidget {
 
   /// Who works in the shop (providers §9).
   final VoidCallback? onOpenTeam;
+
+  /// What is stored about the shop's visits, and for how long.
+  final VoidCallback? onOpenData;
   final VoidCallback? onOpenBookingRules;
 
   /// "Come lavori": bookings or a live queue.
@@ -110,6 +114,12 @@ class ProfileShopSection extends StatelessWidget {
                 label: t.team,
                 value: team > 1 ? t.teamCount(n: team) : t.teamJustYou,
                 onTap: onOpenTeam,
+              ),
+            if (onOpenData != null)
+              AppSettingsRow(
+                icon: AppLineIcons.statistics,
+                label: t.dataRow,
+                onTap: onOpenData,
               ),
           ],
         ),

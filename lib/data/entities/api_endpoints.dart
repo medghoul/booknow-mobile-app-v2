@@ -98,6 +98,7 @@ abstract final class ApiEndpoints {
   static const String statisticsSuggestions =
       '/shops/me/statistics/suggestions';
   static const String statisticsReview = '/shops/me/statistics/review';
+  static const String statisticsSettings = '/shops/me/statistics/settings';
 
   static String staffStatistics(String providerId) =>
       '/shops/me/statistics/staff/$providerId';

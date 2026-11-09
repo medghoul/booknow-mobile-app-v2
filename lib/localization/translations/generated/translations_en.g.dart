@@ -416,6 +416,9 @@ class Translations$profile$en {
 	/// en: 'Team'
 	String get team => 'Team';
 
+	/// en: 'Data'
+	String get dataRow => 'Data';
+
 	/// en: 'Just you'
 	String get teamJustYou => 'Just you';
 
@@ -1916,6 +1919,7 @@ class Translations$statistics$en {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final Translations$statistics$data$en data = Translations$statistics$data$en.internal(_root);
 
 	/// en: 'Staff'
 	String get staffTitle => 'Staff';
@@ -3639,6 +3643,63 @@ class Translations$queue$mode$en {
 	String get saved => 'Mode updated';
 }
 
+// Path: statistics.data
+class Translations$statistics$data$en {
+	Translations$statistics$data$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Data'
+	String get title => 'Data';
+
+	/// en: 'What is stored'
+	String get storedTitle => 'What is stored';
+
+	/// en: 'Each visit's service, staff member, price and times, so you can see how the shop is doing and wait estimates can use real times.'
+	String get storedBody => 'Each visit\'s service, staff member, price and times, so you can see how the shop is doing and wait estimates can use real times.';
+
+	/// en: 'Customer names and IDs are not part of the statistics.'
+	String get notStored => 'Customer names and IDs are not part of the statistics.';
+
+	/// en: 'Keep visit details for'
+	String get retentionTitle => 'Keep visit details for';
+
+	/// en: 'After this, visit details are deleted and only the anonymous daily totals stay.'
+	String get retentionBody => 'After this, visit details are deleted and only the anonymous daily totals stay.';
+
+	/// en: '${n} months'
+	String months({required Object n}) => '${n} months';
+
+	/// en: 'Keep only ${months} months?'
+	String shortenTitle({required Object months}) => 'Keep only ${months} months?';
+
+	/// en: 'Visit details older than that will be permanently deleted. Your daily totals stay.'
+	String get shortenBody => 'Visit details older than that will be permanently deleted. Your daily totals stay.';
+
+	/// en: 'Delete older details'
+	String get shortenConfirm => 'Delete older details';
+
+	/// en: 'Statistics per person'
+	String get staffTitle => 'Statistics per person';
+
+	/// en: 'Show each team member's figures and compare them with the shop.'
+	String get staffBody => 'Show each team member\'s figures and compare them with the shop.';
+
+	/// en: 'Off by default. In Italy and other EU countries, tracking how employees work can need their information, a union agreement or an authorisation. Check before turning this on.'
+	String get staffNote => 'Off by default. In Italy and other EU countries, tracking how employees work can need their information, a union agreement or an authorisation. Check before turning this on.';
+
+	/// en: 'Turn on statistics per person?'
+	String get staffConfirmTitle => 'Turn on statistics per person?';
+
+	/// en: 'This shows named figures for each team member. Check that you are allowed to do this and that your team has been told.'
+	String get staffConfirmBody => 'This shows named figures for each team member. Check that you are allowed to do this and that your team has been told.';
+
+	/// en: 'Turn on'
+	String get staffConfirm => 'Turn on';
+}
+
 // Path: statistics.staff
 class Translations$statistics$staff$en {
 	Translations$statistics$staff$en.internal(this._root);
@@ -4213,6 +4274,7 @@ extension on Translations {
 			'profile.hours' => 'Hours',
 			'profile.hoursNone' => 'Not set',
 			'profile.team' => 'Team',
+			'profile.dataRow' => 'Data',
 			'profile.teamJustYou' => 'Just you',
 			'profile.teamCount' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n, one: '${n} person', other: '${n} people', ), 
 			'profile.bookingRules' => 'Booking rules',
@@ -4581,9 +4643,9 @@ extension on Translations {
 			'account.accountTitle' => 'Account',
 			'account.payments' => 'Payments and receipts',
 			'account.switchToBarber' => 'Switch to barber',
-			'account.help' => 'Help and contact',
 			_ => null,
 		} ?? switch (path) {
+			'account.help' => 'Help and contact',
 			'account.signOut' => 'Sign out',
 			'account.signOutConfirmTitle' => 'Sign out?',
 			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
@@ -5007,6 +5069,22 @@ extension on Translations {
 			'chairs.nextBooking' => 'Next booking',
 			'chairs.turnedAway' => 'Someone turned away',
 			'chairs.turnedAwayRecorded' => 'Recorded',
+			'statistics.data.title' => 'Data',
+			'statistics.data.storedTitle' => 'What is stored',
+			'statistics.data.storedBody' => 'Each visit\'s service, staff member, price and times, so you can see how the shop is doing and wait estimates can use real times.',
+			'statistics.data.notStored' => 'Customer names and IDs are not part of the statistics.',
+			'statistics.data.retentionTitle' => 'Keep visit details for',
+			'statistics.data.retentionBody' => 'After this, visit details are deleted and only the anonymous daily totals stay.',
+			'statistics.data.months' => ({required Object n}) => '${n} months',
+			'statistics.data.shortenTitle' => ({required Object months}) => 'Keep only ${months} months?',
+			'statistics.data.shortenBody' => 'Visit details older than that will be permanently deleted. Your daily totals stay.',
+			'statistics.data.shortenConfirm' => 'Delete older details',
+			'statistics.data.staffTitle' => 'Statistics per person',
+			'statistics.data.staffBody' => 'Show each team member\'s figures and compare them with the shop.',
+			'statistics.data.staffNote' => 'Off by default. In Italy and other EU countries, tracking how employees work can need their information, a union agreement or an authorisation. Check before turning this on.',
+			'statistics.data.staffConfirmTitle' => 'Turn on statistics per person?',
+			'statistics.data.staffConfirmBody' => 'This shows named figures for each team member. Check that you are allowed to do this and that your team has been told.',
+			'statistics.data.staffConfirm' => 'Turn on',
 			'statistics.staffTitle' => 'Staff',
 			'statistics.staff.compared' => 'Compared with the shop',
 			'statistics.staff.them' => 'This person',
@@ -5079,6 +5157,8 @@ extension on Translations {
 			'statistics.kpi.revenue' => 'Estimated revenue',
 			'statistics.kpi.revenueDetail' => ({required Object visits}) => '${visits} visits, at menu prices',
 			'statistics.kpi.estimates' => 'Wait estimates in range',
+			_ => null,
+		} ?? switch (path) {
 			'statistics.kpi.estimatesDetail' => ({required Object miss}) => 'Typically off by ${miss}',
 			'statistics.detail.servicesTitle' => 'Services',
 			'statistics.detail.waitsTitle' => 'Waits and walk-aways',
@@ -5096,8 +5176,6 @@ extension on Translations {
 			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visits',
 			'statistics.detail.walkInWait' => 'Walk-in wait',
 			'statistics.detail.average' => 'Average',
-			_ => null,
-		} ?? switch (path) {
 			'statistics.detail.p90' => '9 in 10 waited less than',
 			'statistics.detail.served' => 'Customers served',
 			'statistics.detail.lostCustomers' => 'Customers lost',

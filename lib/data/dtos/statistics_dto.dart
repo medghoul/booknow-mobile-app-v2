@@ -168,3 +168,14 @@ ReviewList reviewListFromJson(Map<String, dynamic> json) => ReviewList(
         ),
   ],
 );
+
+/// Reads `GET /v1/shops/me/statistics/settings`.
+StatisticsSettings statisticsSettingsFromJson(Map<String, dynamic> json) =>
+    StatisticsSettings(
+      retentionMonths: asInt(json['retentionMonths'], 24),
+      retentionChoices: [
+        for (final value in (json['retentionChoices'] as List?) ?? const [])
+          asInt(value),
+      ],
+      staffStatistics: asBool(json['staffStatistics'], fallback: false),
+    );

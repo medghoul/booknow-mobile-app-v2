@@ -231,6 +231,7 @@ class _Translations$profile$it extends Translations$profile$en {
 	@override String get hours => 'Orari e chiusure';
 	@override String get hoursNone => 'Da impostare';
 	@override String get team => 'Team';
+	@override String get dataRow => 'Dati';
 	@override String get teamJustYou => 'Solo tu';
 	@override String teamCount({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n,
 		one: '${n} persona',
@@ -895,6 +896,7 @@ class _Translations$statistics$it extends Translations$statistics$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override late final _Translations$statistics$data$it data = _Translations$statistics$data$it._(_root);
 	@override String get staffTitle => 'Staff';
 	@override late final _Translations$statistics$staff$it staff = _Translations$statistics$staff$it._(_root);
 	@override late final _Translations$statistics$suggestions$it suggestions = _Translations$statistics$suggestions$it._(_root);
@@ -1705,6 +1707,31 @@ class _Translations$queue$mode$it extends Translations$queue$mode$en {
 	@override String get saved => 'Modalità aggiornata';
 }
 
+// Path: statistics.data
+class _Translations$statistics$data$it extends Translations$statistics$data$en {
+	_Translations$statistics$data$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Dati';
+	@override String get storedTitle => 'Cosa viene salvato';
+	@override String get storedBody => 'Per ogni visita il servizio, il collaboratore, il prezzo e gli orari, per mostrarti l\'andamento del negozio e usare tempi reali nelle stime di attesa.';
+	@override String get notStored => 'Nomi e ID dei clienti non fanno parte delle statistiche.';
+	@override String get retentionTitle => 'Conserva i dettagli delle visite per';
+	@override String get retentionBody => 'Dopo questo periodo i dettagli vengono eliminati e restano solo i totali giornalieri anonimi.';
+	@override String months({required Object n}) => '${n} mesi';
+	@override String shortenTitle({required Object months}) => 'Conservare solo ${months} mesi?';
+	@override String get shortenBody => 'I dettagli delle visite più vecchi verranno eliminati definitivamente. I totali giornalieri restano.';
+	@override String get shortenConfirm => 'Elimina i dettagli più vecchi';
+	@override String get staffTitle => 'Statistiche per persona';
+	@override String get staffBody => 'Mostra i dati di ogni collaboratore e confrontali con il negozio.';
+	@override String get staffNote => 'Disattivate di default. In Italia e in altri paesi UE, monitorare il lavoro dei dipendenti può richiedere la loro informativa, un accordo sindacale o un\'autorizzazione. Verifica prima di attivarle.';
+	@override String get staffConfirmTitle => 'Attivare le statistiche per persona?';
+	@override String get staffConfirmBody => 'Verranno mostrati dati nominativi per ogni collaboratore. Verifica di poterlo fare e di aver informato il tuo team.';
+	@override String get staffConfirm => 'Attiva';
+}
+
 // Path: statistics.staff
 class _Translations$statistics$staff$it extends Translations$statistics$staff$en {
 	_Translations$statistics$staff$it._(TranslationsIt root) : this._root = root, super.internal(root);
@@ -2039,6 +2066,7 @@ extension on TranslationsIt {
 			'profile.hours' => 'Orari e chiusure',
 			'profile.hoursNone' => 'Da impostare',
 			'profile.team' => 'Team',
+			'profile.dataRow' => 'Dati',
 			'profile.teamJustYou' => 'Solo tu',
 			'profile.teamCount' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n, one: '${n} persona', other: '${n} persone', ), 
 			'profile.bookingRules' => 'Regole di prenotazione',
@@ -2407,9 +2435,9 @@ extension on TranslationsIt {
 			'account.accountTitle' => 'Account',
 			'account.payments' => 'Pagamenti e ricevute',
 			'account.switchToBarber' => 'Passa a barbiere',
-			'account.help' => 'Aiuto e contatti',
 			_ => null,
 		} ?? switch (path) {
+			'account.help' => 'Aiuto e contatti',
 			'account.signOut' => 'Esci',
 			'account.signOutConfirmTitle' => 'Vuoi uscire?',
 			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
@@ -2833,6 +2861,22 @@ extension on TranslationsIt {
 			'chairs.nextBooking' => 'Prossima prenotazione',
 			'chairs.turnedAway' => 'Qualcuno mandato via',
 			'chairs.turnedAwayRecorded' => 'Registrato',
+			'statistics.data.title' => 'Dati',
+			'statistics.data.storedTitle' => 'Cosa viene salvato',
+			'statistics.data.storedBody' => 'Per ogni visita il servizio, il collaboratore, il prezzo e gli orari, per mostrarti l\'andamento del negozio e usare tempi reali nelle stime di attesa.',
+			'statistics.data.notStored' => 'Nomi e ID dei clienti non fanno parte delle statistiche.',
+			'statistics.data.retentionTitle' => 'Conserva i dettagli delle visite per',
+			'statistics.data.retentionBody' => 'Dopo questo periodo i dettagli vengono eliminati e restano solo i totali giornalieri anonimi.',
+			'statistics.data.months' => ({required Object n}) => '${n} mesi',
+			'statistics.data.shortenTitle' => ({required Object months}) => 'Conservare solo ${months} mesi?',
+			'statistics.data.shortenBody' => 'I dettagli delle visite più vecchi verranno eliminati definitivamente. I totali giornalieri restano.',
+			'statistics.data.shortenConfirm' => 'Elimina i dettagli più vecchi',
+			'statistics.data.staffTitle' => 'Statistiche per persona',
+			'statistics.data.staffBody' => 'Mostra i dati di ogni collaboratore e confrontali con il negozio.',
+			'statistics.data.staffNote' => 'Disattivate di default. In Italia e in altri paesi UE, monitorare il lavoro dei dipendenti può richiedere la loro informativa, un accordo sindacale o un\'autorizzazione. Verifica prima di attivarle.',
+			'statistics.data.staffConfirmTitle' => 'Attivare le statistiche per persona?',
+			'statistics.data.staffConfirmBody' => 'Verranno mostrati dati nominativi per ogni collaboratore. Verifica di poterlo fare e di aver informato il tuo team.',
+			'statistics.data.staffConfirm' => 'Attiva',
 			'statistics.staffTitle' => 'Staff',
 			'statistics.staff.compared' => 'Confronto con il negozio',
 			'statistics.staff.them' => 'Questa persona',
@@ -2905,6 +2949,8 @@ extension on TranslationsIt {
 			'statistics.kpi.revenue' => 'Incasso stimato',
 			'statistics.kpi.revenueDetail' => ({required Object visits}) => '${visits} visite, a prezzi di listino',
 			'statistics.kpi.estimates' => 'Attese stimate corrette',
+			_ => null,
+		} ?? switch (path) {
 			'statistics.kpi.estimatesDetail' => ({required Object miss}) => 'Di solito sbagliate di ${miss}',
 			'statistics.detail.servicesTitle' => 'Servizi',
 			'statistics.detail.waitsTitle' => 'Attese e abbandoni',
@@ -2922,8 +2968,6 @@ extension on TranslationsIt {
 			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visite',
 			'statistics.detail.walkInWait' => 'Attesa walk-in',
 			'statistics.detail.average' => 'Media',
-			_ => null,
-		} ?? switch (path) {
 			'statistics.detail.p90' => '9 su 10 hanno atteso meno di',
 			'statistics.detail.served' => 'Clienti serviti',
 			'statistics.detail.lostCustomers' => 'Clienti persi',
