@@ -465,6 +465,58 @@ void main() {
       expect(find.widgetWithText(TextFormField, '18,00'), findsOneWidget);
     });
 
+    testWidgets('offers a saved time that is none of the four', (tester) async {
+      await pumpEditor(tester, service: _cut.copyWith(durationMinutes: 35));
+
+      final chip = tester.widget<Semantics>(
+        find
+            .ancestor(
+              of: find.text(services.minutes(count: '35')),
+              matching: find.byType(Semantics),
+            )
+            .first,
+      );
+      expect(chip.properties.selected, isTrue);
+      expect(find.text(services.minutes(count: '15')), findsOne);
+      expect(find.text(services.minutes(count: '60')), findsOne);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('keeps that time on offer after tapping another', (
+      tester,
+    ) async {
+      await pumpEditor(tester, service: _cut.copyWith(durationMinutes: 35));
+
+      await tester.tap(find.text(services.minutes(count: '45')));
+      await tester.pumpAndSettle();
+      expect(find.text(services.minutes(count: '35')), findsOne);
+    });
+
+    testWidgets('shows only the four when the time is one of them', (
+      tester,
+    ) async {
+      await pumpEditor(tester, service: _cut);
+
+      expect(
+        find.descendant(
+          of: find.byType(ServiceDurationChips),
+          matching: find.byType(Expanded),
+        ),
+        findsNWidgets(4),
+      );
+    });
+
+    testWidgets('fits five on a small phone, with a long time', (tester) async {
+      tester.view.physicalSize = const Size(960, 1600);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
+      await pumpEditor(tester, service: _cut.copyWith(durationMinutes: 125));
+
+      expect(find.text(services.minutes(count: '125')), findsOne);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('saves the edited fields against that service', (tester) async {
       await pumpEditor(tester, service: _cut);
 

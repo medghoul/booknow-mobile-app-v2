@@ -118,6 +118,7 @@ class _ServiceEditorSheetState extends State<ServiceEditorSheet> {
                   AppFieldLabel(label: t.durationLabel),
                   ServiceDurationChips(
                     selected: _duration,
+                    saved: widget.service?.durationMinutes,
                     isEnabled: !isSaving,
                     onSelected: (minutes) =>
                         setState(() => _duration = minutes),
