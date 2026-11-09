@@ -81,6 +81,9 @@ enum ApiErrorCode {
   /// The person chosen is not working, or does not do this service.
   providerNotAvailable('PROVIDER_NOT_AVAILABLE'),
 
+  /// A Start or a Done on a visit that has already moved on.
+  visitMoved('VISIT_MOVED'),
+
   /// Anything the app does not recognise.
   shopIncomplete('SHOP_INCOMPLETE'),
   shopAlreadyExists('SHOP_ALREADY_EXISTS'),

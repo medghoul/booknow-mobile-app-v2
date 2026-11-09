@@ -67,6 +67,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$welcome$en welcome = Translations$welcome$en.internal(_root);
 	late final Translations$shopScreen$en shopScreen = Translations$shopScreen$en.internal(_root);
 	late final Translations$today$en today = Translations$today$en.internal(_root);
+	late final Translations$chairs$en chairs = Translations$chairs$en.internal(_root);
 	late final Translations$homeWidgets$en homeWidgets = Translations$homeWidgets$en.internal(_root);
 }
 
@@ -173,6 +174,9 @@ class Translations$errors$en {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'That customer has already moved on.'
+	String get visitMoved => 'That customer has already moved on.';
 
 	/// en: 'Something went wrong. Please try again.'
 	String get generic => 'Something went wrong. Please try again.';
@@ -1860,6 +1864,42 @@ class Translations$today$en {
 
 	/// en: 'Change how you work'
 	String get calendarQueueCta => 'Change how you work';
+}
+
+// Path: chairs
+class Translations$chairs$en {
+	Translations$chairs$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Free'
+	String get free => 'Free';
+
+	/// en: 'Done'
+	String get done => 'Done';
+
+	/// en: 'Start ${name}'
+	String startName({required Object name}) => 'Start ${name}';
+
+	/// en: '${minutes} min over plan'
+	String overPlan({required Object minutes}) => '${minutes} min over plan';
+
+	/// en: 'until ${time}'
+	String until({required Object time}) => 'until ${time}';
+
+	/// en: 'In line'
+	String get nextInLine => 'In line';
+
+	/// en: 'Next booking'
+	String get nextBooking => 'Next booking';
+
+	/// en: 'Someone turned away'
+	String get turnedAway => 'Someone turned away';
+
+	/// en: 'Recorded'
+	String get turnedAwayRecorded => 'Recorded';
 }
 
 // Path: homeWidgets
@@ -3619,6 +3659,7 @@ extension on Translations {
 			'nav.bookings' => 'Bookings',
 			'nav.agenda' => 'Agenda',
 			'nav.profile' => 'Profile',
+			'errors.visitMoved' => 'That customer has already moved on.',
 			'errors.generic' => 'Something went wrong. Please try again.',
 			'errors.noConnection' => 'You appear to be offline.',
 			'errors.timeout' => 'The request took too long.',
@@ -4104,9 +4145,9 @@ extension on Translations {
 			'account.help' => 'Help and contact',
 			'account.signOut' => 'Sign out',
 			'account.signOutConfirmTitle' => 'Sign out?',
-			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
 			'account.deleteAccount' => 'Delete account',
 			'account.comingSoon' => 'Available soon.',
 			'home.waitShort' => ({required Object n, required Object from, required Object to}) => '${n} · ${from}–${to} min',
@@ -4518,6 +4559,15 @@ extension on Translations {
 			'today.calendarQueueTitle' => 'Your shop runs a queue',
 			'today.calendarQueueBody' => 'Customers join the line instead of booking times, so there\'s nothing to plan here. Run the line from Today.',
 			'today.calendarQueueCta' => 'Change how you work',
+			'chairs.free' => 'Free',
+			'chairs.done' => 'Done',
+			'chairs.startName' => ({required Object name}) => 'Start ${name}',
+			'chairs.overPlan' => ({required Object minutes}) => '${minutes} min over plan',
+			'chairs.until' => ({required Object time}) => 'until ${time}',
+			'chairs.nextInLine' => 'In line',
+			'chairs.nextBooking' => 'Next booking',
+			'chairs.turnedAway' => 'Someone turned away',
+			'chairs.turnedAwayRecorded' => 'Recorded',
 			'homeWidgets.inLine' => 'In line',
 			'homeWidgets.nextVisit' => 'Next visit',
 			'homeWidgets.bookAgain' => 'Book again',

@@ -29,6 +29,7 @@ nav:
   profile: Profile
 
 errors:
+  visitMoved: That customer has already moved on.
   generic: Something went wrong. Please try again.
   noConnection: You appear to be offline.
   timeout: The request took too long.
@@ -1044,6 +1045,17 @@ today:
   calendarQueueTitle: Your shop runs a queue
   calendarQueueBody: Customers join the line instead of booking times, so there's nothing to plan here. Run the line from Today.
   calendarQueueCta: Change how you work
+
+chairs:
+  free: Free
+  done: Done
+  startName(name): Start ${name}
+  overPlan(minutes): ${minutes} min over plan
+  until(time): until ${time}
+  nextInLine: In line
+  nextBooking: Next booking
+  turnedAway: Someone turned away
+  turnedAwayRecorded: Recorded
 
 homeWidgets:
   inLine: In line

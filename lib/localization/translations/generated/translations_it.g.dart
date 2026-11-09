@@ -65,6 +65,7 @@ class TranslationsIt extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _Translations$welcome$it welcome = _Translations$welcome$it._(_root);
 	@override late final _Translations$shopScreen$it shopScreen = _Translations$shopScreen$it._(_root);
 	@override late final _Translations$today$it today = _Translations$today$it._(_root);
+	@override late final _Translations$chairs$it chairs = _Translations$chairs$it._(_root);
 	@override late final _Translations$homeWidgets$it homeWidgets = _Translations$homeWidgets$it._(_root);
 }
 
@@ -119,6 +120,7 @@ class _Translations$errors$it extends Translations$errors$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get visitMoved => 'Questo cliente è già passato oltre.';
 	@override String get generic => 'Qualcosa è andato storto. Riprova.';
 	@override String get noConnection => 'Sembra che tu sia offline.';
 	@override String get timeout => 'La richiesta ha impiegato troppo tempo.';
@@ -863,6 +865,24 @@ class _Translations$today$it extends Translations$today$en {
 	@override String get calendarQueueTitle => 'Il tuo negozio lavora con la coda';
 	@override String get calendarQueueBody => 'I clienti si mettono in coda invece di prenotare un orario, quindi qui non c\'è nulla da pianificare. Gestisci la coda da Oggi.';
 	@override String get calendarQueueCta => 'Cambia come lavori';
+}
+
+// Path: chairs
+class _Translations$chairs$it extends Translations$chairs$en {
+	_Translations$chairs$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get free => 'Libera';
+	@override String get done => 'Fatto';
+	@override String startName({required Object name}) => 'Inizia ${name}';
+	@override String overPlan({required Object minutes}) => '${minutes} min oltre il previsto';
+	@override String until({required Object time}) => 'fino alle ${time}';
+	@override String get nextInLine => 'In coda';
+	@override String get nextBooking => 'Prossima prenotazione';
+	@override String get turnedAway => 'Qualcuno mandato via';
+	@override String get turnedAwayRecorded => 'Registrato';
 }
 
 // Path: homeWidgets
@@ -1717,6 +1737,7 @@ extension on TranslationsIt {
 			'nav.bookings' => 'Prenotazioni',
 			'nav.agenda' => 'Agenda',
 			'nav.profile' => 'Profilo',
+			'errors.visitMoved' => 'Questo cliente è già passato oltre.',
 			'errors.generic' => 'Qualcosa è andato storto. Riprova.',
 			'errors.noConnection' => 'Sembra che tu sia offline.',
 			'errors.timeout' => 'La richiesta ha impiegato troppo tempo.',
@@ -2202,9 +2223,9 @@ extension on TranslationsIt {
 			'account.help' => 'Aiuto e contatti',
 			'account.signOut' => 'Esci',
 			'account.signOutConfirmTitle' => 'Vuoi uscire?',
-			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
 			'account.deleteAccount' => 'Elimina account',
 			'account.comingSoon' => 'Disponibile a breve.',
 			'home.waitShort' => ({required Object n, required Object from, required Object to}) => '${n} · ${from}–${to} min',
@@ -2616,6 +2637,15 @@ extension on TranslationsIt {
 			'today.calendarQueueTitle' => 'Il tuo negozio lavora con la coda',
 			'today.calendarQueueBody' => 'I clienti si mettono in coda invece di prenotare un orario, quindi qui non c\'è nulla da pianificare. Gestisci la coda da Oggi.',
 			'today.calendarQueueCta' => 'Cambia come lavori',
+			'chairs.free' => 'Libera',
+			'chairs.done' => 'Fatto',
+			'chairs.startName' => ({required Object name}) => 'Inizia ${name}',
+			'chairs.overPlan' => ({required Object minutes}) => '${minutes} min oltre il previsto',
+			'chairs.until' => ({required Object time}) => 'fino alle ${time}',
+			'chairs.nextInLine' => 'In coda',
+			'chairs.nextBooking' => 'Prossima prenotazione',
+			'chairs.turnedAway' => 'Qualcuno mandato via',
+			'chairs.turnedAwayRecorded' => 'Registrato',
 			'homeWidgets.inLine' => 'In coda',
 			'homeWidgets.nextVisit' => 'Prossima visita',
 			'homeWidgets.bookAgain' => 'Prenota di nuovo',

@@ -29,6 +29,7 @@ nav:
   profile: Profilo
 
 errors:
+  visitMoved: Questo cliente è già passato oltre.
   generic: Qualcosa è andato storto. Riprova.
   noConnection: Sembra che tu sia offline.
   timeout: La richiesta ha impiegato troppo tempo.
@@ -1044,6 +1045,17 @@ today:
   calendarQueueTitle: Il tuo negozio lavora con la coda
   calendarQueueBody: I clienti si mettono in coda invece di prenotare un orario, quindi qui non c'è nulla da pianificare. Gestisci la coda da Oggi.
   calendarQueueCta: Cambia come lavori
+
+chairs:
+  free: Libera
+  done: Fatto
+  startName(name): Inizia ${name}
+  overPlan(minutes): ${minutes} min oltre il previsto
+  until(time): fino alle ${time}
+  nextInLine: In coda
+  nextBooking: Prossima prenotazione
+  turnedAway: Qualcuno mandato via
+  turnedAwayRecorded: Registrato
 
 homeWidgets:
   inLine: In coda

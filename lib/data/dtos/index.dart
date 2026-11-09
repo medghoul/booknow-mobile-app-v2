@@ -4,6 +4,7 @@
 export 'agenda_dto.dart';
 export 'availability_dto.dart';
 export 'booking_dto.dart';
+export 'chairs_dto.dart';
 export 'home_dto.dart';
 export 'notification_preferences_dto.dart';
 export 'parsing.dart';

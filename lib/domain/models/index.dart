@@ -4,6 +4,7 @@ export 'auth_session.dart';
 export 'availability.dart';
 export 'booking.dart';
 export 'booking_hold.dart';
+export 'chairs.dart';
 export 'customer_home.dart';
 export 'free_slot.dart';
 export 'money.dart';
