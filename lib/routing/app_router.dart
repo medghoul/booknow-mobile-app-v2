@@ -69,6 +69,21 @@ class AppRouter extends RootStackRouter {
       '/statistics/detail',
       guards: [const RoleGuard(UserRole.owner)],
     ),
+    _route(
+      StaffStatisticsRoute.page,
+      '/statistics/staff',
+      guards: [const RoleGuard(UserRole.owner)],
+    ),
+    _route(
+      SuggestionsRoute.page,
+      '/statistics/suggestions',
+      guards: [const RoleGuard(UserRole.owner)],
+    ),
+    _route(
+      NeedsReviewRoute.page,
+      '/statistics/review',
+      guards: [const RoleGuard(UserRole.owner)],
+    ),
 
     _route(
       OwnerShellRoute.page,

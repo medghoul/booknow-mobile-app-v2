@@ -28,6 +28,7 @@ extension NetworkExceptionMessage on NetworkException {
       ApiErrorCode.invalidBlock => t.errors.invalidBlock,
       ApiErrorCode.providerLimitReached => t.errors.providerLimitReached,
       ApiErrorCode.visitMoved => t.errors.visitMoved,
+      ApiErrorCode.suggestionGone => t.errors.suggestionGone,
       ApiErrorCode.providerInUse => t.errors.providerInUse,
       ApiErrorCode.defaultProvider => t.errors.defaultProvider,
       ApiErrorCode.providerNotAvailable => t.errors.providerNotAvailable,

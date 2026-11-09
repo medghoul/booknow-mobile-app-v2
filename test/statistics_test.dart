@@ -130,6 +130,9 @@ class _Repository implements StatisticsRepository {
     });
     return answer;
   }
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 ApiResult<ShopStatistics> _ok([Map<String, dynamic>? json]) =>
@@ -256,7 +259,12 @@ void main() {
         tester,
         BlocProvider.value(
           value: cubit,
-          child: StatisticsOverview(onOpen: onOpen ?? (_) {}),
+          child: StatisticsOverview(
+            onOpen: onOpen ?? (_) {},
+            onOpenSuggestions: () {},
+            onOpenReview: () {},
+            onOpenStaff: (_) {},
+          ),
         ),
       );
       await cubit.load();
@@ -346,7 +354,8 @@ void main() {
 
       await tester.tap(find.text(t.everyone));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Luca'));
+      // The sheet is on top of the staff list.
+      await tester.tap(find.text('Luca').last);
       await tester.pumpAndSettle();
 
       expect(cubit.state.providerId, 'luca');
@@ -373,7 +382,12 @@ void main() {
         tester,
         BlocProvider.value(
           value: cubit,
-          child: StatisticsOverview(onOpen: (_) {}),
+          child: StatisticsOverview(
+            onOpen: (_) {},
+            onOpenSuggestions: () {},
+            onOpenReview: () {},
+            onOpenStaff: (_) {},
+          ),
         ),
       );
 
@@ -469,4 +483,7 @@ class _Sequenced implements StatisticsRepository {
     String? providerId,
     String? serviceId,
   }) => answers[_next++];
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }

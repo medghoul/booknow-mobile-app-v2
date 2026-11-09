@@ -30,6 +30,7 @@ nav:
   profile: Profile
 
 errors:
+  suggestionGone: The real times have changed. Have another look.
   visitMoved: That customer has already moved on.
   generic: Something went wrong. Please try again.
   noConnection: You appear to be offline.
@@ -1059,6 +1060,55 @@ chairs:
   turnedAwayRecorded: Recorded
 
 statistics:
+  staffTitle: Staff
+  staff:
+    compared: Compared with the shop
+    them: This person
+    shop: Shop
+    visits: Visits
+    typicalTime: Average time
+    overPlan: Over plan by 5+ min
+    utilization: Chair utilization
+    real: Them
+    average: Shop
+    menu: Menu
+    overPlanOf(percent): ${percent} over plan
+    emptyTitle: No visits in this period
+    emptyBody: Try a longer date range.
+  suggestions:
+    title: Suggestions
+    takes(name, real): ${name} takes ${real} min
+    menuSays(menu, samples): Your menu says ${menu} min. Based on ${samples} visits in the last 30 days.
+    accept(minutes): Use ${minutes} min
+    keep(minutes): Keep ${minutes} min
+    accepted: Menu updated
+    emptyTitle: Nothing to suggest
+    emptyBody: Your menu matches how long services really take.
+    note: Your menu only changes when you accept. Bookings made after that use the new time.
+  review:
+    title: Needs review
+    forgottenDone: Done was probably forgotten
+    tooShort: Too short to be real
+    neverStarted: No start was recorded
+    started(time): Started ${time}
+    noStart: No start recorded
+    finished(time): finished ${time}
+    noFinish: no finish recorded
+    planned(minutes): planned ${minutes} min
+    fix: Fix
+    sheetTitle: Fix the times
+    start: Start
+    finish: Finish
+    notSet: Choose a time
+    backwards: The finish has to be after the start.
+    save: Save
+    leave: Leave as it is
+    leaveNote: It stays out of the averages.
+    saved: Times saved
+    left: Left as it is
+    emptyTitle: Nothing to review
+    emptyBody: Every visit's times look right.
+    otherService: A service
   title: Statistics
   today: Today
   sevenDays: 7 days

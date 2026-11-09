@@ -95,6 +95,19 @@ abstract final class ApiEndpoints {
   static const String myShopQueueTurnedAway = '/shops/me/queue/turned-away';
   static const String myShopChairs = '/shops/me/chairs';
   static const String myShopStatistics = '/shops/me/statistics';
+  static const String statisticsSuggestions =
+      '/shops/me/statistics/suggestions';
+  static const String statisticsReview = '/shops/me/statistics/review';
+
+  static String staffStatistics(String providerId) =>
+      '/shops/me/statistics/staff/$providerId';
+
+  /// `accept` or `dismiss`.
+  static String statisticsSuggestion(String serviceId, String action) =>
+      '/shops/me/statistics/suggestions/$serviceId/$action';
+
+  static String statisticsReviewVisit(String visitId) =>
+      '/shops/me/statistics/review/$visitId';
 
   /// `start` or `done` on one chair.
   static String chairAction(String providerId, String action) =>

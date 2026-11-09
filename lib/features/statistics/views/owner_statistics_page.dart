@@ -64,6 +64,26 @@ class _Screen extends StatelessWidget {
                 onOpen: (section) => context.router.push(
                   StatisticsDetailRoute(section: section, cubit: cubit),
                 ),
+                // What these two do changes the counts on the overview.
+                onOpenSuggestions: () => context.router
+                    .push(const SuggestionsRoute())
+                    .then((_) => cubit.load()),
+                onOpenReview: () => context.router
+                    .push(const NeedsReviewRoute())
+                    .then((_) => cubit.load()),
+                onOpenStaff: (person) {
+                  final state = cubit.state;
+                  final custom = state.preset == StatisticsPreset.custom;
+                  context.router.push(
+                    StaffStatisticsRoute(
+                      providerId: person.id,
+                      name: person.name,
+                      days: state.preset.days,
+                      from: custom ? state.customFrom : null,
+                      to: custom ? state.customTo : null,
+                    ),
+                  );
+                },
               ),
             ),
           ],

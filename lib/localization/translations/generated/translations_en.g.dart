@@ -179,6 +179,9 @@ class Translations$errors$en {
 
 	// Translations
 
+	/// en: 'The real times have changed. Have another look.'
+	String get suggestionGone => 'The real times have changed. Have another look.';
+
 	/// en: 'That customer has already moved on.'
 	String get visitMoved => 'That customer has already moved on.';
 
@@ -1914,6 +1917,13 @@ class Translations$statistics$en {
 
 	// Translations
 
+	/// en: 'Staff'
+	String get staffTitle => 'Staff';
+
+	late final Translations$statistics$staff$en staff = Translations$statistics$staff$en.internal(_root);
+	late final Translations$statistics$suggestions$en suggestions = Translations$statistics$suggestions$en.internal(_root);
+	late final Translations$statistics$review$en review = Translations$statistics$review$en.internal(_root);
+
 	/// en: 'Statistics'
 	String get title => 'Statistics';
 
@@ -3629,6 +3639,168 @@ class Translations$queue$mode$en {
 	String get saved => 'Mode updated';
 }
 
+// Path: statistics.staff
+class Translations$statistics$staff$en {
+	Translations$statistics$staff$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Compared with the shop'
+	String get compared => 'Compared with the shop';
+
+	/// en: 'This person'
+	String get them => 'This person';
+
+	/// en: 'Shop'
+	String get shop => 'Shop';
+
+	/// en: 'Visits'
+	String get visits => 'Visits';
+
+	/// en: 'Average time'
+	String get typicalTime => 'Average time';
+
+	/// en: 'Over plan by 5+ min'
+	String get overPlan => 'Over plan by 5+ min';
+
+	/// en: 'Chair utilization'
+	String get utilization => 'Chair utilization';
+
+	/// en: 'Them'
+	String get real => 'Them';
+
+	/// en: 'Shop'
+	String get average => 'Shop';
+
+	/// en: 'Menu'
+	String get menu => 'Menu';
+
+	/// en: '${percent} over plan'
+	String overPlanOf({required Object percent}) => '${percent} over plan';
+
+	/// en: 'No visits in this period'
+	String get emptyTitle => 'No visits in this period';
+
+	/// en: 'Try a longer date range.'
+	String get emptyBody => 'Try a longer date range.';
+}
+
+// Path: statistics.suggestions
+class Translations$statistics$suggestions$en {
+	Translations$statistics$suggestions$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Suggestions'
+	String get title => 'Suggestions';
+
+	/// en: '${name} takes ${real} min'
+	String takes({required Object name, required Object real}) => '${name} takes ${real} min';
+
+	/// en: 'Your menu says ${menu} min. Based on ${samples} visits in the last 30 days.'
+	String menuSays({required Object menu, required Object samples}) => 'Your menu says ${menu} min. Based on ${samples} visits in the last 30 days.';
+
+	/// en: 'Use ${minutes} min'
+	String accept({required Object minutes}) => 'Use ${minutes} min';
+
+	/// en: 'Keep ${minutes} min'
+	String keep({required Object minutes}) => 'Keep ${minutes} min';
+
+	/// en: 'Menu updated'
+	String get accepted => 'Menu updated';
+
+	/// en: 'Nothing to suggest'
+	String get emptyTitle => 'Nothing to suggest';
+
+	/// en: 'Your menu matches how long services really take.'
+	String get emptyBody => 'Your menu matches how long services really take.';
+
+	/// en: 'Your menu only changes when you accept. Bookings made after that use the new time.'
+	String get note => 'Your menu only changes when you accept. Bookings made after that use the new time.';
+}
+
+// Path: statistics.review
+class Translations$statistics$review$en {
+	Translations$statistics$review$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Needs review'
+	String get title => 'Needs review';
+
+	/// en: 'Done was probably forgotten'
+	String get forgottenDone => 'Done was probably forgotten';
+
+	/// en: 'Too short to be real'
+	String get tooShort => 'Too short to be real';
+
+	/// en: 'No start was recorded'
+	String get neverStarted => 'No start was recorded';
+
+	/// en: 'Started ${time}'
+	String started({required Object time}) => 'Started ${time}';
+
+	/// en: 'No start recorded'
+	String get noStart => 'No start recorded';
+
+	/// en: 'finished ${time}'
+	String finished({required Object time}) => 'finished ${time}';
+
+	/// en: 'no finish recorded'
+	String get noFinish => 'no finish recorded';
+
+	/// en: 'planned ${minutes} min'
+	String planned({required Object minutes}) => 'planned ${minutes} min';
+
+	/// en: 'Fix'
+	String get fix => 'Fix';
+
+	/// en: 'Fix the times'
+	String get sheetTitle => 'Fix the times';
+
+	/// en: 'Start'
+	String get start => 'Start';
+
+	/// en: 'Finish'
+	String get finish => 'Finish';
+
+	/// en: 'Choose a time'
+	String get notSet => 'Choose a time';
+
+	/// en: 'The finish has to be after the start.'
+	String get backwards => 'The finish has to be after the start.';
+
+	/// en: 'Save'
+	String get save => 'Save';
+
+	/// en: 'Leave as it is'
+	String get leave => 'Leave as it is';
+
+	/// en: 'It stays out of the averages.'
+	String get leaveNote => 'It stays out of the averages.';
+
+	/// en: 'Times saved'
+	String get saved => 'Times saved';
+
+	/// en: 'Left as it is'
+	String get left => 'Left as it is';
+
+	/// en: 'Nothing to review'
+	String get emptyTitle => 'Nothing to review';
+
+	/// en: 'Every visit's times look right.'
+	String get emptyBody => 'Every visit\'s times look right.';
+
+	/// en: 'A service'
+	String get otherService => 'A service';
+}
+
 // Path: statistics.kpi
 class Translations$statistics$kpi$en {
 	Translations$statistics$kpi$en.internal(this._root);
@@ -3925,6 +4097,7 @@ extension on Translations {
 			'nav.bookings' => 'Bookings',
 			'nav.agenda' => 'Agenda',
 			'nav.profile' => 'Profile',
+			'errors.suggestionGone' => 'The real times have changed. Have another look.',
 			'errors.visitMoved' => 'That customer has already moved on.',
 			'errors.generic' => 'Something went wrong. Please try again.',
 			'errors.noConnection' => 'You appear to be offline.',
@@ -4409,9 +4582,9 @@ extension on Translations {
 			'account.payments' => 'Payments and receipts',
 			'account.switchToBarber' => 'Switch to barber',
 			'account.help' => 'Help and contact',
-			'account.signOut' => 'Sign out',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOut' => 'Sign out',
 			'account.signOutConfirmTitle' => 'Sign out?',
 			'account.signOutConfirmBody' => 'You will need to sign in again to see your bookings.',
 			'account.deleteAccount' => 'Delete account',
@@ -4834,6 +5007,52 @@ extension on Translations {
 			'chairs.nextBooking' => 'Next booking',
 			'chairs.turnedAway' => 'Someone turned away',
 			'chairs.turnedAwayRecorded' => 'Recorded',
+			'statistics.staffTitle' => 'Staff',
+			'statistics.staff.compared' => 'Compared with the shop',
+			'statistics.staff.them' => 'This person',
+			'statistics.staff.shop' => 'Shop',
+			'statistics.staff.visits' => 'Visits',
+			'statistics.staff.typicalTime' => 'Average time',
+			'statistics.staff.overPlan' => 'Over plan by 5+ min',
+			'statistics.staff.utilization' => 'Chair utilization',
+			'statistics.staff.real' => 'Them',
+			'statistics.staff.average' => 'Shop',
+			'statistics.staff.menu' => 'Menu',
+			'statistics.staff.overPlanOf' => ({required Object percent}) => '${percent} over plan',
+			'statistics.staff.emptyTitle' => 'No visits in this period',
+			'statistics.staff.emptyBody' => 'Try a longer date range.',
+			'statistics.suggestions.title' => 'Suggestions',
+			'statistics.suggestions.takes' => ({required Object name, required Object real}) => '${name} takes ${real} min',
+			'statistics.suggestions.menuSays' => ({required Object menu, required Object samples}) => 'Your menu says ${menu} min. Based on ${samples} visits in the last 30 days.',
+			'statistics.suggestions.accept' => ({required Object minutes}) => 'Use ${minutes} min',
+			'statistics.suggestions.keep' => ({required Object minutes}) => 'Keep ${minutes} min',
+			'statistics.suggestions.accepted' => 'Menu updated',
+			'statistics.suggestions.emptyTitle' => 'Nothing to suggest',
+			'statistics.suggestions.emptyBody' => 'Your menu matches how long services really take.',
+			'statistics.suggestions.note' => 'Your menu only changes when you accept. Bookings made after that use the new time.',
+			'statistics.review.title' => 'Needs review',
+			'statistics.review.forgottenDone' => 'Done was probably forgotten',
+			'statistics.review.tooShort' => 'Too short to be real',
+			'statistics.review.neverStarted' => 'No start was recorded',
+			'statistics.review.started' => ({required Object time}) => 'Started ${time}',
+			'statistics.review.noStart' => 'No start recorded',
+			'statistics.review.finished' => ({required Object time}) => 'finished ${time}',
+			'statistics.review.noFinish' => 'no finish recorded',
+			'statistics.review.planned' => ({required Object minutes}) => 'planned ${minutes} min',
+			'statistics.review.fix' => 'Fix',
+			'statistics.review.sheetTitle' => 'Fix the times',
+			'statistics.review.start' => 'Start',
+			'statistics.review.finish' => 'Finish',
+			'statistics.review.notSet' => 'Choose a time',
+			'statistics.review.backwards' => 'The finish has to be after the start.',
+			'statistics.review.save' => 'Save',
+			'statistics.review.leave' => 'Leave as it is',
+			'statistics.review.leaveNote' => 'It stays out of the averages.',
+			'statistics.review.saved' => 'Times saved',
+			'statistics.review.left' => 'Left as it is',
+			'statistics.review.emptyTitle' => 'Nothing to review',
+			'statistics.review.emptyBody' => 'Every visit\'s times look right.',
+			'statistics.review.otherService' => 'A service',
 			'statistics.title' => 'Statistics',
 			'statistics.today' => 'Today',
 			'statistics.sevenDays' => '7 days',
@@ -4877,6 +5096,8 @@ extension on Translations {
 			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visits',
 			'statistics.detail.walkInWait' => 'Walk-in wait',
 			'statistics.detail.average' => 'Average',
+			_ => null,
+		} ?? switch (path) {
 			'statistics.detail.p90' => '9 in 10 waited less than',
 			'statistics.detail.served' => 'Customers served',
 			'statistics.detail.lostCustomers' => 'Customers lost',
@@ -4924,8 +5145,6 @@ extension on Translations {
 			'homeWidgets.nobodyWaiting' => 'Nobody waiting',
 			'homeWidgets.nextUp' => 'Next up',
 			'homeWidgets.calledLine' => 'Called, on their way',
-			_ => null,
-		} ?? switch (path) {
 			'homeWidgets.nextAppointment' => 'Next appointment',
 			'homeWidgets.nothingLeft' => 'Nothing else today',
 			'homeWidgets.moreToday' => ({required Object n}) => '${n} more today',

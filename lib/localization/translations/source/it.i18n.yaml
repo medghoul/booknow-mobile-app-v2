@@ -30,6 +30,7 @@ nav:
   profile: Profilo
 
 errors:
+  suggestionGone: I tempi reali sono cambiati. Dai un'altra occhiata.
   visitMoved: Questo cliente è già passato oltre.
   generic: Qualcosa è andato storto. Riprova.
   noConnection: Sembra che tu sia offline.
@@ -1059,6 +1060,55 @@ chairs:
   turnedAwayRecorded: Registrato
 
 statistics:
+  staffTitle: Staff
+  staff:
+    compared: Confronto con il negozio
+    them: Questa persona
+    shop: Negozio
+    visits: Visite
+    typicalTime: Tempo medio
+    overPlan: Oltre il previsto di 5+ min
+    utilization: Uso della poltrona
+    real: Persona
+    average: Negozio
+    menu: Listino
+    overPlanOf(percent): ${percent} oltre il previsto
+    emptyTitle: Nessuna visita in questo periodo
+    emptyBody: Prova un periodo più lungo.
+  suggestions:
+    title: Suggerimenti
+    takes(name, real): ${name} richiede ${real} min
+    menuSays(menu, samples): Il tuo listino dice ${menu} min. Basato su ${samples} visite negli ultimi 30 giorni.
+    accept(minutes): Usa ${minutes} min
+    keep(minutes): Tieni ${minutes} min
+    accepted: Listino aggiornato
+    emptyTitle: Nessun suggerimento
+    emptyBody: Il tuo listino corrisponde ai tempi reali.
+    note: Il listino cambia solo se accetti. Le prenotazioni successive useranno il nuovo tempo.
+  review:
+    title: Da controllare
+    forgottenDone: Probabilmente Fatto non è stato premuto
+    tooShort: Troppo breve per essere reale
+    neverStarted: Nessun inizio registrato
+    started(time): Iniziata alle ${time}
+    noStart: Nessun inizio registrato
+    finished(time): finita alle ${time}
+    noFinish: nessuna fine registrata
+    planned(minutes): previsti ${minutes} min
+    fix: Correggi
+    sheetTitle: Correggi gli orari
+    start: Inizio
+    finish: Fine
+    notSet: Scegli un orario
+    backwards: La fine deve essere dopo l'inizio.
+    save: Salva
+    leave: Lascia così
+    leaveNote: Resta fuori dalle medie.
+    saved: Orari salvati
+    left: Lasciata così
+    emptyTitle: Niente da controllare
+    emptyBody: Gli orari di tutte le visite sembrano corretti.
+    otherService: Un servizio
   title: Statistiche
   today: Oggi
   sevenDays: 7 giorni

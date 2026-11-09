@@ -122,6 +122,7 @@ class _Translations$errors$it extends Translations$errors$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get suggestionGone => 'I tempi reali sono cambiati. Dai un\'altra occhiata.';
 	@override String get visitMoved => 'Questo cliente è già passato oltre.';
 	@override String get generic => 'Qualcosa è andato storto. Riprova.';
 	@override String get noConnection => 'Sembra che tu sia offline.';
@@ -894,6 +895,10 @@ class _Translations$statistics$it extends Translations$statistics$en {
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get staffTitle => 'Staff';
+	@override late final _Translations$statistics$staff$it staff = _Translations$statistics$staff$it._(_root);
+	@override late final _Translations$statistics$suggestions$it suggestions = _Translations$statistics$suggestions$it._(_root);
+	@override late final _Translations$statistics$review$it review = _Translations$statistics$review$it._(_root);
 	@override String get title => 'Statistiche';
 	@override String get today => 'Oggi';
 	@override String get sevenDays => '7 giorni';
@@ -1700,6 +1705,78 @@ class _Translations$queue$mode$it extends Translations$queue$mode$en {
 	@override String get saved => 'Modalità aggiornata';
 }
 
+// Path: statistics.staff
+class _Translations$statistics$staff$it extends Translations$statistics$staff$en {
+	_Translations$statistics$staff$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get compared => 'Confronto con il negozio';
+	@override String get them => 'Questa persona';
+	@override String get shop => 'Negozio';
+	@override String get visits => 'Visite';
+	@override String get typicalTime => 'Tempo medio';
+	@override String get overPlan => 'Oltre il previsto di 5+ min';
+	@override String get utilization => 'Uso della poltrona';
+	@override String get real => 'Persona';
+	@override String get average => 'Negozio';
+	@override String get menu => 'Listino';
+	@override String overPlanOf({required Object percent}) => '${percent} oltre il previsto';
+	@override String get emptyTitle => 'Nessuna visita in questo periodo';
+	@override String get emptyBody => 'Prova un periodo più lungo.';
+}
+
+// Path: statistics.suggestions
+class _Translations$statistics$suggestions$it extends Translations$statistics$suggestions$en {
+	_Translations$statistics$suggestions$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Suggerimenti';
+	@override String takes({required Object name, required Object real}) => '${name} richiede ${real} min';
+	@override String menuSays({required Object menu, required Object samples}) => 'Il tuo listino dice ${menu} min. Basato su ${samples} visite negli ultimi 30 giorni.';
+	@override String accept({required Object minutes}) => 'Usa ${minutes} min';
+	@override String keep({required Object minutes}) => 'Tieni ${minutes} min';
+	@override String get accepted => 'Listino aggiornato';
+	@override String get emptyTitle => 'Nessun suggerimento';
+	@override String get emptyBody => 'Il tuo listino corrisponde ai tempi reali.';
+	@override String get note => 'Il listino cambia solo se accetti. Le prenotazioni successive useranno il nuovo tempo.';
+}
+
+// Path: statistics.review
+class _Translations$statistics$review$it extends Translations$statistics$review$en {
+	_Translations$statistics$review$it._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Da controllare';
+	@override String get forgottenDone => 'Probabilmente Fatto non è stato premuto';
+	@override String get tooShort => 'Troppo breve per essere reale';
+	@override String get neverStarted => 'Nessun inizio registrato';
+	@override String started({required Object time}) => 'Iniziata alle ${time}';
+	@override String get noStart => 'Nessun inizio registrato';
+	@override String finished({required Object time}) => 'finita alle ${time}';
+	@override String get noFinish => 'nessuna fine registrata';
+	@override String planned({required Object minutes}) => 'previsti ${minutes} min';
+	@override String get fix => 'Correggi';
+	@override String get sheetTitle => 'Correggi gli orari';
+	@override String get start => 'Inizio';
+	@override String get finish => 'Fine';
+	@override String get notSet => 'Scegli un orario';
+	@override String get backwards => 'La fine deve essere dopo l\'inizio.';
+	@override String get save => 'Salva';
+	@override String get leave => 'Lascia così';
+	@override String get leaveNote => 'Resta fuori dalle medie.';
+	@override String get saved => 'Orari salvati';
+	@override String get left => 'Lasciata così';
+	@override String get emptyTitle => 'Niente da controllare';
+	@override String get emptyBody => 'Gli orari di tutte le visite sembrano corretti.';
+	@override String get otherService => 'Un servizio';
+}
+
 // Path: statistics.kpi
 class _Translations$statistics$kpi$it extends Translations$statistics$kpi$en {
 	_Translations$statistics$kpi$it._(TranslationsIt root) : this._root = root, super.internal(root);
@@ -1846,6 +1923,7 @@ extension on TranslationsIt {
 			'nav.bookings' => 'Prenotazioni',
 			'nav.agenda' => 'Agenda',
 			'nav.profile' => 'Profilo',
+			'errors.suggestionGone' => 'I tempi reali sono cambiati. Dai un\'altra occhiata.',
 			'errors.visitMoved' => 'Questo cliente è già passato oltre.',
 			'errors.generic' => 'Qualcosa è andato storto. Riprova.',
 			'errors.noConnection' => 'Sembra che tu sia offline.',
@@ -2330,9 +2408,9 @@ extension on TranslationsIt {
 			'account.payments' => 'Pagamenti e ricevute',
 			'account.switchToBarber' => 'Passa a barbiere',
 			'account.help' => 'Aiuto e contatti',
-			'account.signOut' => 'Esci',
 			_ => null,
 		} ?? switch (path) {
+			'account.signOut' => 'Esci',
 			'account.signOutConfirmTitle' => 'Vuoi uscire?',
 			'account.signOutConfirmBody' => 'Dovrai accedere di nuovo per vedere le tue prenotazioni.',
 			'account.deleteAccount' => 'Elimina account',
@@ -2755,6 +2833,52 @@ extension on TranslationsIt {
 			'chairs.nextBooking' => 'Prossima prenotazione',
 			'chairs.turnedAway' => 'Qualcuno mandato via',
 			'chairs.turnedAwayRecorded' => 'Registrato',
+			'statistics.staffTitle' => 'Staff',
+			'statistics.staff.compared' => 'Confronto con il negozio',
+			'statistics.staff.them' => 'Questa persona',
+			'statistics.staff.shop' => 'Negozio',
+			'statistics.staff.visits' => 'Visite',
+			'statistics.staff.typicalTime' => 'Tempo medio',
+			'statistics.staff.overPlan' => 'Oltre il previsto di 5+ min',
+			'statistics.staff.utilization' => 'Uso della poltrona',
+			'statistics.staff.real' => 'Persona',
+			'statistics.staff.average' => 'Negozio',
+			'statistics.staff.menu' => 'Listino',
+			'statistics.staff.overPlanOf' => ({required Object percent}) => '${percent} oltre il previsto',
+			'statistics.staff.emptyTitle' => 'Nessuna visita in questo periodo',
+			'statistics.staff.emptyBody' => 'Prova un periodo più lungo.',
+			'statistics.suggestions.title' => 'Suggerimenti',
+			'statistics.suggestions.takes' => ({required Object name, required Object real}) => '${name} richiede ${real} min',
+			'statistics.suggestions.menuSays' => ({required Object menu, required Object samples}) => 'Il tuo listino dice ${menu} min. Basato su ${samples} visite negli ultimi 30 giorni.',
+			'statistics.suggestions.accept' => ({required Object minutes}) => 'Usa ${minutes} min',
+			'statistics.suggestions.keep' => ({required Object minutes}) => 'Tieni ${minutes} min',
+			'statistics.suggestions.accepted' => 'Listino aggiornato',
+			'statistics.suggestions.emptyTitle' => 'Nessun suggerimento',
+			'statistics.suggestions.emptyBody' => 'Il tuo listino corrisponde ai tempi reali.',
+			'statistics.suggestions.note' => 'Il listino cambia solo se accetti. Le prenotazioni successive useranno il nuovo tempo.',
+			'statistics.review.title' => 'Da controllare',
+			'statistics.review.forgottenDone' => 'Probabilmente Fatto non è stato premuto',
+			'statistics.review.tooShort' => 'Troppo breve per essere reale',
+			'statistics.review.neverStarted' => 'Nessun inizio registrato',
+			'statistics.review.started' => ({required Object time}) => 'Iniziata alle ${time}',
+			'statistics.review.noStart' => 'Nessun inizio registrato',
+			'statistics.review.finished' => ({required Object time}) => 'finita alle ${time}',
+			'statistics.review.noFinish' => 'nessuna fine registrata',
+			'statistics.review.planned' => ({required Object minutes}) => 'previsti ${minutes} min',
+			'statistics.review.fix' => 'Correggi',
+			'statistics.review.sheetTitle' => 'Correggi gli orari',
+			'statistics.review.start' => 'Inizio',
+			'statistics.review.finish' => 'Fine',
+			'statistics.review.notSet' => 'Scegli un orario',
+			'statistics.review.backwards' => 'La fine deve essere dopo l\'inizio.',
+			'statistics.review.save' => 'Salva',
+			'statistics.review.leave' => 'Lascia così',
+			'statistics.review.leaveNote' => 'Resta fuori dalle medie.',
+			'statistics.review.saved' => 'Orari salvati',
+			'statistics.review.left' => 'Lasciata così',
+			'statistics.review.emptyTitle' => 'Niente da controllare',
+			'statistics.review.emptyBody' => 'Gli orari di tutte le visite sembrano corretti.',
+			'statistics.review.otherService' => 'Un servizio',
 			'statistics.title' => 'Statistiche',
 			'statistics.today' => 'Oggi',
 			'statistics.sevenDays' => '7 giorni',
@@ -2798,6 +2922,8 @@ extension on TranslationsIt {
 			'statistics.detail.medianOf' => ({required Object real, required Object visits}) => '${real} · ${visits} visite',
 			'statistics.detail.walkInWait' => 'Attesa walk-in',
 			'statistics.detail.average' => 'Media',
+			_ => null,
+		} ?? switch (path) {
 			'statistics.detail.p90' => '9 su 10 hanno atteso meno di',
 			'statistics.detail.served' => 'Clienti serviti',
 			'statistics.detail.lostCustomers' => 'Clienti persi',
@@ -2845,8 +2971,6 @@ extension on TranslationsIt {
 			'homeWidgets.nobodyWaiting' => 'Nessuno in attesa',
 			'homeWidgets.nextUp' => 'Prossimo',
 			'homeWidgets.calledLine' => 'Chiamato, sta arrivando',
-			_ => null,
-		} ?? switch (path) {
 			'homeWidgets.nextAppointment' => 'Prossimo appuntamento',
 			'homeWidgets.nothingLeft' => 'Nient\'altro oggi',
 			'homeWidgets.moreToday' => ({required Object n}) => 'altri ${n} oggi',

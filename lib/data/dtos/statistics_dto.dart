@@ -14,6 +14,8 @@ ShopStatistics shopStatisticsFromJson(Map<String, dynamic> json) =>
       timeZone: asText(json['timeZone'], 'Europe/Rome'),
       hasData: asBool(json['hasData'], fallback: false),
       personStatsEnabled: asBool(json['personStatsEnabled'], fallback: false),
+      suggestionCount: asInt(json['suggestionCount']),
+      reviewCount: asInt(json['reviewCount']),
       providers: [
         for (final row in _rows(json['providers']))
           if (asTextOrNull(row['providerId']) case final id?)
@@ -100,3 +102,69 @@ ServiceStatistics _service(String id, Map<String, dynamic> json) =>
             ),
       ],
     );
+
+/// Reads `GET /v1/shops/me/statistics/staff/{providerId}`.
+StaffStatistics staffStatisticsFromJson(Map<String, dynamic> json) =>
+    StaffStatistics(
+      from: asText(json['from']),
+      to: asText(json['to']),
+      name: asTextOrNull(json['name']),
+      hasData: asBool(json['hasData'], fallback: false),
+      summary: _summary(asMap(json['summary'])),
+      shop: _summary(asMap(json['shop'])),
+      perService: [
+        for (final row in _rows(json['perService']))
+          if (asTextOrNull(row['serviceId']) case final id?)
+            StaffServiceStatistics(
+              serviceId: id,
+              name: asTextOrNull(row['name']),
+              menuMin: _intOrNull(row['menuMin']),
+              completed: asInt(row['completed']),
+              medianMin: _intOrNull(row['medianMin']),
+              overrunPct: asDoubleOrNull(row['overrunPct']),
+              shopMedianMin: _intOrNull(row['shopMedianMin']),
+              shopOverrunPct: asDoubleOrNull(row['shopOverrunPct']),
+            ),
+      ],
+    );
+
+/// Reads the `suggestions` of the suggestion routes.
+List<DurationSuggestion> suggestionsFromJson(Map<String, dynamic> json) => [
+  for (final row in _rows(json['suggestions']))
+    if (asTextOrNull(row['serviceId']) case final id?)
+      DurationSuggestion(
+        serviceId: id,
+        name: asText(row['name']),
+        menuMin: asInt(row['menuMin']),
+        realMin: asInt(row['realMin']),
+        suggestedMin: asInt(row['suggestedMin']),
+        samples: asInt(row['samples']),
+      ),
+];
+
+ReviewFlag? _flag(String? value) => switch (value) {
+  'forgotten_done' => ReviewFlag.forgottenDone,
+  'too_short' => ReviewFlag.tooShort,
+  'never_started' => ReviewFlag.neverStarted,
+  _ => null,
+};
+
+/// Reads `GET /v1/shops/me/statistics/review`.
+ReviewList reviewListFromJson(Map<String, dynamic> json) => ReviewList(
+  timeZone: asText(json['timeZone'], 'Europe/Rome'),
+  items: [
+    for (final row in _rows(json['items']))
+      if ((asTextOrNull(row['visitId']), _flag(asTextOrNull(row['flag'])))
+          case (final id?, final flag?))
+        ReviewItem(
+          visitId: id,
+          localDate: asText(row['localDate']),
+          flag: flag,
+          plannedMin: _intOrNull(row['plannedMin']),
+          startedAt: asInstantOrNull(row['startedAt']),
+          finishedAt: asInstantOrNull(row['finishedAt']),
+          providerName: asTextOrNull(row['providerName']),
+          serviceName: asTextOrNull(row['serviceName']),
+        ),
+  ],
+);

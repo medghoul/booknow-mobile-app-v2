@@ -84,6 +84,9 @@ enum ApiErrorCode {
   /// A Start or a Done on a visit that has already moved on.
   visitMoved('VISIT_MOVED'),
 
+  /// The real times have moved since the suggestion was shown.
+  suggestionGone('SUGGESTION_GONE'),
+
   /// Anything the app does not recognise.
   shopIncomplete('SHOP_INCOMPLETE'),
   shopAlreadyExists('SHOP_ALREADY_EXISTS'),

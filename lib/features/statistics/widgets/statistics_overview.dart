@@ -25,9 +25,18 @@ String statisticsRangeLabel(BuildContext context, String from, String to) {
 
 /// The range, the filters and the figures.
 class StatisticsOverview extends StatelessWidget {
-  const StatisticsOverview({super.key, required this.onOpen});
+  const StatisticsOverview({
+    super.key,
+    required this.onOpen,
+    required this.onOpenSuggestions,
+    required this.onOpenReview,
+    required this.onOpenStaff,
+  });
 
   final ValueChanged<StatisticsSection> onOpen;
+  final VoidCallback onOpenSuggestions;
+  final VoidCallback onOpenReview;
+  final ValueChanged<StatisticsFilterOption> onOpenStaff;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +63,12 @@ class StatisticsOverview extends StatelessWidget {
                   retryLabel: t.common.retry,
                   onRetry: cubit.load,
                 )
-              else if (!data.hasData)
+              else if (!data.hasData) ...[
+                _Actions(
+                  data: data,
+                  onOpenSuggestions: onOpenSuggestions,
+                  onOpenReview: onOpenReview,
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: 40.h),
                   child: AppEmptyState(
@@ -62,17 +76,79 @@ class StatisticsOverview extends StatelessWidget {
                     title: t.statistics.emptyTitle,
                     message: t.statistics.emptyBody,
                   ),
-                )
-              else
+                ),
+              ] else
                 AnimatedOpacity(
                   opacity: state.isLoading ? 0.5 : 1,
                   duration: const Duration(milliseconds: 150),
-                  child: _Figures(summary: data.summary, onOpen: onOpen),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _Actions(
+                        data: data,
+                        onOpenSuggestions: onOpenSuggestions,
+                        onOpenReview: onOpenReview,
+                      ),
+                      _Figures(summary: data.summary, onOpen: onOpen),
+                      if (data.personStatsEnabled &&
+                          data.providers.isNotEmpty) ...[
+                        SizedBox(height: 20.h),
+                        Text(
+                          t.statistics.staffTitle,
+                          style: context.textTheme.headlineSmall,
+                        ),
+                        SizedBox(height: 10.h),
+                        for (final person in data.providers) ...[
+                          StatLinkRow(
+                            title: person.name,
+                            onTap: () => onOpenStaff(person),
+                          ),
+                          SizedBox(height: 8.h),
+                        ],
+                      ],
+                    ],
+                  ),
                 ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+/// The two lists that want something from the owner, while they do.
+class _Actions extends StatelessWidget {
+  const _Actions({
+    required this.data,
+    required this.onOpenSuggestions,
+    required this.onOpenReview,
+  });
+
+  final ShopStatistics data;
+  final VoidCallback onOpenSuggestions;
+  final VoidCallback onOpenReview;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.t.statistics;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        StatLinkRow(
+          title: t.review.title,
+          count: data.reviewCount,
+          onTap: onOpenReview,
+        ),
+        SizedBox(height: 8.h),
+        StatLinkRow(
+          title: t.suggestions.title,
+          count: data.suggestionCount,
+          onTap: onOpenSuggestions,
+        ),
+        SizedBox(height: 14.h),
+      ],
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:booknow_mobile/core/extensions/context_extension.dart';
 import 'package:booknow_mobile/localization/localization.dart';
+import 'package:booknow_mobile/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_layout_kit/responsive_layout_kit.dart';
@@ -231,6 +232,80 @@ class StatComparisonBars extends StatelessWidget {
         ),
         bar(plannedLabel, planned, scheme.primary),
       ],
+    );
+  }
+}
+
+/// A row opening another list, with how many are waiting in it.
+class StatLinkRow extends StatelessWidget {
+  const StatLinkRow({
+    super.key,
+    required this.title,
+    required this.onTap,
+    this.count,
+  });
+
+  final String title;
+  final VoidCallback onTap;
+  final int? count;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = context.colorScheme;
+    final count = this.count;
+
+    return Material(
+      color: scheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: context.radii.mdR,
+        side: BorderSide(color: scheme.outlineVariant),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          constraints: const BoxConstraints(minHeight: 52),
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: context.textTheme.titleSmall?.copyWith(
+                    fontSize: context.fonts.s.sp,
+                  ),
+                ),
+              ),
+              if (count != null && count > 0) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
+                  decoration: BoxDecoration(
+                    color: context.status.pending.background,
+                    borderRadius: context.radii.smR,
+                  ),
+                  child: Text(
+                    '$count',
+                    style: context.textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: context.status.pending.foreground,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ],
+              AppLineIcon(
+                AppLineIcons.chevronRight,
+                size: 18,
+                color: scheme.onSurfaceVariant,
+                strokeWidth: 2.25,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
